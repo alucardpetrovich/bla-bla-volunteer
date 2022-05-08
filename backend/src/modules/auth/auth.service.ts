@@ -5,7 +5,6 @@ import {
   Injectable,
   NotFoundException,
   PreconditionFailedException,
-  UnauthorizedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from '../users/user.entity';
