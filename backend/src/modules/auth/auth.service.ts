@@ -1,7 +1,6 @@
 import {
   ConflictException,
   ForbiddenException,
-  GoneException,
   Inject,
   Injectable,
   NotFoundException,
@@ -89,7 +88,7 @@ export class AuthService {
       payload.pairId,
     );
     if (isRevoked) {
-      throw new UnauthorizedException();
+      throw new ForbiddenException();
     }
 
     await this.revokedTokensRepository.setRevokedPair(
@@ -171,7 +170,7 @@ export class AuthService {
         throw new Error();
       }
     } catch (err) {
-      throw new UnauthorizedException();
+      throw new ForbiddenException();
     }
 
     return payload;
