@@ -35,6 +35,7 @@ jobs:
             cp ../../env/.env.backend .env && \
             yarn && \
             yarn build && \
+            yarn migrations:up \
             cd /home/work/bla-bla-volunteer && \
             pm2 kill && \
             pm2 start ecosystem.config.js
