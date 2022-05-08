@@ -10,8 +10,10 @@ export function configureApp(app: INestApplication): void {
 function setupSwagger(app: INestApplication) {
   const configService = app.get(ConfigService);
   const showDocs = configService.get('general.showDocs');
+  const allowedOrigin = configService.get('general.allowedOrigin');
 
   app.setGlobalPrefix('api');
+  app.enableCors({ origin: allowedOrigin });
 
   if (!showDocs) {
     return;

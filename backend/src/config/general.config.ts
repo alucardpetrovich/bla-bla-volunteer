@@ -14,6 +14,9 @@ export class GeneralConfig {
 
   @IsString()
   serverUrl: string;
+
+  @IsString()
+  allowedOrigin: string;
 }
 
 const configKey = 'general';
@@ -24,5 +27,6 @@ export const generalConfig = registerAs(configKey, () => {
     bcryptSaltRounds: parseInt(process.env.BCRYPT_SALT_ROUNDS),
     showDocs: process.env.SHOW_DOCS === 'true',
     serverUrl: process.env.SERVER_URL,
+    allowedOrigin: process.env.ALLOWED_ORIGIN,
   });
 });

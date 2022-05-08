@@ -26,3 +26,10 @@ services:
       timeout: 5s
       retries: 5
       start_period: 15s
+  redis:
+    image: redis:alpine
+    container_name: bla_bla_volunteer_redis
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6376:6379"

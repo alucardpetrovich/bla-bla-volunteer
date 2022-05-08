@@ -15,6 +15,7 @@ export class ResponseInterceptor<T> implements NestInterceptor<T> {
         const serialize = (obj: Observable<T>): any =>
           plainToClass(this.Serializer as any, obj, {
             excludeExtraneousValues: true,
+            enableImplicitConversion: true,
           });
 
         const serialized = serialize(data);

@@ -3,6 +3,14 @@ import { Type } from 'class-transformer';
 import { IsString, ValidateNested } from 'class-validator';
 import { validateConfig } from './validate-config';
 
+export class MailingAuthConfig {
+  @IsString()
+  user: string;
+
+  @IsString()
+  pass: string;
+}
+
 export class MailingConfig {
   @IsString()
   service: string;
@@ -10,14 +18,6 @@ export class MailingConfig {
   @ValidateNested()
   @Type(() => MailingAuthConfig)
   auth: MailingAuthConfig;
-}
-
-export class MailingAuthConfig {
-  @IsString()
-  user: string;
-
-  @IsString()
-  pass: string;
 }
 
 const configKey = 'mailing';
