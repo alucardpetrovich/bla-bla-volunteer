@@ -21,10 +21,15 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "update-translations": "extract-messages -l=de -o locales/de -d de --flat false \"internationalization/**/!(*.test).js\"",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
+    "lint": "yarn run lint",
+    "lint:fix": "yarn run lint -- --fix",
+    "lint:css": "npx stylelint \"**/style.js\" "
   },
   "eslintConfig": {
     "extends": [
