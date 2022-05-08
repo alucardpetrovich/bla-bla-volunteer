@@ -1,9 +1,9 @@
 import { useRoutes } from 'react-router';
 import { Navigate, generatePath } from 'react-router-dom';
 import { PATHS } from '../constants/PATH';
-import Home from '../pages/Home';
-import NotFound404 from '../pages/NotFound404';
-import TestPage from '../pages/TestPage/TestPage';
+import HomePage from '../pages/Home';
+import NotFoundPage from '../pages/NotFound404';
+import TestPage from '../pages/TestPage';
 
 const useRoutesConstants = () => {
   const lang = 'ua';
@@ -18,7 +18,7 @@ const useRoutesConstants = () => {
 
     {
       path: PATHS.HOME.path,
-      element: <Home />,
+      element: <HomePage />,
     },
 
     {
@@ -28,7 +28,7 @@ const useRoutesConstants = () => {
 
     {
       path: PATHS.NOT_FOUND_404.path,
-      element: <NotFound404 />,
+      element: <NotFoundPage />,
     },
   ]);
 

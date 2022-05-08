@@ -1,7 +1,13 @@
 {
-  "presets": ["next/babel"],
+  "presets": ["@babel/preset-react"],
   "plugins": [
-    
+    [
+      "formatjs",
+      {
+        "idInterpolationPattern": "[sha512:contenthash:base64:6]",
+        "ast": true
+      }
+    ],
     [
       "styled-components",
       {
@@ -13,8 +19,9 @@
     [
       "react-intl-auto",
       {
-        "removePrefix": "internationalization/"
+        "removePrefix": "locales/"
       }
-    ]
+    ],
+    "@formatjs/ts-transformer"
   ]
 }

@@ -1,2 +1,1 @@
-export { default } from './global';
-
+export { default as Global } from './global';

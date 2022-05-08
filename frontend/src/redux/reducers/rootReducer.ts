@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-// болванка
-const reducer = (state = {}, action) => state;
+// Need to fix have TS ERROR!
+const reducer = (state = {}) => state;
 
 const rootReducer = combineReducers({ reducer });
 

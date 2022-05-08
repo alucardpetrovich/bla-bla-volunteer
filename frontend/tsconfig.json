@@ -1,7 +1,17 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "ES2017.Intl",
+      "ES2018.Intl",
+      "ES2020.Intl",
+      "es2021.intl",
+      "ESNext.Intl",
+      "ES2015"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -11,10 +21,45 @@
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
     "isolatedModules": false,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@formatjs/*": [
+        // k8 is 64-bit GNU/Linux output location, darwin is macOS.
+        "bazel-out/k8-fastbuild/bin/packages/*",
+        "bazel-out/darwin-fastbuild/bin/packages/*"
+      ],
+      "intl-messageformat": [
+        "bazel-out/k8-fastbuild/bin/packages/intl-messageformat",
+        "bazel-out/darwin-fastbuild/bin/packages/intl-messageformat"
+      ],
+      "babel-plugin-formatjs": [
+        "bazel-out/k8-fastbuild/bin/packages/babel-plugin-formatjs",
+        "bazel-out/darwin-fastbuild/bin/packages/babel-plugin-formatjs"
+      ],
+      "eslint-plugin-formatjs": [
+        "bazel-out/k8-fastbuild/bin/packages/eslint-plugin-formatjs",
+        "bazel-out/darwin-fastbuild/bin/packages/eslint-plugin-formatjs"
+      ],
+      "react-intl": [
+        "bazel-out/k8-fastbuild/bin/packages/react-intl",
+        "bazel-out/darwin-fastbuild/bin/packages/react-intl"
+      ]
+    }
+
+    // "baseUrl": "./src/",
+    // "paths": {
+    //   "components/": ["components/"],
+    //   "constants/": ["constants/"],
+    //   "pages/organisms": ["pages/"],
+    //   "components/layout": ["components/layout/"],
+    //   "assets/images": ["images/"],
+    //   "assets/icons": ["icons/"],
+    //   "hooks": ["hooks/"]
+    // }
   },
-  "include": ["src"]
+  "include": ["src", "src/locales"]
 }

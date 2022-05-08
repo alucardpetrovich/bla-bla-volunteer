@@ -1,1 +1,5 @@
-export { default } from './NotFound404';
+const NotFoundPage = () => {
+  return <div>NotFound404</div>;
+};
+
+export default NotFoundPage;

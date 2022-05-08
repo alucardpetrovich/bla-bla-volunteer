@@ -1,11 +1,11 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 // @ts-ignore
 const GlobalStyle = createGlobalStyle`
   body, html {
     margin: 0;
     padding: 0;
-    background-color: ${({ theme }) => theme.body};
+    background-color: white;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
   }
