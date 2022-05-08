@@ -9,10 +9,13 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import {
+  ApiConflictResponse,
   ApiCreatedResponse,
+  ApiForbiddenResponse,
   ApiNoContentResponse,
-  ApiOkResponse,
+  ApiNotFoundResponse,
   ApiOperation,
+  ApiPreconditionFailedResponse,
   ApiTags,
 } from '@nestjs/swagger';
 import { ResponseInterceptor } from 'src/shared/interceptors/response.interceptor';
@@ -31,6 +34,7 @@ export class AuthController {
   @Post('sign-up')
   @UseInterceptors(new ResponseInterceptor(SignUpSerializer))
   @ApiOperation({ summary: 'Sign up' })
+  @ApiConflictResponse({ description: 'User with such email already exists' })
   @ApiCreatedResponse({
     description: 'Registration succeeded',
     type: SignUpSerializer,
@@ -43,6 +47,7 @@ export class AuthController {
   @Get('/verify/:verificationToken')
   @HttpCode(204)
   @ApiOperation({ summary: 'Sign up' })
+  @ApiNotFoundResponse({ description: 'verification info not found' })
   @ApiNoContentResponse({ description: 'Registration succeeded' })
   async verifyEmail(
     @Param('verificationToken') verificationToken: string,
@@ -53,6 +58,9 @@ export class AuthController {
   @Post('sign-in')
   @UseInterceptors(new ResponseInterceptor(SignInSerializer))
   @ApiOperation({ summary: 'Sign in' })
+  @ApiNotFoundResponse({ description: 'User with such email not found' })
+  @ApiForbiddenResponse({ description: 'Password is wrong' })
+  @ApiPreconditionFailedResponse({ description: 'User is not verified' })
   @ApiCreatedResponse({
     description: 'Signing in succeeded',
     type: SignUpSerializer,
@@ -64,6 +72,9 @@ export class AuthController {
   @Post('refresh')
   @UseInterceptors(new ResponseInterceptor(RefreshTokensSerializer))
   @ApiOperation({ summary: 'Refresh token pairs' })
+  @ApiForbiddenResponse({
+    description: ' Refresh token is revoked or not valid',
+  })
   @ApiCreatedResponse({
     description: 'Tokens refresh succeeded',
     type: RefreshTokensSerializer,
@@ -78,6 +89,7 @@ export class AuthController {
   @Delete('sign-out')
   @HttpCode(204)
   @ApiOperation({ summary: 'Sign out' })
+  @ApiForbiddenResponse({ description: 'Refresh token is not valid' })
   @ApiNoContentResponse({
     description: 'Sign out succeeded',
   })
