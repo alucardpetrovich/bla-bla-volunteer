@@ -11,10 +11,22 @@
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
     "isolatedModules": false,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "resolveJsonModule": true
+    // "baseUrl": "."
+
+    // "baseUrl": "./src/",
+    // "paths": {
+    //   "components/": ["components/"],
+    //   "constants/": ["constants/"],
+    //   "pages/organisms": ["pages/"],
+    //   "components/layout": ["components/layout/"],
+    //   "assets/images": ["images/"],
+    //   "assets/icons": ["icons/"],
+    //   "hooks": ["hooks/"]
+    // }
   },
-  "include": ["src"]
+  "include": ["src", "src/locales"]
 }
