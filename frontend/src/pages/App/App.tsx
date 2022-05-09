@@ -7,9 +7,6 @@ function App() {
   return (
     <div>
       <Header />
-
-      <h2>App</h2>
-
       {routes}
     </div>
   );

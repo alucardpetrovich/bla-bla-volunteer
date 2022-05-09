@@ -9,4 +9,8 @@ export const linksNav = [
     path: PATHS.TEST.path,
     text: 'test',
   },
+  {
+    path: `${PATHS.AUTH.path}/${PATHS.LOGIN.path}`,
+    text: 'Auth',
+  },
 ];

@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
+import auth from './authReducer';
 
-// болванка
-const reducer = (state = {}, action) => state;
-
-const rootReducer = combineReducers({ reducer });
+const rootReducer = combineReducers({ auth });
 
 export default rootReducer;

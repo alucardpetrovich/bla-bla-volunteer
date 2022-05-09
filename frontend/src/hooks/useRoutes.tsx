@@ -1,9 +1,13 @@
 import { useRoutes } from 'react-router';
 import { Navigate, generatePath } from 'react-router-dom';
 import { PATHS } from '../constants/PATH';
+import Auth from '../components/modules/Auth/Auth';
 import Home from '../pages/Home';
 import NotFound404 from '../pages/NotFound404';
 import TestPage from '../pages/TestPage/TestPage';
+import Login from '../components/modules/Auth/Components/Login/Login';
+import Registration from '../components/modules/Auth/Components/Registration/Registration';
+import RequireAuth from '../hocs/RequireAuth';
 
 const useRoutesConstants = () => {
   const lang = 'ua';
@@ -17,13 +21,32 @@ const useRoutesConstants = () => {
     },
 
     {
-      path: PATHS.HOME.path,
-      element: <Home />,
+      path: PATHS.AUTH.path,
+      element: <Auth />,
+      children: [
+        {
+          path: PATHS.LOGIN.path,
+          element: <Login />,
+        },
+        {
+          path: PATHS.REGISTER.path,
+          element: <Registration />,
+        },
+      ],
     },
 
     {
-      path: PATHS.TEST.path,
-      element: <TestPage />,
+      element: <RequireAuth />,
+      children: [
+        {
+          path: PATHS.HOME.path,
+          element: <Home />,
+        },
+        {
+          path: PATHS.TEST.path,
+          element: <TestPage />,
+        },
+      ],
     },
 
     {
