@@ -12,11 +12,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <StrictMode>
     <BrowserRouter>
-      <IntlProvider locale="ua" messages={UAMessage}>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </IntlProvider>
+      {/* <IntlProvider locale="ua" messages={UAMessage}> */}
+      <Provider store={store}>
+        <App />
+      </Provider>
+      {/* </IntlProvider> */}
     </BrowserRouter>
   </StrictMode>,
 );
