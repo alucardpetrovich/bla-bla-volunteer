@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { SettlementEntity } from '../settlements/settlement.entity';
 import { UserEntity } from '../users/user.entity';
+import { RideStatuses } from './types/ride-statuses.enum';
 
 @Entity('rides')
 export class RideEntity {
@@ -25,7 +26,7 @@ export class RideEntity {
   arrivalSettlementId: string;
 
   @Column()
-  status: string;
+  status: RideStatuses;
 
   @Column({ type: 'timestamptz' })
   estDepartureTime: Date;
@@ -50,4 +51,9 @@ export class RideEntity {
 
   @UpdateDateColumn()
   updatedAt: Date;
+}
+
+export enum RideRelations {
+  DEPARTURE_SETTLEMENT = 'departureSettlement',
+  ARRIVAL_SETTLEMENT = 'arrivalSettlement',
 }
