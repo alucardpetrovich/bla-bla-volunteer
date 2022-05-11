@@ -7,7 +7,7 @@ import {
   PreconditionFailedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserEntity } from '../users/user.entity';
+import { UserEntity, UserRelations } from '../users/user.entity';
 import { UsersRepository } from '../users/users.repository';
 import { AuthDto } from './dto/auth.dto';
 import * as bcrypt from 'bcryptjs';
@@ -64,7 +64,10 @@ export class AuthService {
   async signIn(dto: AuthDto): Promise<SignInSerializer> {
     const { email, password } = dto;
 
-    const user = await this.usersRepository.findOne({ email });
+    const user = await this.usersRepository.findOne(
+      { email },
+      { relations: [UserRelations.INVOLVEMENTS] },
+    );
     if (!user) {
       throw new NotFoundException(`User with email '${email}' not found`);
     }

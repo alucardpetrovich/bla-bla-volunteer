@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Expose } from 'class-transformer';
+import { Expose, Type } from 'class-transformer';
+import { UserInvolvementSerializer } from 'src/modules/involvements/serializers/user-involvement.serializer';
 
 export class UserSerializer {
   @ApiProperty()
@@ -9,4 +10,9 @@ export class UserSerializer {
   @ApiProperty()
   @Expose()
   status: string;
+
+  @ApiProperty()
+  @Type(() => UserInvolvementSerializer)
+  @Expose()
+  involvements: UserInvolvementSerializer[] = [];
 }
