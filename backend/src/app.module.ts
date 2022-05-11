@@ -6,6 +6,7 @@ import { cacheModule } from './shared/cache/cache.module';
 import { MailingService } from './shared/mailing/mailing.service';
 import { InvolvementsModule } from './modules/involvements/involvements.module';
 import { RidesModule } from './modules/rides/rides.module';
+import { OrganizationsModule } from './modules/organizations/organizations.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { RidesModule } from './modules/rides/rides.module';
     AuthModule,
     InvolvementsModule,
     RidesModule,
+    OrganizationsModule,
   ],
   controllers: [],
   providers: [MailingService],
