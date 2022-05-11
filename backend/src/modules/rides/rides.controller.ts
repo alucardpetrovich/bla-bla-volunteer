@@ -1,11 +1,13 @@
 import {
   Body,
   Controller,
+  Get,
   Param,
   ParseUUIDPipe,
   Patch,
   Post,
   Put,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import {
@@ -19,11 +21,13 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { UserId } from 'src/shared/decorators/user-id.decorators';
+import { PaginationDto } from 'src/shared/dto/pagination.dto';
 import { JwtGuard } from '../auth/guards/jwt.guard';
 import { ChangeRideStatusDto } from './dto/change-ride-status.dto';
 import { RideDto } from './dto/ride.dto';
 import { RidesService } from './rides.service';
 import { RideSerializer } from './serializers/ride.serializer';
+import { RidesListSerializer } from './serializers/rides-list.serializer';
 
 @Controller('rides')
 @UseGuards(JwtGuard)
@@ -42,6 +46,30 @@ export class RidesController {
   })
   async createRide(@UserId() userId: string, @Body() dto: RideDto) {
     return this.service.createRide(userId, dto);
+  }
+
+  @Get()
+  @ApiOperation({ summary: 'Get rides list' })
+  @ApiUnauthorizedResponse({ description: 'User is not authorized' })
+  @ApiOkResponse({
+    description: 'Rides page returned',
+    type: RidesListSerializer,
+  })
+  async getRidesList(@Query() dto: PaginationDto) {
+    const rides = await this.service.getRidesList(dto);
+    return { rides };
+  }
+
+  @Get(':id')
+  @ApiOperation({ summary: 'Get ride info by id' })
+  @ApiUnauthorizedResponse({ description: 'User is not authorized' })
+  @ApiNotFoundResponse({ description: 'Ride not found' })
+  @ApiOkResponse({
+    description: 'Ride created',
+    type: RideSerializer,
+  })
+  async getRideById(@Param(':id', ParseUUIDPipe) id: string) {
+    return this.service.getRideById(id);
   }
 
   @Put(':id')

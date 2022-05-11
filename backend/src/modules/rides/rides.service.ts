@@ -10,6 +10,7 @@ import {
   EntityLocksConfig,
   entityLocksConfig,
 } from 'src/config/entity-locks.config';
+import { PaginationDto } from 'src/shared/dto/pagination.dto';
 import { ChangeRideStatusDto } from './dto/change-ride-status.dto';
 import { RideDto } from './dto/ride.dto';
 import { RideRelations } from './ride.entity';
@@ -53,6 +54,23 @@ export class RidesService {
     return this.ridesRepository.findOne(ride.id, {
       relations: this.relationsToFetch,
     });
+  }
+
+  async getRidesList(dto: PaginationDto) {
+    return this.ridesRepository.find({
+      skip: dto.getOffset(),
+      take: dto.getLimit(),
+      relations: this.relationsToFetch,
+    });
+  }
+
+  async getRideById(id: string) {
+    const ride = await this.ridesRepository.findOne(id);
+    if (!ride) {
+      throw new NotFoundException(`Ride with id '${id}' not found`);
+    }
+
+    return ride;
   }
 
   async updateRide(id: string, userId: string, dto: RideDto) {
