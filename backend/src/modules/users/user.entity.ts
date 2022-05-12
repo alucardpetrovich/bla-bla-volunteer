@@ -26,7 +26,7 @@ export class UserEntity {
   @Column({ default: '' })
   verificationToken: string;
 
-  @OneToMany(() => UserInvolvementEntity, (involvement) => involvement.userId)
+  @OneToMany(() => UserInvolvementEntity, (involvement) => involvement.user)
   involvements: UserInvolvementEntity[];
 
   @CreateDateColumn()

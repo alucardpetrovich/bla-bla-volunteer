@@ -36,7 +36,7 @@ export class OrganizationEntity {
   @Column()
   createdBy: string;
 
-  @OneToMany(() => OrganizationContactEntity, (c) => c.organizationId, {
+  @OneToMany(() => OrganizationContactEntity, (c) => c.organization, {
     cascade: true,
   })
   contacts: OrganizationContactEntity[];
