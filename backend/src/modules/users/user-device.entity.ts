@@ -8,7 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-@Entity('users')
+@Entity('user_devices')
 export class UserEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
