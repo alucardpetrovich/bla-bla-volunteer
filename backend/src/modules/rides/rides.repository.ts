@@ -6,8 +6,8 @@ import { RideStatuses } from './types/ride-statuses.enum';
 export class RidesRepository extends Repository<RideEntity> {
   async countOverlappingRides(
     driverId: string,
-    departureTime: Date,
-    arrivalTime: Date,
+    departureTime: string,
+    arrivalTime: string,
     excludeId?: string,
   ): Promise<number> {
     const query = this.createQueryBuilder()
