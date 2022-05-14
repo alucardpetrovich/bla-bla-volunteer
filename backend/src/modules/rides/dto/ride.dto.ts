@@ -18,13 +18,11 @@ export class RideDto {
   arrivalSettlementId: string;
 
   @ApiProperty()
-  @IsDate()
+  @IsDateString()
   @Validate(IsBeforeConstraint, ['estArrivalTime'])
-  @MinDate(new Date())
   estDepartureTime: string;
 
   @ApiProperty()
   @IsDateString()
-  @MinDate(new Date())
   estArrivalTime: string;
 }
