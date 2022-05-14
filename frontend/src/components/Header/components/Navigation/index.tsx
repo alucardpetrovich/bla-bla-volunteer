@@ -7,7 +7,13 @@ const Navigation = () => {
       <ul>
         {linksNav.map(({ path, text }) => (
           <li key={text}>
-            <NavLink to={`/${generatePath(path, { lang: 'ua' })}`}>
+            <NavLink
+              to={`/${generatePath(path, { lang: 'ua' })}`}
+              style={({ isActive }) =>
+                isActive ? { color: 'orange' } : undefined
+              }
+              end
+            >
               {text}
             </NavLink>
           </li>
