@@ -9,6 +9,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import {
+  ApiBearerAuth,
   ApiConflictResponse,
   ApiCreatedResponse,
   ApiForbiddenResponse,
@@ -28,6 +29,7 @@ import { OrganizationSerializer } from './serializers/organization.serializer';
 @Controller('organizations')
 @UseGuards(JwtGuard)
 @ApiTags('Organizations Controller')
+@ApiBearerAuth()
 export class OrganizationsController {
   constructor(private service: OrganizationsService) {}
 

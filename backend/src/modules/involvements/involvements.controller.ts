@@ -10,6 +10,7 @@ import {
   ApiBearerAuth,
   ApiOkResponse,
   ApiOperation,
+  ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { UserId } from 'src/shared/decorators/user-id.decorators';
@@ -20,8 +21,9 @@ import { InvolvementsService } from './involvements.service';
 import { UpdateInvolvementsSerializer } from './serializers/update-involvements.serializer';
 
 @Controller('/v1/involvements')
-@ApiBearerAuth()
 @UseGuards(JwtGuard)
+@ApiTags('User Involvements Controller')
+@ApiBearerAuth()
 export class InvolvementsController {
   constructor(private service: InvolvementsService) {}
 

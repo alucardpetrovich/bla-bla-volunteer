@@ -17,6 +17,18 @@ export class SettlementSerializer {
   type: string;
 
   @ApiProperty()
-  @ExposeLocation()
+  @Expose()
+  countryCode: string;
+
+  @ApiProperty()
+  @Expose()
+  region: string;
+
+  @ApiProperty()
+  @Expose()
+  district: string;
+
+  @ApiProperty()
+  @ExposeLocation('centerLocation')
   centerLocation: LocationSerializer;
 }
