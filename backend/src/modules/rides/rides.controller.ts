@@ -9,6 +9,7 @@ import {
   Put,
   Query,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -23,6 +24,7 @@ import {
 } from '@nestjs/swagger';
 import { UserId } from 'src/shared/decorators/user-id.decorators';
 import { PaginationDto } from 'src/shared/dto/pagination.dto';
+import { ResponseInterceptor } from 'src/shared/interceptors/response.interceptor';
 import { JwtGuard } from '../auth/guards/jwt.guard';
 import { ChangeRideStatusDto } from './dto/change-ride-status.dto';
 import { RideDto } from './dto/ride.dto';
@@ -38,6 +40,7 @@ export class RidesController {
   constructor(private service: RidesService) {}
 
   @Post()
+  @UseInterceptors(new ResponseInterceptor(RideSerializer))
   @ApiOperation({ summary: 'Create ride' })
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiForbiddenResponse({ description: 'Too many unfinished rides' })
@@ -51,6 +54,7 @@ export class RidesController {
   }
 
   @Get()
+  @UseInterceptors(new ResponseInterceptor(RidesListSerializer))
   @ApiOperation({ summary: 'Get rides list' })
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiOkResponse({
@@ -63,6 +67,7 @@ export class RidesController {
   }
 
   @Get(':id')
+  @UseInterceptors(new ResponseInterceptor(RideSerializer))
   @ApiOperation({ summary: 'Get ride info by id' })
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiNotFoundResponse({ description: 'Ride not found' })
@@ -75,6 +80,7 @@ export class RidesController {
   }
 
   @Put(':id')
+  @UseInterceptors(new ResponseInterceptor(RideSerializer))
   @ApiOperation({ summary: 'Update ride' })
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiNotFoundResponse({ description: 'Ride not found' })
@@ -92,11 +98,13 @@ export class RidesController {
   }
 
   @Patch(':id/status')
+  @UseInterceptors(new ResponseInterceptor(RideSerializer))
   @ApiOperation({ summary: 'Update ride' })
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiNotFoundResponse({ description: 'Ride not found' })
   @ApiForbiddenResponse({
     description: 'Such status transition is not allowed',
+    type: RideSerializer,
   })
   @ApiOkResponse({ description: 'Ride status updated', type: RideSerializer })
   async changeRideStatus(
