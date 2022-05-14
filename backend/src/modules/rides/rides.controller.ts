@@ -11,6 +11,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import {
+  ApiBearerAuth,
   ApiConflictResponse,
   ApiCreatedResponse,
   ApiForbiddenResponse,
@@ -32,6 +33,7 @@ import { RidesListSerializer } from './serializers/rides-list.serializer';
 @Controller('rides')
 @UseGuards(JwtGuard)
 @ApiTags('Rides Controller')
+@ApiBearerAuth()
 export class RidesController {
   constructor(private service: RidesService) {}
 
