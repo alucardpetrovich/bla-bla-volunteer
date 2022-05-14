@@ -4,7 +4,6 @@ export class SettlementsAdjustment1652543852486 implements MigrationInterface {
   name = 'SettlementsAdjustment1652543852486';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`CREATE EXTENSION pg_trgm;`);
     await queryRunner.query(
       `CREATE TABLE "countries" ("code" character varying NOT NULL, "name" character varying NOT NULL, "nameEng" character varying NOT NULL, "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "PK_b47cbb5311bad9c9ae17b8c1eda" PRIMARY KEY ("code"))`,
     );
@@ -64,6 +63,5 @@ export class SettlementsAdjustment1652543852486 implements MigrationInterface {
     await queryRunner.query(`ALTER TABLE "settlements" DROP COLUMN "region"`);
     await queryRunner.query(`ALTER TABLE "settlements" DROP COLUMN "district"`);
     await queryRunner.query(`DROP TABLE "countries"`);
-    await queryRunner.query(`DROP EXTENSION pg_trgm;`);
   }
 }
