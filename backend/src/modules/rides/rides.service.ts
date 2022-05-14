@@ -49,6 +49,7 @@ export class RidesService {
     const ride = await this.ridesRepository.save({
       ...dto,
       status: RideStatuses.SCHEDULED,
+      driverId: userId,
     });
 
     return this.ridesRepository.findOne(ride.id, {
