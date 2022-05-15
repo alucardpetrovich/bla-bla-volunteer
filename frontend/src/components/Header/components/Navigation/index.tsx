@@ -1,9 +1,10 @@
 import { generatePath, NavLink } from 'react-router-dom';
 import { linksNav } from './constants/listNav';
+import * as S from './style';
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
   return (
-    <nav>
+    <S.NavigationWrapper>
       <ul>
         {linksNav.map(({ path, text }) => (
           <li key={text}>
@@ -19,7 +20,7 @@ const Navigation = () => {
           </li>
         ))}
       </ul>
-    </nav>
+    </S.NavigationWrapper>
   );
 };
 
