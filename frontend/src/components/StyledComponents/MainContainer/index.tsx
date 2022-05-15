@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-type MainContainerProps = {
-  children: any;
-};
+interface MainContainerProps {
+  children?: any;
+}
 
 const StyledContainer = styled.div`
   background-color: var(--fifth-blue);
