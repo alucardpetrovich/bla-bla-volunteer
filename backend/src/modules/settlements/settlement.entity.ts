@@ -10,6 +10,7 @@ import {
 import { SettlementTypeEntity } from './settlement-type.entity';
 import { Point } from 'geojson';
 import { UserEntity } from '../users/user.entity';
+import { CountryEntity } from '../countries/country.entity';
 
 @Entity('settlements')
 export class SettlementEntity {
@@ -18,6 +19,15 @@ export class SettlementEntity {
 
   @Column()
   name: string;
+
+  @Column({ default: '' })
+  district: string;
+
+  @Column({ default: '' })
+  region: string;
+
+  @Column({ default: '' })
+  nameEng: string;
 
   @Column()
   type: string;
@@ -31,15 +41,25 @@ export class SettlementEntity {
   centerLocation: Point;
 
   @Column()
-  createdBy: string;
+  countryCode: string;
+
+  @Column({ default: '' })
+  postalCode: string;
+
+  @Column({ nullable: true })
+  createdBy?: string;
 
   @ManyToOne(() => SettlementTypeEntity)
   @JoinColumn({ name: 'type', referencedColumnName: 'type' })
   typeRef: SettlementTypeEntity;
 
+  @ManyToOne(() => CountryEntity)
+  @JoinColumn({ name: 'countryCode', referencedColumnName: 'code' })
+  country: CountryEntity;
+
   @ManyToOne(() => UserEntity)
   @JoinColumn({ name: 'createdBy', referencedColumnName: 'id' })
-  creator: UserEntity;
+  creator?: UserEntity;
 
   @CreateDateColumn()
   createdAt: Date;

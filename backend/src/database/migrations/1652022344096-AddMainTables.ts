@@ -64,10 +64,6 @@ export class AddMainTables1652022344096 implements MigrationInterface {
     await queryRunner.query(
       `ALTER TABLE "users" ADD "verificationToken" character varying NOT NULL DEFAULT ''`,
     );
-    await queryRunner.query(`ALTER TABLE "users" ADD "userId" uuid NOT NULL`);
-    await queryRunner.query(
-      `ALTER TABLE "users" ADD "deviceToken" character varying NOT NULL`,
-    );
     await queryRunner.query(
       `ALTER TABLE "user_involvements" ADD CONSTRAINT "FK_a58787753bf3a21a7046c3c8950" FOREIGN KEY ("type") REFERENCES "involvement_types"("type") ON DELETE NO ACTION ON UPDATE NO ACTION`,
     );
@@ -79,9 +75,6 @@ export class AddMainTables1652022344096 implements MigrationInterface {
     );
     await queryRunner.query(
       `ALTER TABLE "organizations" ADD CONSTRAINT "FK_1ed0e272bfdf49ab50e7b9a40c5" FOREIGN KEY ("createdBy") REFERENCES "users"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`,
-    );
-    await queryRunner.query(
-      `ALTER TABLE "users" ADD CONSTRAINT "FK_8bf09ba754322ab9c22a215c919" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`,
     );
     await queryRunner.query(
       `ALTER TABLE "settlements" ADD CONSTRAINT "FK_3711842bf75186ae18c3d777eb7" FOREIGN KEY ("type") REFERENCES "settlement_types"("type") ON DELETE NO ACTION ON UPDATE NO ACTION`,
@@ -165,9 +158,6 @@ export class AddMainTables1652022344096 implements MigrationInterface {
       `ALTER TABLE "settlements" DROP CONSTRAINT "FK_3711842bf75186ae18c3d777eb7"`,
     );
     await queryRunner.query(
-      `ALTER TABLE "users" DROP CONSTRAINT "FK_8bf09ba754322ab9c22a215c919"`,
-    );
-    await queryRunner.query(
       `ALTER TABLE "organizations" DROP CONSTRAINT "FK_1ed0e272bfdf49ab50e7b9a40c5"`,
     );
     await queryRunner.query(
@@ -179,8 +169,6 @@ export class AddMainTables1652022344096 implements MigrationInterface {
     await queryRunner.query(
       `ALTER TABLE "user_involvements" DROP CONSTRAINT "FK_a58787753bf3a21a7046c3c8950"`,
     );
-    await queryRunner.query(`ALTER TABLE "users" DROP COLUMN "deviceToken"`);
-    await queryRunner.query(`ALTER TABLE "users" DROP COLUMN "userId"`);
     await queryRunner.query(
       `ALTER TABLE "users" DROP COLUMN "verificationToken"`,
     );

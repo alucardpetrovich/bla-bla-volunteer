@@ -5,11 +5,11 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { OrganizationEntity } from '../organizations/organization.entity';
-import { VolunteerHubEntity } from './volunteer-hub.entity';
+import { ContactTypeEntity } from './contact-type.entity';
+import { OrganizationEntity } from './organization.entity';
 
-@Entity('hub_contacts')
-export class HubContactEntity {
+@Entity('organization_contacts')
+export class OrganizationContactEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -17,19 +17,19 @@ export class HubContactEntity {
   organizationId: string;
 
   @Column()
-  hubId: string;
-
-  @Column()
   type: string;
 
   @Column()
   value: string;
 
+  @Column()
+  verified: boolean;
+
   @ManyToOne(() => OrganizationEntity)
   @JoinColumn({ name: 'organizationId', referencedColumnName: 'id' })
   organization: OrganizationEntity;
 
-  @ManyToOne(() => VolunteerHubEntity)
-  @JoinColumn({ name: 'hubId', referencedColumnName: 'id' })
-  hub: VolunteerHubEntity;
+  @ManyToOne(() => ContactTypeEntity)
+  @JoinColumn({ name: 'type', referencedColumnName: 'type' })
+  typeRef: ContactTypeEntity;
 }
