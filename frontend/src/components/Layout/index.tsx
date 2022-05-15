@@ -1,3 +1,4 @@
+import React from 'react';
 import Header from '../Header';
 import { Global } from '../../utils/styles';
 import { homeI18n } from '../../intl/content';
@@ -13,7 +14,7 @@ interface ILayout {
   children?: any;
 }
 
-const Layout = ({ children }: ILayout) => {
+const Layout: React.FC<ILayout> = ({ children }) => {
   const f = useFormatMessage;
 
   return (
