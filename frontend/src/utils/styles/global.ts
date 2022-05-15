@@ -108,7 +108,7 @@ const GlobalStyle = createGlobalStyle`
     --card-container-width: 1200px;
 
     /*Intl Helpers*/
-    white-space: pre-line;
+    /* white-space: pre-line; */
 
     /* Navigation */
     --bg-navbar: var(--moon-D6);
