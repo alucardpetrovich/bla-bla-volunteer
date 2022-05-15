@@ -11,8 +11,7 @@ export const App = () => {
 
   return (
     <div>
-      <Layout>Hello</Layout>
-      <Registration />
+      <Layout>{routes}</Layout>
     </div>
   );
 };

@@ -1,19 +1,16 @@
 import axios from 'axios';
+/* eslint-disable no-unused-vars */
+import { IAuthCredentials } from '../../models/authModel/authModel';
 
 // позже сделать какой то конфиг для этого
 axios.defaults.baseURL = 'http://68.183.216.91';
 
-interface IAuth {
-  email: string;
-  password: string;
-}
-
 class AuthorizationAPI {
-  signUp = async (payload: IAuth) => {
+  signUp = async (payload: IAuthCredentials) => {
     const response = await axios.post(`/api/v1/auth/sign-up`, payload);
     return response;
   };
 }
 
-let authorizationAPI = new AuthorizationAPI();
+const authorizationAPI = new AuthorizationAPI();
 export default authorizationAPI;

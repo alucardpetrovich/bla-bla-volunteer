@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../Header';
+import GlobalStyle from '../../utils/styles/global';
 import * as S from './style';
 
 interface ILayout {
@@ -9,7 +10,7 @@ interface ILayout {
 const Layout: React.FC<ILayout> = ({ children }) => {
   return (
     <S.SiteContainer>
-      {/* GlobalSTYPE here */}
+      <GlobalStyle />
       <S.HeaderContainer>
         <Header />
       </S.HeaderContainer>
