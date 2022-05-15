@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-// @ts-ignore
 const GlobalStyle = createGlobalStyle`
   body, html {
     margin: 0;
