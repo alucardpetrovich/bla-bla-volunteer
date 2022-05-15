@@ -9,6 +9,7 @@ import {
   SecondaryStyledHeader,
   Text,
 } from '../../components/StyledComponents';
+import Layout from '../../components/Layout';
 
 export const App = () => {
   const routes = useRoutesConstants();
@@ -29,7 +30,8 @@ export const App = () => {
           exercitationem delectus eum natus ratione. Eum doloremque maxime
           ducimus quo!
         </Text>
-        {routes}
+
+        <Layout>{routes}</Layout>
       </MainContainer>
     </>
   );
