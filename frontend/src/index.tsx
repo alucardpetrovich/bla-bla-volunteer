@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import messages_ua from './locales/ua.json';
 import messages_ru from './locales/ru.json';
 import store from './redux/store';
-import App from './pages/App';
+import App from './pages/App/index';
 
 const messages = {
   ua: messages_ua,
