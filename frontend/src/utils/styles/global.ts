@@ -30,7 +30,30 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    /* Color */
+
+    /*PALLET*/
+--main-blue: #072ac8ff;
+--secondary-blue: #1e96fcff;
+--third-jeans: #60b6fbff;
+--fourth-blue: #81c6faff;
+--fifth-blue: #a2d6f9ff;
+--main-yellow: #fcf300ff;
+--secondary-yellow: #fedd00ff;
+--third-yellow: #ffd200ff;
+--fourth-yellow: #ffc600ff;
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a2d6f9ff, #fcf300ff, #fedd00ff, #ffd200ff, #ffc600ff);
+$gradient-right: linear-gradient(90deg, #072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a2d6f9ff, #fcf300ff, #fedd00ff, #ffd200ff, #ffc600ff);
+$gradient-bottom: linear-gradient(180deg, #072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a2d6f9ff, #fcf300ff, #fedd00ff, #ffd200ff, #ffc600ff);
+$gradient-left: linear-gradient(270deg, #072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a2d6f9ff, #fcf300ff, #fedd00ff, #ffd200ff, #ffc600ff);
+$gradient-top-right: linear-gradient(45deg, #072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a2d6f9ff, #fcf300ff, #fedd00ff, #ffd200ff, #ffc600ff);
+$gradient-bottom-right: linear-gradient(135deg, #072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a2d6f9ff, #fcf300ff, #fedd00ff, #ffd200ff, #ffc600ff);
+$gradient-top-left: linear-gradient(225deg, #072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a2d6f9ff, #fcf300ff, #fedd00ff, #ffd200ff, #ffc600ff);
+$gradient-bottom-left: linear-gradient(315deg, #072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a2d6f9ff, #fcf300ff, #fedd00ff, #ffd200ff, #ffc600ff);
+$gradient-radial: radial-gradient(#072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a2d6f9ff, #fcf300ff, #fedd00ff, #ffd200ff, #ffc600ff);
+
+/* Color */
     --new-moon-D3: #262628;
     --new-moon-D2: #444446;
     --new-moon-D1: #58585a;

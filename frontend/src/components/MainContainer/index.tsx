@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-type IMainContainer = {
+type MainContainerProps = {
   children: any;
 };
 
 const StyledContainer = styled.div`
-  background-color: var(--new-sky-S1);
+  background-color: var(--fifth-blue);
 
   @media (max-width: 699px) {
     padding: 0px 20px;
@@ -21,7 +21,7 @@ const StyledContainer = styled.div`
   }
 `;
 
-const MainContainer = ({ children }: IMainContainer) => {
+const MainContainer = ({ children }: MainContainerProps) => {
   return <StyledContainer>{children}</StyledContainer>;
 };
 
