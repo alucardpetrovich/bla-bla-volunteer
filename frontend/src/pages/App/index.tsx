@@ -10,7 +10,7 @@ export const App = () => {
 
   return (
     <div>
-      <Layout>Hello</Layout>
+      <Layout>{routes}</Layout>
     </div>
   );
 };
