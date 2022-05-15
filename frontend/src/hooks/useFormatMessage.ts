@@ -1,7 +1,7 @@
 import { useIntl } from 'react-intl';
 
-export const useFormatMessage = data => {
+export const useFormatMessage = () => {
   const intl = useIntl();
-  const f = intl.formatMessage(data);
-  return f;
+  const f = intl.formatMessage;
+  return { f };
 };
