@@ -1,14 +1,24 @@
-import axios from 'axios';
-/* eslint-disable no-unused-vars */
-import { IAuthCredentials } from '../../models/authModel/authModel';
-
-// позже сделать какой то конфиг для этого
-axios.defaults.baseURL = 'http://68.183.216.91';
+import axiosInstance from '../axiosInstance';
 
 class AuthorizationAPI {
-  signUp = async (payload: IAuthCredentials) => {
-    const response = await axios.post(`/api/v1/auth/sign-up`, payload);
+  signUp = async credentials => {
+    const response = await axiosInstance.post(
+      `/api/v1/auth/sign-up`,
+      credentials,
+    );
     return response;
+  };
+
+  signIn = async credentials => {
+    const response = await axiosInstance.post(
+      `/api/v1/auth/sign-in`,
+      credentials,
+    );
+    return response;
+  };
+
+  signOut = async refreshToken => {
+    await axiosInstance.delete(`/api/v1/auth/sign-out`, { data: refreshToken });
   };
 }
 

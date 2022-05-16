@@ -1,26 +1,35 @@
-import axios from 'axios';
 import authorizationAPI from '../../api/Auth/Auth';
-/* eslint-disable no-unused-vars */
-import { IAuthCredentials } from '../../models/authModel/authModel';
 import authActions from './authActions';
 
-export const token = {
-  set(token: string) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unSet() {
-    axios.defaults.headers.common.Authorization = '';
-  },
+export const userRegistration = credentials => async (dispatch: any) => {
+  dispatch(authActions.registrationRequest());
+  try {
+    const response = await authorizationAPI.signUp(credentials);
+    dispatch(authActions.registrationSuccess(response.data));
+  } catch (error) {
+    console.log(error);
+    dispatch(authActions.registrationError(error.message));
+  }
 };
 
-export const userRegistration =
-  (credentials: IAuthCredentials) => async (dispatch: any) => {
-    dispatch(authActions.registrationRequest());
-    try {
-      const response = await authorizationAPI.signUp(credentials);
-      dispatch(authActions.registrationSuccess(response.data));
-    } catch (error) {
-      console.log(error);
-      dispatch(authActions.registrationError(error));
-    }
-  };
+export const userLogin = credentials => async (dispatch: any) => {
+  dispatch(authActions.loginRequest());
+  try {
+    const response = await authorizationAPI.signIn(credentials);
+    dispatch(authActions.loginSuccess(response.data));
+  } catch (error) {
+    console.log(error);
+    dispatch(authActions.loginError(error.message));
+  }
+};
+
+export const userLogOut = refreshToken => async (dispatch: any) => {
+  dispatch(authActions.logoutRequest());
+  try {
+    await authorizationAPI.signOut(refreshToken);
+    dispatch(authActions.logoutSuccess());
+  } catch (error) {
+    console.log(error);
+    dispatch(authActions.logoutError());
+  }
+};
