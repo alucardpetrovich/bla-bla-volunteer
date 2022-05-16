@@ -39,7 +39,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "prepare": "husky install",
+    "prepare": "is-ci || husky install",
     "update translations": "extract-messages -l=ua -o src/locales -d ua --flat false './src/**/!(*.test).js'",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
     "fix": "yarn run lint -- --fix & prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
@@ -83,6 +83,7 @@
     "eslint-plugin-react-hooks": "^4.5.0",
     "eslint-plugin-typescript": "^0.14.0",
     "husky": "^8.0.1",
+    "is-ci": "^3.0.1",
     "lint-staged": "^12.4.1",
     "prettier": "^2.6.2"
   }

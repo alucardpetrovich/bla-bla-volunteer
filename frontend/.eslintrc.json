@@ -6,7 +6,6 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "airbnb",
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
@@ -21,13 +20,7 @@
   "plugins": ["react", "typescript", "@typescript-eslint", "prettier"],
   "rules": {
     "dot-notation": "off",
-    "quotes": [
-      2,
-      "single",
-      {
-        "avoidEscape": true
-      }
-    ],
+    "quotes": [2, "single", "backtick"],
     "react/jsx-filename-extension": [
       2,
       {
@@ -41,10 +34,11 @@
         "unnamedComponents": "arrow-function"
       }
     ],
-
+    "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "arrow-body-style": "off",
     "import/prefer-default-export": "off",
+    "no-explicit-any": "off",
     "eqeqeq": "error",
     "no-console": 2,
     "no-alert": "error",

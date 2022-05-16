@@ -15,14 +15,14 @@
     "isolatedModules": true,
     "incremental": true,
     "jsx": "react-jsx",
-    "baseUrl": ".",
+    "baseUrl": "./src/",
     "paths": {
-      "src/constant": ["/src/constant/"],
-      "src/hooks": ["/src/hooks/"],
-      "src/helper": ["/src/helper/"],
-      "src/locales": ["/src/locales/*"],
-      "src/redux": ["/src/redux/*"],
-      "src/components": ["/src/components/"]
+      "constant": ["constant/"],
+      "hooks": ["hooks/"],
+      "helper": ["helper/"],
+      "locales": ["locales/*"],
+      "redux": ["redux/*"],
+      "components": ["components/"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

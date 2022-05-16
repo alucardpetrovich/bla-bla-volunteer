@@ -22,12 +22,13 @@ export const Block = styled.div<ModalPopUpProps>`
   height: ${({ height }) => height ?? '100%'};
 
   animation-name: popUp;
-  transition: 7s ease-out;
-  animation-duration: 0.5s;
-  -webkit-animation-duration: 1s;
+  transition: 2s ease-out;
+  /* animation-duration: 0.5s; */
+  /* -webkit-animation-duration: 1s; */
   animation-timing-function: ease;
   -webkit-animation-timing-function: ease;
   visibility: visible !important;
+  z-index: 2;
 
   @keyframes popUp {
     0% {
@@ -155,9 +156,7 @@ export const ModalPopUpContent = styled.div<ModalPopUpProps>`
   width: ${({ width }) => width ?? '1020px'};
   height: ${({ height }) => height ?? '1500px'};
   animation-name: popUp;
-  transition: 5s ease-out;
-  animation-duration: 1s;
-  -webkit-animation-duration: 1s;
+  transition: 2s ease-out;
   animation-timing-function: ease;
   -webkit-animation-timing-function: ease;
   visibility: visible !important;
