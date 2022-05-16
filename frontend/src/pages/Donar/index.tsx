@@ -18,10 +18,12 @@ const Donar = () => {
             isClose={handleModal}
             position="center"
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
-            possimus earum cumque sunt, reiciendis quaerat fuga, impedit
-            quibusdam dolorum recusandae consequatur tempore aspernatur ipsum
-            consectetur accusamus dignissimos delectus porro unde.
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
+              possimus earum cumque sunt, reiciendis quaerat fuga, impedit
+              quibusdam dolorum recusandae consequatur tempore aspernatur ipsum
+              consectetur accusamus dignissimos delectus porro unde.
+            </p>
           </ModalPopUp>
         </Portal>
       )}
