@@ -1,4 +1,5 @@
 import { useRoutes } from 'react-router';
+import { useSelector } from 'react-redux';
 import { Navigate, generatePath } from 'react-router-dom';
 import { PATHS } from '../constants/PATH';
 
@@ -11,18 +12,19 @@ import DriverPage from '../pages/Driver';
 import ProfilePage from '../pages/Profile';
 import NotFoundPage from '../pages/NotFound404';
 
-const RedirectToHome = ({ lang }) => (
-  <Navigate to={generatePath(PATHS.HOME.path, { lang })} replace />
-);
+const RedirectToHome = () => {
+  const lang = useSelector(state => 'ua');
+
+  return <Navigate to={generatePath(PATHS.HOME.path, { lang })} replace />;
+};
 
 const useRoutesConstants = () => {
-  const lang = 'ua';
-  const token = 'fdfsd3423sdfdf';
+  const token = useSelector(state => 'fdfsd3423sdfdf');
 
   const routes = useRoutes([
     {
       path: PATHS.DEFAULT,
-      element: <RedirectToHome lang={lang} />,
+      element: <RedirectToHome />,
     },
 
     {
@@ -32,32 +34,32 @@ const useRoutesConstants = () => {
 
     {
       path: PATHS.LOGIN.path,
-      element: token ? <LoginPage /> : <RedirectToHome lang={lang} />,
+      element: token ? <LoginPage /> : <RedirectToHome />,
     },
 
     {
       path: PATHS.REGISTRATION.path,
-      element: token ? <RegistrationPage /> : <RedirectToHome lang={lang} />,
+      element: token ? <RegistrationPage /> : <RedirectToHome />,
     },
 
     {
       path: PATHS.DONAR.path,
-      element: token ? <DonarPage /> : <RedirectToHome lang={lang} />,
+      element: token ? <DonarPage /> : <RedirectToHome />,
     },
 
     {
       path: PATHS.HUB.path,
-      element: token ? <HubPage /> : <RedirectToHome lang={lang} />,
+      element: token ? <HubPage /> : <RedirectToHome />,
     },
 
     {
       path: PATHS.DRIVER.path,
-      element: token ? <DriverPage /> : <RedirectToHome lang={lang} />,
+      element: token ? <DriverPage /> : <RedirectToHome />,
     },
 
     {
       path: PATHS.PROFILE.path,
-      element: token ? <ProfilePage /> : <RedirectToHome lang={lang} />,
+      element: token ? <ProfilePage /> : <RedirectToHome />,
     },
 
     {

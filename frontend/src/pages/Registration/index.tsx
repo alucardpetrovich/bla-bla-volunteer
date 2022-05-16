@@ -1,32 +1,33 @@
-import { useState } from 'react';
+import { useState, ChangeEvent, SyntheticEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { IAuthCredentials } from '../../models/authModel/authModel';
 import { userRegistration } from '../../redux/auth/authOperations';
 
+const initialCredentialsState = {
+  email: '',
+  password: '',
+};
+
 const Registration = () => {
-  const initialCredentialsState = {
-    email: '',
-    password: '',
-  };
   const [credentials, setCredentials] = useState<IAuthCredentials>(
     initialCredentialsState,
   );
 
   const dispatch = useDispatch();
 
-  const handleSetEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSetEmail = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
     setCredentials({ ...credentials, email: value });
   };
 
-  const handleSetPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSetPassword = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
     setCredentials({ ...credentials, password: value });
   };
 
-  const handleSubmitSignUp = (e: React.SyntheticEvent) => {
+  const handleSubmitSignUp = (e: SyntheticEvent) => {
     e.preventDefault();
     dispatch(userRegistration(credentials) as any);
     setCredentials(initialCredentialsState);

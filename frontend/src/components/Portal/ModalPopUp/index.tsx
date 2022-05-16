@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import * as S from './style';
 
 interface IModalPopUp {
@@ -29,7 +29,7 @@ interface IModalPopUp {
  * @returns
  */
 
-export const ModalPopUp: React.FC<IModalPopUp> = ({
+export const ModalPopUp: FC<IModalPopUp> = ({
   isClose,
   children,
   height,
