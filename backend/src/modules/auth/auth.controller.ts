@@ -63,7 +63,7 @@ export class AuthController {
   @ApiPreconditionFailedResponse({ description: 'User is not verified' })
   @ApiCreatedResponse({
     description: 'Signing in succeeded',
-    type: SignUpSerializer,
+    type: SignInSerializer,
   })
   async signIn(@Body() dto: AuthDto): Promise<SignInSerializer> {
     return this.service.signIn(dto);

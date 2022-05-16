@@ -26,7 +26,7 @@ import { OrganizationsService } from './organizations.service';
 import { OrganizationTypesSerializer as TypesSerializer } from './serializers/organization-types.serializer';
 import { OrganizationSerializer } from './serializers/organization.serializer';
 
-@Controller('organizations')
+@Controller('v1/organizations')
 @UseGuards(JwtGuard)
 @ApiTags('Organizations Controller')
 @ApiBearerAuth()
