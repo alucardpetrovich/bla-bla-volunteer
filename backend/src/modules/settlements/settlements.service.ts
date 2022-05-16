@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SearchSettlementsDto } from './dto/search-settlements.dto';
-import { SettlementsRepository } from './settlements.repository';
+import { SettlementsRepository } from './db/settlements.repository';
 
 @Injectable()
 export class SettlementsService {

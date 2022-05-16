@@ -13,8 +13,8 @@ import {
 import { PaginationDto } from 'src/shared/dto/pagination.dto';
 import { ChangeRideStatusDto } from './dto/change-ride-status.dto';
 import { RideDto } from './dto/ride.dto';
-import { RideRelations } from './ride.entity';
-import { RidesRepository } from './rides.repository';
+import { RideRelations } from './db/ride.entity';
+import { RidesRepository } from './db/rides.repository';
 import { RideStatuses } from './types/ride-statuses.enum';
 
 @Injectable()

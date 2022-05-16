@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UserRelations } from '../users/user.entity';
 import { UsersRepository } from '../users/users.repository';
 import { InvolvementsDto } from './dto/involvements.dto';
-import { InvolvementTypesRepository } from './involvement-types.repository';
-import { UserInvolvementsRepository } from './user-involvements.repository';
+import { InvolvementTypesRepository } from './db/involvement-types.repository';
+import { UserInvolvementsRepository } from './db/user-involvements.repository';
 
 @Injectable()
 export class InvolvementsService {
