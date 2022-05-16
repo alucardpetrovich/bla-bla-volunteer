@@ -14,7 +14,7 @@ const messages = {
 };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-let language = navigator.language.split(/[-_]/)[0];
+const language = navigator.language.split(/[-_]/)[0];
 
 root.render(
   <StrictMode>
