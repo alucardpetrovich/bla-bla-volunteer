@@ -1,14 +1,11 @@
-import React from 'react';
-import Header from '../Header';
-import GlobalStyle from '../../utils/styles/global';
+import { FC } from 'react';
+import Header from 'components/Header';
+import GlobalStyle from 'utils/styles/global';
 import WithRefreshTokenCheck from '../../hoc/withRefreshTokenCheck';
 import * as S from './style';
+import Roots from '../Roots';
 
-interface ILayout {
-  children?: any;
-}
-
-const Layout: React.FC<ILayout> = ({ children }) => {
+const Layout: FC = () => {
   return (
     <S.SiteContainer>
       <GlobalStyle />
@@ -16,7 +13,9 @@ const Layout: React.FC<ILayout> = ({ children }) => {
         <Header />
       </S.HeaderContainer>
       <S.MainContainer>
-        <main style={{ textAlign: 'center' }}>{children}</main>
+        <main style={{ textAlign: 'center' }}>
+          <Roots />
+        </main>
       </S.MainContainer>
     </S.SiteContainer>
   );
