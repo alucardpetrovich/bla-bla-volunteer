@@ -4,9 +4,9 @@ const registrationRequest = () => ({
   type: authActionTypes.REGISTER_REQUEST,
 });
 
-const registrationSuccess = authResp => ({
+const registrationSuccess = user => ({
   type: authActionTypes.REGISTER_SUCCESS,
-  payload: authResp,
+  payload: user,
 });
 
 const registrationError = error => ({
@@ -18,9 +18,9 @@ const loginRequest = () => ({
   type: authActionTypes.LOGIN_REQUEST,
 });
 
-const loginSuccess = credential => ({
+const loginSuccess = user => ({
   type: authActionTypes.LOGIN_SUCCESS,
-  payload: credential,
+  payload: { user },
 });
 
 const loginError = error => ({
