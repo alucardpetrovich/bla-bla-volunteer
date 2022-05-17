@@ -4,7 +4,7 @@ const useHandleBoolChange = (bool: boolean) => {
   const [boolStatus, setBoolStatus] = useState(bool);
 
   const statusHandleChange = () => {
-    setBoolStatus(!boolStatus);
+    setBoolStatus(prevState => !prevState);
   };
 
   return [boolStatus, statusHandleChange];
