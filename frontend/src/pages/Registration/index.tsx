@@ -4,11 +4,12 @@ import { useDispatch } from 'react-redux';
 import { IAuthCredentials } from '../../models/authModel/authModel';
 import { userRegistration } from '../../redux/auth/authOperations';
 
+const initialCredentialsState = {
+  email: '',
+  password: '',
+};
+
 const Registration = () => {
-  const initialCredentialsState = {
-    email: '',
-    password: '',
-  };
   const [credentials, setCredentials] = useState<IAuthCredentials>(
     initialCredentialsState,
   );
