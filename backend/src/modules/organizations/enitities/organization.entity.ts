@@ -8,7 +8,7 @@ import {
   JoinColumn,
   OneToMany,
 } from 'typeorm';
-import { SettlementEntity } from '../../settlements/settlement.entity';
+import { SettlementEntity } from '../../settlements/db/settlement.entity';
 import { UserEntity } from '../../users/user.entity';
 import { OrganizationContactEntity } from './organization-contact.entity';
 import { OrganizationTypeEntity } from './organization-type.entity';

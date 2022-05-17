@@ -1,6 +1,6 @@
 import { EntityRepository, In, Repository } from 'typeorm';
 import { RideEntity } from './ride.entity';
-import { RideStatuses } from './types/ride-statuses.enum';
+import { RideStatuses } from '../types/ride-statuses.enum';
 
 @EntityRepository(RideEntity)
 export class RidesRepository extends Repository<RideEntity> {

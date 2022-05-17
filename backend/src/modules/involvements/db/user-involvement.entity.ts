@@ -6,7 +6,7 @@ import {
   JoinColumn,
   Unique,
 } from 'typeorm';
-import { UserEntity } from '../users/user.entity';
+import { UserEntity } from '../../users/user.entity';
 import { InvolvementTypeEntity } from './involvement-type.entity';
 
 @Entity('user_involvements')

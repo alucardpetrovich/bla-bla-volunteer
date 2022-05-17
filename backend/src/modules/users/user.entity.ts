@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from 'typeorm';
-import { UserInvolvementEntity } from '../involvements/user-involvement.entity';
+import { UserInvolvementEntity } from '../involvements/db/user-involvement.entity';
 import { UserStatuses } from './types/user-statuses.enum';
 
 @Entity('users')

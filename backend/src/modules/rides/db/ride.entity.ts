@@ -7,9 +7,9 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { SettlementEntity } from '../settlements/settlement.entity';
-import { UserEntity } from '../users/user.entity';
-import { RideStatuses } from './types/ride-statuses.enum';
+import { SettlementEntity } from '../../settlements/db/settlement.entity';
+import { UserEntity } from '../../users/user.entity';
+import { RideStatuses } from '../types/ride-statuses.enum';
 
 @Entity('rides')
 export class RideEntity {
