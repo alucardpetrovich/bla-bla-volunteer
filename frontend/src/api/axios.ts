@@ -63,6 +63,9 @@ axiosPrivate.interceptors.response.use(
         return axiosPrivate.request(prevRequest);
       } catch (error) {
         console.log('you are not logged in');
+        // window.location.href = 'http://localhost:3000/';
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('refreshToken');
       }
     }
     return Promise.reject(error);

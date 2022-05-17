@@ -1,11 +1,12 @@
 import { StrictMode } from 'react';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import messages_ua from './locales/ua.json';
 import messages_ru from './locales/ru.json';
-import store from './redux/store';
+import store, { persistor } from './redux/store';
 import App from './pages/App/index';
 
 const messages = {
@@ -21,7 +22,9 @@ root.render(
     <BrowserRouter>
       <IntlProvider locale={language} messages={messages[language]}>
         <Provider store={store}>
-          <App />
+          <PersistGate loading={null} persistor={persistor}>
+            <App />
+          </PersistGate>
         </Provider>
       </IntlProvider>
     </BrowserRouter>
