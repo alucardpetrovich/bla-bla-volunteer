@@ -1,25 +1,26 @@
 import { useRoutes } from 'react-router';
 import { useSelector } from 'react-redux';
 import { Navigate, generatePath } from 'react-router-dom';
-import { PATHS } from '../constants/PATH';
-
-import HomePage from '../pages/Home';
-import LoginPage from '../pages/Login';
-import RegistrationPage from '../pages/Registration';
-import DonarPage from '../pages/Donar';
-import HubPage from '../pages/Hub';
-import DriverPage from '../pages/Driver';
-import ProfilePage from '../pages/Profile';
-import NotFoundPage from '../pages/NotFound404';
+import { PATHS } from 'constants/PATH';
+import { getIsAuth } from 'redux/auth/authSelectors';
+import HomePage from 'pages/Home';
+import LoginPage from 'pages/Login';
+import RegistrationPage from 'pages/Registration';
+import DonarPage from 'pages/Donar';
+import HubPage from 'pages/Hub';
+import DriverPage from 'pages/Driver';
+import ProfilePage from 'pages/Profile';
+import NotFoundPage from 'pages/NotFound404';
 
 const RedirectToHome = () => {
   const lang = useSelector(state => 'ua');
+  const path = `/${generatePath(PATHS.HOME.path, { lang })}`;
 
-  return <Navigate to={generatePath(PATHS.HOME.path, { lang })} replace />;
+  return <Navigate to={path} replace />;
 };
 
 const useRoutesConstants = () => {
-  const token = useSelector(state => 'fdfsd3423sdfdf');
+  const isAuth = useSelector(getIsAuth);
 
   const routes = useRoutes([
     {
@@ -32,34 +33,40 @@ const useRoutesConstants = () => {
       element: <HomePage />,
     },
 
+    /* LOGIN ONLY_PUBLIC */
     {
       path: PATHS.LOGIN.path,
-      element: token ? <LoginPage /> : <RedirectToHome />,
+      element: !isAuth ? <LoginPage /> : <RedirectToHome />,
     },
 
+    /* REGISTRATION ONLY_PUBLIC */
     {
       path: PATHS.REGISTRATION.path,
-      element: token ? <RegistrationPage /> : <RedirectToHome />,
+      element: !isAuth ? <RegistrationPage /> : <RedirectToHome />,
     },
 
+    /* DONAR PRIVAT */
     {
       path: PATHS.DONAR.path,
-      element: token ? <DonarPage /> : <RedirectToHome />,
+      element: isAuth ? <DonarPage /> : <RedirectToHome />,
     },
 
+    /* HUB PRIVAT */
     {
       path: PATHS.HUB.path,
-      element: token ? <HubPage /> : <RedirectToHome />,
+      element: isAuth ? <HubPage /> : <RedirectToHome />,
     },
 
+    /* DRIVER PRIVAT */
     {
       path: PATHS.DRIVER.path,
-      element: token ? <DriverPage /> : <RedirectToHome />,
+      element: isAuth ? <DriverPage /> : <RedirectToHome />,
     },
 
+    /* PROFILE PRIVAT */
     {
       path: PATHS.PROFILE.path,
-      element: token ? <ProfilePage /> : <RedirectToHome />,
+      element: isAuth ? <ProfilePage /> : <RedirectToHome />,
     },
 
     {

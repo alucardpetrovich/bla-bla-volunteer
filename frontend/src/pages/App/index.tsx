@@ -1,5 +1,5 @@
-import { useFormatMessage } from '../../hooks';
-import Layout from '../../components/Layout';
+import { useFormatMessage } from 'hooks';
+import Layout from 'components/Layout';
 
 export const App = () => {
   const f = useFormatMessage;

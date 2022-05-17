@@ -40,7 +40,7 @@
     "import/prefer-default-export": "off",
     "no-explicit-any": "off",
     "eqeqeq": "error",
-    "no-console": 2,
+    "no-console": 1,
     "no-alert": "error",
     "no-empty": "error",
     "no-empty-function": "error",

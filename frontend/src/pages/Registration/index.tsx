@@ -1,5 +1,6 @@
-import { useState, ChangeEvent, SyntheticEvent } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { IAuthCredentials } from '../../models/authModel/authModel';
 import { userRegistration } from '../../redux/auth/authOperations';
 
@@ -15,19 +16,19 @@ const Registration = () => {
 
   const dispatch = useDispatch();
 
-  const handleSetEmail = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleSetEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
     setCredentials({ ...credentials, email: value });
   };
 
-  const handleSetPassword = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleSetPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
     setCredentials({ ...credentials, password: value });
   };
 
-  const handleSubmitSignUp = (e: SyntheticEvent) => {
+  const handleSubmitSignUp = (e: React.SyntheticEvent) => {
     e.preventDefault();
     dispatch(userRegistration(credentials) as any);
     setCredentials(initialCredentialsState);
@@ -35,9 +36,18 @@ const Registration = () => {
 
   return (
     <div>
+      <h3>Registration</h3>
       <form onSubmit={e => handleSubmitSignUp(e)}>
-        <input type="text" onChange={handleSetEmail} />
-        <input type="password" onChange={handleSetPassword} />
+        <input
+          type="text"
+          onChange={handleSetEmail}
+          value={credentials.email}
+        />
+        <input
+          type="password"
+          onChange={handleSetPassword}
+          value={credentials.password}
+        />
         <input type="submit" value="submit"></input>
       </form>
     </div>

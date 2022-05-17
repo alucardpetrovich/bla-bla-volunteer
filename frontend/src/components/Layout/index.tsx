@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import Header from '../Header';
-import GlobalStyle from '../../utils/styles/global';
+import Header from 'components/Header';
+import GlobalStyle from 'utils/styles/global';
 import * as S from './style';
 import Roots from '../Roots';
 
