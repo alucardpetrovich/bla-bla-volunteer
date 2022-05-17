@@ -6,13 +6,15 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinColumn,
+  Index,
 } from 'typeorm';
 import { SettlementTypeEntity } from './settlement-type.entity';
 import { Point } from 'geojson';
-import { UserEntity } from '../users/user.entity';
-import { CountryEntity } from '../countries/country.entity';
+import { UserEntity } from '../../users/user.entity';
+import { CountryEntity } from '../../countries/db/country.entity';
 
 @Entity('settlements')
+@Index('idx_settlements_name', ['name'])
 export class SettlementEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;

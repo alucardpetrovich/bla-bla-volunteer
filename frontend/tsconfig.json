@@ -14,16 +14,16 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "incremental": true,
-    "jsx": "react-jsx"
-    // "baseUrl": "./src/",
-    // "paths": {
-    //   "src/constant": ["constant/"],
-    //   "src/hooks": ["hooks/"],
-    //   "src/helper": ["helper/"],
-    //   "src/locales": ["locales/*"],
-    //   "src/redux": ["redux/*"],
-    //   "src/components": ["components/"]
-    // }
+    "jsx": "react-jsx",
+    "baseUrl": "./src/",
+    "paths": {
+      "constant": ["constant/"],
+      "hooks": ["hooks/"],
+      "helper": ["helper/"],
+      "locales": ["locales/*"],
+      "redux": ["redux/*"],
+      "components": ["components/"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": [

@@ -9,6 +9,8 @@ import { RidesModule } from './modules/rides/rides.module';
 import { OrganizationsModule } from './modules/organizations/organizations.module';
 import { SettlementsModule } from './modules/settlements/settlements.module';
 import { CountriesModule } from './modules/countries/countries.module';
+import { ProductsModule } from './modules/products/products.module';
+import { DictionaryModule } from './modules/dictionary/dictionary.module';
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import { CountriesModule } from './modules/countries/countries.module';
     OrganizationsModule,
     CountriesModule,
     SettlementsModule,
+    ProductsModule,
+    DictionaryModule,
   ],
   controllers: [],
   providers: [MailingService],
