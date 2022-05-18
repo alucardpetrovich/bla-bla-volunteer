@@ -1,6 +1,7 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Expose } from 'class-transformer';
 import { ExposeLocation } from 'src/shared/decorators/expose-location.decorator';
+import { ExposeTranslation } from 'src/shared/decorators/transform-obj.decorator';
 import { LocationSerializer } from 'src/shared/serializers/location.serializer';
 
 export class SettlementSerializer {
@@ -9,7 +10,7 @@ export class SettlementSerializer {
   id: string;
 
   @ApiProperty()
-  @Expose()
+  @ExposeTranslation('name')
   name: string;
 
   @ApiProperty()
@@ -20,13 +21,13 @@ export class SettlementSerializer {
   @Expose()
   countryCode: string;
 
-  @ApiProperty()
-  @Expose()
-  region: string;
+  @ApiPropertyOptional()
+  @ExposeTranslation('region.name')
+  region: string | null;
 
-  @ApiProperty()
-  @Expose()
-  district: string;
+  @ApiPropertyOptional()
+  @ExposeTranslation('district.name')
+  district: string | null;
 
   @ApiProperty()
   @ExposeLocation('centerLocation')

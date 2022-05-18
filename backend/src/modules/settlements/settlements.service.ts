@@ -12,12 +12,13 @@ export class SettlementsService {
     private settlementsRepository: SettlementsRepository,
   ) {}
 
-  async searchSettlements(dto: SearchSettlementsDto) {
+  async searchSettlements(dto: SearchSettlementsDto, language: string) {
     const offset = (dto.page - 1) * this.PAGE_SIZE;
-    return this.settlementsRepository.searchSettlements(
-      dto.query,
+    return this.settlementsRepository.searchSettlements({
+      query: dto.query,
       offset,
-      this.PAGE_SIZE,
-    );
+      limit: this.PAGE_SIZE,
+      language,
+    });
   }
 }

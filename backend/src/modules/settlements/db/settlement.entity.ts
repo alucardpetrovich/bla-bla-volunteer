@@ -6,30 +6,29 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinColumn,
-  Index,
+  OneToOne,
 } from 'typeorm';
 import { SettlementTypeEntity } from './settlement-type.entity';
 import { Point } from 'geojson';
 import { UserEntity } from '../../users/user.entity';
 import { CountryEntity } from '../../countries/db/country.entity';
+import { DictionaryPhraseEntity } from 'src/modules/dictionary/db/dictionary-phrase.entity';
+import { DistrictEntity } from './district.entity';
+import { RegionEntity } from './region.entity';
 
 @Entity('settlements')
-@Index('idx_settlements_name', ['name'])
 export class SettlementEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  name: string;
+  @Column('uuid')
+  nameId: string;
 
-  @Column({ default: '' })
-  district: string;
+  @Column('uuid', { nullable: true })
+  districtId: string | null;
 
-  @Column({ default: '' })
-  region: string;
-
-  @Column({ default: '' })
-  nameEng: string;
+  @Column('uuid', { nullable: true })
+  regionId: string | null;
 
   @Column()
   type: string;
@@ -59,9 +58,21 @@ export class SettlementEntity {
   @JoinColumn({ name: 'countryCode', referencedColumnName: 'code' })
   country: CountryEntity;
 
+  @ManyToOne(() => RegionEntity)
+  @JoinColumn({ name: 'regionId', referencedColumnName: 'id' })
+  region: RegionEntity | null;
+
+  @ManyToOne(() => DistrictEntity)
+  @JoinColumn({ name: 'districtId', referencedColumnName: 'id' })
+  district: DistrictEntity | null;
+
   @ManyToOne(() => UserEntity)
   @JoinColumn({ name: 'createdBy', referencedColumnName: 'id' })
   creator?: UserEntity;
+
+  @OneToOne(() => DictionaryPhraseEntity)
+  @JoinColumn({ name: 'nameId', referencedColumnName: 'id' })
+  name: DictionaryPhraseEntity;
 
   @CreateDateColumn()
   createdAt: Date;
