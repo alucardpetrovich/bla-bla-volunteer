@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-type IFlexProps = {
+type IFlex = {
   children?: any;
   className?: string;
   container?: boolean;
@@ -37,24 +37,24 @@ type IFlexProps = {
   maxHeight?: string;
 };
 
-const Flex = (props: IFlexProps) => {
-  const Component = styled.div`
-    display: ${props.container ? 'flex' : 'block'};
-    justify-content: ${props.justifyContent || 'flex-start'};
-    flex-direction: ${props.flexDirection || 'row'};
-    flex-grow: ${props.flexGrow || 0};
-    flex-basis: ${props.flexBasis || 'auto'};
-    flex-shrink: ${props.flexShrink || 1};
-    flex-wrap: ${props.flexWrap ? 'wrap' : 'nowrap'};
-    flex: ${props.flex || '0 1 auto'};
-    align-items: ${props.alignItems || 'stretch'};
-    margin: ${props.margin || '0'};
-    padding: ${props.padding || '0'};
-    width: ${props.width || 'auto'};
-    height: ${props.height || 'auto'};
-    max-width: ${props.maxWidth || 'none'};
-  `;
+const Component = styled.div`
+  display: ${props => (props.container ? 'flex' : 'block')};
+  justify-content: ${props.justifyContent || 'flex-start'};
+  flex-direction: ${props.flexDirection || 'row'};
+  flex-grow: ${props.flexGrow || 0};
+  flex-basis: ${props.flexBasis || 'auto'};
+  flex-shrink: ${props.flexShrink || 1};
+  flex-wrap: ${props.flexWrap ? 'wrap' : 'nowrap'};
+  flex: ${props.flex || '0 1 auto'};
+  align-items: ${props.alignItems || 'stretch'};
+  margin: ${props.margin || '0'};
+  padding: ${props.padding || '0'};
+  width: ${props.width || 'auto'};
+  height: ${props.height || 'auto'};
+  max-width: ${props.maxWidth || 'none'};
+`;
 
+const Flex = props => {
   return <Component>{props.children}</Component>;
 };
 
