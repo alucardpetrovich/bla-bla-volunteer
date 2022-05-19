@@ -1,14 +1,10 @@
-import useRoutesConstants from '../../hooks/useRoutes';
-import Layout from '../../components/Layout';
+import { useFormatMessage } from 'hooks';
+import Layout from 'components/Layout';
 
 export const App = () => {
-  const routes = useRoutesConstants();
+  const f = useFormatMessage;
 
-  return (
-    <>
-      <Layout>{routes}</Layout>
-    </>
-  );
+  return <Layout />;
 };
 
 export default App;

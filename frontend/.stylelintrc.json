@@ -1,13 +1,14 @@
 {
   "processors": ["stylelint-processor-styled-components"],
-  "extends": [
-    "stylelint-config-recommended",
-    "stylelint-config-styled-components"
-  ],
+  "extends": ["stylelint-config-recommended", "stylelint-config-styled-components"],
+
+  "plugins": ["stylelint-declaration-use-variable"],
+
   "rules": {
     "color-no-invalid-hex": true,
     "color-hex-length": "long",
     "color-hex-case": "upper",
+    "sh-waqar/declaration-use-variable": "color",
     "declaration-property-unit-allowed-list": {
       "font-size": ["em", "rem"]
     }

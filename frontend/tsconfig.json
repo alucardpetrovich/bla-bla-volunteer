@@ -1,32 +1,39 @@
 {
   "compilerOptions": {
+    "rootDir": ".",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
+    "noEmit": true,
+    "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "isolatedModules": false,
-    "noEmit": true,
+    "incremental": true,
     "jsx": "react-jsx",
-    "resolveJsonModule": true
-    // "baseUrl": "."
-
-    // "baseUrl": "./src/",
-    // "paths": {
-    //   "components/": ["components/"],
-    //   "constants/": ["constants/"],
-    //   "pages/organisms": ["pages/"],
-    //   "components/layout": ["components/layout/"],
-    //   "assets/images": ["images/"],
-    //   "assets/icons": ["icons/"],
-    //   "hooks": ["hooks/"]
-    // }
+    "baseUrl": "./src/",
+    "paths": {
+      "constant": ["constant/"],
+      "hooks": ["hooks/"],
+      "helper": ["helper/"],
+      "locales": ["locales/*"],
+      "redux": ["redux/*"],
+      "components": ["components/"]
+    }
   },
-  "include": ["src", "src/locales"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": [
+    "node_modules",
+    "**/node_modules",
+    "dist",
+    "yarn.lock",
+    "./build/*",
+    "build",
+    "./build/**/*",
+    ".vscode"
+  ]
 }

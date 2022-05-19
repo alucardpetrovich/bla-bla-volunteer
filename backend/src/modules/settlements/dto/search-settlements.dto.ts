@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
 import { IsInt, IsString, Min, MinLength } from 'class-validator';
 
@@ -8,7 +8,7 @@ export class SearchSettlementsDto {
   @MinLength(2)
   query: string;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
   @Transform(({ value }) => parseInt(value || 1))
   @IsInt()
   @Min(1)
