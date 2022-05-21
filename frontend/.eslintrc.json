@@ -20,7 +20,7 @@
   "plugins": ["react", "typescript", "@typescript-eslint", "prettier"],
   "rules": {
     "dot-notation": "off",
-    "quotes": [2, "single", "backtick"],
+    "quotes": ["double", "single", "backtick"],
     "react/jsx-filename-extension": [
       2,
       {

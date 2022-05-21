@@ -2,25 +2,28 @@ import { FC } from 'react';
 import Header from 'components/Header';
 import GlobalStyle from 'utils/styles/global';
 import WithRefreshTokenCheck from '../../hoc/withRefreshTokenCheck';
-import * as S from './style';
 import Roots from '../Roots';
+import { StyledContainer, StyledHeader } from 'components/StyledComponents';
+import Footer from 'components/Footer';
 
 const Layout: FC = () => {
   return (
     <>
-      {/* <Global /> */}
-      <S.SiteContainer>
-        {/* <MainContainer> */}
-        <S.HeaderContainer>
-          <h1>Hi</h1>
+      <GlobalStyle />
+      <StyledContainer tag="content">
+        <StyledContainer tag="header">
           <Header />
-        </S.HeaderContainer>
-        <S.MainContainer>
-          <main style={{ textAlign: 'center' }}>
-            <Roots />
-          </main>
-        </S.MainContainer>
-      </S.SiteContainer>
+        </StyledContainer>
+        <StyledContainer tag="main">
+          <Roots />
+          <StyledHeader tag="h1">h1</StyledHeader>
+          <StyledHeader tag="h2">h2</StyledHeader>
+          <StyledHeader tag="h3">h3</StyledHeader>
+        </StyledContainer>
+        <StyledContainer tag="footer">
+          <Footer />
+        </StyledContainer>
+      </StyledContainer>
     </>
   );
 };
