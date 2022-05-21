@@ -7,7 +7,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
-import { SettlementEntity } from '../settlements/db/settlement.entity';
+import { SettlementEntity } from '../../settlements/db/settlement.entity';
 import { VolunteerRequestEntity } from './volunteer-request.entity';
 
 @Entity('volunteer_request_items')
