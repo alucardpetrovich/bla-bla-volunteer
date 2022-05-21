@@ -25,7 +25,7 @@ const StyledHeader: React.FC<IHeader> = ({
     h1: (
       <HeaderH1
         isBold={isBold}
-        fontWeight={isBold ? 600 : 300}
+        fontWeight={isBold ? 900 : 400}
         color={color}
         {...props}
       >
@@ -35,7 +35,7 @@ const StyledHeader: React.FC<IHeader> = ({
     h2: (
       <HeaderH2
         isBold={isBold}
-        fontWeight={isBold ? 600 : 400}
+        fontWeight={isBold ? 900 : 400}
         color={color}
         {...props}
       >
@@ -45,7 +45,7 @@ const StyledHeader: React.FC<IHeader> = ({
     h3: (
       <HeaderH3
         isBold={isBold}
-        fontWeight={isBold ? 600 : 400}
+        fontWeight={isBold ? 900 : 400}
         textAlign={textAlign}
         color={color}
         {...props}
