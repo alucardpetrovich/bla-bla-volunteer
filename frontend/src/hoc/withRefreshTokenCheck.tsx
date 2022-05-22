@@ -1,6 +1,5 @@
-import { useEffect, FC, useState } from 'react';
+import { useEffect, FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router';
 
 import { axiosPrivate } from 'api/axios';
 import useAxiosRefreshToken from 'hooks/useAxiosRefreshToken';
@@ -8,8 +7,6 @@ import authActions from '../redux/auth/authActions';
 
 const WithRefreshTokenCheck = (WrappedComponent: FC) =>
   function comp(props) {
-    const [isAuth, setIsAuth] = useState(false);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const refresh = useAxiosRefreshToken();
 
@@ -18,13 +15,9 @@ const WithRefreshTokenCheck = (WrappedComponent: FC) =>
     )?.expiresAt;
     const today = Math.round(Date.now() / 1000);
 
-    const notAuthNavigate = () => navigate('/ua/login', { replace: true });
-
     useEffect(() => {
       if (expireAt < today || !expireAt) {
         dispatch(authActions.logoutSuccess());
-        notAuthNavigate();
-
         localStorage.removeItem('authToken');
         localStorage.removeItem('refreshToken');
       }
@@ -59,11 +52,10 @@ const WithRefreshTokenCheck = (WrappedComponent: FC) =>
 
             return axiosPrivate.request(prevRequest);
           } catch (error) {
-            if (error?.response?.data?.statusCode === 403) {
+            if (error?.response?.data?.statusCode === 403 || !expireAt) {
               dispatch(authActions.logoutSuccess());
               localStorage.removeItem('authToken');
               localStorage.removeItem('refreshToken');
-              notAuthNavigate();
             }
           }
         }
