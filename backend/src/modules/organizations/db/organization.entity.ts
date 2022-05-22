@@ -1,3 +1,4 @@
+import { ContactEntity } from 'src/modules/contacts/db/contact.entity';
 import {
   Column,
   Entity,
@@ -10,8 +11,9 @@ import {
 } from 'typeorm';
 import { SettlementEntity } from '../../settlements/db/settlement.entity';
 import { UserEntity } from '../../users/user.entity';
-import { OrganizationContactEntity } from './organization-contact.entity';
 import { OrganizationTypeEntity } from './organization-type.entity';
+
+// TODO: add organization statuses
 
 @Entity('organizations')
 export class OrganizationEntity {
@@ -36,10 +38,10 @@ export class OrganizationEntity {
   @Column()
   createdBy: string;
 
-  @OneToMany(() => OrganizationContactEntity, (c) => c.organization, {
+  @OneToMany(() => ContactEntity, (c) => c.organization, {
     cascade: true,
   })
-  contacts: OrganizationContactEntity[];
+  contacts: ContactEntity[];
 
   @ManyToOne(() => OrganizationTypeEntity)
   @JoinColumn({ name: 'type', referencedColumnName: 'type' })

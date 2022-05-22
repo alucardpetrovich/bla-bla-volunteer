@@ -5,11 +5,10 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ContactsRepository } from '../contacts/db/contacts.repository';
 import { OrganizationDto } from './dto/organization.dto';
-import { ContactTypesRepository } from './repositories/contact-types.repository';
-import { OrganizationContactsRepository } from './repositories/organization-contacts.repository';
-import { OrganizationTypesRepository } from './repositories/organization-types.repository';
-import { OrganizationsRepository } from './repositories/organizations.repository';
+import { OrganizationTypesRepository } from './db/organization-types.repository';
+import { OrganizationsRepository } from './db/organizations.repository';
 
 @Injectable()
 export class OrganizationsService {
@@ -18,10 +17,8 @@ export class OrganizationsService {
     private organizationsRepository: OrganizationsRepository,
     @InjectRepository(OrganizationTypesRepository)
     private organizationTypesRepository: OrganizationTypesRepository,
-    @InjectRepository(ContactTypesRepository)
-    private contactTypesRepository: ContactTypesRepository,
-    @InjectRepository(OrganizationContactsRepository)
-    private organizationContactsRepository: OrganizationContactsRepository,
+    @InjectRepository(ContactsRepository)
+    private contactsRepository: ContactsRepository,
   ) {}
 
   async createOrganization(creatorId: string, dto: OrganizationDto) {
@@ -43,11 +40,6 @@ export class OrganizationsService {
     return types.map((t) => t.type);
   }
 
-  async getContactTypes(): Promise<string[]> {
-    const types = await this.contactTypesRepository.find();
-    return types.map((t) => t.type);
-  }
-
   async updateOrganization(id: string, userId: string, dto: OrganizationDto) {
     const organization = await this.organizationsRepository.findOne(id);
     if (!organization) {
@@ -61,8 +53,9 @@ export class OrganizationsService {
       ...organization,
       ...dto,
     });
-    await this.organizationContactsRepository.removeMissingContacts(
+    await this.contactsRepository.removeMissingContacts(
       organizationUpdated,
+      'organizationId',
     );
 
     return organizationUpdated;

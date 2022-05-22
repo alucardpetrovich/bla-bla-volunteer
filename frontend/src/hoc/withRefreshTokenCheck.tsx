@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
+
 import authActions from '../redux/auth/authActions';
 
 const WithRefreshTokenCheck = (WrappedComponent: FC) =>

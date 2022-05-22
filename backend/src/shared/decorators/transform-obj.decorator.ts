@@ -6,7 +6,7 @@ export function ExposeTranslation(field: string) {
   return applyDecorators(
     Expose(),
     Transform(({ obj }) => {
-      return _.get(obj, `${field}.localizations[0].text`);
+      return _.get(obj, `${field}.localizations[0].text`) || null;
     }),
   );
 }

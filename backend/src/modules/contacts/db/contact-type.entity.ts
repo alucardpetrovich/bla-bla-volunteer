@@ -1,14 +1,15 @@
 import { DictionaryPhraseEntity } from 'src/modules/dictionary/db/dictionary-phrase.entity';
-import { Column, Entity, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
 
-@Entity('settlement_types')
-export class SettlementTypeEntity {
+@Entity('contact_types')
+export class ContactTypeEntity {
   @Column({ primary: true })
   type: string;
 
-  @Column('uuid')
+  @Column()
   nameId: string;
 
   @OneToOne(() => DictionaryPhraseEntity)
+  @JoinColumn({ name: 'nameId', referencedColumnName: 'id' })
   name: DictionaryPhraseEntity;
 }
