@@ -58,14 +58,15 @@ export const refreshAuthToken = refreshToken => async (dispatch: any) => {
       'authToken',
       JSON.stringify(response.data.tokens.access),
     );
+
     localStorage.setItem(
       'refreshToken',
       JSON.stringify(response.data.tokens.refresh),
     );
   } catch (error) {
-    console.log(error);
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('refreshToken');
+    console.log('asdasd1', error);
+    // localStorage.removeItem('authToken');
+    // localStorage.removeItem('refreshToken');
     dispatch(authActions.refreshError());
   }
 };
