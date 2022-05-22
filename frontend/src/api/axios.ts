@@ -12,15 +12,3 @@ export const axiosPrivate = axios.create({
     'Content-Type': 'application/json',
   },
 });
-
-axiosPrivate.interceptors.request.use(
-  config => {
-    const authToken = JSON.parse(localStorage.getItem('authToken'));
-
-    if (!config.headers['Authorization'] && authToken) {
-      config.headers['Authorization'] = `Bearer ${authToken.token}`;
-    }
-    return config;
-  },
-  error => Promise.reject(error),
-);

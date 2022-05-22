@@ -1,4 +1,4 @@
-import { useEffect, FC } from 'react';
+import { useEffect, FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 
@@ -8,11 +8,10 @@ import authActions from '../redux/auth/authActions';
 
 const WithRefreshTokenCheck = (WrappedComponent: FC) =>
   function comp(props) {
+    const [isAuth, setIsAuth] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const refresh = useAxiosRefreshToken();
-
-    console.log(Date.now());
 
     const expireAt = JSON.parse(
       localStorage.getItem('refreshToken'),
@@ -62,6 +61,8 @@ const WithRefreshTokenCheck = (WrappedComponent: FC) =>
           } catch (error) {
             if (error?.response?.data?.statusCode === 403) {
               dispatch(authActions.logoutSuccess());
+              localStorage.removeItem('authToken');
+              localStorage.removeItem('refreshToken');
               notAuthNavigate();
             }
           }
