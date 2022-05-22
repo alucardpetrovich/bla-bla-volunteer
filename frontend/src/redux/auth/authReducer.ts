@@ -10,7 +10,7 @@ const auth = (state = { ...initialState }, { type, payload }) => {
       return { ...initialState, ...payload };
 
     case authActionTypes.LOGIN_SUCCESS:
-      return { isAuthenticated: true, ...payload };
+      return { ...payload, isAuthenticated: true };
 
     case authActionTypes.LOGOUT_SUCCESS:
       return { ...initialState };

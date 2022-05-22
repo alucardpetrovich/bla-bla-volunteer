@@ -40,6 +40,18 @@ const logoutError = () => ({
   type: authActionTypes.LOGOUT_ERROR,
 });
 
+const refreshRequest = () => ({
+  type: authActionTypes.REFRESH_REQUEST,
+});
+
+const refreshSuccess = () => ({
+  type: authActionTypes.REFRESH_SUCCESS,
+});
+
+const refreshError = () => ({
+  type: authActionTypes.REFRESH_ERROR,
+});
+
 const authActions = {
   registrationRequest,
   registrationSuccess,
@@ -50,6 +62,9 @@ const authActions = {
   logoutRequest,
   logoutSuccess,
   logoutError,
+  refreshRequest,
+  refreshSuccess,
+  refreshError,
 };
 
 export default authActions;

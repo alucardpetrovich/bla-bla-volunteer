@@ -10,6 +10,10 @@ const LOGOUT_REQUEST = 'auth/logoutRequest';
 const LOGOUT_SUCCESS = 'auth/logoutSuccess';
 const LOGOUT_ERROR = 'auth/logoutError';
 
+const REFRESH_REQUEST = 'auth/refreshRequest';
+const REFRESH_SUCCESS = 'auth/refreshSuccess';
+const REFRESH_ERROR = 'auth/refreshError';
+
 const authActionTypes = {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
@@ -20,5 +24,8 @@ const authActionTypes = {
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_ERROR,
+  REFRESH_REQUEST,
+  REFRESH_SUCCESS,
+  REFRESH_ERROR,
 };
 export default authActionTypes;

@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect, useLayoutEffect, FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import authActions from '../redux/auth/authActions';
 
-const WithRefreshTokenCheck = (WrappedComponent: React.FC) =>
-  function Comp(props: any) {
+const WithRefreshTokenCheck = (WrappedComponent: FC) =>
+  function comp(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -13,15 +13,18 @@ const WithRefreshTokenCheck = (WrappedComponent: React.FC) =>
     )?.expiresAt;
     const today = Math.round(Date.now() / 1000);
 
-    const notAuthNavigate = () => navigate('/login', { replace: true });
+    const notAuthNavigate = () => navigate('/ua/login', { replace: true });
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       if (expireAt < today || !expireAt) {
         dispatch(authActions.logoutSuccess());
-        notAuthNavigate();
         localStorage.removeItem('authToken');
         localStorage.removeItem('refreshToken');
       }
+    }, []);
+
+    useEffect(() => {
+      notAuthNavigate();
     }, []);
 
     return <WrappedComponent {...props} />;

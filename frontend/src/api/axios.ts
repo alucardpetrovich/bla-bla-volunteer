@@ -1,5 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
+
 import { IAuthResponse } from '../models/authModel/authModel';
+import authorizationAPI from './Auth/Auth';
 
 const BASE_URL = 'http://68.183.216.91';
 
@@ -16,9 +18,7 @@ export const axiosPrivate = axios.create({
 
 const refresh = async (): Promise<AxiosResponse<IAuthResponse>> => {
   const refreshToken = JSON.parse(localStorage.getItem('refreshToken'));
-  const response = await axios.post(`${BASE_URL}/api/v1/auth/refresh`, {
-    refreshToken: refreshToken.token,
-  });
+  const response = await authorizationAPI.refreshAuthToken(refreshToken.token);
 
   localStorage.setItem(
     'authToken',
@@ -32,7 +32,7 @@ const refresh = async (): Promise<AxiosResponse<IAuthResponse>> => {
   return response.data.tokens.access.token;
 };
 
-axiosPrivate.interceptors.request.use(
+const axiosInterceptorRequest = axiosPrivate.interceptors.request.use(
   config => {
     const authToken = JSON.parse(localStorage.getItem('authToken'));
 
@@ -44,7 +44,7 @@ axiosPrivate.interceptors.request.use(
   error => Promise.reject(error),
 );
 
-axiosPrivate.interceptors.response.use(
+const axiosInterceptorResponse = axiosPrivate.interceptors.response.use(
   response => response,
   async error => {
     const prevRequest = error?.config;
@@ -62,12 +62,15 @@ axiosPrivate.interceptors.response.use(
 
         return axiosPrivate.request(prevRequest);
       } catch (error) {
-        console.log('you are not logged in');
-        // window.location.href = 'http://localhost:3000/';
-        localStorage.removeItem('authToken');
-        localStorage.removeItem('refreshToken');
+        if (error?.response?.data?.statusCode === 403) {
+          localStorage.removeItem('authToken');
+          localStorage.removeItem('refreshToken');
+        }
       }
     }
     return Promise.reject(error);
   },
 );
+
+axios.interceptors.request.eject(axiosInterceptorRequest);
+axios.interceptors.response.eject(axiosInterceptorResponse);
