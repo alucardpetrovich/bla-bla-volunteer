@@ -47,3 +47,25 @@ export const userLogOut = refreshToken => async (dispatch: any) => {
     dispatch(authActions.logoutError());
   }
 };
+
+export const refreshAuthToken = refreshToken => async (dispatch: any) => {
+  dispatch(authActions.refreshRequest());
+  try {
+    const response = await authorizationAPI.refreshAuthToken(refreshToken);
+    dispatch(authActions.refreshSuccess());
+
+    localStorage.setItem(
+      'authToken',
+      JSON.stringify(response.data.tokens.access),
+    );
+    localStorage.setItem(
+      'refreshToken',
+      JSON.stringify(response.data.tokens.refresh),
+    );
+  } catch (error) {
+    console.log(error);
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('refreshToken');
+    dispatch(authActions.refreshError());
+  }
+};
