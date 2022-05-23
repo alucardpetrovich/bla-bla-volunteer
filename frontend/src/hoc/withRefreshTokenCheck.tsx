@@ -10,9 +10,7 @@ const WithRefreshTokenCheck = (WrappedComponent: FC) =>
     const dispatch = useDispatch();
     const refresh = useAxiosRefreshToken();
 
-    const expireAt = JSON.parse(
-      localStorage.getItem('refreshToken'),
-    )?.expiresAt;
+    const expireAt = JSON.parse(localStorage.getItem('refreshToken'))?.expiresAt;
     const today = Math.round(Date.now() / 1000);
 
     useEffect(() => {
@@ -39,11 +37,7 @@ const WithRefreshTokenCheck = (WrappedComponent: FC) =>
       response => response,
       async error => {
         const prevRequest = error?.config;
-        if (
-          error?.response?.status === 401 &&
-          error.config &&
-          !error.config._isRetry
-        ) {
+        if (error?.response?.status === 401 && error.config && !error.config._isRetry) {
           prevRequest._isRetry = true;
           try {
             const newAccessToken = await refresh();

@@ -23,6 +23,7 @@
     "npm": "^8.9.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-hook-form": "^7.31.2",
     "react-intl": "^5.25.1",
     "react-redux": "^8.0.1",
     "react-responsive": "^9.0.0-beta.6",

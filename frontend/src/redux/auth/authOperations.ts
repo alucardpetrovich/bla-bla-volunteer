@@ -15,22 +15,16 @@ export const userRegistration = credentials => async (dispatch: any) => {
 
 export const userLogin = credentials => async (dispatch: any) => {
   dispatch(authActions.loginRequest());
+
   try {
     const response = await authorizationAPI.signIn(credentials);
-
     dispatch(authActions.loginSuccess(response.data.user));
 
-    localStorage.setItem(
-      'authToken',
-      JSON.stringify(response.data.tokens.access),
-    );
-    localStorage.setItem(
-      'refreshToken',
-      JSON.stringify(response.data.tokens.refresh),
-    );
+    localStorage.setItem('authToken', JSON.stringify(response.data.tokens.access));
+    localStorage.setItem('refreshToken', JSON.stringify(response.data.tokens.refresh));
   } catch (error) {
     console.log(error);
-    dispatch(authActions.loginError(error.message));
+    dispatch(authActions.loginError(error));
   }
 };
 
@@ -54,14 +48,8 @@ export const refreshAuthToken = refreshToken => async (dispatch: any) => {
     const response = await authorizationAPI.refreshAuthToken(refreshToken);
     dispatch(authActions.refreshSuccess());
 
-    localStorage.setItem(
-      'authToken',
-      JSON.stringify(response.data.tokens.access),
-    );
-    localStorage.setItem(
-      'refreshToken',
-      JSON.stringify(response.data.tokens.refresh),
-    );
+    localStorage.setItem('authToken', JSON.stringify(response.data.tokens.access));
+    localStorage.setItem('refreshToken', JSON.stringify(response.data.tokens.refresh));
   } catch (error) {
     dispatch(authActions.refreshError());
   }
