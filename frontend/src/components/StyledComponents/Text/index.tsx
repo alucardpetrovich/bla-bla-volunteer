@@ -1,18 +1,5 @@
 import React from 'react';
-import { TextP } from './style';
-
-type TextTypes = 'text' | 'link';
-
-interface IText {
-  color?: string;
-  tag?: TextTypes;
-  isBold?: boolean;
-  textAlign?: 'left' | 'center' | 'right';
-  fontWeight?: any;
-  lineHeight?: any;
-  children: any;
-  href?: string;
-}
+import { IText, TextP } from './style';
 
 const StyledText: React.FC<IText> = ({
   color,

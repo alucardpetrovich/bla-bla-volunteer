@@ -25,13 +25,16 @@ const Layout: FC = () => {
           <StyledHeader tag="h2">h2</StyledHeader>
           <StyledHeader tag="h3">h3</StyledHeader>
           <Text>
-            Lorem ipsum{' '}
+            Lorem ipsum
             <Text tag="link" href="https://www.google.com/">
               dolor sit amet
             </Text>
             consectetur adipisicing elit. Porro saepe dignissimos tenetur fugiat
-            sed! Cumque perferendis repellendus consequuntur soluta aspernatur
-            illum sint! Unde a molestias officia odit tenetur tempora vero!
+            sed!{' '}
+            <Text color="var(--accent-blue)">
+              Cumque perferendis repellendus consequuntur soluta aspernatur
+              illum sint! Unde a molestias officia odit tenetur tempora vero!
+            </Text>
           </Text>
         </StyledContainer>
         <StyledContainer tag="footer">

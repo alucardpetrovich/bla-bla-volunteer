@@ -1,17 +1,5 @@
 import React from 'react';
-import { HeaderH1, HeaderH2, HeaderH3 } from './style';
-
-type HeaderTypes = 'h1' | 'h2' | 'h3';
-
-interface IHeader {
-  color?: string;
-  tag?: HeaderTypes;
-  isBold?: boolean;
-  textAlign?: 'left' | 'center' | 'right';
-  fontWeight?: any;
-  lineHeight?: any;
-  children: any;
-}
+import { HeaderH1, HeaderH2, HeaderH3, IHeader } from './style';
 
 const StyledHeader: React.FC<IHeader> = ({
   color,

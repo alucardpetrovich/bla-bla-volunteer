@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
-interface IContainer {
-  children?: any;
+type ContainerTypes = 'content' | 'header' | 'main' | 'footer';
+
+export interface IContainer {
+  tag?: ContainerTypes;
+  children: any;
 }
 
 const Container = styled.div`

@@ -1,17 +1,11 @@
 import React from 'react';
 import {
+  IContainer,
   ContentContainer,
   FooterContainer,
   HeaderContainer,
   MainContainer,
 } from './style';
-
-type ContainerTypes = 'content' | 'header' | 'main' | 'footer';
-
-interface IContainer {
-  tag?: ContainerTypes;
-  children: any;
-}
 
 const StyledContainer: React.FC<IContainer> = ({ tag, children, ...props }) => {
   const Container = {

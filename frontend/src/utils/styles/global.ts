@@ -31,15 +31,11 @@ const GlobalStyle = createGlobalStyle`
   :root {
 
     /*PALLET*/
---main-blue: #072ac8ff;
---secondary-blue: #1e96fcff;
---third-jeans: #60b6fbff;
---fourth-blue: #81c6faff;
---fifth-blue: #a2d6f9ff;
---main-yellow: #fcf300ff;
---secondary-yellow: #fedd00ff;
---third-yellow: #ffd200ff;
---fourth-yellow: #ffc600ff;
+--accent-yellow: #DEDF79;
+--accent-blue: #A29BC7;
+--grey:#F3F3F7;
+--white:#FCFCFD;
+--text-dark:#323434;
 
 /* SCSS Gradient */
 $gradient-top: linear-gradient(0deg, #072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a2d6f9ff, #fcf300ff, #fedd00ff, #ffd200ff, #ffc600ff);
