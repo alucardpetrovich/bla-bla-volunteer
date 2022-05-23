@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from 'typeorm';
+import { ContactEntity } from '../contacts/db/contact.entity';
 import { UserInvolvementEntity } from '../involvements/db/user-involvement.entity';
 import { UserStatuses } from './types/user-statuses.enum';
 
@@ -28,6 +29,9 @@ export class UserEntity {
 
   @OneToMany(() => UserInvolvementEntity, (involvement) => involvement.user)
   involvements: UserInvolvementEntity[];
+
+  @OneToMany(() => ContactEntity, (c) => c.user)
+  contacts: ContactEntity[];
 
   @CreateDateColumn()
   createdAt: Date;

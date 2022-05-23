@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+
 import {
   IAuthCredentials,
   IAuthResponse,
@@ -6,33 +7,45 @@ import {
 import { IUser } from '../../models/userModel/userModel';
 import axios, { axiosPrivate } from '../axios';
 
-class AuthorizationAPI {
-  signUp = async (
-    credentials: IAuthCredentials,
-  ): Promise<AxiosResponse<IUser>> => {
-    const response = await axios.post(`/api/v1/auth/sign-up`, credentials);
-    return response;
-  };
+const signUp = async (
+  credentials: IAuthCredentials,
+): Promise<AxiosResponse<IUser>> => {
+  const response = await axios.post('/api/v1/auth/sign-up', credentials);
+  return response;
+};
 
-  signIn = async (
-    credentials: IAuthCredentials,
-  ): Promise<AxiosResponse<IAuthResponse>> => {
-    const response = await axios.post(`/api/v1/auth/sign-in`, credentials);
-    return response;
-  };
+const signIn = async (
+  credentials: IAuthCredentials,
+): Promise<AxiosResponse<IAuthResponse>> => {
+  const response = await axios.post('/api/v1/auth/sign-in', credentials);
+  return response;
+};
 
-  signOut = async (refreshToken: string): Promise<void> => {
-    await axios.delete(`/api/v1/auth/sign-out`, {
-      data: refreshToken,
-    });
-  };
+const signOut = async (refreshToken: string): Promise<void> => {
+  await axios.delete('/api/v1/auth/sign-out', {
+    data: refreshToken,
+  });
+};
 
-  //! remove, just for test auth & headers with token
-  exampleRequest = async () => {
-    const response = await axiosPrivate.get(`/api/v1/involvements/types`);
-    return response;
-  };
-}
+const refreshAuthToken = async (refreshToken: string) => {
+  const response = axios.post('/api/v1/auth/refresh', {
+    refreshToken: refreshToken,
+  });
+  return response;
+};
 
-const authorizationAPI = new AuthorizationAPI();
+//! remove, just for test auth & headers with token
+const exampleRequest = async () => {
+  const response = await axiosPrivate.get('/api/v1/involvements/types');
+  return response;
+};
+
+const authorizationAPI = {
+  signUp,
+  signIn,
+  signOut,
+  refreshAuthToken,
+  exampleRequest,
+};
+
 export default authorizationAPI;

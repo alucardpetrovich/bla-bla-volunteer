@@ -60,18 +60,6 @@ export class OrganizationsController {
     return { types };
   }
 
-  @Get('contacts/types')
-  @ApiOperation({ summary: 'Get list of available contact types' })
-  @ApiUnauthorizedResponse({ description: 'User is not authorized' })
-  @ApiOkResponse({
-    description: 'Organization types returned',
-    type: TypesSerializer,
-  })
-  async getContactTypes() {
-    const types = await this.service.getContactTypes();
-    return { types };
-  }
-
   @Put(':id')
   @ApiOperation({ summary: 'Update organization' })
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })

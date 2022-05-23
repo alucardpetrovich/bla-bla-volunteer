@@ -1,19 +1,17 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ContactsRepository } from '../contacts/db/contacts.repository';
 import { OrganizationsController } from './organizations.controller';
 import { OrganizationsService } from './organizations.service';
-import { ContactTypesRepository } from './repositories/contact-types.repository';
-import { OrganizationContactsRepository } from './repositories/organization-contacts.repository';
-import { OrganizationTypesRepository } from './repositories/organization-types.repository';
-import { OrganizationsRepository } from './repositories/organizations.repository';
+import { OrganizationTypesRepository } from './db/organization-types.repository';
+import { OrganizationsRepository } from './db/organizations.repository';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([
       OrganizationsRepository,
       OrganizationTypesRepository,
-      ContactTypesRepository,
-      OrganizationContactsRepository,
+      ContactsRepository,
     ]),
   ],
   controllers: [OrganizationsController],
