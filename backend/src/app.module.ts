@@ -12,6 +12,7 @@ import { CountriesModule } from './modules/countries/countries.module';
 import { ProductsModule } from './modules/products/products.module';
 import { DictionaryModule } from './modules/dictionary/dictionary.module';
 import { ContactsModule } from './modules/contacts/contacts.module';
+import { DonationsModule } from './modules/donations/donations.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { ContactsModule } from './modules/contacts/contacts.module';
     ProductsModule,
     DictionaryModule,
     ContactsModule,
+    DonationsModule,
   ],
   controllers: [],
   providers: [MailingService],

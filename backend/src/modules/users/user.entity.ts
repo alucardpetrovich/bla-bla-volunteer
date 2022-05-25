@@ -15,6 +15,9 @@ export class UserEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column({ default: '' })
+  nickname: string;
+
   @Column({ unique: true })
   email: string;
 

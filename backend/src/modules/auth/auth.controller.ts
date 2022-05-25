@@ -20,11 +20,12 @@ import {
 } from '@nestjs/swagger';
 import { ResponseInterceptor } from 'src/shared/interceptors/response.interceptor';
 import { AuthService } from './auth.service';
-import { AuthDto } from './dto/auth.dto';
+import { SignInDto } from './dto/sign-in.dto';
 import { RefreshTokenDto } from './dto/refresh-tokens.dto';
 import { RefreshTokensSerializer } from './serializers/refresh-tokens.serializer';
 import { SignInSerializer } from './serializers/sign-in.serializer';
 import { SignUpSerializer } from './serializers/sign-up.serializer';
+import { SignUpDto } from './dto/sign-up.dto';
 
 @Controller('/v1/auth')
 @ApiTags('Auth Controller')
@@ -39,8 +40,8 @@ export class AuthController {
     description: 'Registration succeeded',
     type: SignUpSerializer,
   })
-  async signUp(@Body() authDto: AuthDto): Promise<SignUpSerializer> {
-    const user = await this.service.signUp(authDto);
+  async signUp(@Body() dto: SignUpDto): Promise<SignUpSerializer> {
+    const user = await this.service.signUp(dto);
     return { user };
   }
 
@@ -65,7 +66,7 @@ export class AuthController {
     description: 'Signing in succeeded',
     type: SignInSerializer,
   })
-  async signIn(@Body() dto: AuthDto): Promise<SignInSerializer> {
+  async signIn(@Body() dto: SignInDto): Promise<SignInSerializer> {
     return this.service.signIn(dto);
   }
 

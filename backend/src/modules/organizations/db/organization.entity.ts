@@ -32,6 +32,9 @@ export class OrganizationEntity {
   @Column({ default: '' })
   address: string;
 
+  @Column({ default: '' })
+  imagePath: string;
+
   @Column()
   settlementId: string;
 
