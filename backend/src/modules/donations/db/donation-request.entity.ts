@@ -26,6 +26,9 @@ export class DonationRequestEntity {
   @Column('text', { default: '' })
   description: string;
 
+  @Column({ default: '' })
+  statusText: string;
+
   @Column('uuid')
   donorId: string;
 

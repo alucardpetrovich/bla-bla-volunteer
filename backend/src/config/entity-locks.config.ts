@@ -5,6 +5,9 @@ import { validateConfig } from './validate-config';
 export class EntityLocksConfig {
   @IsInt()
   maxUnfinishedRides: number;
+
+  @IsInt()
+  maxNewDonationRequests: number;
 }
 
 const configKey = 'entity-locks';

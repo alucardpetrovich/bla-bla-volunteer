@@ -5,4 +5,5 @@ export enum DonationRequestStatuses {
   RECEIVED = 'received',
   AUDITED = 'audited',
   CANCELLED = 'cancelled',
+  REJECTED = 'rejected',
 }

@@ -1,12 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DonationRequestsRepository } from './db/donation-requests.repository';
-import { DonationsController } from './donations.controller';
-import { DonationsService } from './donations.service';
+import { DonorDonationsController } from './donor-donations.controller';
+import { DonorDonationsService } from './donor-donations.service';
+import { HubDonationsController } from './hub-donations.controller';
+import { HubDonationsService } from './hub-donations.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([DonationRequestsRepository])],
-  controllers: [DonationsController],
-  providers: [DonationsService],
+  controllers: [DonorDonationsController, HubDonationsController],
+  providers: [DonorDonationsService, HubDonationsService],
 })
 export class DonationsModule {}
