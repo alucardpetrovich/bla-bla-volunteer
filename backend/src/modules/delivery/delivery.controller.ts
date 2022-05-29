@@ -10,27 +10,27 @@ import {
 import { Language } from 'src/shared/decorators/language.decorator';
 import { ResponseInterceptor } from 'src/shared/interceptors/response.interceptor';
 import { JwtGuard } from '../auth/guards/jwt.guard';
-import { ContactsService } from './contacts.service';
-import { ContactTypesListSerializer } from './serializers/contact-types-list.serializer';
+import { DeliveryService } from './delivery.service';
+import { DeliveryTypesListSerializer } from './serializers/delivery-types-list.serializer';
 
-@Controller('contacts')
+@Controller('v1/delivery')
 @UseGuards(JwtGuard)
-@ApiTags('Contacts Controller')
+@ApiTags('Delivery Controller')
 @ApiBearerAuth()
-export class ContactsController {
-  constructor(private service: ContactsService) {}
+export class DeliveryController {
+  constructor(private service: DeliveryService) {}
 
   @Get('types')
-  @UseInterceptors(new ResponseInterceptor(ContactTypesListSerializer))
-  @ApiOperation({ summary: 'Get list of available contact types' })
+  @UseInterceptors(new ResponseInterceptor(DeliveryTypesListSerializer))
+  @ApiOperation({ summary: 'Get list of available delivery types' })
   @ApiHeader({ name: 'Accept-Language' })
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiOkResponse({
-    description: 'Organization types returned',
-    type: ContactTypesListSerializer,
+    description: 'Delivery types returned',
+    type: DeliveryTypesListSerializer,
   })
   async getContactTypes(@Language() language: string) {
-    const types = await this.service.getContactTypes(language);
+    const types = await this.service.getDeliveryTypes(language);
     return { types };
   }
 }

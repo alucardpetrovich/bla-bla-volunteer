@@ -3,22 +3,22 @@ import { Transform } from 'class-transformer';
 import { IsInt, Max } from 'class-validator';
 
 export class PaginationDto {
-  @ApiProperty()
+  @ApiProperty({ name: 'pagination[page]' })
   @Transform(({ value }) => parseInt(value))
   @IsInt()
   page: number;
 
-  @ApiProperty()
+  @ApiProperty({ name: 'pagination[size]' })
   @IsInt()
   @Transform(({ value }) => parseInt(value))
   @Max(100)
-  pageSize: number;
+  size: number;
 
   getOffset(): number {
-    return (this.page - 1) * this.pageSize;
+    return (this.page - 1) * this.size;
   }
 
   getLimit(): number {
-    return this.pageSize;
+    return this.size;
   }
 }

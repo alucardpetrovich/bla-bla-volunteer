@@ -9,12 +9,12 @@ import {
   EntityLocksConfig,
   entityLocksConfig,
 } from 'src/config/entity-locks.config';
-import { PaginationDto } from 'src/shared/dto/pagination.dto';
 import { OrganizationsRepository } from '../organizations/db/organizations.repository';
 import { OrganizationTypes } from '../organizations/types/organization-types.enum';
 import { DonationRequestsRepository } from './db/donation-requests.repository';
 import { CreateDonationRequestDto } from './dto/create-donation-request.dto';
 import { DonorUpdateDonationRequestDto } from './dto/donor-update-donation-request.dto';
+import { GetDonationsListDto } from './dto/get-donations-list.dto';
 import { DonationRequestStatuses } from './types/donation-request-statuses.enum';
 import {
   DonationsFiniteStateMachine,
@@ -80,11 +80,13 @@ export class DonorDonationsService {
     });
   }
 
-  async getUserDonationsList(userId: string, dto: PaginationDto) {
+  async getUserDonationsList(userId: string, dto: GetDonationsListDto) {
+    const { pagination } = dto;
+
     return this.donationRequestsRepository.findUserDonationRequests(
       userId,
-      dto.getOffset(),
-      dto.getLimit(),
+      pagination.getOffset(),
+      pagination.getLimit(),
       this.relationsToSend,
     );
   }

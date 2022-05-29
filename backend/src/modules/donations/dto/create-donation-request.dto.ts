@@ -17,7 +17,7 @@ export class CreateDonationRequestDto {
   @IsOptional()
   description?: string;
 
-  @ApiProperty()
+  @ApiProperty({ type: DonationItemDto, isArray: true })
   @Type(() => DonationItemDto)
   @ValidateNested({ each: true })
   items: DonationItemDto[];

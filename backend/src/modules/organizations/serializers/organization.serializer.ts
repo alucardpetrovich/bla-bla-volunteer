@@ -1,7 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Expose, Type } from 'class-transformer';
 import { SettlementSerializer } from 'src/modules/settlements/serializers/settlement.serializer';
-import { ExposeTranslation } from 'src/shared/decorators/transform-obj.decorator';
 import { OrganizationContactSerializer } from './contact.serializer';
 
 export class OrganizationSerializer {
@@ -10,7 +9,7 @@ export class OrganizationSerializer {
   id: string;
 
   @ApiProperty()
-  @ExposeTranslation('name')
+  @Expose()
   name: string;
 
   @ApiProperty()

@@ -15,7 +15,7 @@ export class HubUpdateDonationRequestDto {
   @IsEnum(DonationRequestStatuses)
   status: DonationRequestStatuses;
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ required: false, type: DeliveryInfoBlockDto, isArray: true })
   @Type(() => DeliveryInfoBlockDto)
   @ValidateNested({ each: true })
   @ValidateIf((obj) => obj.status === DonationRequestStatuses.APPROVED)

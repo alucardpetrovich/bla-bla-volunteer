@@ -13,6 +13,7 @@ import { ProductsModule } from './modules/products/products.module';
 import { DictionaryModule } from './modules/dictionary/dictionary.module';
 import { ContactsModule } from './modules/contacts/contacts.module';
 import { DonationsModule } from './modules/donations/donations.module';
+import { DeliveryModule } from './modules/delivery/delivery.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { DonationsModule } from './modules/donations/donations.module';
     DictionaryModule,
     ContactsModule,
     DonationsModule,
+    DeliveryModule,
   ],
   controllers: [],
   providers: [MailingService],

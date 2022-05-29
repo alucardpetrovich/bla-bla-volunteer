@@ -20,7 +20,6 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { UserId } from 'src/shared/decorators/user-id.decorators';
-import { PaginationDto } from 'src/shared/dto/pagination.dto';
 import { ResponseInterceptor } from 'src/shared/interceptors/response.interceptor';
 import { JwtGuard } from '../auth/guards/jwt.guard';
 import { CreateDonationRequestDto } from './dto/create-donation-request.dto';
@@ -28,6 +27,7 @@ import { DonationSerializer } from './serializers/donation.serializer';
 import { DonationsListSerializer } from './serializers/donations-list.serializer';
 import { DonorDonationsService } from './donor-donations.service';
 import { DonorUpdateDonationRequestDto } from './dto/donor-update-donation-request.dto';
+import { GetDonationsListDto } from './dto/get-donations-list.dto';
 
 @Controller('/v1/donors/donations')
 @UseGuards(JwtGuard)
@@ -65,7 +65,7 @@ export class DonorDonationsController {
   })
   async getUserDonationsList(
     @UserId() userId: string,
-    @Query() dto: PaginationDto,
+    @Query() dto: GetDonationsListDto,
   ) {
     const donations = await this.service.getUserDonationsList(userId, dto);
     return { donations };

@@ -1,4 +1,5 @@
 import { PointDto } from 'src/shared/dto/point.dto';
+import { OrganizationRelations } from './organization-relations.enum';
 
 export interface HubsSearchParams {
   search?: string;
@@ -7,4 +8,6 @@ export interface HubsSearchParams {
   offset: number;
   limit: number;
   maxDistance: number;
+  relations: OrganizationRelations[];
+  userId: string;
 }

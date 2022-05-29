@@ -20,9 +20,9 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { UserId } from 'src/shared/decorators/user-id.decorators';
-import { PaginationDto } from 'src/shared/dto/pagination.dto';
 import { ResponseInterceptor } from 'src/shared/interceptors/response.interceptor';
 import { JwtGuard } from '../auth/guards/jwt.guard';
+import { GetDonationsListDto } from './dto/get-donations-list.dto';
 import { HubUpdateDonationRequestDto } from './dto/hub-update-donation-request.dto';
 import { HubDonationsService } from './hub-donations.service';
 import { DonationSerializer } from './serializers/donation.serializer';
@@ -52,7 +52,7 @@ export class HubDonationsController {
   async getHubDonationsList(
     @Param('hubId', ParseUUIDPipe) hubId: string,
     @UserId() userId: string,
-    @Query() dto: PaginationDto,
+    @Query() dto: GetDonationsListDto,
   ) {
     const donations = await this.service.getHubDonationsList(
       hubId,

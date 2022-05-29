@@ -1,41 +1,108 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { EntityRepository, Repository, SelectQueryBuilder } from 'typeorm';
 import { HubsSearchParams } from '../types/hubs-search-params.interface';
+import { OrganizationRelations } from '../types/organization-relations.enum';
+import { OrganizationTypes } from '../types/organization-types.enum';
 import { OrganizationEntity } from './organization.entity';
 
 @EntityRepository(OrganizationEntity)
 export class OrganizationsRepository extends Repository<OrganizationEntity> {
-  async findHubsList(params: HubsSearchParams) {
-    const query = this.createQueryBuilder('o')
-      .innerJoinAndSelect('o.name', 'on')
-      .innerJoinAndSelect('on.localizations', 'onl')
-      .innerJoinAndSelect('o.settlement', 'os')
-      .innerJoinAndSelect('os.name', 'osn')
-      .innerJoinAndSelect('osn.localizations', 'osnl')
+  async findOrganizationById(
+    id: string,
+    language: string,
+    userId: string,
+    relations: OrganizationRelations[],
+  ) {
+    const query = this.createQueryBuilder('o');
+    this.addRelations(query, relations);
 
-      .where('onl.language = :language')
-      .andWhere('osnl.language = :language');
+    return query
+      .andWhere('o.id = :id')
+
+      .setParameter('id', id)
+      .setParameter('language', language)
+      .setParameter('userId', userId)
+
+      .getOne();
+  }
+
+  async findHubsList(params: HubsSearchParams) {
+    const query = this.createQueryBuilder('o');
+
+    this.addRelations(query, params.relations);
+
+    query.andWhere('o.type IN (:...types)');
+
     if (params.search) {
       query
-        .andWhere('onl.text ILIKE :query')
-        .orderBy('onl.text = :name', 'DESC')
-        .addOrderBy('onl.text ILIKE :startsWith', 'DESC')
+        .andWhere('o.name ILIKE :query')
+
+        .orderBy('o.name = :name', 'DESC')
+        .addOrderBy('o.name ILIKE :startsWith', 'DESC')
+
         .setParameter('query', `%${params.search}%`)
         .setParameter('startsWith', `${params.search}%`)
         .setParameter('name', params.search);
     } else if (params.point) {
       query
         .andWhere(
-          `ST_Distance('POINT(:lon :lat)'::geography, os."centerLocation") < :maxDistance`,
+          `ST_Distance(ST_GeomFromGeoJSON(:point), os."centerLocation") < :maxDistance`,
         )
+
         .orderBy(
-          `ST_Distance('POINT(:lon :lat)'::geography, os."centerLocation")`,
+          `ST_Distance(ST_GeomFromGeoJSON(:point), os."centerLocation")`,
           'ASC',
         )
-        .setParameter('lon', params.point.lon)
-        .setParameter('lat', params.point.lat)
+
+        .setParameter(
+          'point',
+          JSON.stringify({
+            type: 'Point',
+            coordinates: [params.point.lon, params.point.lat],
+          }),
+          // `'POINT(${params.point.lon} ${params.point.lat})'::geography`,
+        )
         .setParameter('maxDistance', params.maxDistance);
     }
 
-    return query.offset(params.offset).limit(params.limit).getMany();
+    query
+      .offset(params.offset)
+      .limit(params.limit)
+      .setParameter('language', params.language)
+      .setParameter('types', [
+        OrganizationTypes.HUB,
+        OrganizationTypes.MOBILE_HUB,
+      ])
+      .setParameter('userId', params.userId);
+
+    console.log(query.getSql());
+
+    return query.getMany();
+  }
+
+  private addRelations(
+    query: SelectQueryBuilder<OrganizationEntity>,
+    relations: OrganizationRelations[],
+  ) {
+    if (relations.includes(OrganizationRelations.SETTLEMENT)) {
+      query
+        .innerJoinAndSelect('o.settlement', 'os')
+        .innerJoinAndSelect('os.name', 'osn')
+        .innerJoinAndSelect('osn.localizations', 'osnl')
+        .innerJoinAndSelect('os.district', 'osd')
+        .innerJoinAndSelect('osd.name', 'osdn')
+        .innerJoinAndSelect('osdn.localizations', 'osdnl')
+        .innerJoinAndSelect('os.region', 'osr')
+        .innerJoinAndSelect('osr.name', 'osrn')
+        .innerJoinAndSelect('osrn.localizations', 'osrnl')
+        .andWhere('osnl.language = :language')
+        .andWhere('osdnl.language = :language')
+        .andWhere('osrnl.language = :language');
+    }
+    if (relations.includes(OrganizationRelations.CONTACTS)) {
+      query.leftJoinAndSelect('o.contacts', 'oc');
+    }
+    if (relations.includes(OrganizationRelations.CONTACT_ACCESS)) {
+      query.leftJoinAndSelect('oc.accesses', 'oca', 'oca."userId" = :userId');
+    }
   }
 }

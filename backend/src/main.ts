@@ -3,6 +3,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { configureApp } from './configure-app';
 
+// TODO: add delivery types
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 

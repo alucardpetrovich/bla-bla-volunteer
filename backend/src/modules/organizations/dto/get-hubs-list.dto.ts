@@ -5,7 +5,7 @@ import { PaginationDto } from 'src/shared/dto/pagination.dto';
 import { PointDto } from 'src/shared/dto/point.dto';
 
 export class GetHubsListDto {
-  @ApiProperty()
+  @ApiProperty({ required: false })
   @Type(() => PointDto)
   @ValidateNested()
   @IsOptional()
@@ -16,7 +16,7 @@ export class GetHubsListDto {
   @ValidateNested()
   pagination: PaginationDto;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   @IsString()
   @IsOptional()
   search?: string;

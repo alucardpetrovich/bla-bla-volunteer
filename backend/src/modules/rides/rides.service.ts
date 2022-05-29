@@ -10,12 +10,12 @@ import {
   EntityLocksConfig,
   entityLocksConfig,
 } from 'src/config/entity-locks.config';
-import { PaginationDto } from 'src/shared/dto/pagination.dto';
 import { ChangeRideStatusDto } from './dto/change-ride-status.dto';
 import { RideDto } from './dto/ride.dto';
 import { RideRelations } from './db/ride.entity';
 import { RidesRepository } from './db/rides.repository';
 import { RideStatuses } from './types/ride-statuses.enum';
+import { GetRidesListDto } from './dto/get-rides-list.dto';
 
 @Injectable()
 export class RidesService {
@@ -57,10 +57,11 @@ export class RidesService {
     });
   }
 
-  async getRidesList(dto: PaginationDto) {
+  async getRidesList(dto: GetRidesListDto) {
+    const { pagination } = dto;
     return this.ridesRepository.find({
-      skip: dto.getOffset(),
-      take: dto.getLimit(),
+      skip: pagination.getOffset(),
+      take: pagination.getLimit(),
       relations: this.relationsToFetch,
     });
   }

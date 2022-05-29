@@ -5,10 +5,10 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { PaginationDto } from 'src/shared/dto/pagination.dto';
 import { OrganizationsRepository } from '../organizations/db/organizations.repository';
 import { OrganizationTypes } from '../organizations/types/organization-types.enum';
 import { DonationRequestsRepository } from './db/donation-requests.repository';
+import { GetDonationsListDto } from './dto/get-donations-list.dto';
 import { HubUpdateDonationRequestDto } from './dto/hub-update-donation-request.dto';
 import { DonationRequestStatuses } from './types/donation-request-statuses.enum';
 import {
@@ -53,7 +53,13 @@ export class HubDonationsService {
     private organizationsRepository: OrganizationsRepository,
   ) {}
 
-  async getHubDonationsList(hubId: string, userId: string, dto: PaginationDto) {
+  async getHubDonationsList(
+    hubId: string,
+    userId: string,
+    dto: GetDonationsListDto,
+  ) {
+    const { pagination } = dto;
+
     const hub = await this.organizationsRepository.findOne({ id: hubId });
     if (
       ![OrganizationTypes.HUB, OrganizationTypes.MOBILE_HUB].includes(hub?.type)
@@ -66,8 +72,8 @@ export class HubDonationsService {
 
     return this.donationRequestsRepository.findHubDonationRequests(
       hubId,
-      dto.getOffset(),
-      dto.getLimit(),
+      pagination.getOffset(),
+      pagination.getLimit(),
       this.relationsToSend,
     );
   }
