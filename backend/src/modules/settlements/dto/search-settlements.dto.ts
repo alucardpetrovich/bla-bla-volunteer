@@ -6,7 +6,7 @@ export class SearchSettlementsDto {
   @ApiProperty()
   @IsString()
   @MinLength(2)
-  query: string;
+  search: string;
 
   @ApiPropertyOptional()
   @Transform(({ value }) => parseInt(value || 1))

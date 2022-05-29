@@ -1,6 +1,7 @@
 import {
   ConflictException,
   ForbiddenException,
+  Inject,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -9,6 +10,11 @@ import { ContactsRepository } from '../contacts/db/contacts.repository';
 import { OrganizationDto } from './dto/organization.dto';
 import { OrganizationTypesRepository } from './db/organization-types.repository';
 import { OrganizationsRepository } from './db/organizations.repository';
+import { GetHubsListDto } from './dto/get-hubs-list.dto';
+import {
+  EntityLocksConfig,
+  entityLocksConfig,
+} from 'src/config/entity-locks.config';
 
 @Injectable()
 export class OrganizationsService {
@@ -19,6 +25,8 @@ export class OrganizationsService {
     private organizationTypesRepository: OrganizationTypesRepository,
     @InjectRepository(ContactsRepository)
     private contactsRepository: ContactsRepository,
+    @Inject(entityLocksConfig.KEY)
+    private entityLocksConfig: EntityLocksConfig,
   ) {}
 
   async createOrganization(creatorId: string, dto: OrganizationDto) {
@@ -59,5 +67,17 @@ export class OrganizationsService {
     );
 
     return organizationUpdated;
+  }
+
+  async getHubsList(dto: GetHubsListDto, language: string) {
+    return this.organizationsRepository.findHubsList({
+      search: dto.search,
+      point: dto.point,
+      language,
+      offset: dto.pagination.getOffset(),
+      limit: dto.pagination.getLimit(),
+      maxDistance:
+        this.entityLocksConfig.maxHubsSearchDistanceKilometers * 1000,
+    });
   }
 }
