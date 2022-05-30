@@ -9,7 +9,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity, UserRelations } from '../users/user.entity';
 import { UsersRepository } from '../users/users.repository';
-import { AuthDto } from './dto/auth.dto';
+import { SignInDto } from './dto/sign-in.dto';
 import * as bcrypt from 'bcryptjs';
 import { GeneralConfig, generalConfig } from 'src/config/general.config';
 import { UserStatuses } from '../users/types/user-statuses.enum';
@@ -22,6 +22,7 @@ import { JwtPayload, JwtTypes } from './types/jwt-payload.interface';
 import { SignInSerializer } from './serializers/sign-in.serializer';
 import { RefreshTokenDto } from './dto/refresh-tokens.dto';
 import { RevokedTokensRepository } from './revoked-tokens.repository';
+import { SignUpDto } from './dto/sign-up.dto';
 
 @Injectable()
 export class AuthService {
@@ -36,8 +37,8 @@ export class AuthService {
     private revokedTokensRepository: RevokedTokensRepository,
   ) {}
 
-  async signUp(dto: AuthDto): Promise<UserEntity> {
-    const { email, password } = dto;
+  async signUp(dto: SignUpDto): Promise<UserEntity> {
+    const { nickname, email, password } = dto;
 
     const existingUser = await this.usersRepository.findOne({ email });
     if (existingUser) {
@@ -50,6 +51,7 @@ export class AuthService {
     );
 
     const user = await this.usersRepository.save({
+      nickname,
       email,
       passwordHash,
       status: UserStatuses.VERIFICATION_NEEDED,
@@ -61,7 +63,7 @@ export class AuthService {
     return user;
   }
 
-  async signIn(dto: AuthDto): Promise<SignInSerializer> {
+  async signIn(dto: SignInDto): Promise<SignInSerializer> {
     const { email, password } = dto;
 
     const user = await this.usersRepository.findOne(

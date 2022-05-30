@@ -6,10 +6,12 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
+import { AccessModes } from '../types/access-modes.enum';
+import { ContactAccessEntity } from './contact-access.entity';
 import { ContactTypeEntity } from './contact-type.entity';
 
-// TODO: add access_modes enum
 // TODO: add contact_types migration
 
 @Entity('contacts')
@@ -23,8 +25,8 @@ export class ContactEntity {
   @Column('uuid', { nullable: true })
   userId: string | null;
 
-  @Column()
-  accessMode: string;
+  @Column('varchar')
+  accessMode: AccessModes;
 
   @Column()
   type: string;
@@ -32,10 +34,10 @@ export class ContactEntity {
   @Column()
   value: string;
 
-  @Column()
+  @Column({ default: false })
   verified: boolean;
 
-  @ManyToOne(() => OrganizationEntity)
+  @ManyToOne(() => OrganizationEntity, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'organizationId', referencedColumnName: 'id' })
   organization: OrganizationEntity | null;
 
@@ -46,4 +48,7 @@ export class ContactEntity {
   @ManyToOne(() => ContactTypeEntity)
   @JoinColumn({ name: 'type', referencedColumnName: 'type' })
   typeRef: ContactTypeEntity;
+
+  @OneToMany(() => ContactAccessEntity, (ca) => ca.contact)
+  accesses: ContactAccessEntity[];
 }

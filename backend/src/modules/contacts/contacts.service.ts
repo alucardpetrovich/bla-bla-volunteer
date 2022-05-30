@@ -9,10 +9,7 @@ export class ContactsService {
     private contactTypesRepository: ContactTypesRepository,
   ) {}
 
-  async getContactTypes(): Promise<string[]> {
-    const types = await this.contactTypesRepository.find({
-      relations: ['name'],
-    });
-    return types.map((t) => t.type);
+  async getContactTypes(language: string) {
+    return this.contactTypesRepository.findContactTypes(language);
   }
 }

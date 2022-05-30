@@ -23,10 +23,10 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { UserId } from 'src/shared/decorators/user-id.decorators';
-import { PaginationDto } from 'src/shared/dto/pagination.dto';
 import { ResponseInterceptor } from 'src/shared/interceptors/response.interceptor';
 import { JwtGuard } from '../auth/guards/jwt.guard';
 import { ChangeRideStatusDto } from './dto/change-ride-status.dto';
+import { GetRidesListDto } from './dto/get-rides-list.dto';
 import { RideDto } from './dto/ride.dto';
 import { RidesService } from './rides.service';
 import { RideSerializer } from './serializers/ride.serializer';
@@ -61,7 +61,7 @@ export class RidesController {
     description: 'Rides page returned',
     type: RidesListSerializer,
   })
-  async getRidesList(@Query() dto: PaginationDto) {
+  async getRidesList(@Query() dto: GetRidesListDto) {
     const rides = await this.service.getRidesList(dto);
     return { rides };
   }

@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsOptional, IsString, IsUUID, ValidateNested } from 'class-validator';
-import { ContactDto } from './contact.dto';
+import { ContactDto } from '../../contacts/dto/contact.dto';
+import { OrganizationTypes } from '../types/organization-types.enum';
 
 export class OrganizationDto {
   @ApiProperty()
@@ -10,9 +11,9 @@ export class OrganizationDto {
 
   @ApiProperty()
   @IsString()
-  type: string;
+  type: OrganizationTypes;
 
-  @ApiProperty()
+  @ApiProperty({ type: 'string', required: false })
   @IsString()
   @IsOptional()
   address = '';
@@ -23,6 +24,6 @@ export class OrganizationDto {
 
   @ApiProperty({ type: ContactDto, isArray: true })
   @Type(() => ContactDto)
-  @ValidateNested()
+  @ValidateNested({ each: true })
   contacts: ContactDto[];
 }
