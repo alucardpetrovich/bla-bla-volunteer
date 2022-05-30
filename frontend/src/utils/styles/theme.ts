@@ -1,20 +1,21 @@
-import { createTheme } from '@mui/material';
+import { deepPurple, grey, lime, yellow } from '@mui/material/colors';
+import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#3F8AE0',
+      main: deepPurple[400],
     },
     secondary: {
-      main: '#326eb3',
-    },
-    bg: {
-      main: '#fff',
-      light: '#F4F5F7',
+      main: lime[400],
     },
     text: {
-      main: '#172B4D',
-      light: '#262930',
+      primary: grey[900],
+      secondary: deepPurple[400],
+    },
+    background: {
+      default: '',
+      paper: '',
     },
   },
 });

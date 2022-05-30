@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
     "@formatjs/intl": "^2.2.1",
     "@formatjs/ts-transformer": "^3.9.4",
     "@mui/material": "^5.8.0",

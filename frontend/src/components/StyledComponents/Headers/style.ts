@@ -13,7 +13,8 @@ export interface IHeader {
 }
 
 export const HeaderH1 = styled.h1<IHeader>`
-  color: ${({ color }) => color || 'var(--text-dark)'};
+  color: ${({ theme, color }) =>
+    color ? color : theme.palette.secondary.main};
   font-size: 56px;
   line-height: 1.2;
   font-weight: ${({ fontWeight }) => fontWeight};
@@ -21,7 +22,7 @@ export const HeaderH1 = styled.h1<IHeader>`
 `;
 
 export const HeaderH2 = styled.h2<IHeader>`
-  color: ${({ color }) => color || 'var(--text-dark)'};
+  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
   font-size: 48px;
   line-height: 1.2;
   font-weight: ${({ isBold }) => (isBold ? '900' : '400')};
@@ -29,7 +30,7 @@ export const HeaderH2 = styled.h2<IHeader>`
 `;
 
 export const HeaderH3 = styled.h2<IHeader>`
-  color: ${({ color }) => color || 'var(--text-dark)'};
+  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
   font-size: 20px;
   line-height: 1.2;
   font-weight: ${({ isBold }) => (isBold ? '900' : '400')};

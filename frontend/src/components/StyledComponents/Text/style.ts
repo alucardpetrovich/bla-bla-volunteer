@@ -17,7 +17,7 @@ export const TextP = styled.p<IText>`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2;
-  color: ${({ color }) => color || 'var(--text-dark)'};
+  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
   text-align: justify;
   white-space: wrap;
 `;

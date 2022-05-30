@@ -31,7 +31,7 @@ const Layout: FC = () => {
             </Text>
             consectetur adipisicing elit. Porro saepe dignissimos tenetur fugiat
             sed!{' '}
-            <Text color="var(--accent-blue)">
+            <Text color="grey">
               Cumque perferendis repellendus consequuntur soluta aspernatur
               illum sint! Unde a molestias officia odit tenetur tempora vero!
             </Text>
