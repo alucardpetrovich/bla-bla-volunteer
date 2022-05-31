@@ -1,22 +1,15 @@
 import { AxiosResponse } from 'axios';
 
-import {
-  IAuthCredentials,
-  IAuthResponse,
-} from '../../models/authModel/authModel';
+import { IAuthCredentials, IAuthResponse } from '../../models/authModel/authModel';
 import { IUser } from '../../models/userModel/userModel';
 import axios, { axiosPrivate } from '../axios';
 
-const signUp = async (
-  credentials: IAuthCredentials,
-): Promise<AxiosResponse<IUser>> => {
+const signUp = async (credentials: IAuthCredentials): Promise<AxiosResponse<IUser>> => {
   const response = await axios.post('/api/v1/auth/sign-up', credentials);
   return response;
 };
 
-const signIn = async (
-  credentials: IAuthCredentials,
-): Promise<AxiosResponse<IAuthResponse>> => {
+const signIn = async (credentials: IAuthCredentials): Promise<AxiosResponse<IAuthResponse>> => {
   const response = await axios.post('/api/v1/auth/sign-in', credentials);
   return response;
 };

@@ -12,6 +12,9 @@ const auth = (state = { ...initialState }, { type, payload }) => {
     case authActionTypes.LOGIN_SUCCESS:
       return { ...payload, isAuthenticated: true };
 
+    case authActionTypes.LOGIN_ERROR:
+      return { ...initialState, error: payload };
+
     case authActionTypes.LOGOUT_SUCCESS:
       return { ...initialState };
 
