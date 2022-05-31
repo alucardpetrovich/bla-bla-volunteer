@@ -11,6 +11,7 @@ import {
 } from 'typeorm';
 import { SettlementEntity } from '../../settlements/db/settlement.entity';
 import { UserEntity } from '../../users/user.entity';
+import { OrganizationTypes } from '../types/organization-types.enum';
 import { OrganizationTypeEntity } from './organization-type.entity';
 
 // TODO: add organization statuses
@@ -24,13 +25,16 @@ export class OrganizationEntity {
   name: string;
 
   @Column()
-  type: string;
+  type: OrganizationTypes;
 
   @Column()
   status: string;
 
   @Column({ default: '' })
   address: string;
+
+  @Column({ default: '' })
+  imagePath: string;
 
   @Column()
   settlementId: string;

@@ -5,6 +5,7 @@ import { OrganizationsController } from './organizations.controller';
 import { OrganizationsService } from './organizations.service';
 import { OrganizationTypesRepository } from './db/organization-types.repository';
 import { OrganizationsRepository } from './db/organizations.repository';
+import { HubsController } from './hubs.controller';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { OrganizationsRepository } from './db/organizations.repository';
       ContactsRepository,
     ]),
   ],
-  controllers: [OrganizationsController],
+  controllers: [OrganizationsController, HubsController],
   providers: [OrganizationsService],
 })
 export class OrganizationsModule {}
