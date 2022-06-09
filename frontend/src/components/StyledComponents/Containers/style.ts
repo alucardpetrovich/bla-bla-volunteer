@@ -28,24 +28,24 @@ const Container = styled.div`
 `;
 
 export const ContentContainer = styled.div<IContainer>`
-  /* background-color: var(--fifth-blue); */
   height: 100vh;
   display: flex;
   flex-direction: column;
 `;
 
 export const HeaderContainer = styled(Container)<IContainer>`
-  /* background-color: var(--fourth-blue); */
   padding-top: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const MainContainer = styled(Container)<IContainer>`
   flex: 1;
-  /* background-color: var(--third-jeans); */
   padding: 100px 0px 200px;
 `;
 
 export const FooterContainer = styled(Container)<IContainer>`
-  /* background-color: var(--secondary-blue);  */
   padding-bottom: 100px;
 `;
