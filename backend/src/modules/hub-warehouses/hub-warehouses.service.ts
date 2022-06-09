@@ -21,11 +21,7 @@ export class HubWarehousesService {
     dto: HubWarehouseItemDto,
     language: string,
   ) {
-    const hub = await this.organizationsRepository.findOne(hubId);
-    if (!hub || hub.createdBy !== userId) {
-      throw new NotFoundException(`Hub '${hubId}' not found`);
-    }
-
+    await this.validateHub(hubId, userId);
     const item = await this.hubWarehouseItemsRepository.save({
       ...dto,
       hubId,
@@ -45,11 +41,7 @@ export class HubWarehousesService {
   ) {
     const { pagination } = dto;
 
-    const hub = await this.organizationsRepository.findOne(hubId);
-    if (!hub || hub.createdBy !== userId) {
-      throw new NotFoundException(`Hub '${hubId}' not found`);
-    }
-
+    await this.validateHub(hubId, userId);
     return this.hubWarehouseItemsRepository.findItems({
       offset: pagination.getOffset(),
       limit: pagination.getLimit(),
@@ -61,11 +53,51 @@ export class HubWarehousesService {
     });
   }
 
-  async deleteWarehouseItem(itemId: string, hubId: string, userId: string) {
-    const hub = await this.organizationsRepository.findOne(hubId);
-    if (!hub || hub.createdBy !== userId) {
-      throw new NotFoundException(`Hub '${hubId}' not found`);
+  async getWarehouseItemById(
+    itemId: string,
+    hubId: string,
+    userId: string,
+    language: string,
+  ) {
+    await this.validateHub(hubId, userId);
+
+    const item = await this.hubWarehouseItemsRepository.findById(
+      itemId,
+      language,
+      [HubWarehouseItemRelations.HUB, HubWarehouseItemRelations.PRODUCT],
+    );
+    if (!item || item.hubId !== hubId) {
+      throw new NotFoundException(`Item '${itemId}' not found`);
     }
+
+    return item;
+  }
+
+  async updateWarehouseItemById(
+    itemId: string,
+    hubId: string,
+    userId: string,
+    dto: HubWarehouseItemDto,
+    language: string,
+  ) {
+    await this.validateHub(hubId, userId);
+
+    const res = await this.hubWarehouseItemsRepository.update(
+      { hubId, id: itemId },
+      { ...dto },
+    );
+    if (res.affected < 1) {
+      throw new NotFoundException('Hub warehouse item not found');
+    }
+
+    return this.hubWarehouseItemsRepository.findById(itemId, language, [
+      HubWarehouseItemRelations.HUB,
+      HubWarehouseItemRelations.PRODUCT,
+    ]);
+  }
+
+  async deleteWarehouseItem(itemId: string, hubId: string, userId: string) {
+    await this.validateHub(hubId, userId);
 
     const res = await this.hubWarehouseItemsRepository.delete({
       hubId,
@@ -74,5 +106,14 @@ export class HubWarehousesService {
     if (res.affected < 1) {
       throw new NotFoundException('Hub warehouse item not found');
     }
+  }
+
+  async validateHub(hubId: string, userId: string) {
+    const hub = await this.organizationsRepository.findOne(hubId);
+    if (!hub || hub.createdBy !== userId) {
+      throw new NotFoundException(`Hub '${hubId}' not found`);
+    }
+
+    return hub;
   }
 }

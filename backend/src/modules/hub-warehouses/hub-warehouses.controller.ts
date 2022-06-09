@@ -7,6 +7,7 @@ import {
   Param,
   ParseUUIDPipe,
   Post,
+  Put,
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
@@ -38,10 +39,6 @@ import { HubWarehouseItemsListSerializer } from './serializers/hub-warehouse-ite
 export class HubWarehousesController {
   constructor(private service: HubWarehousesService) {}
 
-  // TODO: get warehouse items list
-  // TODO: create warehouse item
-  // TODO: update warehouse item
-  // TODO: delete warehouse item
   @Post()
   @UseInterceptors(new ResponseInterceptor(HubWarehouseItemSerializer))
   @ApiOperation({ summary: 'Create new hub warehouse item' })
@@ -67,7 +64,10 @@ export class HubWarehousesController {
   @ApiHeader({ name: 'Accept-Language' })
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiNotFoundResponse({ description: 'Hub not found' })
-  @ApiOkResponse({ description: 'New hub warehouse item created' })
+  @ApiOkResponse({
+    description: 'Hub warehouse items returned',
+    type: HubWarehouseItemsListSerializer,
+  })
   async getWarehouseItemsList(
     @Param('hubId', ParseUUIDPipe) hubId: string,
     @UserId() userId: string,
@@ -81,6 +81,49 @@ export class HubWarehousesController {
       language,
     );
     return { items };
+  }
+
+  @Get(':itemId')
+  @UseInterceptors(new ResponseInterceptor(HubWarehouseItemSerializer))
+  @ApiOperation({ summary: 'Get hub warehouse item by id' })
+  @ApiUnauthorizedResponse({ description: 'User is not authorized' })
+  @ApiNotFoundResponse({ description: 'Hub Warehouse Item not found' })
+  @ApiOkResponse({
+    description: 'Hub warehouse item returned',
+    type: HubWarehouseItemSerializer,
+  })
+  async getWarehouseItemById(
+    @Param('hubId', ParseUUIDPipe) hubId: string,
+    @Param('itemId', ParseUUIDPipe) itemId: string,
+    @UserId() userId: string,
+    @Language() language: string,
+  ) {
+    return this.service.getWarehouseItemById(itemId, hubId, userId, language);
+  }
+
+  @Put(':itemId')
+  @UseInterceptors(new ResponseInterceptor(HubWarehouseItemSerializer))
+  @ApiOperation({ summary: 'Update hub warehouse item' })
+  @ApiUnauthorizedResponse({ description: 'User is not authorized' })
+  @ApiNotFoundResponse({ description: 'Hub Warehouse Item not found' })
+  @ApiOkResponse({
+    description: 'Hub warehouse item updated',
+    type: HubWarehouseItemSerializer,
+  })
+  async updateWarehouseItem(
+    @Param('hubId', ParseUUIDPipe) hubId: string,
+    @Param('itemId', ParseUUIDPipe) itemId: string,
+    @Body() dto: HubWarehouseItemDto,
+    @UserId() userId: string,
+    @Language() language: string,
+  ) {
+    return this.service.updateWarehouseItemById(
+      itemId,
+      hubId,
+      userId,
+      dto,
+      language,
+    );
   }
 
   @Delete(':itemId')

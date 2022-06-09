@@ -13,7 +13,7 @@ export class HubWarehouseItemsRepository extends Repository<HubWarehouseItemEnti
     const query = this.createQueryBuilder('hwi');
     this.addRelations(query, relations);
 
-    query
+    return query
       .andWhere('hwi.id = :id', { id })
       .setParameter('language', language)
 
