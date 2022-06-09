@@ -12,9 +12,7 @@ const Layout: FC = () => {
       <GlobalFonts />
       <GlobalStyle />
       <Container tag="content">
-        <Container tag="header">
-          <Header />
-        </Container>
+        <Header />
         <Container tag="main">
           <Roots />
           <Heading tag="h2">h2</Heading>
