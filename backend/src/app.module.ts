@@ -14,6 +14,7 @@ import { DictionaryModule } from './modules/dictionary/dictionary.module';
 import { ContactsModule } from './modules/contacts/contacts.module';
 import { DonationsModule } from './modules/donations/donations.module';
 import { DeliveryModule } from './modules/delivery/delivery.module';
+import { HubWarehousesModule } from './modules/hub-warehouses/hub-warehouses.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { DeliveryModule } from './modules/delivery/delivery.module';
     ContactsModule,
     DonationsModule,
     DeliveryModule,
+    HubWarehousesModule,
   ],
   controllers: [],
   providers: [MailingService],
