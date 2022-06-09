@@ -25,7 +25,7 @@ const loginSuccess = user => ({
 
 const loginError = error => ({
   type: authActionTypes.LOGIN_ERROR,
-  payload: error,
+  payload: error.response.data.message,
 });
 
 const logoutRequest = () => ({

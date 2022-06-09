@@ -31,11 +31,11 @@ const GlobalStyle = createGlobalStyle`
   :root {
 
     /*PALLET*/
---accent-yellow: #DEDF79;
+/* --accent-yellow: #DEDF79;
 --accent-blue: #A29BC7;
 --grey:#F3F3F7;
 --white:#FCFCFD;
---text-dark:#323434;
+--text-dark:#323434; */
 
 /* SCSS Gradient */
 $gradient-top: linear-gradient(0deg, #072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a2d6f9ff, #fcf300ff, #fedd00ff, #ffd200ff, #ffc600ff);

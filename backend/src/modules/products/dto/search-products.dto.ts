@@ -1,12 +1,12 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
-import { IsInt, IsString, IsUUID, Min, MinLength } from 'class-validator';
+import { IsInt, IsOptional, IsString, IsUUID, Min } from 'class-validator';
 
 export class SearchProductsDto {
-  @ApiProperty()
+  @ApiProperty({ required: false })
   @IsString()
-  @MinLength(2)
-  query: string;
+  @IsOptional()
+  query?: string;
 
   @ApiProperty()
   @IsUUID()

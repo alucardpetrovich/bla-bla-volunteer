@@ -15,7 +15,7 @@ export class SettlementsService {
   async searchSettlements(dto: SearchSettlementsDto, language: string) {
     const offset = (dto.page - 1) * this.PAGE_SIZE;
     return this.settlementsRepository.searchSettlements({
-      query: dto.query,
+      query: dto.search,
       offset,
       limit: this.PAGE_SIZE,
       language,

@@ -9,6 +9,10 @@ export class UserSerializer {
 
   @ApiProperty()
   @Expose()
+  nickname: string;
+
+  @ApiProperty()
+  @Expose()
   status: string;
 
   @ApiProperty()

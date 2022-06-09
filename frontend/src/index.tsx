@@ -8,6 +8,8 @@ import messages_ua from './locales/ua.json';
 import messages_ru from './locales/ru.json';
 import store, { persistor } from './redux/store';
 import App from './pages/App/index';
+import { theme } from 'utils/styles';
+import { ThemeProvider } from 'styled-components';
 
 const messages = {
   ua: messages_ua,
@@ -16,14 +18,16 @@ const messages = {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const language = navigator.language.split(/[-_]/)[0];
-
+console.log('themeRoot', theme);
 root.render(
   <StrictMode>
     <BrowserRouter>
       <IntlProvider locale={language} messages={messages[language]}>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            <App />
+            <ThemeProvider theme={theme}>
+              <App />
+            </ThemeProvider>
           </PersistGate>
         </Provider>
       </IntlProvider>
