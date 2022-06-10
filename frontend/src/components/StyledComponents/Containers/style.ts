@@ -5,6 +5,7 @@ type ContainerTypes = 'content' | 'header' | 'main' | 'footer';
 export interface IContainer {
   tag?: ContainerTypes;
   children: any;
+  isAuth?: boolean;
 }
 
 const Container = styled.div`
@@ -36,9 +37,11 @@ export const ContentContainer = styled.div<IContainer>`
 export const HeaderContainer = styled(Container)<IContainer>`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: ${({ isAuth }) => (isAuth ? '' : '100vh')};
   justify-content: space-between;
-  padding: 40px 0px 100px;
+  padding: ${({ isAuth }) => (isAuth ? '' : '40px 0px 100px')};
+  position: ${({ isAuth }) => isAuth && 'relative'};
+  top: ${({ isAuth }) => isAuth && '20%'};
 `;
 
 export const MainContainer = styled(Container)<IContainer>`
