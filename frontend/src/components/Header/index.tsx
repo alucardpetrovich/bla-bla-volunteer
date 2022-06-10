@@ -23,14 +23,14 @@ const Header = () => {
   const lang = useSelector(state => 'ua');
 
   const navigate = useNavigate();
-  const routeChange = () => navigate(`/${lang}/registration`);
+  const routeChange = (page: string) => navigate(`/${lang}${page}`);
 
   return (
     <header>
       <HeaderBg isAuth={isAuth}>
         <Container tag="header" isAuth={isAuth}>
           <NavWrapper>
-            <Logo height="70px" />
+            <Logo height="70px" onClick={() => routeChange('')} style={{ cursor: 'pointer' }} />
             {isAuth ? <button onClick={handleLogOut}>Sign Out</button> : null}
             <div style={{ display: 'flex' }}>
               <Navigation style={{ marginRight: '30px' }} />
@@ -46,7 +46,7 @@ const Header = () => {
                 <Text tag="b1" style={{ width: '345px' }}>
                   Зареєструйся та стань частиною українського волонтерського руху
                 </Text>
-                <SignUpButton onClick={routeChange}>
+                <SignUpButton onClick={() => routeChange('/registration')}>
                   <Text tag="b1">реєстрація</Text>
                   <ArrowRight />
                 </SignUpButton>
