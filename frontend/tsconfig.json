@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "noImplicitAny": true,
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -26,7 +25,7 @@
       "components": ["components/"],
       "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
     }
-  },, "src/assets/images/.d.ts"
+  },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "**/node_modules", "dist", "yarn.lock", "./build/*", "build", "./build/**/*", ".vscode"]
 }

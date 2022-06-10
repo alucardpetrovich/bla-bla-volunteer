@@ -34,11 +34,11 @@ export const ContentContainer = styled.div<IContainer>`
 `;
 
 export const HeaderContainer = styled(Container)<IContainer>`
-  padding-top: 40px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  height: 100vh;
   justify-content: space-between;
+  padding: 40px 0px 100px;
 `;
 
 export const MainContainer = styled(Container)<IContainer>`

@@ -10,6 +10,7 @@ export interface IHeader {
   fontWeight?: any;
   lineHeight?: any;
   children: any;
+  style?: any;
 }
 
 export const HeaderH2 = styled.h2<IHeader>`
