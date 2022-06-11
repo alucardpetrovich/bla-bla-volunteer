@@ -8,6 +8,7 @@ import HeaderBg from './components/HeaderBg';
 import { HeaderSubtitleWrapper, HeaderTitleWrapper, NavWrapper, SignUpButton } from './style';
 import ArrowRight from 'components/atoms/ArrowRight';
 import { PATHS } from 'constants/PATH';
+import { useTheme } from 'styled-components';
 
 const Header = () => {
   const isAuth: boolean = useSelector((state: any) => state.auth.isAuthenticated);
@@ -23,6 +24,8 @@ const Header = () => {
 
   const lang = useSelector(state => 'ua');
   const navigate = useNavigate();
+
+  const theme = useTheme();
 
   return (
     <header>
@@ -49,7 +52,10 @@ const Header = () => {
                 <Text tag="b1" style={{ width: '345px' }}>
                   Зареєструйся та стань частиною українського волонтерського руху
                 </Text>
-                <SignUpButton onClick={() => navigate(generatePath(PATHS.REGISTRATION.path, { lang }))}>
+                <SignUpButton
+                  color={theme.palette.text.primary}
+                  onClick={() => navigate(generatePath(PATHS.REGISTRATION.path, { lang }))}
+                >
                   <Text tag="b1">реєстрація</Text>
                   <ArrowRight />
                 </SignUpButton>

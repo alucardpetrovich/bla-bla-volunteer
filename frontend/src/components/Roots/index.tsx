@@ -3,7 +3,7 @@ import useRoutesConstants from '../../hooks/useRoutes';
 
 const Roots: FC = () => {
   const routes = useRoutesConstants();
-  return <main>{routes}</main>;
+  return <>{routes}</>;
 };
 
 export default Roots;
