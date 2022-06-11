@@ -11,6 +11,7 @@ export interface IText {
   lineHeight?: any;
   children: any;
   href?: string;
+  style?: any;
 }
 
 export const TextB1 = styled.p<IText>`

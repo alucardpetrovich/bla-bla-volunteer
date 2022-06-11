@@ -18,7 +18,6 @@ const messages = {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const language = navigator.language.split(/[-_]/)[0];
-console.log('themeRoot', theme);
 root.render(
   <StrictMode>
     <BrowserRouter>

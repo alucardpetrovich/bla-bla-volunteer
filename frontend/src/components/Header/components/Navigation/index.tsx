@@ -5,25 +5,22 @@ import { linksNav } from './constants/listNav';
 import { getIsAuth } from 'redux/auth/authSelectors';
 import { FlexDiv } from 'components/StyledComponents/Flex/style';
 
-const Navigation = () => {
+const Navigation = ({ style }) => {
   const isAuth = useSelector(getIsAuth);
   const lang = useSelector(state => 'ua');
 
   return (
-    <nav>
+    <nav style={style}>
       <ul>
         <FlexDiv container justifyContent="flex-end">
           {linksNav.map(({ path, text, privateRoute, restricted }) => {
-            if ((privateRoute && !isAuth) || (restricted && isAuth))
-              return null;
+            if ((privateRoute && !isAuth) || (restricted && isAuth)) return null;
 
             return (
               <li key={text}>
                 <NavLink
                   to={`/${generatePath(path, { lang })}`}
-                  style={({ isActive }) =>
-                    isActive ? { color: 'orange' } : undefined
-                  }
+                  style={({ isActive }) => (isActive ? { color: 'orange' } : undefined)}
                   end
                 >
                   {text}

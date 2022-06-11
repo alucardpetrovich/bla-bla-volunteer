@@ -27,14 +27,5 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": [
-    "node_modules",
-    "**/node_modules",
-    "dist",
-    "yarn.lock",
-    "./build/*",
-    "build",
-    "./build/**/*",
-    ".vscode"
-  ]
+  "exclude": ["node_modules", "**/node_modules", "dist", "yarn.lock", "./build/*", "build", "./build/**/*", ".vscode"]
 }
