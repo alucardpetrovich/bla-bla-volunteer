@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { generatePath, useNavigate } from 'react-router-dom';
+import { useTheme } from 'styled-components';
 
 import { PATHS } from '../../constants/PATH';
 import { userLogOut } from '../../store';
@@ -35,6 +36,8 @@ const Header = () => {
   const lang = useSelector(state => 'ua');
   const navigate = useNavigate();
 
+  const theme = useTheme();
+
   return (
     <header>
       <HeaderBg isAuth={isAuth}>
@@ -60,7 +63,10 @@ const Header = () => {
                 <Text tag="b1" style={{ width: '345px' }}>
                   Зареєструйся та стань частиною українського волонтерського руху
                 </Text>
-                <SignUpButton onClick={() => navigate(generatePath(PATHS.REGISTRATION.path, { lang }))}>
+                <SignUpButton
+                  color={theme.palette.text.primary}
+                  onClick={() => navigate(generatePath(PATHS.REGISTRATION.path, { lang }))}
+                >
                   <Text tag="b1">реєстрація</Text>
                   <ArrowRight />
                 </SignUpButton>
