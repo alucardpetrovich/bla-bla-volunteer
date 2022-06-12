@@ -7,6 +7,7 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -17,10 +18,21 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "typescript", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "react",
+    "typescript",
+    "@typescript-eslint",
+    "prettier",
+    "simple-import-sort"
+  ],
   "rules": {
+    "strict": ["error", "never"],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "error",
     "dot-notation": "off",
-    "quotes": [2, "single", "backtick"],
+    "quotes": [2, "single"],
     "react/jsx-filename-extension": [
       2,
       {
