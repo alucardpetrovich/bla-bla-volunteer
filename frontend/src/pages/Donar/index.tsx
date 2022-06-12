@@ -12,17 +12,11 @@ const Donar = () => {
       </button>
       {isModalOpen && (
         <Portal>
-          <ModalPopUp
-            width="900px"
-            height="400px"
-            isClose={handleModal}
-            position="center"
-          >
+          <ModalPopUp width="900px" height="400px" isClose={handleModal} position="center">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
-              possimus earum cumque sunt, reiciendis quaerat fuga, impedit
-              quibusdam dolorum recusandae consequatur tempore aspernatur ipsum
-              consectetur accusamus dignissimos delectus porro unde.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita possimus earum cumque sunt, reiciendis
+              quaerat fuga, impedit quibusdam dolorum recusandae consequatur tempore aspernatur ipsum consectetur
+              accusamus dignissimos delectus porro unde.
             </p>
           </ModalPopUp>
         </Portal>

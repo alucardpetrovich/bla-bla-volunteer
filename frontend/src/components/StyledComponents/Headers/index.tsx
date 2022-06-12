@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { HeaderH2, HeaderH3, HeaderH4, HeaderH5, IHeader } from './style';
 
 const Header: React.FC<IHeader> = ({ color, tag, textAlign, children, ...props }) => {

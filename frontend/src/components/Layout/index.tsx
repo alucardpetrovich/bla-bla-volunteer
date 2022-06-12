@@ -1,10 +1,11 @@
-import { FC } from 'react';
+import Footer from 'components/Footer';
 import Header from 'components/Header';
+import { Container, Heading, Text } from 'components/StyledComponents';
+import { FC } from 'react';
 import { GlobalFonts, GlobalStyle } from 'utils/styles';
+
 import WithRefreshTokenCheck from '../../hoc/withRefreshTokenCheck';
 import Roots from '../Roots';
-import { Container, Heading, Text } from 'components/StyledComponents';
-import Footer from 'components/Footer';
 
 const Layout: FC = () => {
   return (

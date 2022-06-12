@@ -1,13 +1,17 @@
+import { FlexDiv } from 'components/StyledComponents/Flex/style';
 import { useSelector } from 'react-redux';
 import { generatePath, NavLink } from 'react-router-dom';
-// import { Flex } from '../../../StyledComponents';
-import { linksNav } from './constants/listNav';
 import { getIsAuth } from 'redux/auth/authSelectors';
-import { FlexDiv } from 'components/StyledComponents/Flex/style';
 
+import { linksNav } from './constants/listNav';
+
+// FIXME: Поправить типи. => FC<{ style: blablabla }>
+// eslint-disable-next-line
+// @ts-ignore
+// eslint-disable-next-line react/prop-types
 const Navigation = ({ style }) => {
   const isAuth = useSelector(getIsAuth);
-  const lang = useSelector(state => 'ua');
+  const lang = useSelector(() => 'ua');
 
   return (
     <nav style={style}>
@@ -20,7 +24,7 @@ const Navigation = ({ style }) => {
               <li key={text}>
                 <NavLink
                   to={`/${generatePath(path, { lang })}`}
-                  style={({ isActive }) => (isActive ? { color: 'orange' } : undefined)}
+                  style={({ isActive }) => (isActive ? { color: 'orange' } : {})}
                   end
                 >
                   {text}

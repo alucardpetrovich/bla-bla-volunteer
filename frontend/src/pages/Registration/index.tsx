@@ -9,9 +9,7 @@ const Registration = () => {
     email: '',
     password: '',
   };
-  const [credentials, setCredentials] = useState<IAuthCredentials>(
-    initialCredentialsState,
-  );
+  const [credentials, setCredentials] = useState<IAuthCredentials>(initialCredentialsState);
 
   const dispatch = useDispatch();
 
@@ -29,6 +27,8 @@ const Registration = () => {
 
   const handleSubmitSignUp = (e: React.SyntheticEvent) => {
     e.preventDefault();
+    // FIXME: пофіксить і більше так не робить
+    // eslint-disable-next-line
     dispatch(userRegistration(credentials) as any);
     setCredentials(initialCredentialsState);
   };
@@ -37,16 +37,8 @@ const Registration = () => {
     <div>
       <h3>Registration</h3>
       <form onSubmit={e => handleSubmitSignUp(e)}>
-        <input
-          type="text"
-          onChange={handleSetEmail}
-          value={credentials.email}
-        />
-        <input
-          type="password"
-          onChange={handleSetPassword}
-          value={credentials.password}
-        />
+        <input type="text" onChange={handleSetEmail} value={credentials.email} />
+        <input type="password" onChange={handleSetPassword} value={credentials.password} />
         <input type="submit" value="submit"></input>
       </form>
     </div>

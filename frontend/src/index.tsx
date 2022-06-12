@@ -1,15 +1,16 @@
 import { StrictMode } from 'react';
+import ReactDOM from 'react-dom/client';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import messages_ua from './locales/ua.json';
-import messages_ru from './locales/ru.json';
-import store, { persistor } from './redux/store';
-import App from './pages/App/index';
-import { theme } from 'utils/styles';
+import { PersistGate } from 'redux-persist/integration/react';
 import { ThemeProvider } from 'styled-components';
+import { theme } from 'utils/styles';
+
+import messages_ru from './locales/ru.json';
+import messages_ua from './locales/ua.json';
+import App from './pages/App/index';
+import store, { persistor } from './redux/store';
 
 const messages = {
   ua: messages_ua,

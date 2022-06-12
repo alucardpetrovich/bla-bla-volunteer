@@ -1,5 +1,6 @@
 import React from 'react';
-import { IContainer, ContentContainer, FooterContainer, HeaderContainer, MainContainer } from './style';
+
+import { ContentContainer, FooterContainer, HeaderContainer, IContainer, MainContainer } from './style';
 
 const Container: React.FC<IContainer> = ({ tag, children, ...props }) => {
   const StyledContainer = {

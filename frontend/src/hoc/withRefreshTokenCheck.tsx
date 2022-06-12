@@ -1,15 +1,18 @@
-import { useEffect, FC } from 'react';
-import { useDispatch } from 'react-redux';
-
 import { axiosPrivate } from 'api/axios';
 import useAxiosRefreshToken from 'hooks/useAxiosRefreshToken';
+import { FC, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import authActions from '../redux/auth/authActions';
 
+// FIXME: пофіксить тайпінги
+/* eslint-disable */
 const WithRefreshTokenCheck = (WrappedComponent: FC) =>
-  function comp(props) {
+  function comp(props: JSX.IntrinsicAttributes) {
     const dispatch = useDispatch();
     const refresh = useAxiosRefreshToken();
 
+    // @ts-ignore
     const expireAt = JSON.parse(localStorage.getItem('refreshToken'))?.expiresAt;
     const today = Math.round(Date.now() / 1000);
 
@@ -23,9 +26,12 @@ const WithRefreshTokenCheck = (WrappedComponent: FC) =>
 
     const axiosInterceptorRequest = axiosPrivate.interceptors.request.use(
       config => {
+        // @ts-ignore
         const authToken = JSON.parse(localStorage.getItem('authToken'));
 
+        // @ts-ignore
         if (!config.headers['Authorization'] && authToken) {
+          // @ts-ignore
           config.headers['Authorization'] = `Bearer ${authToken.token}`;
         }
         return config;
@@ -46,6 +52,7 @@ const WithRefreshTokenCheck = (WrappedComponent: FC) =>
 
             return axiosPrivate.request(prevRequest);
           } catch (error) {
+            // @ts-ignore
             if (error?.response?.data?.statusCode === 403 || !expireAt) {
               dispatch(authActions.logoutSuccess());
               localStorage.removeItem('authToken');

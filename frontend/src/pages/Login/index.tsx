@@ -1,25 +1,29 @@
+import React from 'react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
 
-import { IAuthCredentials } from '../../models/authModel/authModel';
+// import { IAuthCredentials } from '../../models/authModel/authModel';
 import { userLogin } from '../../redux/auth/authOperations';
 
 const Login = () => {
+  // FIXME: пофіксить і не робить так більше)
+  // eslint-disable-next-line
   const message = useSelector((state: any) => state.auth.error);
 
   const {
     register,
     handleSubmit,
-    watch,
     reset,
     formState: { errors },
   } = useForm({ mode: 'onBlur' });
 
   const dispatch = useDispatch();
 
-  const handleSubmitForm = (data: IAuthCredentials) => {
+  const handleSubmitForm: SubmitHandler<FieldValues> = data => {
     console.log(data);
     try {
+      // FIXME: пофіксить і не робить так більше
+      // eslint-disable-next-line
       dispatch(userLogin(data) as any);
       reset();
     } catch (error) {

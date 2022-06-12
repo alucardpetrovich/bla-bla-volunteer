@@ -1,26 +1,37 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, generatePath } from 'react-router-dom';
-import Navigation from './components/Navigation';
-import { userLogOut } from '../../redux/auth/authOperations';
-import { Container, Heading, Text } from 'components/StyledComponents';
 import { Logo } from 'components/atoms';
-import HeaderBg from './components/HeaderBg';
-import { HeaderSubtitleWrapper, HeaderTitleWrapper, NavWrapper, SignUpButton } from './style';
 import ArrowRight from 'components/atoms/ArrowRight';
+import { Container, Heading, Text } from 'components/StyledComponents';
 import { PATHS } from 'constants/PATH';
+import { useDispatch, useSelector } from 'react-redux';
+import { generatePath, useNavigate } from 'react-router-dom';
+
+import { userLogOut } from '../../redux/auth/authOperations';
+import HeaderBg from './components/HeaderBg';
+import Navigation from './components/Navigation';
+import { HeaderSubtitleWrapper, HeaderTitleWrapper, NavWrapper, SignUpButton } from './style';
 
 const Header = () => {
+  // FIXME: пофіксить тип. Без any
+  // eslint-disable-next-line
   const isAuth: boolean = useSelector((state: any) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
+    // FIXME: пофіксить
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const refreshToken = JSON.parse(localStorage.getItem('refreshToken'));
 
     if (refreshToken) {
+      // FIXME: пофіксить тип. as any дуже погано. Стараємся без as any. По можливості замінюємо на typeguard. Якщо не
+      //  знаємо як пінаємо Вадіма
+      // eslint-disable-next-line
       dispatch(userLogOut({ refreshToken: refreshToken.token }) as any);
     }
   };
 
+  // FIXME: пофіксить
+  // eslint-disable-next-line
   const lang = useSelector(state => 'ua');
   const navigate = useNavigate();
 

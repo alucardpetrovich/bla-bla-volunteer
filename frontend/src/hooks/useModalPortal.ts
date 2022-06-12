@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { useHandleBoolChange } from '.';
 
 export const useModalPortal = () => {
@@ -6,9 +7,7 @@ export const useModalPortal = () => {
   const [isModalOpen, handleModal] = useHandleBoolChange(false);
 
   useEffect(() => {
-    isModalOpen
-      ? (refBody.style.overflow = 'hidden')
-      : (refBody.style.overflow = 'auto');
+    isModalOpen ? (refBody.style.overflow = 'hidden') : (refBody.style.overflow = 'auto');
   }, [isModalOpen, refBody]);
 
   return [isModalOpen, handleModal] as [boolean, () => void];
