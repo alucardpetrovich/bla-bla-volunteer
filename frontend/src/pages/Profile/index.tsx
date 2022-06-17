@@ -1,4 +1,5 @@
-import { Heading } from 'components/StyledComponents';
+import RoleCard from 'components/atoms/RoleCard';
+import { Heading, Text } from 'components/StyledComponents';
 import React from 'react';
 import { useTheme } from 'styled-components';
 
@@ -10,7 +11,9 @@ const Profile = () => {
       <Heading tag="h3" style={{ marginBottom: '40px' }}>
         Ваша роль
       </Heading>
-      <div style={{ border: `1px solid ${theme.palette.primary.main}` }}></div>
+      <RoleCard title="Донор">
+        Особа або група осіб, організації, рухи тощо, які здійснюють передачу матеріальних засобів на безоплатній основі
+      </RoleCard>
     </>
   );
 };
