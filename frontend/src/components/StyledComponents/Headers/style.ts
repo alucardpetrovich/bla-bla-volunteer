@@ -1,9 +1,11 @@
+import { CardStyled } from './../../atoms/RoleCard/style';
 import styled from 'styled-components';
 
 type HeaderTypes = 'h2' | 'h3' | 'h4' | 'h5';
 
 export interface IHeader {
   color?: string;
+  shouldHovered?: boolean;
   tag?: HeaderTypes;
   isBold?: boolean;
   textAlign?: 'left' | 'center' | 'right';
@@ -43,6 +45,10 @@ export const HeaderH4 = styled.h4<IHeader>`
   line-height: 1.2;
   font-weight: 900;
   letter-spacing: normal;
+
+  ${CardStyled}:hover & {
+    color: ${({ theme }) => theme.palette.text.primary};
+  }
 `;
 
 export const HeaderH5 = styled.h5<IHeader>`

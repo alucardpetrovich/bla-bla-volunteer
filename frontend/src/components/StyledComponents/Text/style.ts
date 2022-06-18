@@ -1,3 +1,4 @@
+import { CardStyled } from './../../atoms/RoleCard/style';
 import styled from 'styled-components';
 
 type TextTypes = 'b1' | 'b2' | 'b3' | 'b4' | 'b5' | 'b6' | 'b7';
@@ -69,8 +70,16 @@ export const TextB5 = styled.p<IText>`
   line-height: 1.2;
   color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
+<<<<<<< HEAD
   // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
   //white-space: wrap;
+=======
+  white-space: wrap;
+
+  ${CardStyled}:hover & {
+    color: ${({ theme }) => theme.palette.text.primary};
+  }
+>>>>>>> 18e6748... feat: base roles markup
 `;
 
 export const TextB6 = styled.p<IText>`

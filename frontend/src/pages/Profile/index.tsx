@@ -1,19 +1,23 @@
 import RoleCard from 'components/atoms/RoleCard';
-import { Heading, Text } from 'components/StyledComponents';
-import React from 'react';
-import { useTheme } from 'styled-components';
+import { Heading } from 'components/StyledComponents';
+import { roles } from 'constants/roles';
+import { RoleListWrapper, RoleWrapper } from './style';
 
 const Profile = () => {
-  const theme = useTheme();
   return (
     <>
-      {/* <div>Profile</div> */}
       <Heading tag="h3" style={{ marginBottom: '40px' }}>
         Ваша роль
       </Heading>
-      <RoleCard title="Донор">
-        Особа або група осіб, організації, рухи тощо, які здійснюють передачу матеріальних засобів на безоплатній основі
-      </RoleCard>
+      <RoleListWrapper>
+        {roles.map(role => (
+          <RoleWrapper key={role.title}>
+            <RoleCard title={role.title} textAlign="left">
+              {role.desc}
+            </RoleCard>
+          </RoleWrapper>
+        ))}
+      </RoleListWrapper>
     </>
   );
 };
