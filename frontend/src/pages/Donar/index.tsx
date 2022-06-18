@@ -1,9 +1,11 @@
+import { useToggle } from 'react-use';
+
 import Portal from '../../components/Portal';
 import { ModalPopUp } from '../../components/Portal/ModalPopUp';
-import { useModalPortal } from '../../hooks';
 
+// FIXME: isClose це ж буль правильно?? може onClose??
 const Donar = () => {
-  const [isModalOpen, handleModal] = useModalPortal();
+  const [isModalOpen, handleModal] = useToggle(false);
 
   return (
     <div>

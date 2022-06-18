@@ -1,11 +1,11 @@
-import { Logo } from 'components/atoms';
-import ArrowRight from 'components/atoms/ArrowRight';
-import { Container, Heading, Text } from 'components/StyledComponents';
-import { PATHS } from 'constants/PATH';
 import { useDispatch, useSelector } from 'react-redux';
 import { generatePath, useNavigate } from 'react-router-dom';
 
-import { userLogOut } from '../../redux/auth/authOperations';
+import { PATHS } from '../../constants/PATH';
+import { userLogOut } from '../../store';
+import { Logo } from '../atoms';
+import ArrowRight from '../atoms/ArrowRight';
+import { Container, Heading, Text } from '../StyledComponents';
 import HeaderBg from './components/HeaderBg';
 import Navigation from './components/Navigation';
 import { HeaderSubtitleWrapper, HeaderTitleWrapper, NavWrapper, SignUpButton } from './style';

@@ -5,7 +5,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject",
     "prepare": "cd .. && husky install frontend/.husky",
     "update translations": "extract-messages -l=ua -o src/locales -d ua --flat false './src/**/!(*.test).js'",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
@@ -48,6 +47,7 @@
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-use": "^17.4.0",
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",

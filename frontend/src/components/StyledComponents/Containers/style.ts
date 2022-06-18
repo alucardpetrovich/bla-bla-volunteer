@@ -4,6 +4,8 @@ type ContainerTypes = 'content' | 'header' | 'main' | 'footer';
 
 export interface IContainer {
   tag?: ContainerTypes;
+  // FIXME: без any
+  // eslint-disable-next-line
   children: any;
   isAuth?: boolean;
 }

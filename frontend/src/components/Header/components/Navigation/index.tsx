@@ -1,8 +1,8 @@
-import { FlexDiv } from 'components/StyledComponents/Flex/style';
 import { useSelector } from 'react-redux';
 import { generatePath, NavLink } from 'react-router-dom';
-import { getIsAuth } from 'redux/auth/authSelectors';
 
+import { getIsAuth } from '../../../../store';
+import { FlexDiv } from '../../../StyledComponents/Flex/style';
 import { linksNav } from './constants/listNav';
 
 // FIXME: Поправить типи. => FC<{ style: blablabla }>

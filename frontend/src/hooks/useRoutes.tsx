@@ -1,16 +1,17 @@
-import { PATHS } from 'constants/PATH';
-import DonarPage from 'pages/Donar';
-import DriverPage from 'pages/Driver';
-import HomePage from 'pages/Home';
-import HubPage from 'pages/Hub';
-import LoginPage from 'pages/Login';
-import NotFoundPage from 'pages/NotFound404';
-import ProfilePage from 'pages/Profile';
-import RegistrationPage from 'pages/Registration';
 import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router';
 import { generatePath, Navigate } from 'react-router-dom';
-import { getIsAuth } from 'redux/auth/authSelectors';
+
+import { PATHS } from '../constants/PATH';
+import DonarPage from '../pages/Donar';
+import DriverPage from '../pages/Driver';
+import HomePage from '../pages/Home';
+import HubPage from '../pages/Hub';
+import LoginPage from '../pages/Login';
+import NotFoundPage from '../pages/NotFound404';
+import ProfilePage from '../pages/Profile';
+import RegistrationPage from '../pages/Registration';
+import { getIsAuth } from '../store';
 
 const RedirectToHome = () => {
   const lang = useSelector(() => 'ua');

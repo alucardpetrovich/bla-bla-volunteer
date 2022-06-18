@@ -92,10 +92,12 @@ export const CloseButton = styled.div`
   position: sticky;
   top: 0;
   right: 5%;
+  // FIXME: ??
   height: 100%;
   display: flex;
   justify-content: flex-start;
   width: 2.5rem;
+  // FIXME: ??
   height: 2.5rem;
   border-radius: 2.5rem;
   z-index: 1;

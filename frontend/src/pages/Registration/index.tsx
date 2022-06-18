@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { IAuthCredentials } from '../../models/authModel/authModel';
-import { userRegistration } from '../../redux/auth/authOperations';
+import { userRegistration } from '../../store';
 
 const Registration = () => {
   const initialCredentialsState = {
@@ -39,7 +39,7 @@ const Registration = () => {
       <form onSubmit={e => handleSubmitSignUp(e)}>
         <input type="text" onChange={handleSetEmail} value={credentials.email} />
         <input type="password" onChange={handleSetPassword} value={credentials.password} />
-        <input type="submit" value="submit"></input>
+        <input type="submit" value="submit" />
       </form>
     </div>
   );

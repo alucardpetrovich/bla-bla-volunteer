@@ -2,11 +2,10 @@ import React from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
-// import { IAuthCredentials } from '../../models/authModel/authModel';
-import { userLogin } from '../../redux/auth/authOperations';
+import { userLogin } from '../../store';
 
 const Login = () => {
-  // FIXME: пофіксить і не робить так більше)
+  // FIXME: пофіксить. без any. і не робить так більше)
   // eslint-disable-next-line
   const message = useSelector((state: any) => state.auth.error);
 
@@ -56,7 +55,7 @@ const Login = () => {
           autoComplete="false"
         />
         <div style={{ height: '20px' }}>{errors?.password && <span>{errors?.password?.message}</span>}</div>
-        <input type="submit"></input>
+        <input type="submit" />
       </form>
     </div>
   );

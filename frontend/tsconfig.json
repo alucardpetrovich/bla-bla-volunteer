@@ -19,11 +19,21 @@
     "isolatedModules": true,
     "incremental": true,
     "jsx": "react-jsx",
-    "baseUrl": "./src/",
+    "baseUrl": ".",
     "paths": {
       "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "**/node_modules", "dist", "yarn.lock", "./build/*", "build", "./build/**/*", ".vscode"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src"],
+  "exclude": [
+    "node_modules",
+    "**/node_modules",
+    "dist",
+    "yarn.lock",
+    "./build/*",
+    "build",
+    "./build/**/*",
+    ".vscode",
+    "./paths.json"
+  ]
 }

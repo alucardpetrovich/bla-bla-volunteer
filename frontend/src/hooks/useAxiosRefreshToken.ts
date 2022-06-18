@@ -1,10 +1,13 @@
-import authorizationAPI from 'api/Auth/Auth';
 import { AxiosResponse } from 'axios';
 
-import { IAuthResponse } from './../models/authModel/authModel';
+import authorizationAPI from '../api/Auth/Auth';
+import { IAuthResponse } from '../models/authModel/authModel';
 
 const useAxiosRefreshToken = () => {
   const refresh = async (): Promise<AxiosResponse<IAuthResponse>> => {
+    // FIXME: пофіксить
+    // eslint-disable-next-line
+    // @ts-ignore
     const refreshToken = JSON.parse(localStorage.getItem('refreshToken'));
     const response = await authorizationAPI.refreshAuthToken(refreshToken.token);
 

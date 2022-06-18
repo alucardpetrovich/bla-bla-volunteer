@@ -26,6 +26,9 @@ const Header: React.FC<IHeader> = ({ color, tag, textAlign, children, ...props }
     ),
   };
 
+  // FIXME: Пофіксить. tag опціональний. Коли буде undefined тоді впаде апка?
+  // eslint-disable-next-line
+  // @ts-ignore
   return StyledHeader[tag];
 };
 

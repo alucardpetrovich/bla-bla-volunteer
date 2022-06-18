@@ -9,6 +9,9 @@ const Container: React.FC<IContainer> = ({ tag, children, ...props }) => {
     main: <MainContainer {...props}>{children}</MainContainer>,
     footer: <FooterContainer {...props}>{children}</FooterContainer>,
   };
+  // FIXME: Пофіксить. tag опціональний. Коли буде undefined тоді впаде апка?
+  // eslint-disable-next-line
+  // @ts-ignore
   return StyledContainer[tag];
 };
 

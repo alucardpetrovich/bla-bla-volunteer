@@ -1,5 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
+// FIXME: Мені здається це погано. Може я зійшов з розуму але я бачу всі штуки з кольорами і фонтами в
+//  ThemeProvider. Залишаю собі подумать як це все добро з ціє папки поправить. Сподіваюсь воно не розрослось сильно
+
 const GlobalStyle = createGlobalStyle`
   body, html {
     margin: 0;
@@ -141,7 +144,7 @@ $gradient-radial: radial-gradient(#072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a
     --tile-padding: 32px;
     --tile-header-padding: 40px;
     --tile-border-radius: 30px;
-    
+
 
     /*subNavigation*/
     --snav-height: 52px;

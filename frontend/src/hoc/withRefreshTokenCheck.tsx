@@ -1,11 +1,11 @@
-import { axiosPrivate } from 'api/axios';
-import useAxiosRefreshToken from 'hooks/useAxiosRefreshToken';
 import { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import authActions from '../redux/auth/authActions';
+import { axiosPrivate } from '../api/axios';
+import useAxiosRefreshToken from '../hooks/useAxiosRefreshToken';
+import { authActions } from '../store';
 
-// FIXME: пофіксить тайпінги
+// FIXME: пофіксить тайпінги і все що нижче під ts-ignore
 /* eslint-disable */
 const WithRefreshTokenCheck = (WrappedComponent: FC) =>
   function comp(props: JSX.IntrinsicAttributes) {

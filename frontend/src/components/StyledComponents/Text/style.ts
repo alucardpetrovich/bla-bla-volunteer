@@ -7,10 +7,15 @@ export interface IText {
   tag?: TextTypes;
   isBold?: boolean;
   textAlign?: 'left' | 'center' | 'right' | 'end' | 'start' | 'justify';
+  // FIXME: Ойойой. Пофіксить. без any
+  // eslint-disable-next-line
   fontWeight?: any;
+  // eslint-disable-next-line
   lineHeight?: any;
+  // eslint-disable-next-line
   children: any;
   href?: string;
+  // eslint-disable-next-line
   style?: any;
 }
 
@@ -21,7 +26,8 @@ export const TextB1 = styled.p<IText>`
   line-height: 1.4;
   color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
-  white-space: wrap;
+  // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
+  //white-space: wrap;
 `;
 
 export const TextB2 = styled.p<IText>`
@@ -31,7 +37,8 @@ export const TextB2 = styled.p<IText>`
   line-height: 1.3;
   color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
-  white-space: wrap;
+  // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
+  //white-space: wrap;
 `;
 
 export const TextB3 = styled.p<IText>`
@@ -41,7 +48,8 @@ export const TextB3 = styled.p<IText>`
   line-height: 1.2;
   color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
-  white-space: wrap;
+  // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
+  //white-space: wrap;
 `;
 
 export const TextB4 = styled.p<IText>`
@@ -61,7 +69,8 @@ export const TextB5 = styled.p<IText>`
   line-height: 1.2;
   color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
-  white-space: wrap;
+  // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
+  //white-space: wrap;
 `;
 
 export const TextB6 = styled.p<IText>`
@@ -71,7 +80,8 @@ export const TextB6 = styled.p<IText>`
   line-height: 1;
   color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
-  white-space: wrap;
+  // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
+  //white-space: wrap;
 `;
 
 export const TextB7 = styled.p<IText>`
@@ -81,5 +91,6 @@ export const TextB7 = styled.p<IText>`
   line-height: 1.2;
   color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
-  white-space: wrap;
+  // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
+  //white-space: wrap;
 `;

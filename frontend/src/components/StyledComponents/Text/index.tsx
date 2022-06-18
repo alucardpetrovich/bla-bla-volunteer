@@ -40,6 +40,9 @@ const Text: React.FC<IText> = ({ color, tag = 'text', children, ...props }) => {
       </TextB7>
     ),
   };
+  // FIXME: Пофіксить. tag опціональний. Коли буде undefined тоді впаде апка?
+  // eslint-disable-next-line
+  // @ts-ignore
   return StyledText[tag];
 };
 

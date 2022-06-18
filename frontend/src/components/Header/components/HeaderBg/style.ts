@@ -1,6 +1,7 @@
-import bgImg from 'assets/images/header-bg.png';
-import bgImgAuth from 'assets/images/header-bg-auth.png';
 import styled from 'styled-components';
+
+import bgImg from '../../../../assets/images/header-bg.png';
+import bgImgAuth from '../../../../assets/images/header-bg-auth.png';
 
 export interface IBg {
   isAuth: boolean;

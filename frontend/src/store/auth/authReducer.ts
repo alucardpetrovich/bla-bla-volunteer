@@ -4,6 +4,9 @@ const initialState = {
   isAuthenticated: false,
 };
 
+// FIXME: пофіксить тайпінги
+// eslint-disable-next-line
+// @ts-ignore
 const auth = (state = { ...initialState }, { type, payload }) => {
   switch (type) {
     case authActionTypes.REGISTER_SUCCESS:
