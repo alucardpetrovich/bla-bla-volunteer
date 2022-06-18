@@ -63,7 +63,7 @@ export class NeedsService {
     await this.validateRecipient(recipientId, userId);
 
     const need = await this.recipientNeedsRepository.findById(
-      recipientId,
+      needId,
       language,
       [RecipientNeedRelations.RECIPIENT, RecipientNeedRelations.PRODUCT],
     );
@@ -91,7 +91,7 @@ export class NeedsService {
       throw new NotFoundException(`Need ${needId} not found`);
     }
 
-    return this.recipientNeedsRepository.findById(recipientId, language, [
+    return this.recipientNeedsRepository.findById(needId, language, [
       RecipientNeedRelations.RECIPIENT,
       RecipientNeedRelations.PRODUCT,
     ]);

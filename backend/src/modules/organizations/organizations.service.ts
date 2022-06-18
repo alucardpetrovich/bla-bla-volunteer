@@ -40,7 +40,7 @@ export class OrganizationsService {
     language: string,
   ) {
     const alreadyOwnedOrganization = await this.organizationsRepository.findOne(
-      { createdBy: creatorId },
+      { createdBy: creatorId, type: dto.type },
     );
     if (alreadyOwnedOrganization) {
       throw new ConflictException('You already own an organization');

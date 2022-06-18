@@ -24,7 +24,7 @@ export class RecipientNeedsRepository extends Repository<RecipientNeedEntity> {
     const query = this.createQueryBuilder('rn');
     this.addRelations(query, params.relations);
 
-    query
+    return query
       .andWhere('rn."recipientId" = :recipientId', {
         recipientId: params.recipientId,
       })

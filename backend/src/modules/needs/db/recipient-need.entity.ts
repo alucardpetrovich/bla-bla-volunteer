@@ -38,7 +38,7 @@ export class RecipientNeedEntity {
   product: ProductEntity;
 
   @ManyToOne(() => OrganizationEntity, { cascade: true })
-  @JoinColumn({ name: 'hubId', referencedColumnName: 'id' })
+  @JoinColumn({ name: 'recipientId', referencedColumnName: 'id' })
   recipient: OrganizationEntity;
 
   @CreateDateColumn()

@@ -8,6 +8,7 @@ import {
   ParseUUIDPipe,
   Post,
   Put,
+  Query,
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
@@ -71,7 +72,7 @@ export class NeedsController {
   async getNeedsList(
     @Param('recipientId', ParseUUIDPipe) recipientId: string,
     @UserId() userId: string,
-    @Body() dto: GetRecipientNeedsListDto,
+    @Query() dto: GetRecipientNeedsListDto,
     @Language() language: string,
   ) {
     const needs = await this.service.getNeedsList(
@@ -86,6 +87,7 @@ export class NeedsController {
   @Get(':needId')
   @UseInterceptors(new ResponseInterceptor(RecipientNeedSerializer))
   @ApiOperation({ summary: 'Get recipient need by id' })
+  @ApiHeader({ name: 'Accept-Language' })
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiNotFoundResponse({ description: 'Recipient need not found' })
   @ApiOkResponse({
@@ -104,6 +106,7 @@ export class NeedsController {
   @Put(':needId')
   @UseInterceptors(new ResponseInterceptor(RecipientNeedSerializer))
   @ApiOperation({ summary: 'Update recipient need' })
+  @ApiHeader({ name: 'Accept-Language' })
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiNotFoundResponse({ description: 'Recipient need not found' })
   @ApiOkResponse({
@@ -118,8 +121,8 @@ export class NeedsController {
     @Language() language: string,
   ) {
     return this.service.updateNeedById(
-      recipientId,
       needId,
+      recipientId,
       userId,
       dto,
       language,
