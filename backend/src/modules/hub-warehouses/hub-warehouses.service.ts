@@ -43,6 +43,7 @@ export class HubWarehousesService {
 
     await this.validateHub(hubId, userId);
     return this.hubWarehouseItemsRepository.findItems({
+      hubId,
       offset: pagination.getOffset(),
       limit: pagination.getLimit(),
       language,

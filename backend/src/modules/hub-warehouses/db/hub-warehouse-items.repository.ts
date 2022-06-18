@@ -25,6 +25,7 @@ export class HubWarehouseItemsRepository extends Repository<HubWarehouseItemEnti
     this.addRelations(query, params.relations);
 
     query
+      .andWhere('hwi."hubId" = :hubId', { hubId: params.hubId })
       .setParameter('language', params.language)
       .offset(params.offset)
       .limit(params.limit)

@@ -5,4 +5,5 @@ export interface HubWarehouseItemsSearchParams {
   limit: number;
   relations: HubWarehouseItemRelations[];
   language: string;
+  hubId: string;
 }
