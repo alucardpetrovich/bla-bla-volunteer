@@ -51,6 +51,6 @@ export class InvolvementsController {
     @UserId() userId: string,
     @Body() dto: InvolvementsDto,
   ) {
-    return this.updateInvolvements(userId, dto);
+    return this.service.updateInvolvements(userId, dto);
   }
 }
