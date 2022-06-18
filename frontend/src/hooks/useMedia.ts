@@ -14,6 +14,7 @@ interface IUseMedia {
  * @returns {boolean} -
  * MOB: max-width: 699px; TABL: min-width: 700px; DESK: min-width: 1024px; HD: min-width 1440px;
  */
+// FIXME: значення треба повиносить в константи. Поки не трогаємо тут нічого я поправлю пізніше
 const useMedia = (): IUseMedia => {
   const MOB = useMediaQuery({ query: '(max-width: 699px)' });
   const TABL = useMediaQuery({ query: '(min-width: 700px)' });

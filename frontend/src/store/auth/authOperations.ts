@@ -1,7 +1,10 @@
 import authorizationAPI from '../../api/Auth/Auth';
 import authActions from './authActions';
 
-export const userRegistration = credentials => async (dispatch: any) => {
+// FIXME: пофіксить тайпінги
+// eslint-disable-next-line
+// @ts-ignore
+export const userRegistration = credentials => async dispatch => {
   dispatch(authActions.registrationRequest());
   try {
     const response = await authorizationAPI.signUp(credentials);
@@ -9,32 +12,35 @@ export const userRegistration = credentials => async (dispatch: any) => {
     dispatch(authActions.registrationSuccess(response.data));
   } catch (error) {
     console.log(error);
+    // FIXME: пофіксить тайпінги
+    // eslint-disable-next-line
+    // @ts-ignore
     dispatch(authActions.registrationError(error.message));
   }
 };
 
-export const userLogin = credentials => async (dispatch: any) => {
+// FIXME: пофіксить тайпінги
+// eslint-disable-next-line
+// @ts-ignore
+export const userLogin = credentials => async dispatch => {
   dispatch(authActions.loginRequest());
+
   try {
     const response = await authorizationAPI.signIn(credentials);
-
     dispatch(authActions.loginSuccess(response.data.user));
 
-    localStorage.setItem(
-      'authToken',
-      JSON.stringify(response.data.tokens.access),
-    );
-    localStorage.setItem(
-      'refreshToken',
-      JSON.stringify(response.data.tokens.refresh),
-    );
+    localStorage.setItem('authToken', JSON.stringify(response.data.tokens.access));
+    localStorage.setItem('refreshToken', JSON.stringify(response.data.tokens.refresh));
   } catch (error) {
     console.log(error);
-    dispatch(authActions.loginError(error.message));
+    dispatch(authActions.loginError(error));
   }
 };
 
-export const userLogOut = refreshToken => async (dispatch: any) => {
+// FIXME: пофіксить тайпінги
+// eslint-disable-next-line
+// @ts-ignore
+export const userLogOut = refreshToken => async dispatch => {
   dispatch(authActions.logoutRequest());
   try {
     await authorizationAPI.signOut(refreshToken);
@@ -48,24 +54,18 @@ export const userLogOut = refreshToken => async (dispatch: any) => {
   }
 };
 
-export const refreshAuthToken = refreshToken => async (dispatch: any) => {
+// FIXME: пофіксить тайпінги
+// eslint-disable-next-line
+// @ts-ignore
+export const refreshAuthToken = refreshToken => async dispatch => {
   dispatch(authActions.refreshRequest());
   try {
     const response = await authorizationAPI.refreshAuthToken(refreshToken);
     dispatch(authActions.refreshSuccess());
 
-    localStorage.setItem(
-      'authToken',
-      JSON.stringify(response.data.tokens.access),
-    );
-    localStorage.setItem(
-      'refreshToken',
-      JSON.stringify(response.data.tokens.refresh),
-    );
+    localStorage.setItem('authToken', JSON.stringify(response.data.tokens.access));
+    localStorage.setItem('refreshToken', JSON.stringify(response.data.tokens.refresh));
   } catch (error) {
-    console.log(error);
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('refreshToken');
     dispatch(authActions.refreshError());
   }
 };

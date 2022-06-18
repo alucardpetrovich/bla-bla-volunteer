@@ -1,51 +1,61 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { IAuthCredentials } from '../../models/authModel/authModel';
-import { userLogin } from '../../redux/auth/authOperations';
+import { userLogin } from '../../store';
 
 const Login = () => {
-  const initialCredentialsState = {
-    email: '',
-    password: '',
-  };
-  const [credentials, setCredentials] = useState<IAuthCredentials>(
-    initialCredentialsState,
-  );
+  // FIXME: пофіксить. без any. і не робить так більше)
+  // eslint-disable-next-line
+  const message = useSelector((state: any) => state.auth.error);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({ mode: 'onBlur' });
 
   const dispatch = useDispatch();
 
-  const handleSetEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setCredentials({ ...credentials, email: value });
-  };
-
-  const handleSetPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setCredentials({ ...credentials, password: value });
-  };
-
-  const handleSubmitSignUp = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    dispatch(userLogin(credentials) as any);
-    setCredentials(initialCredentialsState);
+  const handleSubmitForm: SubmitHandler<FieldValues> = data => {
+    console.log(data);
+    try {
+      // FIXME: пофіксить і не робить так більше
+      // eslint-disable-next-line
+      dispatch(userLogin(data) as any);
+      reset();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div>
       <h3>login</h3>
-      <form onSubmit={e => handleSubmitSignUp(e)}>
+      <form onSubmit={handleSubmit(handleSubmitForm)}>
+        <div style={{ height: '20px' }}>{message && <span>{message}</span>}</div>
         <input
-          type="text"
-          onChange={handleSetEmail}
-          value={credentials.email}
+          {...register('email', {
+            required: 'email is required field',
+            maxLength: 30,
+            minLength: { value: 4, message: 'minimum 4 symbols' },
+          })}
+          type="email"
+          autoComplete="false"
         />
+        <div style={{ height: '20px' }}>{errors?.email && <span>{errors?.email?.message}</span>}</div>
         <input
+          {...register('password', {
+            required: 'this field is required',
+            maxLength: 30,
+            minLength: { value: 4, message: 'minimum 4 symbols' },
+          })}
           type="password"
-          onChange={handleSetPassword}
-          value={credentials.password}
+          autoComplete="false"
         />
-        <input type="submit" value="submit"></input>
+        <div style={{ height: '20px' }}>{errors?.password && <span>{errors?.password?.message}</span>}</div>
+        <input type="submit" />
       </form>
     </div>
   );

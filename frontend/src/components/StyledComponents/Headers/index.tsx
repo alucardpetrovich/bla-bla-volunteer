@@ -1,49 +1,35 @@
 import React from 'react';
-import { HeaderH1, HeaderH2, HeaderH3, IHeader } from './style';
 
-const StyledHeader: React.FC<IHeader> = ({
-  color,
-  tag,
-  isBold = true,
-  textAlign,
-  children,
-  ...props
-}) => {
-  const Header = {
-    h1: (
-      <HeaderH1
-        isBold={isBold}
-        fontWeight={isBold ? 900 : 400}
-        color={color}
-        {...props}
-      >
-        {children}
-      </HeaderH1>
-    ),
+import { HeaderH2, HeaderH3, HeaderH4, HeaderH5, IHeader } from './style';
+
+const Header: React.FC<IHeader> = ({ color, tag, textAlign, children, ...props }) => {
+  const StyledHeader = {
     h2: (
-      <HeaderH2
-        isBold={isBold}
-        fontWeight={isBold ? 900 : 400}
-        color={color}
-        {...props}
-      >
+      <HeaderH2 textAlign={textAlign} color={color} {...props}>
         {children}
       </HeaderH2>
     ),
     h3: (
-      <HeaderH3
-        isBold={isBold}
-        fontWeight={isBold ? 900 : 400}
-        textAlign={textAlign}
-        color={color}
-        {...props}
-      >
+      <HeaderH3 textAlign={textAlign} color={color} {...props}>
         {children}
       </HeaderH3>
     ),
+    h4: (
+      <HeaderH4 textAlign={textAlign} color={color} {...props}>
+        {children}
+      </HeaderH4>
+    ),
+    h5: (
+      <HeaderH5 textAlign={textAlign} color={color} {...props}>
+        {children}
+      </HeaderH5>
+    ),
   };
 
-  return Header[tag];
+  // FIXME: Пофіксить. tag опціональний. Коли буде undefined тоді впаде апка?
+  // eslint-disable-next-line
+  // @ts-ignore
+  return StyledHeader[tag];
 };
 
-export default StyledHeader;
+export default Header;

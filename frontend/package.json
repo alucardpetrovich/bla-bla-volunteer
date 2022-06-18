@@ -2,6 +2,19 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "prepare": "cd .. && husky install frontend/.husky",
+    "update translations": "extract-messages -l=ua -o src/locales -d ua --flat false './src/**/!(*.test).js'",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
+    "fix": "yarn run lint -- --fix & prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
+    "lint": "next lint",
+    "lint:fix": "yarn run lint -- --fix",
+    "lint:css": "npx stylelint \"**/style.ts\" ",
+    "test": "jest --watch",
+    "test:unit": "jest --passWithNoTests"
+  },
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -18,7 +31,7 @@
     "@types/react-dom": "^18.0.3",
     "@types/react-redux": "^7.1.24",
     "@types/styled-components": "^5.1.25",
-    "@typescript-eslint/parser": "^5.24.0",
+    "@typescript-eslint/parser": "^5.27.1",
     "axios": "^0.27.2",
     "babel-plugin-formatjs": "^10.3.20",
     "babel-plugin-react-intl-auto": "^3.3.0",
@@ -27,38 +40,19 @@
     "npm": "^8.9.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-hook-form": "^7.31.2",
     "react-intl": "^5.25.1",
     "react-redux": "^8.0.1",
     "react-responsive": "^9.0.0-beta.6",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-use": "^17.4.0",
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.5",
-    "typescript": "^4.6.4",
     "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "prepare": "is-ci || husky install",
-    "update translations": "extract-messages -l=ua -o src/locales -d ua --flat false './src/**/!(*.test).js'",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
-    "fix": "yarn run lint -- --fix & prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
-    "lint": "next lint",
-    "lint:fix": "yarn run lint -- --fix",
-    "lint:css": "npx stylelint \"**/style.ts\" ",
-    "test": "jest --watch",
-    "test:unit": "jest --passWithNoTests"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -73,8 +67,9 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.2.4",
-    "@commitlint/config-conventional": "^16.2.4",
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
     "babel-jest": "^28.1.0",
     "babel-plugin-extract-format-message": "^6.2.4",
     "babel-plugin-styled-components": "^2.0.7",
@@ -85,11 +80,14 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-typescript": "^0.14.0",
     "husky": "^8.0.1",
     "is-ci": "^3.0.1",
-    "lint-staged": "^12.4.1",
-    "prettier": "^2.6.2"
+    "lint-staged": "^13.0.1",
+    "prettier": "^2.6.2",
+    "typescript": "^4.7.3"
   }
 }

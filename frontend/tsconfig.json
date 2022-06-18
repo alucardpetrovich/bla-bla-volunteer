@@ -1,32 +1,30 @@
 {
   "compilerOptions": {
+    "sourceMap": true,
+    "declaration": false,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
     "rootDir": ".",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "incremental": true,
     "jsx": "react-jsx",
-    "baseUrl": "./src/",
+    "baseUrl": ".",
     "paths": {
-      "constant": ["constant/"],
-      "hooks": ["hooks/"],
-      "helper": ["helper/"],
-      "locales": ["locales/*"],
-      "redux": ["redux/*"],
-      "components": ["components/"],
       "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src"],
   "exclude": [
     "node_modules",
     "**/node_modules",
@@ -35,6 +33,7 @@
     "./build/*",
     "build",
     "./build/**/*",
-    ".vscode"
+    ".vscode",
+    "./paths.json"
   ]
 }

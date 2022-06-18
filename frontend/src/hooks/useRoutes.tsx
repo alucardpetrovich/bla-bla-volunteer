@@ -1,19 +1,20 @@
-import { useRoutes } from 'react-router';
 import { useSelector } from 'react-redux';
-import { Navigate, generatePath } from 'react-router-dom';
-import { PATHS } from 'constants/PATH';
-import { getIsAuth } from 'redux/auth/authSelectors';
-import HomePage from 'pages/Home';
-import LoginPage from 'pages/Login';
-import RegistrationPage from 'pages/Registration';
-import DonarPage from 'pages/Donar';
-import HubPage from 'pages/Hub';
-import DriverPage from 'pages/Driver';
-import ProfilePage from 'pages/Profile';
-import NotFoundPage from 'pages/NotFound404';
+import { useRoutes } from 'react-router';
+import { generatePath, Navigate } from 'react-router-dom';
+
+import { PATHS } from '../constants/PATH';
+import DonarPage from '../pages/Donar';
+import DriverPage from '../pages/Driver';
+import HomePage from '../pages/Home';
+import HubPage from '../pages/Hub';
+import LoginPage from '../pages/Login';
+import NotFoundPage from '../pages/NotFound404';
+import ProfilePage from '../pages/Profile';
+import RegistrationPage from '../pages/Registration';
+import { getIsAuth } from '../store';
 
 const RedirectToHome = () => {
-  const lang = useSelector(state => 'ua');
+  const lang = useSelector(() => 'ua');
   const path = `/${generatePath(PATHS.HOME.path, { lang })}`;
 
   return <Navigate to={path} replace />;

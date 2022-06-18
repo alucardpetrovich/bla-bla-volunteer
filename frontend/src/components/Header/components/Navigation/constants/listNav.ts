@@ -1,4 +1,4 @@
-import { PATHS } from 'constants/PATH';
+import { PATHS } from '../../../../../constants/PATH';
 
 export const linksNav = [
   {

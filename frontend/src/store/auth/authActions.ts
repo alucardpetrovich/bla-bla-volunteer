@@ -4,11 +4,17 @@ const registrationRequest = () => ({
   type: authActionTypes.REGISTER_REQUEST,
 });
 
+// FIXME: пофіксить тайпінги
+// eslint-disable-next-line
+// @ts-ignore
 const registrationSuccess = user => ({
   type: authActionTypes.REGISTER_SUCCESS,
   payload: user,
 });
 
+// FIXME: пофіксить тайпінги
+// eslint-disable-next-line
+// @ts-ignore
 const registrationError = error => ({
   type: authActionTypes.REGISTER_ERROR,
   payload: error,
@@ -18,14 +24,20 @@ const loginRequest = () => ({
   type: authActionTypes.LOGIN_REQUEST,
 });
 
+// FIXME: пофіксить тайпінги
+// eslint-disable-next-line
+// @ts-ignore
 const loginSuccess = user => ({
   type: authActionTypes.LOGIN_SUCCESS,
   payload: { user },
 });
 
+// FIXME: пофіксить тайпінги
+// eslint-disable-next-line
+// @ts-ignore
 const loginError = error => ({
   type: authActionTypes.LOGIN_ERROR,
-  payload: error,
+  payload: error.response.data.message,
 });
 
 const logoutRequest = () => ({
