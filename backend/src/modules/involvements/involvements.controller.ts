@@ -51,6 +51,7 @@ export class InvolvementsController {
     @UserId() userId: string,
     @Body() dto: InvolvementsDto,
   ) {
-    return this.service.updateInvolvements(userId, dto);
+    const user = await this.service.updateInvolvements(userId, dto);
+    return { user };
   }
 }
