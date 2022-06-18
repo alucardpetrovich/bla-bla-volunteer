@@ -3,6 +3,8 @@ import styled from 'styled-components';
 type FlexTypes = 'div' | 'button';
 
 export interface IFlex {
+  // FIXME: Пофіксить. без any
+  // eslint-disable-next-line
   children?: any;
   tag?: FlexTypes;
   className?: string;

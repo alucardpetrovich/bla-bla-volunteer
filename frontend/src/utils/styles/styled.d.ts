@@ -1,3 +1,5 @@
+// FIXME: хтось намагався зробить правильно але закоментував все :((
+
 // import 'styled-components';
 // import { Theme } from '@mui/material/styles';
 // interface CustomTheme {

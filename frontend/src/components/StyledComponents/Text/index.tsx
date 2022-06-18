@@ -1,8 +1,9 @@
 import React from 'react';
+
 import { IText, TextB1, TextB2, TextB3, TextB4, TextB5, TextB6, TextB7 } from './style';
 
-const Text: React.FC<IText> = ({ color, tag = 'text', textAlign, href, children, ...props }) => {
-  const StyledText = {
+const Text: React.FC<IText> = ({ color, tag = 'text', children, ...props }) => {
+  const StyledText: Record<string, JSX.Element> = {
     b1: (
       <TextB1 color={color} {...props}>
         {children}
@@ -39,6 +40,9 @@ const Text: React.FC<IText> = ({ color, tag = 'text', textAlign, href, children,
       </TextB7>
     ),
   };
+  // FIXME: Пофіксить. tag опціональний. Коли буде undefined тоді впаде апка?
+  // eslint-disable-next-line
+  // @ts-ignore
   return StyledText[tag];
 };
 

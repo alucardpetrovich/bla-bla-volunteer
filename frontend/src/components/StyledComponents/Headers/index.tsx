@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { HeaderH2, HeaderH3, HeaderH4, HeaderH5, IHeader } from './style';
 
 const Header: React.FC<IHeader> = ({ color, tag, textAlign, children, ...props }) => {
@@ -25,6 +26,9 @@ const Header: React.FC<IHeader> = ({ color, tag, textAlign, children, ...props }
     ),
   };
 
+  // FIXME: Пофіксить. tag опціональний. Коли буде undefined тоді впаде апка?
+  // eslint-disable-next-line
+  // @ts-ignore
   return StyledHeader[tag];
 };
 

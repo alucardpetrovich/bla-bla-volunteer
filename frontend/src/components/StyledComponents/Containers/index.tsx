@@ -1,5 +1,6 @@
 import React from 'react';
-import { IContainer, ContentContainer, FooterContainer, HeaderContainer, MainContainer } from './style';
+
+import { ContentContainer, FooterContainer, HeaderContainer, IContainer, MainContainer } from './style';
 
 const Container: React.FC<IContainer> = ({ tag, children, ...props }) => {
   const StyledContainer = {
@@ -8,6 +9,9 @@ const Container: React.FC<IContainer> = ({ tag, children, ...props }) => {
     main: <MainContainer {...props}>{children}</MainContainer>,
     footer: <FooterContainer {...props}>{children}</FooterContainer>,
   };
+  // FIXME: Пофіксить. tag опціональний. Коли буде undefined тоді впаде апка?
+  // eslint-disable-next-line
+  // @ts-ignore
   return StyledContainer[tag];
 };
 

@@ -1,9 +1,12 @@
 import styled from 'styled-components';
-import bgImg from 'assets/images/header-bg.png';
-import bgImgAuth from 'assets/images/header-bg-auth.png';
+
+import bgImg from '../../../../assets/images/header-bg.png';
+import bgImgAuth from '../../../../assets/images/header-bg-auth.png';
 
 export interface IBg {
   isAuth: boolean;
+  // FIXME: Шо це і для чого? Видалить якщо не треба або поставить правильний тип
+  // eslint-disable-next-line
   children?: any;
 }
 
