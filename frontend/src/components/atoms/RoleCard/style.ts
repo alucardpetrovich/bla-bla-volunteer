@@ -1,4 +1,4 @@
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 
 export interface ICardStyled {
   color: string;
@@ -10,8 +10,9 @@ export const CardStyled = styled.div<ICardStyled>`
   opacity: 0.7;
   cursor: pointer;
   border: ${({ color }) => `1px solid ${color}`};
-  &:hover,
-  &:focus {
+  color: ${({ color }) => color};
+  :hover,
+  :focus {
     border-color: ${({ hover }) => hover};
     color: ${({ hover }) => hover};
   }

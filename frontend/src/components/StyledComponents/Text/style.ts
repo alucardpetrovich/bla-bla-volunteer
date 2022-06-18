@@ -1,3 +1,4 @@
+import { CardStyled } from './../../atoms/RoleCard/style';
 import styled from 'styled-components';
 
 type TextTypes = 'b1' | 'b2' | 'b3' | 'b4' | 'b5' | 'b6' | 'b7';
@@ -62,6 +63,10 @@ export const TextB5 = styled.p<IText>`
   color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
   white-space: wrap;
+
+  ${CardStyled}:hover & {
+    color: ${({ theme }) => theme.palette.text.primary};
+  }
 `;
 
 export const TextB6 = styled.p<IText>`
