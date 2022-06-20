@@ -1,6 +1,8 @@
 /**
  * These are the breakpoints as a number and can be changeable depending on the designer
  */
+// FIXME: десь є useMedia буз цього. Використать там його. Взагалі ці штуки треба буде винести всі в ui-kit або типу
+//  того. Я ще подумаю як краще зробить. Поки можна залишать я поправлю
 export const sizes = {
   xs: 419,
   sm: 833,

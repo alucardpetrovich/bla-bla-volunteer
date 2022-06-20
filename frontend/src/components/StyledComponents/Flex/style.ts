@@ -3,29 +3,17 @@ import styled from 'styled-components';
 type FlexTypes = 'div' | 'button';
 
 export interface IFlex {
+  // FIXME: Пофіксить. без any
+  // eslint-disable-next-line
   children?: any;
   tag?: FlexTypes;
   className?: string;
   container?: boolean;
   /****** Container Props ********/
   flexDirection?: 'row' | 'column';
-  justifyContent?:
-    | 'flex-start'
-    | 'flex-end'
-    | 'center'
-    | 'space-between'
-    | 'space-around'
-    | 'initial'
-    | 'inherit';
+  justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'initial' | 'inherit';
   flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse';
-  alignItems?:
-    | 'stretch'
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'baseline'
-    | 'initial'
-    | 'inherit';
+  alignItems?: 'stretch' | 'center' | 'flex-start' | 'flex-end' | 'baseline' | 'initial' | 'inherit';
   /****** Child Props ********/
   flexGrow?: number;
   flexShrink?: number;
@@ -41,18 +29,18 @@ export interface IFlex {
 }
 
 export const FlexDiv = styled.div<IFlex>`
-    display: ${({ container }) => (container ? 'flex' : 'block')};
-    flex-direction: ${({ flexDirection }) => flexDirection || 'row'};
-    justify-content: ${({ justifyContent }) => justifyContent || 'flex-start'};
-    flex-grow: ${({ flexGrow }) => flexGrow || 0};
-    flex-basis: ${({ flexBasis }) => flexBasis || 'auto'},
-    flex-shrink: ${({ flexShrink }) => flexShrink || 1},
-    flex-wrap: ${({ flexWrap }) => flexWrap || 'nowrap'},
-    flex: ${({ flex }) => flex || '0 1 auto'},
-    align-items: ${({ alignItems }) => alignItems || 'stretch'},
-    margin: ${({ margin }) => margin || '0'},
-    padding: ${({ padding }) => padding || '0'},
-    width: ${({ width }) => width || 'auto'},
-    height: ${({ height }) => height || 'auto'},
-    max-width: ${({ maxWidth }) => maxWidth || 'none'},
+  display: ${({ container }) => (container ? 'flex' : 'block')};
+  flex-direction: ${({ flexDirection }) => flexDirection || 'row'};
+  justify-content: ${({ justifyContent }) => justifyContent || 'flex-start'};
+  flex-grow: ${({ flexGrow }) => flexGrow || 0};
+  flex-basis: ${({ flexBasis }) => flexBasis || 'auto'};
+  flex-shrink: ${({ flexShrink }) => flexShrink || 1};
+  flex-wrap: ${({ flexWrap }) => flexWrap || 'nowrap'};
+  flex: ${({ flex }) => flex || '0 1 auto'};
+  align-items: ${({ alignItems }) => alignItems || 'stretch'};
+  margin: ${({ margin }) => margin || '0'};
+  padding: ${({ padding }) => padding || '0'};
+  width: ${({ width }) => width || 'auto'};
+  height: ${({ height }) => height || 'auto'};
+  max-width: ${({ maxWidth }) => maxWidth || 'none'};
 `;

@@ -4,7 +4,10 @@ type ContainerTypes = 'content' | 'header' | 'main' | 'footer';
 
 export interface IContainer {
   tag?: ContainerTypes;
+  // FIXME: без any
+  // eslint-disable-next-line
   children: any;
+  isAuth?: boolean;
 }
 
 const Container = styled.div`
@@ -28,24 +31,26 @@ const Container = styled.div`
 `;
 
 export const ContentContainer = styled.div<IContainer>`
-  /* background-color: var(--fifth-blue); */
   height: 100vh;
   display: flex;
   flex-direction: column;
 `;
 
 export const HeaderContainer = styled(Container)<IContainer>`
-  /* background-color: var(--fourth-blue); */
-  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  height: ${({ isAuth }) => (isAuth ? '' : '100vh')};
+  justify-content: space-between;
+  padding: ${({ isAuth }) => (isAuth ? '' : '40px 0px 100px')};
+  position: ${({ isAuth }) => isAuth && 'relative'};
+  top: ${({ isAuth }) => isAuth && '20%'};
 `;
 
 export const MainContainer = styled(Container)<IContainer>`
   flex: 1;
-  /* background-color: var(--third-jeans); */
   padding: 100px 0px 200px;
 `;
 
 export const FooterContainer = styled(Container)<IContainer>`
-  /* background-color: var(--secondary-blue);  */
   padding-bottom: 100px;
 `;

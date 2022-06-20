@@ -8,6 +8,6 @@ export const Language = createParamDecorator(
     const request = ctx.switchToHttp().getRequest<Request>();
     const acceptLanguage = request.headers['accept-language'] || '';
     const lang = acceptLanguage.split(languageSplitRegexp)[0].trim();
-    return lang;
+    return lang || 'uk';
   },
 );
