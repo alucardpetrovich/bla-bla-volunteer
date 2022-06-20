@@ -12,7 +12,7 @@ const Profile = () => {
       <RoleListWrapper>
         {roles.map(role => (
           <RoleWrapper key={role.title}>
-            <RoleCard title={role.title} textAlign="left">
+            <RoleCard id={role.id} title={role.title} textAlign="left">
               {role.desc}
             </RoleCard>
           </RoleWrapper>
