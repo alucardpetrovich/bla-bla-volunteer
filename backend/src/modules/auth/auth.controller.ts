@@ -6,14 +6,17 @@ import {
   HttpCode,
   Param,
   Post,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import {
+  ApiBearerAuth,
   ApiConflictResponse,
   ApiCreatedResponse,
   ApiForbiddenResponse,
   ApiNoContentResponse,
   ApiNotFoundResponse,
+  ApiOkResponse,
   ApiOperation,
   ApiPreconditionFailedResponse,
   ApiTags,
@@ -26,6 +29,9 @@ import { RefreshTokensSerializer } from './serializers/refresh-tokens.serializer
 import { SignInSerializer } from './serializers/sign-in.serializer';
 import { SignUpSerializer } from './serializers/sign-up.serializer';
 import { SignUpDto } from './dto/sign-up.dto';
+import { UserSerializer } from '../users/serializers/user.serializer';
+import { UserId } from 'src/shared/decorators/user-id.decorators';
+import { JwtGuard } from './guards/jwt.guard';
 
 @Controller('/v1/auth')
 @ApiTags('Auth Controller')
@@ -96,5 +102,19 @@ export class AuthController {
   })
   async signOut(@Body() dto: RefreshTokenDto) {
     return this.service.signOut(dto);
+  }
+
+  @Get('current')
+  @UseGuards(JwtGuard)
+  @ApiBearerAuth()
+  @UseInterceptors(new ResponseInterceptor(UserSerializer))
+  @ApiOperation({ summary: 'Get current user info' })
+  @ApiNotFoundResponse({ description: 'User not found' })
+  @ApiOkResponse({
+    description: 'Current user info returned',
+    type: UserSerializer,
+  })
+  async getCurrentUser(@UserId() userId: string): Promise<UserSerializer> {
+    return this.service.getCurrentUser(userId);
   }
 }

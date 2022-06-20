@@ -125,6 +125,18 @@ export class AuthService {
     );
   }
 
+  async getCurrentUser(userId: string) {
+    const user = await this.usersRepository.findOne(
+      { id: userId },
+      { relations: [UserRelations.INVOLVEMENTS] },
+    );
+    if (!user) {
+      throw new NotFoundException(`User not found`);
+    }
+
+    return user;
+  }
+
   private async sendVerificationLink(user: UserEntity): Promise<void> {
     const verificationLink = `${this.generalConfig.serverUrl}/api/v1/auth/verify/${user.verificationToken}`;
     return this.mailingService.sendVerificationEmail(
