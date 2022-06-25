@@ -21,6 +21,17 @@ export class MailingService {
     );
   }
 
+  async sendResetPasswordEmail(
+    to: string,
+    resetPasswordLink: string,
+  ): Promise<void> {
+    await this.sendEmail(
+      to,
+      'Reset password',
+      `<a href="${resetPasswordLink}">Click to reset password</a>`,
+    );
+  }
+
   private async sendEmail(
     to: string,
     subject: string,

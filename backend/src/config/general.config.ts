@@ -15,8 +15,11 @@ export class GeneralConfig {
   @IsString()
   serverUrl: string;
 
-  @IsString()
-  allowedOrigin: string;
+  @IsString({ each: true })
+  allowedOrigins: string[];
+
+  @IsInt()
+  resetPasswordCodeExpiresInMinutes: number;
 }
 
 const configKey = 'general';
@@ -27,6 +30,8 @@ export const generalConfig = registerAs(configKey, () => {
     bcryptSaltRounds: parseInt(process.env.BCRYPT_SALT_ROUNDS),
     showDocs: process.env.SHOW_DOCS === 'true',
     serverUrl: process.env.SERVER_URL,
-    allowedOrigin: process.env.ALLOWED_ORIGIN,
+    allowedOrigins: (process.env.ALLOWED_ORIGIN || '').split(','),
+    resetPasswordCodeExpiresInMinutes:
+      parseInt(process.env.RESET_PASSWORD_CODE_EXPIRES_IN_MINUTES) || 15,
   });
 });
