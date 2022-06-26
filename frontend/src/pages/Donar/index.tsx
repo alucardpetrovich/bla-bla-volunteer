@@ -1,5 +1,4 @@
 import { useToggle } from 'react-use';
-
 import Portal from '../../components/Portal';
 import { ModalPopUp } from '../../components/Portal/ModalPopUp';
 

@@ -34,11 +34,12 @@ const GlobalStyle = createGlobalStyle`
   :root {
 
     /*PALLET*/
-/* --accent-yellow: #DEDF79;
+--accent-yellow: #DEDF79;
 --accent-blue: #A29BC7;
 --grey:#F3F3F7;
 --white:#FCFCFD;
---text-dark:#323434; */
+--text-dark:#323434;
+--light-gray: #8C8E91;
 
 /* SCSS Gradient */
 $gradient-top: linear-gradient(0deg, #072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a2d6f9ff, #fcf300ff, #fedd00ff, #ffd200ff, #ffc600ff);
@@ -51,61 +52,6 @@ $gradient-top-left: linear-gradient(225deg, #072ac8ff, #1e96fcff, #60b6fbff, #81
 $gradient-bottom-left: linear-gradient(315deg, #072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a2d6f9ff, #fcf300ff, #fedd00ff, #ffd200ff, #ffc600ff);
 $gradient-radial: radial-gradient(#072ac8ff, #1e96fcff, #60b6fbff, #81c6faff, #a2d6f9ff, #fcf300ff, #fedd00ff, #ffd200ff, #ffc600ff);
 
-/* Color */
-    --new-moon-D3: #262628;
-    --new-moon-D2: #444446;
-    --new-moon-D1: #58585a;
-    --new-moon: #121212;
-    --new-moon-L3: #808082;
-    --new-moon-L2: #949496;
-    --new-moon-L1: #b4b4b6;
-    --new-moon-S3: #d0d0d2;
-    --new-moon-S2: #e4e4e6;
-    --new-moon-S1: #f2f2fa;
-
-    --new-sky-D3: #034299;
-    --new-sky-D2: #044cb3;
-    --new-sky-D1: #0555c8;
-    --new-sky: #0555c8;
-    --new-sky-L3: #2d79e3;
-    --new-sky-L2: #5195f5;
-    --new-sky-L1: #66a6ff;
-    --new-sky-S3: #82b6ff;
-    --new-sky-S2: #abceff;
-    --new-sky-S1: #d4e6ff;
-
-    --new-space-D3: #663989;
-    --new-space-D2: #75419c;
-    --new-space-D1: #844ab0;
-    --new-space: #8c54b8;
-    --new-space-L3: #975fc2;
-    --new-space-L2: #a36ecc;
-    --new-space-L1: #66a6ff;
-    --new-space-S3: #c699e8;
-    --new-space-S2: #D4ACF2;
-    --new-space-S1: #e3bfff;
-
-    --new-love-D3: #a5071f;
-    --new-love-D2: #bd0823;
-    --new-love-D1: #d40927;
-    --new-love: #e60a2d;
-    --new-love-L3: #eb1e44;
-    --new-love-L2: #f22c50;
-    --new-love-L1: #fa4869;
-    --new-love-S3: #fc607d;
-    --new-love-S2: #fc6d87;
-    --new-love-S1: #ff7a93;
-
-    --new-earth-D3: #03823c;
-    --new-earth-D2: #039645;
-    --new-earth-D1: #03a84e;
-    --new-earth: #05b353;
-    --new-earth-L3: #16c766;
-    --new-earth-L2: #24d172;
-    --new-earth-L1: #35db80;
-    --new-earth-S3: #51e895;
-    --new-earth-S2: #6bf2a8;
-    --new-earth-S1: #7afab4;
 
 
 
