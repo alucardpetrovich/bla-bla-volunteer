@@ -1,22 +1,30 @@
 import { involvementsAPI } from 'api';
 import { Heading, Text } from 'components/StyledComponents';
+import { useSelector } from 'react-redux';
+import { userUpdate } from 'redux/user/userOperations';
+import { getUser } from 'redux/user/userSelectors';
 import { useTheme } from 'styled-components';
 import { CardStyled, IRoleCard } from './style';
 
 const RoleCard: React.FC<IRoleCard> = ({ id, title, children, textAlign }) => {
+  const user = useSelector(getUser);
+  const { involvements } = user;
+
   const theme = useTheme();
-  const mainColor = theme.palette.primary.main;
-  const hoverColor = theme.palette.text.primary;
+  const mainColor = involvements[0].type === id ? theme.palette.text.primary : theme.palette.primary.main;
 
   const setUserRole = (role: string) => {
     const cred = { involvements: [role] };
-    involvementsAPI.updateInvolvements(cred);
+    // involvementsAPI.updateInvolvements(cred);
+
+    userUpdate(cred);
+    console.log('click', role, cred);
   };
 
   //!!! make condition to make roleCard active if user already has this role
 
   return (
-    <CardStyled color={mainColor} hover={hoverColor} onClick={() => setUserRole(id)}>
+    <CardStyled onClick={() => setUserRole(id)}>
       <Heading tag="h4" color={mainColor} style={{ marginBottom: '20px' }}>
         {title}
       </Heading>
