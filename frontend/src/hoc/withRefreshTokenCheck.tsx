@@ -26,8 +26,7 @@ const WithRefreshTokenCheck = (WrappedComponent: FC) =>
 
     const axiosInterceptorRequest = axiosPrivate.interceptors.request.use(
       config => {
-        // @ts-ignore
-        const authToken = JSON.parse(localStorage.getItem('authToken'));
+        const authToken = JSON.parse(localStorage.getItem('authToken') as string);
 
         // @ts-ignore
         if (!config.headers['Authorization'] && authToken) {

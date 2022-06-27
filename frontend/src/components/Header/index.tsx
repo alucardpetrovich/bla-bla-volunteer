@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { generatePath, useNavigate } from 'react-router-dom';
+import { generatePath, useLocation, useNavigate } from 'react-router-dom';
+import { RootState } from 'src/models/rootState/rootState';
 
 import { PATHS } from '../../constants/PATH';
 import { userLogOut } from '../../store';
@@ -11,33 +12,31 @@ import Navigation from './components/Navigation';
 import { HeaderSubtitleWrapper, HeaderTitleWrapper, NavWrapper, SignUpButton } from './style';
 
 const Header = () => {
-  // FIXME: пофіксить тип. Без any
-  // eslint-disable-next-line
-  const isAuth: boolean = useSelector((state: any) => state.auth.isAuthenticated);
+  const isAuth: boolean = useSelector((state: RootState) => state.auth.isAuthenticated);
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
 
+  const isShowHeading = pathname.includes('registration') || pathname.includes('login') || isAuth;
+
   const handleLogOut = () => {
-    // FIXME: пофіксить
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const refreshToken = JSON.parse(localStorage.getItem('refreshToken'));
+    const refreshToken = JSON.parse(localStorage.getItem('refreshToken') as string);
 
     if (refreshToken) {
       // FIXME: пофіксить тип. as any дуже погано. Стараємся без as any. По можливості замінюємо на typeguard. Якщо не
       //  знаємо як пінаємо Вадіма
       // eslint-disable-next-line
-      dispatch(userLogOut({ refreshToken: refreshToken.token }) as any);
+      dispatch(userLogOut({ refreshToken: refreshToken.token } as unknown as string) as any);
     }
   };
 
   // FIXME: пофіксить
   // eslint-disable-next-line
-  const lang = useSelector(state => 'ua');
+  const lang = useSelector((state: RootState) => 'ua');
   const navigate = useNavigate();
 
   return (
     <header>
-      <HeaderBg isAuth={isAuth}>
+      <HeaderBg isAuth={isShowHeading}>
         <Container tag="header" isAuth={isAuth}>
           <NavWrapper>
             <Logo
@@ -51,7 +50,7 @@ const Header = () => {
               <p>lang</p>
             </div>
           </NavWrapper>
-          {!isAuth && (
+          {!isShowHeading && (
             <HeaderTitleWrapper>
               <Heading tag="h2" style={{ marginBottom: '200px' }}>
                 Безпечна платформа координації передачі гуманітарної допомоги

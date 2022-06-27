@@ -1,63 +1,95 @@
-import React from 'react';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import Button from 'src/components/Buttons/Button';
+import TextBox from 'src/components/TextBox/TextBox';
+import { PATHS } from 'src/constants/PATH';
 
 import { userLogin } from '../../store';
+import { ForgotPasswordLink, LoginFormContainerDiv, LoginFormWrapperDiv, LoginTitle, StyledTitleDiv } from './style';
 
-const Login = () => {
-  // FIXME: пофіксить. без any. і не робить так більше)
-  // eslint-disable-next-line
-  const message = useSelector((state: any) => state.auth.error);
+interface LoginProps {
+  email: string;
+  password: string;
+  showPassword: boolean;
+}
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm({ mode: 'onBlur' });
+const Login = (): JSX.Element => {
+  const [loginFormValues, setLoginFormValues] = useState<LoginProps>({
+    email: '',
+    password: '',
+    showPassword: false,
+  });
 
   const dispatch = useDispatch();
 
-  const handleSubmitForm: SubmitHandler<FieldValues> = data => {
-    console.log(data);
+  const handleSubmit = (): void => {
+    const credentials = {
+      email: loginFormValues.email,
+      password: loginFormValues.password,
+    };
+
     try {
-      // FIXME: пофіксить і не робить так більше
-      // eslint-disable-next-line
-      dispatch(userLogin(data) as any);
-      reset();
+      dispatch(userLogin(credentials) as never);
+      setLoginFormValues({
+        ...loginFormValues,
+        email: '',
+        password: '',
+      });
     } catch (error) {
-      console.log(error);
+      // eslint-disable-next-line no-console
+      console.log('error', error);
     }
   };
 
+  const handlePasswordOnChange = (value: string): void => {
+    setLoginFormValues({ ...loginFormValues, password: value });
+  };
+
+  const handleEmailOnChange = (value: string): void => {
+    setLoginFormValues({ ...loginFormValues, email: value });
+  };
+
+  const handleClickShowPassword = (): void => {
+    setLoginFormValues({
+      ...loginFormValues,
+      showPassword: !loginFormValues.showPassword,
+    });
+  };
+
   return (
-    <div>
-      <h3>login</h3>
-      <form onSubmit={handleSubmit(handleSubmitForm)}>
-        <div style={{ height: '20px' }}>{message && <span>{message}</span>}</div>
-        <input
-          {...register('email', {
-            required: 'email is required field',
-            maxLength: 30,
-            minLength: { value: 4, message: 'minimum 4 symbols' },
-          })}
-          type="email"
-          autoComplete="false"
-        />
-        <div style={{ height: '20px' }}>{errors?.email && <span>{errors?.email?.message}</span>}</div>
-        <input
-          {...register('password', {
-            required: 'this field is required',
-            maxLength: 30,
-            minLength: { value: 4, message: 'minimum 4 symbols' },
-          })}
-          type="password"
-          autoComplete="false"
-        />
-        <div style={{ height: '20px' }}>{errors?.password && <span>{errors?.password?.message}</span>}</div>
-        <input type="submit" />
-      </form>
-    </div>
+    <>
+      <StyledTitleDiv style={{ marginBottom: '55px' }}>
+        <p>Вхід / реєстрація</p>
+      </StyledTitleDiv>
+      <LoginFormContainerDiv style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <LoginFormWrapperDiv style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <LoginTitle style={{ marginBottom: '65px' }}>Вхід</LoginTitle>
+          <TextBox
+            value={loginFormValues.email}
+            required
+            onChange={handleEmailOnChange}
+            name="email"
+            label="Ел. Пошта"
+            id="login-email"
+            fullWidth
+          />
+          <TextBox
+            value={loginFormValues.password}
+            handleClickShowPassword={handleClickShowPassword}
+            showPassword={loginFormValues.showPassword}
+            type={loginFormValues.showPassword ? 'text' : 'password'}
+            showPasswordIcon
+            name="password"
+            label="Пароль"
+            onChange={handlePasswordOnChange}
+            id="login-password"
+            fullWidth
+          />
+          <ForgotPasswordLink to={PATHS.NOT_FOUND_404.path}>Забув пароль</ForgotPasswordLink>
+          <Button text={'Увійти'} onClick={handleSubmit} />
+        </LoginFormWrapperDiv>
+      </LoginFormContainerDiv>
+    </>
   );
 };
 
