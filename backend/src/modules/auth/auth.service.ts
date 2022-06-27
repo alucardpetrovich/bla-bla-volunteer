@@ -1,6 +1,7 @@
 import {
   ConflictException,
   ForbiddenException,
+  GoneException,
   Inject,
   Injectable,
   NotFoundException,
@@ -23,6 +24,9 @@ import { SignInSerializer } from './serializers/sign-in.serializer';
 import { RefreshTokenDto } from './dto/refresh-tokens.dto';
 import { RevokedTokensRepository } from './revoked-tokens.repository';
 import { SignUpDto } from './dto/sign-up.dto';
+import { SendResetPasswordLinkDto } from './dto/send-reset-password-link.dto';
+import { ResetPasswordCodesRepository } from './reset-password-codes.repository';
+import { ResetPasswordDto } from './dto/reset-password.dto';
 
 @Injectable()
 export class AuthService {
@@ -35,6 +39,7 @@ export class AuthService {
     private jwtConfig: JwtConfig,
     private mailingService: MailingService,
     private revokedTokensRepository: RevokedTokensRepository,
+    private resetPasswordCodesRepository: ResetPasswordCodesRepository,
   ) {}
 
   async signUp(dto: SignUpDto): Promise<UserEntity> {
@@ -45,15 +50,10 @@ export class AuthService {
       throw new ConflictException(`User with email '${email}' already exists`);
     }
 
-    const passwordHash = await bcrypt.hash(
-      password,
-      this.generalConfig.bcryptSaltRounds,
-    );
-
     const user = await this.usersRepository.save({
       nickname,
       email,
-      passwordHash,
+      passwordHash: await this.getPasswordHash(password),
       status: UserStatuses.VERIFICATION_NEEDED,
       verificationToken: uuid.v4(),
     });
@@ -137,6 +137,43 @@ export class AuthService {
     return user;
   }
 
+  async sendResetPasswordLink({ email, baseUrl }: SendResetPasswordLinkDto) {
+    if (!this.generalConfig.allowedOrigins.includes(baseUrl)) {
+      throw new ForbiddenException('Wrong base URL');
+    }
+
+    const user = await this.usersRepository.findOne({ email });
+    if (!user) {
+      return;
+    }
+
+    const code = uuid.v4();
+    await this.resetPasswordCodesRepository.setCode(
+      user.id,
+      code,
+      this.generalConfig.resetPasswordCodeExpiresInMinutes * 60,
+    );
+
+    const resetPasswordLink = `${baseUrl}/reset-password?code=${code}`;
+    await this.mailingService.sendResetPasswordEmail(email, resetPasswordLink);
+  }
+
+  async resetPassword(dto: ResetPasswordDto) {
+    const userId = await this.resetPasswordCodesRepository.getUserId(dto.code);
+    if (!userId) {
+      throw new GoneException('Reset password code is wrong or expired');
+    }
+
+    const user = await this.usersRepository.findOne(userId);
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    user.passwordHash = await this.getPasswordHash(dto.newPassword);
+    await this.usersRepository.save(user);
+    await this.resetPasswordCodesRepository.deleteCodes(user.id);
+  }
+
   private async sendVerificationLink(user: UserEntity): Promise<void> {
     const verificationLink = `${this.generalConfig.serverUrl}/api/v1/auth/verify/${user.verificationToken}`;
     return this.mailingService.sendVerificationEmail(
@@ -195,5 +232,9 @@ export class AuthService {
   private getRevokedTokenTtl(exp: number) {
     const now = Math.floor(Date.now() / 1000);
     return exp - now;
+  }
+
+  private getPasswordHash(password: string) {
+    return bcrypt.hash(password, this.generalConfig.bcryptSaltRounds);
   }
 }

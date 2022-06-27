@@ -11,12 +11,18 @@ import { CaptchaMiddleware } from 'src/shared/middlewares/captcha';
 import { UsersRepository } from '../users/users.repository';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
+import { ResetPasswordCodesRepository } from './reset-password-codes.repository';
 import { RevokedTokensRepository } from './revoked-tokens.repository';
 
 @Module({
   imports: [TypeOrmModule.forFeature([UsersRepository]), cacheModule],
   controllers: [AuthController],
-  providers: [AuthService, MailingService, RevokedTokensRepository],
+  providers: [
+    AuthService,
+    MailingService,
+    RevokedTokensRepository,
+    ResetPasswordCodesRepository,
+  ],
 })
 export class AuthModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
