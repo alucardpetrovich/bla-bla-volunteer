@@ -1,9 +1,9 @@
-import { involvementsAPI } from 'api';
-import { Heading, Text } from 'components/StyledComponents';
 import { useSelector } from 'react-redux';
-import { userUpdate } from 'redux/user/userOperations';
-import { getUser } from 'redux/user/userSelectors';
 import { useTheme } from 'styled-components';
+
+import { userUpdate } from '../../../store/user/userOperations';
+import { getUser } from '../../../store/user/userSelectors';
+import { Heading, Text } from '../../StyledComponents';
 import { CardStyled, IRoleCard } from './style';
 
 const RoleCard: React.FC<IRoleCard> = ({ id, title, children, textAlign }) => {

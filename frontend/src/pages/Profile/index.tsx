@@ -1,9 +1,10 @@
-import RoleCard from 'components/atoms/RoleCard';
-import { Heading } from 'components/StyledComponents';
-import { roles } from 'constants/roles';
 import { useSelector } from 'react-redux';
-import { getUser } from 'redux/user/userSelectors';
 import { useTheme } from 'styled-components';
+
+import RoleCard from '../../components/atoms/RoleCard';
+import { Heading } from '../../components/StyledComponents';
+import { roles } from '../../constants/roles';
+import { getUser } from '../../store/user/userSelectors';
 import { RoleListWrapper, RoleWrapper } from './style';
 
 const Profile: React.FC = () => {

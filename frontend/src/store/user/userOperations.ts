@@ -1,10 +1,11 @@
-import { useSelector } from 'react-redux';
-import { involvementsAPI } from 'api';
-import { getIsAuth } from 'redux/auth/authSelectors';
+// import { useSelector } from 'react-redux';
+
+import { involvementsAPI } from '../../api';
+// import { getIsAuth } from '../../store/auth/authSelectors';
 import userActions from './userActions';
 
 export const userUpdate = credentials => dispatch => {
-  const isAuth = useSelector(getIsAuth);
+  // const isAuth = useSelector(getIsAuth);
   console.log('credentials', credentials);
   //   if (!isAuth) return;
   dispatch(userActions.userUpdateRequest());

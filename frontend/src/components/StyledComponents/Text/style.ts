@@ -1,5 +1,6 @@
-import { CardStyled } from './../../atoms/RoleCard/style';
 import styled from 'styled-components';
+
+import { CardStyled } from './../../atoms/RoleCard/style';
 
 type TextTypes = 'b1' | 'b2' | 'b3' | 'b4' | 'b5' | 'b6' | 'b7';
 
