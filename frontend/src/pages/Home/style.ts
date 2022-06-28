@@ -34,7 +34,6 @@ export const SectionTitle = styled.div`
   line-height: 21px;
   letter-spacing: 0em;
   text-align: left;
-  background: red;
 `;
 
 export const ImageWrapper = styled.div`

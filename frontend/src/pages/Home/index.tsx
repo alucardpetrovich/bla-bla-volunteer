@@ -5,13 +5,13 @@ import { homeData } from './assets/data';
 import * as S from './style';
 
 const HomePage = () => {
+  const data = homeData;
   const [currentIndex, setCurrentIndex] = useState(0);
   //! remove, just for test auth & headers with token
 
   const handExampleRequest = () => {
     authorizationAPI.exampleRequest();
   };
-  const data = homeData;
 
   return (
     <>
