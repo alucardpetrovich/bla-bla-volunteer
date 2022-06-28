@@ -7,7 +7,7 @@ export class ResponseInterceptor<T> implements NestInterceptor<T> {
   constructor(private Serializer: T, private propName?: string) {}
 
   public intercept(
-    context: ExecutionContext,
+    _context: ExecutionContext,
     next: CallHandler,
   ): Observable<T> {
     return next.handle().pipe(

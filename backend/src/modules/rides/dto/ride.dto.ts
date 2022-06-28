@@ -1,11 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsDate,
-  IsDateString,
-  IsUUID,
-  MinDate,
-  Validate,
-} from 'class-validator';
+import { IsDateString, IsUUID, Validate } from 'class-validator';
 import { IsBeforeConstraint } from 'src/shared/decorators/is-before.decorator';
 
 export class RideDto {

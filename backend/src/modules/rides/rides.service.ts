@@ -27,7 +27,7 @@ export class RidesService {
   constructor(
     @InjectRepository(RidesRepository) private ridesRepository: RidesRepository,
     @Inject(entityLocksConfig.KEY)
-    private entityLocksConfig: EntityLocksConfig,
+    private entityLocksConf: EntityLocksConfig,
   ) {}
 
   async createRide(userId: string, dto: RideDto) {
@@ -42,7 +42,7 @@ export class RidesService {
     if (overlappingRidesCount) {
       throw new ConflictException('Overlapping rides found');
     }
-    if (unfinishedRidesCount >= this.entityLocksConfig.maxUnfinishedRides) {
+    if (unfinishedRidesCount >= this.entityLocksConf.maxUnfinishedRides) {
       throw new ForbiddenException('Too many unfinished rides');
     }
 

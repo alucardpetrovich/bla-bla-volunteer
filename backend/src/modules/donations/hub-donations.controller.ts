@@ -33,9 +33,6 @@ import { DonationsListSerializer } from './serializers/donations-list.serializer
 @ApiTags('Hub Donations Controller')
 @ApiBearerAuth()
 export class HubDonationsController {
-  // TODO: add donation requests filters
-  // TODO: add getting of hubs list (need to think about it, need to add list of required items later on)
-  // TODO: change donation request status by hub or donor
   constructor(private service: HubDonationsService) {}
 
   @Get()
