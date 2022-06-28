@@ -6,14 +6,18 @@ const initialState = {
   },
 };
 
-const user = (state = { ...initialState }, { type, payload }) => {
+// FIXME: пофіксить тайпінги
+// eslint-disable-next-line
+// @ts-ignore
+const userReducer = (state = { ...initialState }, { type, payload }) => {
   switch (type) {
     case userConstants.USER_UPDATE_SUCCESS:
-      return { ...initialState, ...payload };
+      console.log('type', type, payload);
+      return { ...payload };
 
     default:
       return state;
   }
 };
 
-export default user;
+export default userReducer;

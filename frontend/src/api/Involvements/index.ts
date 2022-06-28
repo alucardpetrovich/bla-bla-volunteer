@@ -1,4 +1,4 @@
-import { axiosPrivate } from 'api/axios';
+import { axiosPrivate } from '../../api/axios';
 
 const getInvolvements = async () => {
   try {
@@ -14,8 +14,11 @@ const getInvolvements = async () => {
   //   return response;
 };
 
-const updateInvolvements = async (involvement: any) => {
+// FIXME: пофіксить тайпінги
+// eslint-disable-next-line
+// @ts-ignore
+const updateInvolvements = async (involvement: unknown) => {
   const response = await axiosPrivate.put('/api/v1/involvements', involvement);
-  console.log(response);
+  return response;
 };
 export default { getInvolvements, updateInvolvements };

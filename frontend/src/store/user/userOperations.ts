@@ -4,19 +4,26 @@ import { involvementsAPI } from '../../api';
 // import { getIsAuth } from '../../store/auth/authSelectors';
 import userActions from './userActions';
 
-export const userUpdate = credentials => dispatch => {
+// FIXME: пофіксить тайпінги
+// eslint-disable-next-line
+// @ts-ignore
+export const userUpdate = credentials => async dispatch => {
   // const isAuth = useSelector(getIsAuth);
-  console.log('credentials', credentials);
   //   if (!isAuth) return;
   dispatch(userActions.userUpdateRequest());
 
   try {
-    const response = involvementsAPI.updateInvolvements(credentials);
+    const response = await involvementsAPI.updateInvolvements(credentials);
     console.log('response', response);
-    // dispatch(userActions.userUpdateSuccess(response.data));
+    // FIXME: пофіксить тайпінги
+    // eslint-disable-next-line
+    // @ts-ignore
+    dispatch(userActions.userUpdateSuccess(response.data.user));
   } catch (error) {
     console.log('error', error);
+    // FIXME: пофіксить тайпінги
+    // eslint-disable-next-line
+    // @ts-ignore
     dispatch(userActions.userUpdateError(error.message));
   }
-  console.log('return');
 };

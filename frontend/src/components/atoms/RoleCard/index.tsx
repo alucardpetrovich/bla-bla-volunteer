@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useTheme } from 'styled-components';
 
@@ -10,6 +11,7 @@ const RoleCard: React.FC<IRoleCard> = ({ id, title, children, textAlign }) => {
   const user = useSelector(getUser);
   const { involvements } = user;
 
+  const dispatch = useDispatch();
   const theme = useTheme();
   const mainColor = involvements[0].type === id ? theme.palette.text.primary : theme.palette.primary.main;
 
@@ -17,7 +19,10 @@ const RoleCard: React.FC<IRoleCard> = ({ id, title, children, textAlign }) => {
     const cred = { involvements: [role] };
     // involvementsAPI.updateInvolvements(cred);
 
-    userUpdate(cred);
+    // FIXME: пофіксить тайпінги
+    // eslint-disable-next-line
+    // @ts-ignore
+    dispatch(userUpdate(cred));
     console.log('click', role, cred);
   };
 
