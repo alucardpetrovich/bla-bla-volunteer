@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { getIsAuth } from 'src/store';
 import { useTheme } from 'styled-components';
 
 import { userUpdate } from '../../../store/user/userOperations';
@@ -9,6 +10,7 @@ import { CardStyled, IRoleCard } from './style';
 
 const RoleCard: React.FC<IRoleCard> = ({ id, title, children, textAlign }) => {
   const user = useSelector(getUser);
+  const isAuth = useSelector(getIsAuth);
   const { involvements } = user;
 
   const dispatch = useDispatch();
@@ -17,7 +19,8 @@ const RoleCard: React.FC<IRoleCard> = ({ id, title, children, textAlign }) => {
 
   const setUserRole = (role: string) => {
     const cred = { involvements: [role] };
-    // involvementsAPI.updateInvolvements(cred);
+
+    if (!isAuth) return;
 
     // FIXME: пофіксить тайпінги
     // eslint-disable-next-line

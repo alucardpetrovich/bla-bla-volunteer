@@ -1,29 +1,28 @@
 // import { useSelector } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { involvementsAPI } from '../../api';
 // import { getIsAuth } from '../../store/auth/authSelectors';
 import userActions from './userActions';
 
-// FIXME: пофіксить тайпінги
-// eslint-disable-next-line
-// @ts-ignore
-export const userUpdate = credentials => async dispatch => {
+interface ICredentials {
+  involvements: string[];
+}
+
+export const userUpdate = (credentials: ICredentials) => async (dispatch: Dispatch) => {
   // const isAuth = useSelector(getIsAuth);
-  //   if (!isAuth) return;
+  // if (!isAuth) return;
   dispatch(userActions.userUpdateRequest());
 
   try {
     const response = await involvementsAPI.updateInvolvements(credentials);
-    console.log('response', response);
-    // FIXME: пофіксить тайпінги
-    // eslint-disable-next-line
-    // @ts-ignore
     dispatch(userActions.userUpdateSuccess(response.data.user));
   } catch (error) {
-    console.log('error', error);
-    // FIXME: пофіксить тайпінги
-    // eslint-disable-next-line
-    // @ts-ignore
-    dispatch(userActions.userUpdateError(error.message));
+    if (error instanceof Error) {
+      console.log('Error message', error.message);
+      dispatch(userActions.userUpdateError(error.message));
+    } else {
+      console.log('Unexpected error', error);
+    }
   }
 };
