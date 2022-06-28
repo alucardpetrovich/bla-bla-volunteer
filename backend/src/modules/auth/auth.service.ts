@@ -27,12 +27,15 @@ import { SignUpDto } from './dto/sign-up.dto';
 import { SendResetPasswordLinkDto } from './dto/send-reset-password-link.dto';
 import { ResetPasswordCodesRepository } from './reset-password-codes.repository';
 import { ResetPasswordDto } from './dto/reset-password.dto';
+import { ContactsRepository } from '../contacts/db/contacts.repository';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectRepository(UsersRepository)
     private usersRepository: UsersRepository,
+    @InjectRepository(ContactsRepository)
+    private contactsRepository: ContactsRepository,
     @Inject(generalConfig.KEY)
     private generalConf: GeneralConfig,
     @Inject(jwtConfig.KEY)
@@ -57,6 +60,14 @@ export class AuthService {
       status: UserStatuses.VERIFICATION_NEEDED,
       verificationToken: uuid.v4(),
     });
+    if (dto.phoneNumber) {
+      await this.contactsRepository.save({
+        userId: user.id,
+        accessMode: dto.phoneNumberAccessMode,
+        type: 'phone',
+        value: dto.phoneNumber,
+      });
+    }
 
     await this.sendVerificationLink(user);
 

@@ -7,7 +7,11 @@ export class MailingService {
   private transport: nodemailer.Transporter<nodemailer.SentMessageInfo>;
 
   constructor(@Inject(mailingConfig.KEY) private mailingConf: MailingConfig) {
-    this.transport = nodemailer.createTransport(mailingConf);
+    this.transport = nodemailer.createTransport({
+      ...mailingConf,
+      secure: true,
+      requireTLS: true,
+    });
   }
 
   async sendVerificationEmail(
