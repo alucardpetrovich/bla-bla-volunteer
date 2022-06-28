@@ -1,23 +1,19 @@
-import { CardStyled } from './../../atoms/RoleCard/style';
 import styled from 'styled-components';
+
+import { CardStyled } from './../../atoms/RoleCard/style';
 
 type HeaderTypes = 'h2' | 'h3' | 'h4' | 'h5';
 
 export interface IHeader {
   color?: string;
   shouldHovered?: boolean;
-  tag?: HeaderTypes;
+  tag: HeaderTypes;
   isBold?: boolean;
   textAlign?: 'left' | 'center' | 'right';
-  // FIXME: Ойойой. Пофіксить. без any
-  // eslint-disable-next-line
-  fontWeight?: any;
-  // eslint-disable-next-line
-  lineHeight?: any;
-  // eslint-disable-next-line
-  children: any;
-  // eslint-disable-next-line
-  style?: any;
+  fontWeight?: number;
+  lineHeight?: number;
+  children: React.ReactNode;
+  style?: object;
 }
 
 export const HeaderH2 = styled.h2<IHeader>`

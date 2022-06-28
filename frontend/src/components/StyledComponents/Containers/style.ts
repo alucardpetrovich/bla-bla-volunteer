@@ -3,10 +3,8 @@ import styled from 'styled-components';
 type ContainerTypes = 'content' | 'header' | 'main' | 'footer';
 
 export interface IContainer {
-  tag?: ContainerTypes;
-  // FIXME: без any
-  // eslint-disable-next-line
-  children: any;
+  tag: ContainerTypes;
+  children: React.ReactNode;
   isAuth?: boolean;
 }
 

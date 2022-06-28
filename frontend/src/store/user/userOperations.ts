@@ -1,8 +1,6 @@
-// import { useSelector } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { involvementsAPI } from '../../api';
-// import { getIsAuth } from '../../store/auth/authSelectors';
 import userActions from './userActions';
 
 interface ICredentials {
@@ -10,13 +8,11 @@ interface ICredentials {
 }
 
 export const userUpdate = (credentials: ICredentials) => async (dispatch: Dispatch) => {
-  // const isAuth = useSelector(getIsAuth);
-  // if (!isAuth) return;
   dispatch(userActions.userUpdateRequest());
 
   try {
     const response = await involvementsAPI.updateInvolvements(credentials);
-    dispatch(userActions.userUpdateSuccess(response.data.user));
+    response && dispatch(userActions.userUpdateSuccess(response.data.user));
   } catch (error) {
     if (error instanceof Error) {
       console.log('Error message', error.message);

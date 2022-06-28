@@ -10,7 +10,11 @@ const getInvolvements = async () => {
 };
 
 const updateInvolvements = async (involvement: unknown) => {
-  const response = await axiosPrivate.put('/api/v1/involvements', involvement);
-  return response;
+  try {
+    const response = await axiosPrivate.put('/api/v1/involvements', involvement);
+    return response;
+  } catch (error) {
+    console.log('updateInvolvementsErr', error);
+  }
 };
 export default { getInvolvements, updateInvolvements };

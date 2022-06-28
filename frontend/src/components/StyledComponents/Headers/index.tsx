@@ -5,30 +5,27 @@ import { HeaderH2, HeaderH3, HeaderH4, HeaderH5, IHeader } from './style';
 const Header: React.FC<IHeader> = ({ color, tag, textAlign, children, ...props }) => {
   const StyledHeader = {
     h2: (
-      <HeaderH2 textAlign={textAlign} color={color} {...props}>
+      <HeaderH2 tag={tag} textAlign={textAlign} color={color} {...props}>
         {children}
       </HeaderH2>
     ),
     h3: (
-      <HeaderH3 textAlign={textAlign} color={color} {...props}>
+      <HeaderH3 tag={tag} textAlign={textAlign} color={color} {...props}>
         {children}
       </HeaderH3>
     ),
     h4: (
-      <HeaderH4 textAlign={textAlign} color={color} {...props}>
+      <HeaderH4 tag={tag} textAlign={textAlign} color={color} {...props}>
         {children}
       </HeaderH4>
     ),
     h5: (
-      <HeaderH5 textAlign={textAlign} color={color} {...props}>
+      <HeaderH5 tag={tag} textAlign={textAlign} color={color} {...props}>
         {children}
       </HeaderH5>
     ),
   };
 
-  // FIXME: Пофіксить. tag опціональний. Коли буде undefined тоді впаде апка?
-  // eslint-disable-next-line
-  // @ts-ignore
   return StyledHeader[tag];
 };
 
