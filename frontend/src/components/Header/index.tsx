@@ -1,3 +1,4 @@
+import { Autocomplete, TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { generatePath, useNavigate } from 'react-router-dom';
 import { roles } from 'src/constants/roles';
@@ -7,6 +8,8 @@ import { PATHS } from '../../constants/PATH';
 import { userLogOut } from '../../store';
 import { Logo } from '../atoms';
 import ArrowRight from '../atoms/ArrowRight';
+import Notifications from '../atoms/Notifications';
+// import SearchIcon from '../atoms/SearchIcon';
 import { Container, Heading, Text } from '../StyledComponents';
 import HeaderBg from './components/HeaderBg';
 // import Navigation from './components/Navigation';
@@ -17,7 +20,7 @@ const Header = () => {
   // eslint-disable-next-line
   const isAuth: boolean = useSelector((state: any) => state.auth.isAuthenticated);
   const user = useSelector(getUser);
-  const { involvements } = user;
+  const involvements = user?.involvements;
   const userRole = involvements && roles.map(role => (role.id === involvements[0].type ? `${role.title}` : null));
 
   const dispatch = useDispatch();
@@ -56,7 +59,38 @@ const Header = () => {
               style={{ cursor: 'pointer' }}
             />
 
-            {isAuth && <Text tag="b1">{userRole}</Text>}
+            {isAuth && (
+              <>
+                <Text tag="b1">{userRole}</Text>
+                <div style={{ width: '360px' }}>
+                  <Autocomplete
+                    freeSolo
+                    id="free-solo-2-demo"
+                    disableClearable
+                    options={roles.map(role => role.title)}
+                    renderInput={params => (
+                      <TextField
+                        {...params}
+                        sx={{ m: 1, width: '36ch', bgcolor: '#fff' }}
+                        size="small"
+                        label="Пошук"
+                        InputProps={{
+                          ...params.InputProps,
+                          // startAdornment: (
+                          //   <InputAdornment position="start">
+                          //     <SearchIcon width={16} />
+                          //   </InputAdornment>
+                          // ),
+                          // placeholder: 'Пошук',
+                          type: 'search',
+                        }}
+                      />
+                    )}
+                  />
+                </div>
+                <Notifications width={24} isNew={true} style={{ cursor: 'pointer' }} />
+              </>
+            )}
             <div style={{ width: '166px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Heading tag="h4" onClick={handleLogOut} style={{ cursor: 'pointer' }}>
                 {isAuth ? 'вихід' : 'вхід'}
