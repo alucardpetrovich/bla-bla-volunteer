@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export interface StyledButtonProps {
   buttonType?: 'primary' | 'secondary' | 'tertiary';
   disabled?: boolean;
+  marginBottom?: string | number;
 }
 
 export const StyledButton = styled.button<StyledButtonProps>`
@@ -23,6 +24,10 @@ export const StyledButton = styled.button<StyledButtonProps>`
     if (buttonType === 'tertiary') return '1px solid #8C8E91';
   }};
   border-radius: 5px;
+  margin-bottom: ${({ marginBottom }) => {
+    if (!marginBottom) return `${0}px`;
+    if (marginBottom) return `${marginBottom}px`;
+  }};
   color: ${({ buttonType }) => {
     if (!buttonType || buttonType === 'primary' || buttonType === 'secondary') return '#323434';
     if (buttonType === 'tertiary') return '#8C8E91';

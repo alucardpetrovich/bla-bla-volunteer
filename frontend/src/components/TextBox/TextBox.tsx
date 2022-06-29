@@ -1,7 +1,9 @@
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
+import { useEffect, useState } from 'react';
 import TogglePasswordIcon from 'src/assets/icons/TogglePasswordIcon';
+import useInputValidation from 'src/hooks/useInputValidation';
 
 import InputWrapper, { InputWrapperProps } from '../InputWrapper/InputWrapper';
 
@@ -16,6 +18,8 @@ interface ITextBoxProps extends InputWrapperProps {
   id?: string;
   fullWidth?: boolean;
   autoComplete?: 'off' | 'on';
+  required?: boolean;
+  isIncorrectField?: (value: boolean) => void;
 }
 
 const TextBox = ({
@@ -32,15 +36,32 @@ const TextBox = ({
   fullWidth = false,
   autoComplete = 'off',
   horizontal = false,
+  required,
+  isIncorrectField,
 }: ITextBoxProps): JSX.Element => {
+  const [isDirty, setIsDirty] = useState<boolean>(false);
+  const { error, isDisabled } = useInputValidation(value, name, isDirty);
+
+  useEffect(() => {
+    if (!isIncorrectField) return;
+    isIncorrectField(isDisabled);
+  }, [isDisabled]);
+
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     onChange(e.target.value);
   };
 
+  const onBlur = () => {
+    setIsDirty(true);
+  };
+
   return (
-    <InputWrapper name={name} label={label} required horizontal={horizontal}>
+    <InputWrapper name={name} label={label} required={required} horizontal={horizontal}>
       <TextField
+        error={error?.state ? error?.state : false}
+        helperText={error?.state ? error.message : null}
         id={id}
+        onBlur={onBlur}
         onChange={handleOnChange}
         type={type}
         size={size}

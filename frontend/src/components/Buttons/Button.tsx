@@ -1,12 +1,20 @@
 import { StyledButton } from './style';
 
 export interface IButton {
-  text: string;
+  text?: string;
   onClick?: () => void;
   buttonType?: 'primary' | 'secondary' | 'tertiary';
   isDisabled?: boolean;
+  marginBottom?: string | number;
 }
-const Button = ({ text, buttonType, onClick, isDisabled = false }: IButton): JSX.Element => {
+const Button = ({
+  text,
+  buttonType,
+  onClick,
+  isDisabled = false,
+  children,
+  marginBottom,
+}: React.PropsWithChildren<IButton>): JSX.Element => {
   const handleClick = (): void => {
     if (!onClick) return;
 
@@ -14,8 +22,8 @@ const Button = ({ text, buttonType, onClick, isDisabled = false }: IButton): JSX
   };
 
   return (
-    <StyledButton disabled={isDisabled} buttonType={buttonType} onClick={handleClick}>
-      {text}
+    <StyledButton marginBottom={marginBottom} disabled={isDisabled} buttonType={buttonType} onClick={handleClick}>
+      {children ? children : text}
     </StyledButton>
   );
 };

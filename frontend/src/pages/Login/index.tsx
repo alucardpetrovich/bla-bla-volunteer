@@ -20,7 +20,19 @@ const Login = (): JSX.Element => {
     showPassword: false,
   });
 
+  const { email, password, showPassword } = loginFormValues;
+
   const dispatch = useDispatch();
+
+  const [isEmailFieldDisabled, setIsEmailFieldDisabled] = useState<boolean>(true);
+  const [isPasswordFieldDisabled, setIsPasswordFieldDisabled] = useState<boolean>(true);
+
+  const isDisabledEmail = (value: boolean) => {
+    setIsEmailFieldDisabled(value);
+  };
+  const isDisabledPassword = (value: boolean) => {
+    setIsPasswordFieldDisabled(value);
+  };
 
   const handleSubmit = (): void => {
     const credentials = {
@@ -30,11 +42,11 @@ const Login = (): JSX.Element => {
 
     try {
       dispatch(userLogin(credentials) as never);
-      setLoginFormValues({
-        ...loginFormValues,
-        email: '',
-        password: '',
-      });
+      // setLoginFormValues({
+      //   ...loginFormValues,
+      //   email: '',
+      //   password: '',
+      // });
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log('error', error);
@@ -52,20 +64,23 @@ const Login = (): JSX.Element => {
   const handleClickShowPassword = (): void => {
     setLoginFormValues({
       ...loginFormValues,
-      showPassword: !loginFormValues.showPassword,
+      showPassword: !showPassword,
     });
   };
 
+  const isDisabled = isEmailFieldDisabled || isPasswordFieldDisabled;
+
   return (
     <>
-      <StyledTitleDiv style={{ marginBottom: '55px' }}>
+      <StyledTitleDiv>
         <p>Вхід / реєстрація</p>
       </StyledTitleDiv>
-      <LoginFormContainerDiv style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <LoginFormWrapperDiv style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          <LoginTitle style={{ marginBottom: '65px' }}>Вхід</LoginTitle>
+      <LoginFormContainerDiv>
+        <LoginFormWrapperDiv>
+          <LoginTitle>Вхід</LoginTitle>
           <TextBox
-            value={loginFormValues.email}
+            isIncorrectField={isDisabledEmail}
+            value={email}
             required
             onChange={handleEmailOnChange}
             name="email"
@@ -74,10 +89,12 @@ const Login = (): JSX.Element => {
             fullWidth
           />
           <TextBox
-            value={loginFormValues.password}
+            isIncorrectField={isDisabledPassword}
+            value={password}
+            required
             handleClickShowPassword={handleClickShowPassword}
-            showPassword={loginFormValues.showPassword}
-            type={loginFormValues.showPassword ? 'text' : 'password'}
+            showPassword={showPassword}
+            type={showPassword ? 'text' : 'password'}
             showPasswordIcon
             name="password"
             label="Пароль"
@@ -85,8 +102,9 @@ const Login = (): JSX.Element => {
             id="login-password"
             fullWidth
           />
-          <ForgotPasswordLink to={PATHS.NOT_FOUND_404.path}>Забув пароль</ForgotPasswordLink>
-          <Button text={'Увійти'} onClick={handleSubmit} />
+          {/* TODO: змінити пас коли буде сторінка на яку має переводити при натисканні лінки */}
+          <ForgotPasswordLink to={`../${PATHS.NOT_FOUND_404.path}`}>Забув пароль</ForgotPasswordLink>
+          <Button isDisabled={isDisabled} text={'Увійти'} onClick={handleSubmit} />
         </LoginFormWrapperDiv>
       </LoginFormContainerDiv>
     </>
