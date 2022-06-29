@@ -5,15 +5,20 @@ import {
   Get,
   HttpCode,
   Param,
+  Patch,
   Post,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import {
+  ApiBearerAuth,
   ApiConflictResponse,
   ApiCreatedResponse,
   ApiForbiddenResponse,
+  ApiGoneResponse,
   ApiNoContentResponse,
   ApiNotFoundResponse,
+  ApiOkResponse,
   ApiOperation,
   ApiPreconditionFailedResponse,
   ApiTags,
@@ -26,6 +31,11 @@ import { RefreshTokensSerializer } from './serializers/refresh-tokens.serializer
 import { SignInSerializer } from './serializers/sign-in.serializer';
 import { SignUpSerializer } from './serializers/sign-up.serializer';
 import { SignUpDto } from './dto/sign-up.dto';
+import { UserSerializer } from '../users/serializers/user.serializer';
+import { UserId } from 'src/shared/decorators/user-id.decorators';
+import { JwtGuard } from './guards/jwt.guard';
+import { SendResetPasswordLinkDto } from './dto/send-reset-password-link.dto';
+import { ResetPasswordDto } from './dto/reset-password.dto';
 
 @Controller('/v1/auth')
 @ApiTags('Auth Controller')
@@ -96,5 +106,44 @@ export class AuthController {
   })
   async signOut(@Body() dto: RefreshTokenDto) {
     return this.service.signOut(dto);
+  }
+
+  @Get('current')
+  @UseGuards(JwtGuard)
+  @ApiBearerAuth()
+  @UseInterceptors(new ResponseInterceptor(UserSerializer))
+  @ApiOperation({ summary: 'Get current user info' })
+  @ApiNotFoundResponse({ description: 'User not found' })
+  @ApiOkResponse({
+    description: 'Current user info returned',
+    type: UserSerializer,
+  })
+  async getCurrentUser(@UserId() userId: string): Promise<UserSerializer> {
+    return this.service.getCurrentUser(userId);
+  }
+
+  @Patch('send-reset-password-link')
+  @HttpCode(204)
+  @ApiOperation({
+    summary:
+      'Send reset password link to email with following structure <baseUrl>/reset-password?code=<code>',
+  })
+  @ApiForbiddenResponse({ description: 'This baseUrl usage is not allowed' })
+  @ApiNoContentResponse({
+    description:
+      'Reset password email send if user with such email exists in our system',
+  })
+  async sendResetPasswordLink(@Body() dto: SendResetPasswordLinkDto) {
+    return this.service.sendResetPasswordLink(dto);
+  }
+
+  @Patch('reset-password')
+  @HttpCode(204)
+  @ApiOperation({ summary: 'Reset password with code received in email' })
+  @ApiGoneResponse({ description: 'Reset password code is wrong or expired' })
+  @ApiNotFoundResponse({ description: 'User not found (very unlikely)' })
+  @ApiNoContentResponse({ description: 'Password changed successfully' })
+  async resetPassword(@Body() dto: ResetPasswordDto) {
+    return this.service.resetPassword(dto);
   }
 }

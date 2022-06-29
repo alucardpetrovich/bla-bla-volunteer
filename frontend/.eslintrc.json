@@ -1,17 +1,17 @@
 {
   "env": {
-    // "browser": true,
+    "browser": true,
     "es2021": true,
     "node": true
   },
   "extends": [
-    // "eslint:recommended",
-    // "plugin:@typescript-eslint/recommended",
-    // "plugin:react/recommended",
-    // "plugin:react-hooks/recommended",
-    // "plugin:prettier/recommended",
-    // "plugin:import/typescript",
-    // "prettier"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/typescript",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -22,41 +22,41 @@
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint", "prettier", "simple-import-sort"],
-  // "rules": {
-  //   "strict": ["error", "never"],
-  //   "simple-import-sort/imports": "error",
-  //   "simple-import-sort/exports": "error",
-  //   "@typescript-eslint/no-unused-vars": "error",
-  //   "@typescript-eslint/no-explicit-any": "error",
-  //   "dot-notation": "off",
-  //   "quotes": [2, "single"],
-  //   "react/jsx-filename-extension": [
-  //     2,
-  //     {
-  //       "extensions": [".js", ".jsx", ".ts", ".tsx"]
-  //     }
-  //   ],
-  //   "react/function-component-definition": [
-  //     2,
-  //     {
-  //       "namedComponents": "arrow-function",
-  //       "unnamedComponents": "arrow-function"
-  //     }
-  //   ],
-  //   "react/prop-types": "off",
-  //   "react/react-in-jsx-scope": "off",
-  //   "arrow-body-style": "off",
-  //   "import/prefer-default-export": "off",
-  //   "no-explicit-any": "off",
-  //   "eqeqeq": "error",
-  //   "no-console": 1,
-  //   "no-alert": "error",
-  //   "no-empty": "error",
-  //   "no-empty-function": "error",
-  //   "prefer-const": 2,
-  //   "import/extensions": "off",
-  //   "import/no-mutable-exports": "off"
-  // },
+  "rules": {
+    "strict": ["error", "never"],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "dot-notation": "off",
+    "quotes": [2, "single"],
+    "react/jsx-filename-extension": [
+      2,
+      {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    ],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "arrow-body-style": "off",
+    "import/prefer-default-export": "off",
+    "no-explicit-any": "off",
+    "eqeqeq": "error",
+    "no-console": 1,
+    "no-alert": "error",
+    "no-empty": "error",
+    "no-empty-function": "error",
+    "prefer-const": 2,
+    "import/extensions": "off",
+    "import/no-mutable-exports": "off"
+  },
   "settings": {
     "import/resolver": {
       "node": {
@@ -64,4 +64,3 @@
       }
     }
   }
-}

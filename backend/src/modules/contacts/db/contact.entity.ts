@@ -12,8 +12,6 @@ import { AccessModes } from '../types/access-modes.enum';
 import { ContactAccessEntity } from './contact-access.entity';
 import { ContactTypeEntity } from './contact-type.entity';
 
-// TODO: add contact_types migration
-
 @Entity('contacts')
 export class ContactEntity {
   @PrimaryGeneratedColumn('uuid')

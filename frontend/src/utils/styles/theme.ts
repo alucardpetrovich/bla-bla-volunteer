@@ -1,10 +1,10 @@
-import { deepPurple, grey, lime } from '@mui/material/colors';
+import { deepPurple, grey, indigo, lime } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: deepPurple[400],
+      main: indigo[300],
     },
     secondary: {
       main: lime[400],
