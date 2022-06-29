@@ -1,3 +1,4 @@
+import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { generatePath, useNavigate } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ import Navigation from './components/Navigation';
 import { HeaderSubtitleWrapper, HeaderTitleWrapper, NavWrapper, SignUpButton } from './style';
 
 const Header = () => {
+  const { formatMessage } = useIntl();
   // FIXME: пофіксить тип. Без any
   // eslint-disable-next-line
   const isAuth: boolean = useSelector((state: any) => state.auth.isAuthenticated);
@@ -54,7 +56,10 @@ const Header = () => {
           {!isAuth && (
             <HeaderTitleWrapper>
               <Heading tag="h2" style={{ marginBottom: '200px' }}>
-                Безпечна платформа координації передачі гуманітарної допомоги
+                {formatMessage({
+                  defaultMessage: 'Безпечна платформа координації передачі гуманітарної допомоги',
+                  description: 'Header: title',
+                })}
               </Heading>
               <HeaderSubtitleWrapper>
                 <Text tag="b1" style={{ width: '345px' }}>
