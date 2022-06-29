@@ -12,9 +12,10 @@ export const NavigationFooterWrapper = styled.ul`
       text-align: center;
       border-right: solid 1px black;
       padding: 5px 20px;
+
+      :hover {
+        color: var(--accent-blue);
+      }
     }
-    /* a :nth-child(3) {
-      border-right: none;
-    } */
   }
 `;

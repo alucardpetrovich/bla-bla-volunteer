@@ -13,13 +13,13 @@ const Footer = () => {
   return (
     <S.FooterWrapper>
       <div>
-        <img src={LogoName} />
+        <img src={LogoName} className="logo" />
         <NavigationFooter data={navFooter.footerNavigation} />
       </div>
       <Divider margin="40px 0px" color="#93A9D2" />
       <div>
         <p>{navFooter.subscription}</p>
-        {/* <Networks /> */}
+        <Networks />
       </div>
     </S.FooterWrapper>
   );

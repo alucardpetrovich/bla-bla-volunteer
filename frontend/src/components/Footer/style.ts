@@ -8,7 +8,7 @@ export const FooterWrapper = styled.footer`
     justify-content: space-between;
   }
 
-  img {
+  .logo {
     width: 60px;
     height: 20px;
   }
