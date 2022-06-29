@@ -4,7 +4,7 @@ import { Request } from 'express';
 const languageSplitRegexp = /[,-]/g;
 
 export const Language = createParamDecorator(
-  (data: unknown, ctx: ExecutionContext) => {
+  (_data: unknown, ctx: ExecutionContext) => {
     const request = ctx.switchToHttp().getRequest<Request>();
     const acceptLanguage = request.headers['accept-language'] || '';
     const lang = acceptLanguage.split(languageSplitRegexp)[0].trim();

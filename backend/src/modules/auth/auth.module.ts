@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { cacheModule } from 'src/shared/cache/cache.module';
 import { MailingService } from 'src/shared/mailing/mailing.service';
 import { CaptchaMiddleware } from 'src/shared/middlewares/captcha';
+import { ContactsRepository } from '../contacts/db/contacts.repository';
 import { UsersRepository } from '../users/users.repository';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
@@ -15,7 +16,10 @@ import { ResetPasswordCodesRepository } from './reset-password-codes.repository'
 import { RevokedTokensRepository } from './revoked-tokens.repository';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([UsersRepository]), cacheModule],
+  imports: [
+    TypeOrmModule.forFeature([UsersRepository, ContactsRepository]),
+    cacheModule,
+  ],
   controllers: [AuthController],
   providers: [
     AuthService,

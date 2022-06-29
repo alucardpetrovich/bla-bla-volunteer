@@ -1,3 +1,4 @@
+import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { generatePath, useLocation, useNavigate } from 'react-router-dom';
 import { RootState } from 'src/models/rootState/rootState';
@@ -12,6 +13,7 @@ import Navigation from './components/Navigation';
 import { HeaderSubtitleWrapper, HeaderTitleWrapper, NavWrapper, SignUpButton } from './style';
 
 const Header = () => {
+  const { formatMessage } = useIntl();
   const isAuth: boolean = useSelector((state: RootState) => state.auth.isAuthenticated);
   const { pathname } = useLocation();
   const dispatch = useDispatch();
@@ -53,7 +55,10 @@ const Header = () => {
           {!isShowHeading && (
             <HeaderTitleWrapper>
               <Heading tag="h2" style={{ marginBottom: '200px' }}>
-                Безпечна платформа координації передачі гуманітарної допомоги
+                {formatMessage({
+                  defaultMessage: 'Безпечна платформа координації передачі гуманітарної допомоги',
+                  description: 'Header: title',
+                })}
               </Heading>
               <HeaderSubtitleWrapper>
                 <Text tag="b1" style={{ width: '345px' }}>

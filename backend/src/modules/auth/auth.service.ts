@@ -27,16 +27,19 @@ import { SignUpDto } from './dto/sign-up.dto';
 import { SendResetPasswordLinkDto } from './dto/send-reset-password-link.dto';
 import { ResetPasswordCodesRepository } from './reset-password-codes.repository';
 import { ResetPasswordDto } from './dto/reset-password.dto';
+import { ContactsRepository } from '../contacts/db/contacts.repository';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectRepository(UsersRepository)
     private usersRepository: UsersRepository,
+    @InjectRepository(ContactsRepository)
+    private contactsRepository: ContactsRepository,
     @Inject(generalConfig.KEY)
-    private generalConfig: GeneralConfig,
+    private generalConf: GeneralConfig,
     @Inject(jwtConfig.KEY)
-    private jwtConfig: JwtConfig,
+    private jwtConf: JwtConfig,
     private mailingService: MailingService,
     private revokedTokensRepository: RevokedTokensRepository,
     private resetPasswordCodesRepository: ResetPasswordCodesRepository,
@@ -57,6 +60,14 @@ export class AuthService {
       status: UserStatuses.VERIFICATION_NEEDED,
       verificationToken: uuid.v4(),
     });
+    if (dto.phoneNumber) {
+      await this.contactsRepository.save({
+        userId: user.id,
+        accessMode: dto.phoneNumberAccessMode,
+        type: 'phone',
+        value: dto.phoneNumber,
+      });
+    }
 
     await this.sendVerificationLink(user);
 
@@ -138,7 +149,7 @@ export class AuthService {
   }
 
   async sendResetPasswordLink({ email, baseUrl }: SendResetPasswordLinkDto) {
-    if (!this.generalConfig.allowedOrigins.includes(baseUrl)) {
+    if (!this.generalConf.allowedOrigins.includes(baseUrl)) {
       throw new ForbiddenException('Wrong base URL');
     }
 
@@ -151,7 +162,7 @@ export class AuthService {
     await this.resetPasswordCodesRepository.setCode(
       user.id,
       code,
-      this.generalConfig.resetPasswordCodeExpiresInMinutes * 60,
+      this.generalConf.resetPasswordCodeExpiresInMinutes * 60,
     );
 
     const resetPasswordLink = `${baseUrl}/reset-password?code=${code}`;
@@ -175,7 +186,7 @@ export class AuthService {
   }
 
   private async sendVerificationLink(user: UserEntity): Promise<void> {
-    const verificationLink = `${this.generalConfig.serverUrl}/api/v1/auth/verify/${user.verificationToken}`;
+    const verificationLink = `${this.generalConf.serverUrl}/api/v1/auth/verify/${user.verificationToken}`;
     return this.mailingService.sendVerificationEmail(
       user.email,
       verificationLink,
@@ -195,11 +206,11 @@ export class AuthService {
       pairId,
     };
 
-    const accessToken = jwt.sign(accessPayload, this.jwtConfig.secret, {
-      expiresIn: this.jwtConfig.accessExpiresIn,
+    const accessToken = jwt.sign(accessPayload, this.jwtConf.secret, {
+      expiresIn: this.jwtConf.accessExpiresIn,
     });
-    const refreshToken = jwt.sign(refreshPayload, this.jwtConfig.secret, {
-      expiresIn: this.jwtConfig.refreshExpiresIn,
+    const refreshToken = jwt.sign(refreshPayload, this.jwtConf.secret, {
+      expiresIn: this.jwtConf.refreshExpiresIn,
     });
 
     return {
@@ -218,7 +229,7 @@ export class AuthService {
     let payload: JwtPayload;
 
     try {
-      payload = jwt.verify(refreshToken, this.jwtConfig.secret) as JwtPayload;
+      payload = jwt.verify(refreshToken, this.jwtConf.secret) as JwtPayload;
       if (payload.type !== JwtTypes.REFRESH) {
         throw new Error();
       }
@@ -235,6 +246,6 @@ export class AuthService {
   }
 
   private getPasswordHash(password: string) {
-    return bcrypt.hash(password, this.generalConfig.bcryptSaltRounds);
+    return bcrypt.hash(password, this.generalConf.bcryptSaltRounds);
   }
 }

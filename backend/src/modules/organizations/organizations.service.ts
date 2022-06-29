@@ -31,7 +31,7 @@ export class OrganizationsService {
     @InjectRepository(ContactsRepository)
     private contactsRepository: ContactsRepository,
     @Inject(entityLocksConfig.KEY)
-    private entityLocksConfig: EntityLocksConfig,
+    private entityLocksConf: EntityLocksConfig,
   ) {}
 
   async createOrganization(
@@ -103,8 +103,7 @@ export class OrganizationsService {
       language,
       offset: dto.pagination.getOffset(),
       limit: dto.pagination.getLimit(),
-      maxDistance:
-        this.entityLocksConfig.maxHubsSearchDistanceKilometers * 1000,
+      maxDistance: this.entityLocksConf.maxHubsSearchDistanceKilometers * 1000,
       userId,
       relations: [
         OrganizationRelations.CONTACTS,
