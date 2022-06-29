@@ -17,6 +17,10 @@ import { theme } from './utils/styles';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // const language = navigator.language.split(/[-_]/)[0];
 const locale = 'uk';
+
+// FIXME: пофіксить
+// eslint-disable-next-line
+// @ts-ignore
 const m = messages[locale];
 
 root.render(
