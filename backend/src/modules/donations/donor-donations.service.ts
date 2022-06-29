@@ -50,7 +50,7 @@ export class DonorDonationsService {
     @InjectRepository(OrganizationsRepository)
     private organizationsRepository: OrganizationsRepository,
     @Inject(entityLocksConfig.KEY)
-    private entityLocksConfig: EntityLocksConfig,
+    private entityLocksConf: EntityLocksConfig,
   ) {}
 
   async createRequest(dto: CreateDonationRequestDto, userId: string) {
@@ -58,7 +58,7 @@ export class DonorDonationsService {
       donorId: userId,
       status: DonationRequestStatuses.CREATED,
     });
-    if (newRequests.length >= this.entityLocksConfig.maxNewDonationRequests) {
+    if (newRequests.length >= this.entityLocksConf.maxNewDonationRequests) {
       throw new ConflictException(`Too many new donation requests`);
     }
 

@@ -11,10 +11,9 @@ import {
 } from 'typeorm';
 import { SettlementEntity } from '../../settlements/db/settlement.entity';
 import { UserEntity } from '../../users/user.entity';
+import { OrganizationStatuses } from '../types/organization-statuses.enum';
 import { OrganizationTypes } from '../types/organization-types.enum';
 import { OrganizationTypeEntity } from './organization-type.entity';
-
-// TODO: add organization statuses
 
 @Entity('organizations')
 export class OrganizationEntity {
@@ -28,7 +27,7 @@ export class OrganizationEntity {
   type: OrganizationTypes;
 
   @Column()
-  status: string;
+  status: OrganizationStatuses;
 
   @Column({ default: '' })
   address: string;
