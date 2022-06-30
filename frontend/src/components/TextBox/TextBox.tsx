@@ -45,7 +45,7 @@ const TextBox = ({
   useEffect(() => {
     if (!isIncorrectField) return;
     isIncorrectField(isDisabled);
-  }, [isDisabled]);
+  }, [isDisabled, isIncorrectField]);
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     onChange(e.target.value);
