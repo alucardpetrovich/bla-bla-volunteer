@@ -1,4 +1,3 @@
-import React from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -19,6 +18,7 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const handleSubmitForm: SubmitHandler<FieldValues> = data => {
+    // eslint-disable-next-line no-console
     console.log(data);
     try {
       // FIXME: пофіксить і не робить так більше
@@ -26,6 +26,7 @@ const Login = () => {
       dispatch(userLogin(data) as any);
       reset();
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(error);
     }
   };

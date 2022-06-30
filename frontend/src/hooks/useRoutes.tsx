@@ -1,24 +1,19 @@
 import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router';
-import { generatePath, Navigate } from 'react-router-dom';
-
-import { PATHS } from '../constants/PATH';
-import DonarPage from '../pages/Donar';
-import DriverPage from '../pages/Driver';
-import HomePage from '../pages/Home';
-import HubPage from '../pages/Hub';
-import LoginPage from '../pages/Login';
-import NotFoundPage from '../pages/NotFound404';
-import ProfilePage from '../pages/Profile';
-import RegistrationPage from '../pages/Registration';
-import { getIsAuth } from '../store';
-
-const RedirectToHome = () => {
-  const lang = useSelector(() => 'ua');
-  const path = `/${generatePath(PATHS.HOME.path, { lang })}`;
-
-  return <Navigate to={path} replace />;
-};
+import RedirectToHome from 'src/components/Redirects/RedirectToHome';
+import { PATHS } from 'src/constants/PATH';
+import DonarPage from 'src/pages/Donar';
+import DriverPage from 'src/pages/Driver';
+import ForgotPasswordPage from 'src/pages/ForgotPassword';
+import HomePage from 'src/pages/Home';
+import HubPage from 'src/pages/Hub';
+import LoginPage from 'src/pages/Login';
+import NotFoundPage from 'src/pages/NotFound404';
+import ProfilePage from 'src/pages/Profile';
+import RegistrationPage from 'src/pages/Registration';
+import RolesPage from 'src/pages/Roles';
+import VerificationPage from 'src/pages/Verification';
+import { getIsAuth } from 'src/store';
 
 const useRoutesConstants = () => {
   const isAuth = useSelector(getIsAuth);
@@ -44,6 +39,29 @@ const useRoutesConstants = () => {
     {
       path: PATHS.REGISTRATION.path,
       element: !isAuth ? <RegistrationPage /> : <RedirectToHome />,
+    },
+
+    // /* VERIFICATION ONLY_PUBLIC - вопрос а публичная ли только?? */
+    // {
+    //   path: PATHS.VERIFICATION.path,
+    //   element: !isAuth ? <VerificationPage /> : <RedirectToHome />,
+    // },
+    /* УЗНАТЬ ПРИВАТНЫЙ ОН ИЛИ ПУБЛИЧНЫЙ ??? */
+    {
+      path: PATHS.VERIFICATION.path,
+      element: <VerificationPage />,
+    },
+
+    /* FORGOT_PASSWORD ONLY_PUBLIC */
+    {
+      path: PATHS.FORGOT_PASSWORD.path,
+      element: !isAuth ? <ForgotPasswordPage /> : <RedirectToHome />,
+    },
+
+    /* ROLES PRIVAT */
+    {
+      path: PATHS.ROLES.path,
+      element: isAuth ? <RolesPage /> : <RedirectToHome />,
     },
 
     /* DONAR PRIVAT */

@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { generatePath, useNavigate } from 'react-router-dom';
+import useNavigation from 'src/hooks/useNavigation';
+import { getIsAuth, userLogOut } from 'src/store';
 
-import { PATHS } from '../../constants/PATH';
-import { userLogOut } from '../../store';
 import { Logo } from '../atoms';
 import ArrowRight from '../atoms/ArrowRight';
 import { Container, Heading, Text } from '../StyledComponents';
@@ -13,8 +12,9 @@ import { HeaderSubtitleWrapper, HeaderTitleWrapper, NavWrapper, SignUpButton } f
 const Header = () => {
   // FIXME: пофіксить тип. Без any
   // eslint-disable-next-line
-  const isAuth: boolean = useSelector((state: any) => state.auth.isAuthenticated);
+  const isAuth: boolean = useSelector(getIsAuth);
   const dispatch = useDispatch();
+  const { goToHome, goToRegistration } = useNavigation();
 
   const handleLogOut = () => {
     // FIXME: пофіксить
@@ -30,27 +30,19 @@ const Header = () => {
     }
   };
 
-  // FIXME: пофіксить
-  // eslint-disable-next-line
-  const lang = useSelector(state => 'ua');
-  const navigate = useNavigate();
-
   return (
     <header>
       <HeaderBg isAuth={isAuth}>
         <Container tag="header" isAuth={isAuth}>
           <NavWrapper>
-            <Logo
-              height="70px"
-              onClick={() => navigate(generatePath(PATHS.HOME.path, { lang }))}
-              style={{ cursor: 'pointer' }}
-            />
-            {isAuth ? <button onClick={handleLogOut}>Sign Out</button> : null}
+            <Logo height="70px" onClick={goToHome} style={{ cursor: 'pointer' }} />
+            {isAuth && <button onClick={handleLogOut}>Sign Out</button>}
             <div style={{ display: 'flex' }}>
               <Navigation style={{ marginRight: '30px' }} />
               <p>lang</p>
             </div>
           </NavWrapper>
+
           {!isAuth && (
             <HeaderTitleWrapper>
               <Heading tag="h2" style={{ marginBottom: '200px' }}>
@@ -60,7 +52,7 @@ const Header = () => {
                 <Text tag="b1" style={{ width: '345px' }}>
                   Зареєструйся та стань частиною українського волонтерського руху
                 </Text>
-                <SignUpButton onClick={() => navigate(generatePath(PATHS.REGISTRATION.path, { lang }))}>
+                <SignUpButton onClick={goToRegistration}>
                   <Text tag="b1">реєстрація</Text>
                   <ArrowRight />
                 </SignUpButton>
