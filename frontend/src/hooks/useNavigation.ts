@@ -1,28 +1,20 @@
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { generatePath } from 'react-router-dom';
-import { PATHS } from 'src/constants/PATH';
+
+import { useGetURL } from './useGetURL';
 
 /**
  * Отсюда брать когда нужно сделать переход на другой роут по клику. Например, по кнопке button
- * !!! НО это НЕ ходходит для Link, NavLink или Navigate для to  !!!
- * !!! Также НЕ подходит для path в Route                        !!!
+ * !!! НЕ ходходит для Link, NavLink или Navigate для to  !!!
+ * !!! НЕ подходит для path в Route                       !!!
  */
 export default function useNavigation() {
-  const lang = useSelector(() => 'ua');
   const navigate = useNavigate();
+  const { getHomeURL, getLoginURL, getRegistrationURL } = useGetURL();
 
-  const goToHome = () => {
-    navigate(`/${generatePath(PATHS.HOME.path, { lang })}`);
-  };
+  const goToHome = () => navigate(getHomeURL());
+  const goToLogin = () => navigate(getLoginURL());
 
-  const goToLogin = () => {
-    navigate(`/${generatePath(PATHS.LOGIN.path, { lang })}`);
-  };
-
-  const goToRegistration = () => {
-    navigate(`/${generatePath(PATHS.REGISTRATION.path, { lang })}`);
-  };
+  const goToRegistration = () => navigate(getRegistrationURL());
 
   return {
     goToHome,
