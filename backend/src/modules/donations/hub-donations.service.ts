@@ -32,7 +32,7 @@ export class HubDonationsService {
         ctx: DonationStatusChangeContext,
       ) => {
         ctx.request.status = DonationRequestStatuses.REJECTED;
-        ctx.statusText = ctx.statusText;
+        ctx.request.statusText = ctx.statusText;
         await this.donationRequestsRepository.save(ctx.request);
       },
     },

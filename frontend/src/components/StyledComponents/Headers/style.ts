@@ -16,6 +16,7 @@ export interface IHeader {
   children: any;
   // eslint-disable-next-line
   style?: any;
+  onClick?: () => void;
 }
 
 export const HeaderH2 = styled.h2<IHeader>`

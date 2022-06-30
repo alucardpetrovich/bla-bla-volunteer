@@ -16,12 +16,17 @@ export default function useNavigation() {
     navigate(`/${generatePath(PATHS.HOME.path, { lang })}`);
   };
 
+  const goToLogin = () => {
+    navigate(`/${generatePath(PATHS.LOGIN.path, { lang })}`);
+  };
+
   const goToRegistration = () => {
     navigate(`/${generatePath(PATHS.REGISTRATION.path, { lang })}`);
   };
 
   return {
     goToHome,
+    goToLogin,
     goToRegistration,
   };
 }

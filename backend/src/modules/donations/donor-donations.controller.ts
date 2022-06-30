@@ -34,9 +34,6 @@ import { GetDonationsListDto } from './dto/get-donations-list.dto';
 @ApiTags('Donor Donations Controller')
 @ApiBearerAuth()
 export class DonorDonationsController {
-  // TODO: add donation requests filters
-  // TODO: add getting of hubs list (need to think about it, need to add list of required items later on)
-  // TODO: think about fraud request status
   constructor(private service: DonorDonationsService) {}
 
   @Post()

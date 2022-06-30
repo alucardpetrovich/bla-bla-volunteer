@@ -15,16 +15,16 @@ export class CaptchaMiddleware implements NestMiddleware {
 
   constructor(
     @Inject(captchaConfig.KEY)
-    private catchaConfig: CaptchaConfig,
+    private captchaConf: CaptchaConfig,
   ) {
     this.client = axios.create({
-      baseURL: this.catchaConfig.baseUrl,
+      baseURL: this.captchaConf.baseUrl,
       timeout: 10000,
     });
   }
 
-  async use(req: Request, res: Response, next: NextFunction) {
-    if (!this.catchaConfig.enabled) {
+  async use(req: Request, _res: Response, next: NextFunction) {
+    if (!this.captchaConf.enabled) {
       next();
       return;
     }
@@ -32,14 +32,14 @@ export class CaptchaMiddleware implements NestMiddleware {
     const { data } = await this.client.post<CaptchaResponse>(
       '/siteverify',
       qs.stringify({
-        secret: this.catchaConfig.apiSecret,
+        secret: this.captchaConf.apiSecret,
         response: req.body.recaptchaResponse,
       }),
     );
 
     if (
       !data.success ||
-      data.score < this.catchaConfig.minScore ||
+      data.score < this.captchaConf.minScore ||
       data.action !== this.getAction(req)
     ) {
       throw new UnprocessableEntityException('Captcha validation failed');
