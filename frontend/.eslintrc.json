@@ -55,7 +55,13 @@
     "no-empty-function": "error",
     "prefer-const": 2,
     "import/extensions": "off",
-    "import/no-mutable-exports": "off"
+    "import/no-mutable-exports": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
