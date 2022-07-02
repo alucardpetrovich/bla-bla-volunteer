@@ -14,7 +14,7 @@ import { JwtPayload, JwtTypes } from '../types/jwt-payload.interface';
 export class JwtGuard implements CanActivate {
   constructor(
     @Inject(jwtConfig.KEY)
-    private jwtConfig: JwtConfig,
+    private jwtConf: JwtConfig,
   ) {}
 
   canActivate(
@@ -32,7 +32,7 @@ export class JwtGuard implements CanActivate {
     try {
       const { uid, type } = jwt.verify(
         token,
-        this.jwtConfig.secret,
+        this.jwtConf.secret,
       ) as JwtPayload;
       if (type !== JwtTypes.ACCESS) {
         throw new UnauthorizedException();

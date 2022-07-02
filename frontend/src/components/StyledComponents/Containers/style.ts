@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
-type ContainerTypes = 'content' | 'header' | 'main' | 'footer';
+// import bgImgS from '../../../assets/images/header-bg-s.png';
+
+type ContainerTypes = 'content' | 'header' | 'headerAuth' | 'main' | 'footer';
 
 export interface IContainer {
   tag: ContainerTypes;
   children: React.ReactNode;
   isAuth?: boolean;
+  isShowHeading?: boolean;
 }
 
 const Container = styled.div`
@@ -37,11 +40,16 @@ export const ContentContainer = styled.div<IContainer>`
 export const HeaderContainer = styled(Container)<IContainer>`
   display: flex;
   flex-direction: column;
-  height: ${({ isAuth }) => (isAuth ? '' : '100vh')};
+  height: ${({ isAuth, isShowHeading }) => (isAuth || isShowHeading ? '' : '100vh')};
   justify-content: space-between;
-  padding: ${({ isAuth }) => (isAuth ? '' : '40px 0px 100px')};
-  position: ${({ isAuth }) => isAuth && 'relative'};
-  top: ${({ isAuth }) => isAuth && '20%'};
+  padding: ${({ isAuth, isShowHeading }) => (isAuth || isShowHeading ? '' : '40px 0px 100px')};
+  position: ${({ isAuth, isShowHeading }) => (isAuth || isShowHeading) && 'relative'};
+  top: ${({ isAuth, isShowHeading }) => (isAuth || isShowHeading) && '20%'};
+`;
+
+export const HeaderAuthContainer = styled.div<IContainer>`
+  display: flex;
+  background-color: yellow;
 `;
 
 export const MainContainer = styled(Container)<IContainer>`

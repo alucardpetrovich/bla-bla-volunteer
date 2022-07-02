@@ -1,6 +1,13 @@
 import React from 'react';
 
-import { ContentContainer, FooterContainer, HeaderContainer, IContainer, MainContainer } from './style';
+import {
+  ContentContainer,
+  FooterContainer,
+  HeaderAuthContainer,
+  HeaderContainer,
+  IContainer,
+  MainContainer,
+} from './style';
 
 const Container: React.FC<IContainer> = ({ tag, children, ...props }) => {
   const StyledContainer = {
@@ -14,19 +21,20 @@ const Container: React.FC<IContainer> = ({ tag, children, ...props }) => {
         {children}
       </HeaderContainer>
     ),
+    headerAuth: (
+      <HeaderAuthContainer tag={tag} {...props}>
+        {children}
+      </HeaderAuthContainer>
+    ),
     main: (
-      <main>
-        <MainContainer tag={tag} {...props}>
-          {children}
-        </MainContainer>
-      </main>
+      <MainContainer tag={tag} {...props}>
+        {children}
+      </MainContainer>
     ),
     footer: (
-      <footer>
-        <FooterContainer tag={tag} {...props}>
-          {children}
-        </FooterContainer>
-      </footer>
+      <FooterContainer tag={tag} {...props}>
+        {children}
+      </FooterContainer>
     ),
   };
 

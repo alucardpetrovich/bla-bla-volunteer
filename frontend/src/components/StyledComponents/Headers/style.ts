@@ -14,6 +14,7 @@ export interface IHeader {
   lineHeight?: number;
   children: React.ReactNode;
   style?: object;
+  onClick?: () => void;
 }
 
 export const HeaderH2 = styled.h2<IHeader>`

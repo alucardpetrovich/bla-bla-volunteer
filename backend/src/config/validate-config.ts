@@ -6,7 +6,7 @@ export function validateConfig<T>(
   cls: ClassConstructor<T>,
   plain: Partial<T>,
 ): T {
-  const config = plainToClass(cls, plain) as T;
+  const config = plainToClass(cls, plain);
 
   const errors = validateSync(config as any, {
     skipMissingProperties: false,

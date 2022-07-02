@@ -59,7 +59,6 @@ export class OrganizationsRepository extends Repository<OrganizationEntity> {
             type: 'Point',
             coordinates: [params.point.lon, params.point.lat],
           }),
-          // `'POINT(${params.point.lon} ${params.point.lat})'::geography`,
         )
         .setParameter('maxDistance', params.maxDistance);
     }
