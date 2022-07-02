@@ -11,10 +11,8 @@ import { getIsAuth, userLogOut } from '../../store';
 import { Logo } from '../atoms';
 import ArrowRight from '../atoms/ArrowRight';
 import Notifications from '../atoms/Notifications';
-// import SearchIcon from '../atoms/SearchIcon';
 import { Container, Heading, Text } from '../StyledComponents';
 import HeaderBg from './components/HeaderBg';
-// import Navigation from './components/Navigation';
 import { HeaderSubtitleWrapper, HeaderTitleWrapper, HeaderWrapper, SignUpButton } from './style';
 
 const Header = () => {
