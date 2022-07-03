@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import Button from 'src/components/Buttons/Button';
 import TextBox from 'src/components/TextBox/TextBox';
@@ -14,6 +15,7 @@ interface LoginProps {
 }
 
 const Login = (): JSX.Element => {
+  const { formatMessage } = useIntl();
   const [loginFormValues, setLoginFormValues] = useState<LoginProps>({
     email: '',
     password: '',
@@ -67,18 +69,31 @@ const Login = (): JSX.Element => {
   return (
     <>
       <StyledTitleDiv>
-        <p>Вхід / реєстрація</p>
+        <p>
+          {formatMessage({
+            defaultMessage: 'вхід / реєстрація',
+            description: 'Login: title',
+          })}
+        </p>
       </StyledTitleDiv>
       <LoginFormContainerDiv>
         <LoginFormWrapperDiv>
-          <LoginTitle>Вхід</LoginTitle>
+          <LoginTitle>
+            {formatMessage({
+              defaultMessage: 'Вхід',
+              description: 'Login: title',
+            })}
+          </LoginTitle>
           <TextBox
             isIncorrectField={isDisabledEmail}
             value={email}
             required
             onChange={handleEmailOnChange}
             name="email"
-            label="Ел. Пошта"
+            label={formatMessage({
+              defaultMessage: 'Ел. Пошта',
+              description: 'Login: emailInput',
+            })}
             id="login-email"
             fullWidth
           />
@@ -91,14 +106,29 @@ const Login = (): JSX.Element => {
             type={showPassword ? 'text' : 'password'}
             showPasswordIcon
             name="password"
-            label="Пароль"
+            label={formatMessage({
+              defaultMessage: 'Пароль',
+              description: 'Login: passwordInput',
+            })}
             onChange={handlePasswordOnChange}
             id="login-password"
             fullWidth
           />
           {/* TODO: змінити пас коли буде сторінка на яку має переводити при натисканні лінки */}
-          <ForgotPasswordLink to={`../${PATHS.NOT_FOUND_404.path}`}>Забув пароль</ForgotPasswordLink>
-          <Button isDisabled={isDisabled} text={'Увійти'} onClick={handleSubmit} />
+          <ForgotPasswordLink to={`../${PATHS.NOT_FOUND_404.path}`}>
+            {formatMessage({
+              defaultMessage: 'Забув пароль',
+              description: 'Login: forgotPassword',
+            })}
+          </ForgotPasswordLink>
+          <Button
+            isDisabled={isDisabled}
+            text={formatMessage({
+              defaultMessage: 'Увійти',
+              description: 'Login: signInButton',
+            })}
+            onClick={handleSubmit}
+          />
         </LoginFormWrapperDiv>
       </LoginFormContainerDiv>
     </>

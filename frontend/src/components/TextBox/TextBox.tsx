@@ -47,9 +47,12 @@ const TextBox: FC<ITextBoxProps> = ({
     isIncorrectField(isDisabled);
   }, [isDisabled, isIncorrectField]);
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    onChange(e.target.value);
-  };
+  const handleOnChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      onChange(e.target.value);
+    },
+    [onChange],
+  );
 
   const onBlur = useCallback(() => {
     setIsDirty(true);

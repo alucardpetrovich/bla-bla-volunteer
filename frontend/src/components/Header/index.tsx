@@ -1,28 +1,23 @@
 import { Autocomplete, TextField } from '@mui/material';
 import { useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
-import { generatePath, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-use';
 import { roles } from 'src/constants/roles';
-import { RootState } from 'src/models/rootState/rootState';
+import useNavigation from 'src/hooks/useNavigation';
 import { getUser } from 'src/store/user/userSelectors';
 
 import bgImgS from '../../assets/images/header-bg-s.png';
-import { PATHS } from '../../constants/PATH';
-import { userLogOut } from '../../store';
+import { getIsAuth, userLogOut } from '../../store';
 import { Logo } from '../atoms';
 import ArrowRight from '../atoms/ArrowRight';
 import Notifications from '../atoms/Notifications';
-// import SearchIcon from '../atoms/SearchIcon';
 import { Container, Heading, Text } from '../StyledComponents';
 import HeaderBg from './components/HeaderBg';
-// import Navigation from './components/Navigation';
 import { HeaderSubtitleWrapper, HeaderTitleWrapper, HeaderWrapper, SignUpButton } from './style';
 
 const Header = () => {
   const { formatMessage } = useIntl();
-  // FIXME: пофіксить тип. Без any
-  // eslint-disable-next-line
-  const isAuth: boolean = useSelector((state: any) => state.auth.isAuthenticated);
+  const isAuth: boolean = useSelector(getIsAuth);
   const user = useSelector(getUser);
   const involvements = user?.involvements;
   const userRole =
@@ -30,12 +25,13 @@ const Header = () => {
 
   const { pathname } = useLocation();
   const dispatch = useDispatch();
+  const { goToHome, goToLogin, goToRegistration } = useNavigation();
 
   const isShowHeading = !!(pathname?.includes('registration') || pathname?.includes('login'));
 
   const handleLogOut = () => {
     if (!isAuth) {
-      navigate(generatePath(PATHS.LOGIN.path, { lang }));
+      goToLogin();
       return;
     }
 
@@ -49,25 +45,13 @@ const Header = () => {
     }
   };
 
-  // FIXME: пофіксить
-  // this will be fixed later, when we will have language in redux
-  // eslint-disable-next-line
-  const lang = useSelector((state: RootState) => 'ua');
-  const navigate = useNavigate();
-
   return (
     <header>
       {!isAuth && (
         <HeaderBg isAuth={isAuth} isShowHeading={isShowHeading}>
           <Container tag="header" isAuth={isAuth} isShowHeading={isShowHeading}>
             <HeaderWrapper>
-              {!isAuth && (
-                <Logo
-                  height="70px"
-                  onClick={() => navigate(generatePath(PATHS.HOME.path, { lang }))}
-                  style={{ cursor: 'pointer' }}
-                />
-              )}
+              {!isAuth && <Logo height="70px" onClick={goToHome} style={{ cursor: 'pointer' }} />}
 
               <div style={{ width: '166px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Heading tag="h4" onClick={handleLogOut} style={{ cursor: 'pointer' }}>
@@ -95,7 +79,7 @@ const Header = () => {
                     <Text tag="b1" style={{ width: '345px' }}>
                       Зареєструйся та стань частиною українського волонтерського руху
                     </Text>
-                    <SignUpButton onClick={() => navigate(generatePath(PATHS.REGISTRATION.path, { lang }))}>
+                    <SignUpButton onClick={goToRegistration}>
                       <Text tag="b1">реєстрація</Text>
                       <ArrowRight width={30} />
                     </SignUpButton>
@@ -130,7 +114,7 @@ const Header = () => {
             ></div>
             <Logo
               height="35px"
-              onClick={() => navigate(generatePath(PATHS.HOME.path, { lang }))}
+              onClick={goToHome}
               style={{ cursor: 'pointer', position: 'absolute', top: '48px', left: '32px' }}
             />
           </div>

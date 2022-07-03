@@ -1,6 +1,82 @@
 {
+  "08V8ko": {
+    "defaultMessage": "[uk]: Ел. Пошта",
+    "description": "Registration: emailInput"
+  },
+  "2hMXLf": {
+    "defaultMessage": "[uk]: Поле не повинно бути пустим",
+    "description": "inputsValidation: isEmpty"
+  },
+  "4AmZz1": {
+    "defaultMessage": "[uk]: Реєстрація",
+    "description": "Registration: title"
+  },
+  "HGUy54": {
+    "defaultMessage": "[uk]: Для забезпечення вашої безпеки ми не рекомендуємо вводити власне ім’я та прізвище",
+    "description": "Registration: nickNamePrivacyInfo"
+  },
+  "Hlpx0p": {
+    "defaultMessage": "[uk]: Увійти",
+    "description": "Login: signInButton"
+  },
+  "HsHMbh": {
+    "defaultMessage": "[uk]: Вхід",
+    "description": "Login: title"
+  },
+  "Ryi2be": {
+    "defaultMessage": "[uk]: вхід / реєстрація",
+    "description": "Login: title"
+  },
+  "SsPKIt": {
+    "defaultMessage": "[uk]: Мінімільна довжина має бути не менше {minValue} символів",
+    "description": "inputsValidation: minLengthError"
+  },
+  "Ufx13f": {
+    "defaultMessage": "[uk]: Ел. Пошта",
+    "description": "Login: emailInput"
+  },
+  "ViEqGj": {
+    "defaultMessage": "[uk]: Реєструючись, ви погоджуєтеся з умовами",
+    "description": "Registration: licenseInfo"
+  },
+  "YvR5rJ": {
+    "defaultMessage": "[uk]: вхід / реєстрація",
+    "description": "Registration: title"
+  },
   "ZEvWYL": {
     "defaultMessage": "Тратата",
     "description": "Header: title"
+  },
+  "bU5skY": {
+    "defaultMessage": "[uk]: Номер телефону",
+    "description": "Registration: phoneNumberInput"
+  },
+  "etXyqK": {
+    "defaultMessage": "[uk]: Забув пароль",
+    "description": "Login: forgotPassword"
+  },
+  "fhIJT1": {
+    "defaultMessage": "[uk]: Пароль",
+    "description": "Login: passwordInput"
+  },
+  "oNnYlE": {
+    "defaultMessage": "[uk]: Поле повинно бути email",
+    "description": "inputsValidation: emailError"
+  },
+  "qEclD0": {
+    "defaultMessage": "[uk]: положення про обробку і захист персональних даних та угодою користувача",
+    "description": "Registration: licenseInfo"
+  },
+  "rMynxh": {
+    "defaultMessage": "[uk]: Я вже зареєстрований",
+    "description": "Registration: alreadyRegisteredButton"
+  },
+  "rRhUrR": {
+    "defaultMessage": "[uk]: Придумайте нікнейм",
+    "description": "Registration: nickNameInput"
+  },
+  "tv0h/6": {
+    "defaultMessage": "[uk]: Пароль",
+    "description": "Registration: passwordInput"
   }
 }

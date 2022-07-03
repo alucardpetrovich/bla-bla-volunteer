@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useIntl } from 'react-intl';
 import { emailValidateRegExp } from 'src/constants/validate';
 
 export interface IInputErrorValidation {
@@ -24,20 +25,34 @@ const minValueMessage = (fieldName: string) => {
 };
 
 const useInputValidation = (value = '', fieldName = '', isDirty = false) => {
+  const { formatMessage } = useIntl();
+
   const [error, setError] = useState({ state: false, message: '' });
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
 
   const [isEmpty, setIsEmpty] = useState<IInputErrorValidation>({
     state: false,
-    message: 'Поле не повинно бути пустим',
+    message: formatMessage({
+      defaultMessage: 'Поле не повинно бути пустим',
+      description: 'inputsValidation: isEmpty',
+    }),
   });
   const [minLengthError, setMinLengthError] = useState<IInputErrorValidation>({
     state: false,
-    message: `Мінімільна довжина має бути не менше ${minValueMessage(fieldName)} символів`,
+    message: formatMessage(
+      {
+        defaultMessage: 'Мінімільна довжина має бути не менше {minValue} символів',
+        description: 'inputsValidation: minLengthError',
+      },
+      { minValue: minValueMessage(fieldName) },
+    ),
   });
   const [emailError, setEmailError] = useState<IInputErrorValidation>({
     state: false,
-    message: 'Поле повинно бути email',
+    message: formatMessage({
+      defaultMessage: 'Поле повинно бути email',
+      description: 'inputsValidation: emailError',
+    }),
   });
 
   const validateFunc = () => {

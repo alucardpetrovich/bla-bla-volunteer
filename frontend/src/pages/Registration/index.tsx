@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import Button from 'src/components/Buttons/Button';
 import TextBox from 'src/components/TextBox/TextBox';
@@ -25,6 +26,8 @@ const Registration = () => {
     showPassword: false,
     isPhoneVisibleToAllUsers: true,
   };
+  const { formatMessage } = useIntl();
+
   const [credentials, setCredentials] = useState<IAuthCredentials>(initialCredentialsState as IAuthCredentials);
   const [isEmailFieldDisabled, setIsEmailFieldDisabled] = useState<boolean>(true);
   const [isPasswordFieldDisabled, setIsPasswordFieldDisabled] = useState<boolean>(true);
@@ -79,29 +82,50 @@ const Registration = () => {
   return (
     <>
       <StyledTitleDiv>
-        <p>Вхід / реєстрація</p>
+        <p>
+          {formatMessage({
+            defaultMessage: 'вхід / реєстрація',
+            description: 'Registration: title',
+          })}
+        </p>
       </StyledTitleDiv>
       <RegisterFormContainerDiv>
         <RegisterFormWrapperDiv>
-          <RegisterTitle>Реєстрація</RegisterTitle>
+          <RegisterTitle>
+            {formatMessage({
+              defaultMessage: 'Реєстрація',
+              description: 'Registration: title',
+            })}
+          </RegisterTitle>
           <TextBox
             isIncorrectField={isDisabledNickName}
             value={nickName ? nickName : ''}
             required
             onChange={handleNickNameOnChange}
             name="nickName"
-            label="Придумайте нікнейм"
+            label={formatMessage({
+              defaultMessage: 'Придумайте нікнейм',
+              description: 'Registration: nickNameInput',
+            })}
             id="register-nickName"
             fullWidth
           />
-          <StyledText>Для забезпечення вашої безпеки ми не рекомендуємо вводити власне ім’я та прізвище</StyledText>
+          <StyledText>
+            {formatMessage({
+              defaultMessage: 'Для забезпечення вашої безпеки ми не рекомендуємо вводити власне ім’я та прізвище',
+              description: 'Registration: nickNamePrivacyInfo',
+            })}
+          </StyledText>
           <TextBox
             isIncorrectField={isDisabledEmail}
             value={email}
             required
             onChange={handleEmailOnChange}
             name="email"
-            label="Ел. Пошта"
+            label={formatMessage({
+              defaultMessage: 'Ел. Пошта',
+              description: 'Registration: emailInput',
+            })}
             id="register-email"
             fullWidth
           />
@@ -109,7 +133,10 @@ const Registration = () => {
             value={phoneNumber ? phoneNumber : ''}
             onChange={handlePhoneNumberOnChange}
             name="phoneNumber"
-            label="Номер телефону"
+            label={formatMessage({
+              defaultMessage: 'Номер телефону',
+              description: 'Registration: phoneNumberInput',
+            })}
             id="register-phoneNumber"
             fullWidth
           />
@@ -122,18 +149,34 @@ const Registration = () => {
             type={showPassword ? 'text' : 'password'}
             showPasswordIcon
             name="password"
-            label="Пароль"
+            label={formatMessage({
+              defaultMessage: 'Пароль',
+              description: 'Registration: passwordInput',
+            })}
             onChange={handlePasswordOnChange}
             id="login-password"
             fullWidth
           />
           <StyledText>
-            Реєструючись, ви погоджуєтеся з умовами{' '}
-            <StyledInnerText>положення про обробку і захист персональних даних та угодою користувача</StyledInnerText>
+            {formatMessage({
+              defaultMessage: 'Реєструючись, ви погоджуєтеся з умовами',
+              description: 'Registration: licenseInfo',
+            })}{' '}
+            <StyledInnerText>
+              {formatMessage({
+                defaultMessage: 'положення про обробку і захист персональних даних та угодою користувача',
+                description: 'Registration: licenseInfo',
+              })}
+            </StyledInnerText>
           </StyledText>
           <Button isDisabled={isDisabled} text="Зареєструватися" marginBottom={21} onClick={handleSubmitSignUp} />
           <Button buttonType="tertiary">
-            <AlreadyRegisteredLink to={`../${PATHS.LOGIN.path}`}>Я вже зареєстрований</AlreadyRegisteredLink>
+            <AlreadyRegisteredLink to={`../${PATHS.LOGIN.path}`}>
+              {formatMessage({
+                defaultMessage: 'Я вже зареєстрований',
+                description: 'Registration: alreadyRegisteredButton',
+              })}
+            </AlreadyRegisteredLink>
           </Button>
         </RegisterFormWrapperDiv>
       </RegisterFormContainerDiv>

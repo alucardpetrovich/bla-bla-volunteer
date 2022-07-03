@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { generatePath, NavLink } from 'react-router-dom';
+import { getIsAuth } from 'src/store';
 
-import { getIsAuth } from '../../../../store';
 import { FlexDiv } from '../../../StyledComponents/Flex/style';
 import { linksNav } from './constants/listNav';
 

@@ -25,6 +25,22 @@ export const PATHS = {
     path: ':lang/driver',
   },
 
+  RECIPIENT: {
+    path: ':lang/recipient',
+  },
+
+  VERIFICATION: {
+    path: ':lang/verification',
+  },
+
+  FORGOT_PASSWORD: {
+    path: ':lang/forgot-password',
+  },
+
+  ROLES: {
+    path: ':lang/roles',
+  },
+
   PROFILE: {
     path: ':lang/profile',
   },
