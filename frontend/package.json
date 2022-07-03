@@ -21,6 +21,7 @@
     "@emotion/styled": "^11.8.1",
     "@formatjs/intl": "^2.2.1",
     "@formatjs/ts-transformer": "^3.9.4",
+    "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.8.0",
     "@mui/styled-engine-sc": "^5.8.0",
     "@testing-library/jest-dom": "^5.16.4",
@@ -37,16 +38,15 @@
     "babel-plugin-formatjs": "^10.3.24",
     "babel-plugin-react-intl-auto": "^3.3.0",
     "extract-react-intl-messages": "^4.1.1",
-<<<<<<< HEAD
     "framer-motion": "^6.3.15",
-=======
     "glob": "^8.0.3",
->>>>>>> 1ad5732cb645139227779d7e47494a8e95aec1df
     "i": "^0.3.7",
     "npm": "^8.9.0",
+    "prettier-plugin-svelte": "^2.7.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-hook-form": "^7.31.2",
+    "react-icons": "^4.4.0",
     "react-intl": "^5.25.1",
     "react-redux": "^8.0.1",
     "react-responsive": "^9.0.0-beta.6",

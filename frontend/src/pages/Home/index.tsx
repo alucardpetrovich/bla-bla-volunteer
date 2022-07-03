@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Teaser } from 'src/components/Teaser';
+import { FormattedMessage } from 'react-intl';
+import { Teaser } from 'src/components/modules/Teaser';
 import authorizationAPI from '../../api/Auth/Auth';
 import { homeData } from './assets/data';
+import { homePageI18n } from './assets/i18n';
 import * as S from './style';
 
 const HomePage = () => {
@@ -9,9 +11,10 @@ const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   //! remove, just for test auth & headers with token
 
-  const handExampleRequest = () => {
-    authorizationAPI.exampleRequest();
-  };
+  // const handExampleRequest = () => {
+  //   authorizationAPI.exampleRequest();
+  // };
+  // console.log(FormattedMessage(homePageI18n.title_1));
 
   return (
     <>

@@ -3,7 +3,7 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { userLogin } from '../../store';
-
+// @ts-ignore
 const Login = () => {
   // FIXME: пофіксить. без any. і не робить так більше)
   // eslint-disable-next-line
@@ -44,7 +44,7 @@ const Login = () => {
           type="email"
           autoComplete="false"
         />
-        <div style={{ height: '20px' }}>{errors?.email && <span>{errors?.email?.message}</span>}</div>
+        {/* <div style={{ height: '20px' }}>{errors?.email && <span>{errors?.email?.message}</span>}</div> */}
         <input
           {...register('password', {
             required: 'this field is required',
@@ -54,7 +54,7 @@ const Login = () => {
           type="password"
           autoComplete="false"
         />
-        <div style={{ height: '20px' }}>{errors?.password && <span>{errors?.password?.message}</span>}</div>
+        {/* <div style={{ height: '20px' }}>{errors?.password && <span>{errors?.password?.message}</span>}</div> */}
         <input type="submit" />
       </form>
     </div>

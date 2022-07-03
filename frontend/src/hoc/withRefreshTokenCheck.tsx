@@ -1,6 +1,5 @@
 import { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { axiosPrivate } from '../api/axios';
 import useAxiosRefreshToken from '../hooks/useAxiosRefreshToken';
 import { authActions } from '../store';

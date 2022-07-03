@@ -1,4 +1,4 @@
-import Layout from '../../components/Layout';
+import Layout from '../../components/organism/Layout';
 import React from 'react';
 
 export const App = () => {

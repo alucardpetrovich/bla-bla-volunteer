@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router';
 import { generatePath, Navigate } from 'react-router-dom';
-
 import { PATHS } from '../constants/PATH';
 import DonarPage from '../pages/Donar';
 import DriverPage from '../pages/Driver';
@@ -50,6 +49,7 @@ const useRoutesConstants = () => {
     {
       path: PATHS.DONAR.path,
       element: isAuth ? <DonarPage /> : <RedirectToHome />,
+      // element: <DonarPage />,
     },
 
     /* HUB PRIVAT */
