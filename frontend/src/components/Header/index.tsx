@@ -25,7 +25,8 @@ const Header = () => {
   const isAuth: boolean = useSelector((state: any) => state.auth.isAuthenticated);
   const user = useSelector(getUser);
   const involvements = user?.involvements;
-  const userRole = involvements && roles.map(role => (role.id === involvements[0].type ? `${role.title}` : null));
+  const userRole =
+    involvements?.length && roles.map(role => (role.id === involvements[0].type ? `${role.title}` : null));
 
   const { pathname } = useLocation();
   const dispatch = useDispatch();
@@ -37,20 +38,19 @@ const Header = () => {
       navigate(generatePath(PATHS.LOGIN.path, { lang }));
       return;
     }
-    // FIXME: пофіксить
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const refreshToken = JSON.parse(localStorage.getItem('refreshToken'));
+
+    const refreshToken = JSON.parse(localStorage.getItem('refreshToken') || '');
 
     if (refreshToken) {
-      // FIXME: пофіксить тип. as any дуже погано. Стараємся без as any. По можливості замінюємо на typeguard. Якщо не
-      //  знаємо як пінаємо Вадіма
-      // eslint-disable-next-line
-      dispatch(userLogOut({ refreshToken: refreshToken.token } as unknown as string) as any);
+      // do not find the way how to fix
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
+      dispatch(userLogOut({ refreshToken: refreshToken.token }));
     }
   };
 
   // FIXME: пофіксить
+  // this will be fixed later, when we will have language in redux
   // eslint-disable-next-line
   const lang = useSelector((state: RootState) => 'ua');
   const navigate = useNavigate();

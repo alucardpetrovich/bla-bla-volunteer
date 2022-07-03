@@ -42,13 +42,7 @@ const Login = (): JSX.Element => {
 
     try {
       dispatch(userLogin(credentials) as never);
-      // setLoginFormValues({
-      //   ...loginFormValues,
-      //   email: '',
-      //   password: '',
-      // });
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.log('error', error);
     }
   };

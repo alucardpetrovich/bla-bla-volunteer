@@ -1,7 +1,9 @@
+import { FC } from 'react';
+
 export interface ErrorTextProps {
   text?: string;
 }
-const ErrorText = ({ text }: ErrorTextProps): JSX.Element | null => {
+const ErrorText: FC<ErrorTextProps> = ({ text }): JSX.Element | null => {
   return text ? <div className="errorText">{text}</div> : null;
 };
 

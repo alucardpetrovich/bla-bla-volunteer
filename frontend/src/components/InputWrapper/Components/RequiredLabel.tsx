@@ -1,9 +1,11 @@
+import { FC } from 'react';
+
 import { RequiredLabelElement } from '../style';
 
 export interface RequiredLabelProps {
   required?: boolean;
 }
-const RequiredLabel = ({ required = false }: RequiredLabelProps): JSX.Element | null => {
+const RequiredLabel: FC<RequiredLabelProps> = ({ required = false }): JSX.Element | null => {
   return required ? <RequiredLabelElement>*</RequiredLabelElement> : null;
 };
 

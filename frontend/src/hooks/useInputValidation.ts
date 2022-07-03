@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { emailValidateRegExp } from 'src/constants/validate';
 
 export interface IInputErrorValidation {
   state: boolean;
@@ -71,15 +72,8 @@ const useInputValidation = (value = '', fieldName = '', isDirty = false) => {
     return setIsDisabled(false);
   };
 
-  const re = useMemo(
-    () =>
-      // eslint-disable-next-line no-useless-escape
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-    [],
-  );
-
   const isEmailValidate = () => {
-    re.test(String(value).toLowerCase())
+    emailValidateRegExp.test(String(value).toLowerCase())
       ? setEmailError({ ...emailError, state: false })
       : setEmailError({ ...emailError, state: true });
   };

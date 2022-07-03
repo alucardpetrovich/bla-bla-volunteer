@@ -1,7 +1,7 @@
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
-import { useEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import TogglePasswordIcon from 'src/assets/icons/TogglePasswordIcon';
 import useInputValidation from 'src/hooks/useInputValidation';
 
@@ -22,7 +22,7 @@ interface ITextBoxProps extends InputWrapperProps {
   isIncorrectField?: (value: boolean) => void;
 }
 
-const TextBox = ({
+const TextBox: FC<ITextBoxProps> = ({
   showPassword = false,
   showPasswordIcon = false,
   value,
@@ -38,7 +38,7 @@ const TextBox = ({
   horizontal = false,
   required,
   isIncorrectField,
-}: ITextBoxProps): JSX.Element => {
+}): JSX.Element => {
   const [isDirty, setIsDirty] = useState<boolean>(false);
   const { error, isDisabled } = useInputValidation(value, name, isDirty);
 
@@ -51,9 +51,9 @@ const TextBox = ({
     onChange(e.target.value);
   };
 
-  const onBlur = () => {
+  const onBlur = useCallback(() => {
     setIsDirty(true);
-  };
+  }, [setIsDirty]);
 
   return (
     <InputWrapper name={name} label={label} required={required} horizontal={horizontal}>
