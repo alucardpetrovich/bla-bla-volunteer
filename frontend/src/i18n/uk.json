@@ -78,5 +78,13 @@
   "tv0h/6": {
     "defaultMessage": "Пароль",
     "description": "Registration: passwordInput"
+  },
+  "01x3vS": {
+    "defaultMessage": "Номер телефону доступний за запитом",
+    "description": "Registration: isByRequest"
+  },
+  "mV2Wi+": {
+    "defaultMessage": "Номер телефону доступний всім",
+    "description": "Registration: isPublicCheckbox"
   }
 }

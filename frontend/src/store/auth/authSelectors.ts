@@ -1,4 +1,3 @@
-// FIXME: пофіксить
-// eslint-disable-next-line
-// @ts-ignore
-export const getIsAuth = state => state.auth.isAuthenticated;
+import { RootState } from 'src/models/rootState/rootState';
+
+export const getIsAuth = (state: RootState) => state.auth.isAuthenticated;
