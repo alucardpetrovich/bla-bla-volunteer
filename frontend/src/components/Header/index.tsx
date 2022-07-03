@@ -17,12 +17,11 @@ import { HeaderSubtitleWrapper, HeaderTitleWrapper, HeaderWrapper, SignUpButton 
 
 const Header = () => {
   const { formatMessage } = useIntl();
-  // FIXME: пофіксить тип. Без any
-  // eslint-disable-next-line
   const isAuth: boolean = useSelector(getIsAuth);
   const user = useSelector(getUser);
   const involvements = user?.involvements;
-  const userRole = involvements && roles.map(role => (role.id === involvements[0].type ? `${role.title}` : null));
+  const userRole =
+    involvements?.length && roles.map(role => (role.id === involvements[0].type ? `${role.title}` : null));
 
   const { pathname } = useLocation();
   const dispatch = useDispatch();
@@ -35,16 +34,14 @@ const Header = () => {
       goToLogin();
       return;
     }
-    // FIXME: пофіксить
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const refreshToken = JSON.parse(localStorage.getItem('refreshToken'));
+
+    const refreshToken = JSON.parse(localStorage.getItem('refreshToken') || '');
 
     if (refreshToken) {
-      // FIXME: пофіксить тип. as any дуже погано. Стараємся без as any. По можливості замінюємо на typeguard. Якщо не
-      //  знаємо як пінаємо Вадіма
-      // eslint-disable-next-line
-      dispatch(userLogOut({ refreshToken: refreshToken.token }) as any);
+      // do not find the way how to fix
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
+      dispatch(userLogOut({ refreshToken: refreshToken.token }));
     }
   };
 

@@ -5,7 +5,7 @@ import { GlobalFonts, GlobalStyle } from '../../utils/styles';
 import Footer from '../Footer';
 import Header from '../Header';
 import Roots from '../Roots';
-import { Container, Heading, Text } from '../StyledComponents';
+import { Container } from '../StyledComponents';
 
 const Layout: FC = () => {
   return (
@@ -16,7 +16,7 @@ const Layout: FC = () => {
         <Header />
         <Container tag="main">
           <Roots />
-          <Heading tag="h2">h2</Heading>
+          {/* <Heading tag="h2">h2</Heading>
           <Heading tag="h3">h3</Heading>
           <Heading tag="h4">h4</Heading>
           <Heading tag="h5">h5</Heading>
@@ -47,7 +47,7 @@ const Layout: FC = () => {
           <Text tag="b7">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus reprehenderit id nobis natus, vel quas
             sunt. Recusandae, atque architecto quos laboriosam aliquid quam optio odit. Ullam aut fugit ut nemo.
-          </Text>
+          </Text> */}
         </Container>
         <Container tag="footer">
           <Footer />
