@@ -12,22 +12,21 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
 
     steps:
       - uses: actions/checkout@v2
-        working-directory: ./backend
         with:
           fetch-depth: 0
       - uses: borales/actions-yarn@v3.0.0
-        working-directory: ./backend
         with:
           cmd: install
       - uses: borales/actions-yarn@v3.0.0
-        working-directory: ./backend
         with:
           cmd: lint:output
       - uses: sonarsource/sonarqube-scan-action@master
-        working-directory: ./backend
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEND }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
