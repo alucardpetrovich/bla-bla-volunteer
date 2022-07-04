@@ -20,6 +20,7 @@ interface ITextBoxProps extends InputWrapperProps {
   autoComplete?: 'off' | 'on';
   required?: boolean;
   isIncorrectField?: (value: boolean) => void;
+  placeholder?: string;
 }
 
 const TextBox: FC<ITextBoxProps> = ({
@@ -37,6 +38,7 @@ const TextBox: FC<ITextBoxProps> = ({
   autoComplete = 'off',
   horizontal = false,
   required,
+  placeholder = '',
   isIncorrectField,
 }): JSX.Element => {
   const [isDirty, setIsDirty] = useState<boolean>(false);
@@ -71,6 +73,7 @@ const TextBox: FC<ITextBoxProps> = ({
         fullWidth={fullWidth}
         value={value}
         autoComplete={autoComplete}
+        placeholder={placeholder}
         InputProps={{
           endAdornment: showPasswordIcon ? (
             <InputAdornment position="end">

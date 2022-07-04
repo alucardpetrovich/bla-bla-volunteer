@@ -1,4 +1,8 @@
 {
+  "01x3vS": {
+    "defaultMessage": "Номер телефону доступний за запитом",
+    "description": "Registration: isByRequest"
+  },
   "08V8ko": {
     "defaultMessage": "Ел. Пошта",
     "description": "Registration: emailInput"
@@ -59,6 +63,10 @@
     "defaultMessage": "Пароль",
     "description": "Login: passwordInput"
   },
+  "mV2Wi+": {
+    "defaultMessage": "Номер телефону доступний всім",
+    "description": "Registration: isPublicCheckbox"
+  },
   "oNnYlE": {
     "defaultMessage": "Поле повинно бути email",
     "description": "inputsValidation: emailError"
@@ -79,12 +87,8 @@
     "defaultMessage": "Пароль",
     "description": "Registration: passwordInput"
   },
-  "01x3vS": {
-    "defaultMessage": "Номер телефону доступний за запитом",
-    "description": "Registration: isByRequest"
-  },
-  "mV2Wi+": {
-    "defaultMessage": "Номер телефону доступний всім",
-    "description": "Registration: isPublicCheckbox"
+  "LD4WwV": {
+    "defaultMessage": "Телефон повинен починатися з символу \"+\"",
+    "description": "inputsValidation: phoneStartsWithPlusError"
   }
 }

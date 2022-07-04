@@ -33,6 +33,7 @@ const Registration = () => {
   const [isEmailFieldDisabled, setIsEmailFieldDisabled] = useState<boolean>(true);
   const [isPasswordFieldDisabled, setIsPasswordFieldDisabled] = useState<boolean>(true);
   const [isNickNameFieldDisabled, setIsNickNameFieldDisabled] = useState<boolean>(true);
+  const [isPhoneNumberFieldDisabled, setIsPhoneNumberFieldDisabled] = useState<boolean>(true);
   const [isPhonePublic, setIsPhonePublic] = useState<boolean>(false);
   const [isPhoneByRequest, setIsPhoneByRequest] = useState<boolean>(false);
 
@@ -68,6 +69,9 @@ const Registration = () => {
   const isDisabledNickName = (value: boolean) => {
     setIsNickNameFieldDisabled(value);
   };
+  const isDisabledPhoneNumber = (value: boolean) => {
+    setIsPhoneNumberFieldDisabled(value);
+  };
 
   const { nickName, email, password, phoneNumber, showPassword, phoneNumberAccessMode } = credentials;
 
@@ -86,7 +90,8 @@ const Registration = () => {
   };
 
   const handlePhoneNumberOnChange = (value: string) => {
-    setCredentials({ ...credentials, phoneNumber: value });
+    const phoneNumberValue = value.replace(/[^0-9+]/g, '');
+    setCredentials({ ...credentials, phoneNumber: phoneNumberValue });
   };
 
   const handleClickShowPassword = (): void => {
@@ -119,7 +124,8 @@ const Registration = () => {
     setIsPhoneByRequest(!isPhoneByRequest);
   };
 
-  const isDisabled = isEmailFieldDisabled || isPasswordFieldDisabled || isNickNameFieldDisabled;
+  const isDisabled =
+    isEmailFieldDisabled || isPasswordFieldDisabled || isNickNameFieldDisabled || isPhoneNumberFieldDisabled;
 
   return (
     <>
@@ -172,9 +178,11 @@ const Registration = () => {
             fullWidth
           />
           <TextBox
+            isIncorrectField={isDisabledPhoneNumber}
             value={phoneNumber ? phoneNumber : ''}
             onChange={handlePhoneNumberOnChange}
             name="phoneNumber"
+            placeholder="+38(099)999-99-99"
             label={formatMessage({
               defaultMessage: 'Номер телефону',
               description: 'Registration: phoneNumberInput',
