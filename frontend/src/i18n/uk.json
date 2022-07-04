@@ -27,6 +27,10 @@
     "defaultMessage": "Вхід",
     "description": "Login: title"
   },
+  "LD4WwV": {
+    "defaultMessage": "Телефон повинен починатися з символу \"+\"",
+    "description": "inputsValidation: phoneStartsWithPlusError"
+  },
   "Ryi2be": {
     "defaultMessage": "вхід / реєстрація",
     "description": "Login: title"
@@ -86,9 +90,5 @@
   "tv0h/6": {
     "defaultMessage": "Пароль",
     "description": "Registration: passwordInput"
-  },
-  "LD4WwV": {
-    "defaultMessage": "Телефон повинен починатися з символу \"+\"",
-    "description": "inputsValidation: phoneStartsWithPlusError"
   }
 }
