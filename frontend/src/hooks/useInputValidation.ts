@@ -12,6 +12,7 @@ enum MinValueLength {
   Email = 4,
   Password = 6,
   NickName = 3,
+  FilledPhoneNumber = 13,
 }
 
 const minValueMessage = (fieldName: string) => {
@@ -19,6 +20,7 @@ const minValueMessage = (fieldName: string) => {
     email: MinValueLength.Email,
     password: MinValueLength.Password,
     nickName: MinValueLength.NickName,
+    phoneNumber: MinValueLength.FilledPhoneNumber,
   };
 
   return fields[fieldName] ?? MinValueLength.DefaultValue;
@@ -55,7 +57,19 @@ const useInputValidation = (value = '', fieldName = '', isDirty = false) => {
     }),
   });
 
+  const [phoneStartsWithPlusError, setPhoneStartsWithPlusError] = useState<IInputErrorValidation>({
+    state: false,
+    message: formatMessage({
+      defaultMessage: 'Телефон повинен починатися з символу "+"',
+      description: 'inputsValidation: phoneStartsWithPlusError',
+    }),
+  });
+
   const validateFunc = () => {
+    if (isDirty && phoneStartsWithPlusError.state) {
+      return setError({ state: true, message: phoneStartsWithPlusError.message });
+    }
+
     if (isDirty && isEmpty.state) {
       return setError({ state: true, message: isEmpty.message });
     }
@@ -72,6 +86,10 @@ const useInputValidation = (value = '', fieldName = '', isDirty = false) => {
   };
 
   const forDisabledButton = () => {
+    if (phoneStartsWithPlusError.state) {
+      return setIsDisabled(true);
+    }
+
     if (isEmpty.state) {
       return setIsDisabled(true);
     }
@@ -99,8 +117,20 @@ const useInputValidation = (value = '', fieldName = '', isDirty = false) => {
       : setMinLengthError({ ...minLengthError, state: false });
   };
 
+  const isPhoneNumberLengthValidate = (minLength: number) => {
+    value.length && value.length < minLength
+      ? setMinLengthError({ ...minLengthError, state: true })
+      : setMinLengthError({ ...minLengthError, state: false });
+  };
+
   const isEmptyValidate = () => {
     value.length === 0 ? setIsEmpty({ ...isEmpty, state: true }) : setIsEmpty({ ...isEmpty, state: false });
+  };
+
+  const isPhoneStartsWithPlus = () => {
+    value.length && value[0] !== '+'
+      ? setPhoneStartsWithPlusError({ ...phoneStartsWithPlusError, state: true })
+      : setPhoneStartsWithPlusError({ ...phoneStartsWithPlusError, state: false });
   };
 
   useEffect(() => {
@@ -126,9 +156,23 @@ const useInputValidation = (value = '', fieldName = '', isDirty = false) => {
         validateFunc();
         forDisabledButton();
         break;
+      case 'phoneNumber':
+        isPhoneNumberLengthValidate(MinValueLength.FilledPhoneNumber);
+        isPhoneStartsWithPlus();
+        validateFunc();
+        forDisabledButton();
+        break;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDirty, value, fieldName, isEmpty.state, minLengthError.state, emailError.state]);
+  }, [
+    isDirty,
+    value,
+    fieldName,
+    isEmpty.state,
+    minLengthError.state,
+    emailError.state,
+    phoneStartsWithPlusError.state,
+  ]);
 
   return { error, isDisabled };
 };

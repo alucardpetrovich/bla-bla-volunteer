@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import Button from 'src/components/Buttons/Button';
+import Checkbox from 'src/components/Checkbox/CheckBox';
 import TextBox from 'src/components/TextBox/TextBox';
 import { PATHS } from 'src/constants/PATH';
 
@@ -24,7 +25,7 @@ const Registration = () => {
     password: '',
     phoneNumber: '',
     showPassword: false,
-    isPhoneVisibleToAllUsers: true,
+    phoneNumberAccessMode: 'read_only_me',
   };
   const { formatMessage } = useIntl();
 
@@ -32,6 +33,32 @@ const Registration = () => {
   const [isEmailFieldDisabled, setIsEmailFieldDisabled] = useState<boolean>(true);
   const [isPasswordFieldDisabled, setIsPasswordFieldDisabled] = useState<boolean>(true);
   const [isNickNameFieldDisabled, setIsNickNameFieldDisabled] = useState<boolean>(true);
+  const [isPhoneNumberFieldDisabled, setIsPhoneNumberFieldDisabled] = useState<boolean>(true);
+  const [isPhonePublic, setIsPhonePublic] = useState<boolean>(false);
+  const [isPhoneByRequest, setIsPhoneByRequest] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isPhonePublic && !isPhoneByRequest) {
+      setCredentials({
+        ...credentials,
+        phoneNumberAccessMode: 'public',
+      });
+    }
+
+    if (isPhoneByRequest && !isPhonePublic) {
+      setCredentials({
+        ...credentials,
+        phoneNumberAccessMode: 'read_by_request',
+      });
+    }
+
+    if (!isPhoneByRequest && !isPhonePublic) {
+      setCredentials({
+        ...credentials,
+        phoneNumberAccessMode: 'read_only_me',
+      });
+    }
+  }, [isPhonePublic, isPhoneByRequest]);
 
   const isDisabledEmail = (value: boolean) => {
     setIsEmailFieldDisabled(value);
@@ -42,8 +69,11 @@ const Registration = () => {
   const isDisabledNickName = (value: boolean) => {
     setIsNickNameFieldDisabled(value);
   };
+  const isDisabledPhoneNumber = (value: boolean) => {
+    setIsPhoneNumberFieldDisabled(value);
+  };
 
-  const { nickName, email, password, phoneNumber, showPassword } = credentials;
+  const { nickName, email, password, phoneNumber, showPassword, phoneNumberAccessMode } = credentials;
 
   const dispatch = useDispatch();
 
@@ -60,7 +90,8 @@ const Registration = () => {
   };
 
   const handlePhoneNumberOnChange = (value: string) => {
-    setCredentials({ ...credentials, phoneNumber: value });
+    const phoneNumberValue = value.replace(/[^0-9+]/g, '');
+    setCredentials({ ...credentials, phoneNumber: phoneNumberValue });
   };
 
   const handleClickShowPassword = (): void => {
@@ -71,13 +102,30 @@ const Registration = () => {
   };
 
   const handleSubmitSignUp = () => {
+    const payload = {
+      nickname: nickName || '',
+      email,
+      phoneNumber: phoneNumber || '',
+      phoneNumberAccessMode: phoneNumberAccessMode || 'read_only_me',
+      password,
+    };
     // FIXME: пофіксить і більше так не робить
     // eslint-disable-next-line
-    dispatch(userRegistration(credentials) as any);
-    setCredentials(initialCredentialsState);
+    dispatch(userRegistration(payload) as any);
   };
 
-  const isDisabled = isEmailFieldDisabled || isPasswordFieldDisabled || isNickNameFieldDisabled;
+  const handlePublicPhoneCheckbox = () => {
+    setIsPhoneByRequest(false);
+    setIsPhonePublic(!isPhonePublic);
+  };
+
+  const handleByRequestPhoneCheckbox = () => {
+    setIsPhonePublic(false);
+    setIsPhoneByRequest(!isPhoneByRequest);
+  };
+
+  const isDisabled =
+    isEmailFieldDisabled || isPasswordFieldDisabled || isNickNameFieldDisabled || isPhoneNumberFieldDisabled;
 
   return (
     <>
@@ -130,15 +178,35 @@ const Registration = () => {
             fullWidth
           />
           <TextBox
+            isIncorrectField={isDisabledPhoneNumber}
             value={phoneNumber ? phoneNumber : ''}
             onChange={handlePhoneNumberOnChange}
             name="phoneNumber"
+            placeholder="+38(099)999-99-99"
             label={formatMessage({
               defaultMessage: 'Номер телефону',
               description: 'Registration: phoneNumberInput',
             })}
             id="register-phoneNumber"
             fullWidth
+          />
+          <Checkbox
+            label={formatMessage({
+              defaultMessage: 'Номер телефону доступний всім',
+              description: 'Registration: isPublicCheckbox',
+            })}
+            name="publicPhoneCheckbox"
+            checked={isPhonePublic}
+            handleChange={handlePublicPhoneCheckbox}
+          />
+          <Checkbox
+            label={formatMessage({
+              defaultMessage: 'Номер телефону доступний за запитом',
+              description: 'Registration: isByRequest',
+            })}
+            name="publicPhoneCheckbox"
+            checked={isPhoneByRequest}
+            handleChange={handleByRequestPhoneCheckbox}
           />
           <TextBox
             isIncorrectField={isDisabledPassword}

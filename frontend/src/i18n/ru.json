@@ -1,46 +1,50 @@
 {
+  "01x3vS": {
+    "defaultMessage": "[uk]: Номер телефону доступний за запитом",
+    "description": "Registration: isByRequest"
+  },
   "08V8ko": {
-    "defaultMessage": "[uk]: Ел. Пошта",
+    "defaultMessage": "Ел. Почта",
     "description": "Registration: emailInput"
   },
   "2hMXLf": {
-    "defaultMessage": "[uk]: Поле не повинно бути пустим",
+    "defaultMessage": "Поле не должно быть пустым",
     "description": "inputsValidation: isEmpty"
   },
   "4AmZz1": {
-    "defaultMessage": "[uk]: Реєстрація",
+    "defaultMessage": "Регистрация",
     "description": "Registration: title"
   },
   "HGUy54": {
-    "defaultMessage": "[uk]: Для забезпечення вашої безпеки ми не рекомендуємо вводити власне ім’я та прізвище",
+    "defaultMessage": "Для обеспечения вашей безопасности мы не рекомендуем вводить собственное имя и фамилию",
     "description": "Registration: nickNamePrivacyInfo"
   },
   "Hlpx0p": {
-    "defaultMessage": "[uk]: Увійти",
+    "defaultMessage": "Войти",
     "description": "Login: signInButton"
   },
   "HsHMbh": {
-    "defaultMessage": "[uk]: Вхід",
+    "defaultMessage": "Вход",
     "description": "Login: title"
   },
   "Ryi2be": {
-    "defaultMessage": "[uk]: вхід / реєстрація",
+    "defaultMessage": "вход / регистрация",
     "description": "Login: title"
   },
   "SsPKIt": {
-    "defaultMessage": "[uk]: Мінімільна довжина має бути не менше {minValue} символів",
+    "defaultMessage": "Минимальная длина не должна быть меньше {minValue} символов",
     "description": "inputsValidation: minLengthError"
   },
   "Ufx13f": {
-    "defaultMessage": "[uk]: Ел. Пошта",
+    "defaultMessage": "Ел. Почта",
     "description": "Login: emailInput"
   },
   "ViEqGj": {
-    "defaultMessage": "[uk]: Реєструючись, ви погоджуєтеся з умовами",
+    "defaultMessage": "Регистрируясь вы соглашаетесь с условиями",
     "description": "Registration: licenseInfo"
   },
   "YvR5rJ": {
-    "defaultMessage": "[uk]: вхід / реєстрація",
+    "defaultMessage": "вход / регистрация",
     "description": "Registration: title"
   },
   "ZEvWYL": {
@@ -48,35 +52,43 @@
     "description": "Header: title"
   },
   "bU5skY": {
-    "defaultMessage": "[uk]: Номер телефону",
+    "defaultMessage": "Номер телефона",
     "description": "Registration: phoneNumberInput"
   },
   "etXyqK": {
-    "defaultMessage": "[uk]: Забув пароль",
+    "defaultMessage": "Забыл пароль",
     "description": "Login: forgotPassword"
   },
   "fhIJT1": {
-    "defaultMessage": "[uk]: Пароль",
+    "defaultMessage": "Пароль",
     "description": "Login: passwordInput"
   },
+  "mV2Wi+": {
+    "defaultMessage": "[uk]: Номер телефону доступний всім",
+    "description": "Registration: isPublicCheckbox"
+  },
   "oNnYlE": {
-    "defaultMessage": "[uk]: Поле повинно бути email",
+    "defaultMessage": "Поле должно быть email",
     "description": "inputsValidation: emailError"
   },
   "qEclD0": {
-    "defaultMessage": "[uk]: положення про обробку і захист персональних даних та угодою користувача",
+    "defaultMessage": "положения про обработку и защиту персональных данных и пользовательского соглашениея",
     "description": "Registration: licenseInfo"
   },
   "rMynxh": {
-    "defaultMessage": "[uk]: Я вже зареєстрований",
+    "defaultMessage": "Я уже заренестрирован",
     "description": "Registration: alreadyRegisteredButton"
   },
   "rRhUrR": {
-    "defaultMessage": "[uk]: Придумайте нікнейм",
+    "defaultMessage": "Придумайте никнейм",
     "description": "Registration: nickNameInput"
   },
   "tv0h/6": {
-    "defaultMessage": "[uk]: Пароль",
+    "defaultMessage": "Пароль",
     "description": "Registration: passwordInput"
+  },
+  "LD4WwV": {
+    "defaultMessage": "[uk]: Телефон повинен починатися з символу \"+\"",
+    "description": "inputsValidation: phoneStartsWithPlusError"
   }
 }

@@ -1,24 +1,24 @@
-import InputWrapper from '../InputWrapper/InputWrapper';
-import { StyledCheckbox, StyledCheckboxInput } from './style';
+import { FC, SyntheticEvent } from 'react';
+import CheckBoxCheckedIcon from 'src/assets/icons/CheckBoxCheckedIcon';
 
-export interface ICheckboxProps {
-  label?: string;
-  onChange: (value: boolean) => void;
-  isChecked: boolean;
-  horizontal?: boolean;
+import { StyledCheckboxBoxChecked, StyledCheckboxInput, StyledOption } from './style';
+
+interface CheckboxProps {
+  label: string;
+  checked: boolean;
+  name: string;
+  handleChange: (event: SyntheticEvent) => void;
 }
 
-const Checkbox = ({ label, onChange, isChecked, horizontal }: ICheckboxProps): JSX.Element => {
-  const handleCheckBoxClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.checked;
-    onChange(value);
-  };
-
+const Checkbox: FC<CheckboxProps> = ({ label, checked, handleChange }): JSX.Element => {
   return (
-    <InputWrapper name={''} label={label} horizontal={horizontal}>
-      <StyledCheckboxInput type="checkbox" onChange={handleCheckBoxClick} checked={isChecked} />
-      <StyledCheckbox active={isChecked} aria-hidden="true" />
-    </InputWrapper>
+    <div>
+      <StyledOption>
+        <StyledCheckboxInput type="checkbox" checked={checked} onChange={handleChange} />
+        <StyledCheckboxBoxChecked checked={checked}>{checked && <CheckBoxCheckedIcon />}</StyledCheckboxBoxChecked>
+        <span>{label}</span>
+      </StyledOption>
+    </div>
   );
 };
 

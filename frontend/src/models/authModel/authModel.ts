@@ -6,7 +6,7 @@ export interface IAuthCredentials {
   showPassword?: boolean;
   nickName?: string;
   phoneNumber?: string;
-  isPhoneVisibleToAllUsers?: boolean;
+  phoneNumberAccessMode?: string;
 }
 
 export interface IAuthResponse {
