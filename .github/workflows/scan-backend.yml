@@ -22,11 +22,15 @@ jobs:
           fetch-depth: 0
       - uses: borales/actions-yarn@v3.0.0
         with:
+          working-directory: ./backend
           cmd: install
       - uses: borales/actions-yarn@v3.0.0
         with:
+          working-directory: ./backend
           cmd: lint:output
       - uses: sonarsource/sonarqube-scan-action@master
+        with:
+          working-directory: ./backend
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_BACKEND }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
