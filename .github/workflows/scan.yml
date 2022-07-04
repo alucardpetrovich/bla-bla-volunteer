@@ -74,7 +74,7 @@ jobs:
       - run: yarn lint:output
       - uses: sonarsource/sonarqube-scan-action@master
         with:
-          projectBaseDir: backend
+          projectBaseDir: frontend
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
