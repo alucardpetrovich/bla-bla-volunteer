@@ -10,6 +10,7 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
     "fix": "yarn run lint -- --fix & prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
     "lint": "next lint",
+    "lint:output": "eslint \"src/**/*.ts\" --fix -o report-eslint.json -f json",
     "lint:fix": "yarn run lint -- --fix",
     "lint:css": "npx stylelint \"**/style.ts\" ",
     "test": "jest --watch",
