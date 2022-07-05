@@ -32,4 +32,14 @@ export class SettlementsRepository extends Repository<SettlementEntity> {
 
       .getMany();
   }
+
+  async getSettlementByIds(ids: string[], language: string) {
+    return this.createQueryBuilder('s')
+      .innerJoinAndSelect('s.name', 'sn')
+      .innerJoinAndSelect('sn.localizations', 'snl')
+      .where('snl.language = :language')
+      .andWhere('s.id IN (:...ids)', { ids })
+      .setParameter('language', language)
+      .getMany();
+  }
 }
