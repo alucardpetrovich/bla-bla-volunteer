@@ -42,7 +42,6 @@ export class HubsController {
     @UserId() userId: string,
     @Language() language: string,
   ) {
-    const organizations = await this.service.getHubsList(dto, userId, language);
-    return { organizations };
+    return this.service.getHubsList(dto, userId, language);
   }
 }

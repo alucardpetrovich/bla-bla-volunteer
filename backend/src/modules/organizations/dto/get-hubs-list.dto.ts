@@ -1,23 +1,35 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Type } from 'class-transformer';
-import { IsOptional, IsString, ValidateNested } from 'class-validator';
-import { PaginationDto } from 'src/shared/dto/pagination.dto';
+import { Transform, Type } from 'class-transformer';
+import {
+  IsBoolean,
+  IsInt,
+  IsOptional,
+  IsString,
+  ValidateIf,
+  ValidateNested,
+} from 'class-validator';
 import { PointDto } from 'src/shared/dto/point.dto';
 
 export class GetHubsListDto {
   @ApiProperty({ required: false })
   @Type(() => PointDto)
   @ValidateNested()
-  @IsOptional()
+  @ValidateIf((obj: GetHubsListDto) => Boolean(obj.radiusInKm))
   point?: PointDto;
 
-  @ApiProperty()
-  @Type(() => PaginationDto)
-  @ValidateNested()
-  pagination: PaginationDto;
+  @ApiProperty({ required: false })
+  @IsInt()
+  @Transform(({ value }) => parseInt(value))
+  @ValidateIf((obj: GetHubsListDto) => Boolean(obj.point))
+  radiusInKm?: number;
 
   @ApiProperty({ required: false })
   @IsString()
   @IsOptional()
   search?: string;
+
+  @ApiProperty({ required: false })
+  @IsBoolean()
+  @Transform(({ value }) => value === 'true')
+  onlyCountDebugRun = false;
 }
