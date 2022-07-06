@@ -1,36 +1,39 @@
 import { FC, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useLocalStorage } from 'react-use';
 
 import { axiosPrivate } from '../api/axios';
+import { StorageKeys } from '../constants/storageKeys';
+import { useAppDispatch } from '../hooks';
 import useAxiosRefreshToken from '../hooks/useAxiosRefreshToken';
+import { IAuthAccessRefresh } from '../models/authModel/authModel';
 import { authActions } from '../store';
+import { isErrorResponse } from '../utils/typeguard/error';
 
-// FIXME: пофіксить тайпінги і все що нижче під ts-ignore
-/* eslint-disable */
-const WithRefreshTokenCheck = (WrappedComponent: FC) =>
-  function comp(props: JSX.IntrinsicAttributes) {
-    const dispatch = useDispatch();
+const WithRefreshTokenCheck = (WrappedComponent: FC) => {
+  const Comp: FC = props => {
+    const dispatch = useAppDispatch();
     const refresh = useAxiosRefreshToken();
+    const [refreshToken, , removeRefreshToken] = useLocalStorage<IAuthAccessRefresh>(StorageKeys.refreshToken);
+    const [authToken, , removeAuthToken] = useLocalStorage<IAuthAccessRefresh>(StorageKeys.authToken);
 
-    // @ts-ignore
-    const expireAt = JSON.parse(localStorage.getItem('refreshToken'))?.expiresAt;
+    const expireAt = refreshToken?.expiresAt ?? 0;
     const today = Math.round(Date.now() / 1000);
+
+    const logout = () => {
+      dispatch(authActions.logoutSuccess());
+      removeRefreshToken();
+      removeAuthToken();
+    };
 
     useEffect(() => {
       if (expireAt < today || !expireAt) {
-        dispatch(authActions.logoutSuccess());
-        localStorage.removeItem('authToken');
-        localStorage.removeItem('refreshToken');
+        logout();
       }
     }, []);
 
     const axiosInterceptorRequest = axiosPrivate.interceptors.request.use(
       config => {
-        const authToken = JSON.parse(localStorage.getItem('authToken') as string);
-
-        // @ts-ignore
-        if (!config.headers['Authorization'] && authToken) {
-          // @ts-ignore
+        if (config.headers && !config.headers['Authorization'] && authToken) {
           config.headers['Authorization'] = `Bearer ${authToken.token}`;
         }
         return config;
@@ -51,11 +54,8 @@ const WithRefreshTokenCheck = (WrappedComponent: FC) =>
 
             return axiosPrivate.request(prevRequest);
           } catch (error) {
-            // @ts-ignore
-            if (error?.response?.data?.statusCode === 403 || !expireAt) {
-              dispatch(authActions.logoutSuccess());
-              localStorage.removeItem('authToken');
-              localStorage.removeItem('refreshToken');
+            if ((isErrorResponse(error) && error.response.data.statusCode === 403) || !expireAt) {
+              logout();
             }
           }
         }
@@ -72,5 +72,7 @@ const WithRefreshTokenCheck = (WrappedComponent: FC) =>
 
     return <WrappedComponent {...props} />;
   };
+  return Comp;
+};
 
 export default WithRefreshTokenCheck;

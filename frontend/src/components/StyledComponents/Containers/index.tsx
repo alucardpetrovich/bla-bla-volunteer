@@ -9,7 +9,7 @@ import {
   MainContainer,
 } from './style';
 
-const Container: React.FC<IContainer> = ({ tag, children, ...props }) => {
+const Container: React.FC<IContainer & { children: React.ReactNode }> = ({ tag, children, ...props }) => {
   const StyledContainer = {
     content: <ContentContainer {...props}>{children}</ContentContainer>,
     header: <HeaderContainer {...props}>{children}</HeaderContainer>,
@@ -17,10 +17,8 @@ const Container: React.FC<IContainer> = ({ tag, children, ...props }) => {
     main: <MainContainer {...props}>{children}</MainContainer>,
     footer: <FooterContainer {...props}>{children}</FooterContainer>,
   };
-  // FIXME: Пофіксить. tag опціональний. Коли буде undefined тоді впаде апка?
-  // eslint-disable-next-line
-  // @ts-ignore
-  return StyledContainer[tag];
+
+  return tag && tag in StyledContainer ? StyledContainer[tag] : StyledContainer['content'];
 };
 
 export default Container;

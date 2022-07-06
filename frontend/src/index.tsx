@@ -11,16 +11,15 @@ import messages from './locale/list.json';
 import App from './pages/App/index';
 import store, { persistor } from './store/store';
 
-// FIXME: пофіксить
-// eslint-disable-next-line
-// @ts-ignore
-const root = ReactDOM.createRoot(document.getElementById('root'));
-// const language = navigator.language.split(/[-_]/)[0];
-const locale = 'uk';
+const rootDiv = document.getElementById('root');
 
-// FIXME: пофіксить
-// eslint-disable-next-line
-// @ts-ignore
+if (!rootDiv) {
+  throw new Error('root element does not exist');
+}
+
+const root = ReactDOM.createRoot(rootDiv);
+
+const locale = 'uk';
 const m = messages[locale];
 
 root.render(

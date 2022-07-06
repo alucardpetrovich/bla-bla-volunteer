@@ -1,4 +1,3 @@
-// FIXME: пофіксить тайпінги
-// eslint-disable-next-line
-// @ts-ignore
-export const getUser = state => state.auth.user;
+import { RootState } from '../store';
+
+export const getUser = (state: RootState) => state.auth.user;

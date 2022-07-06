@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 type TextTypes = 'b1' | 'b2' | 'b3' | 'b4' | 'b5' | 'b6' | 'b7';
@@ -7,16 +8,10 @@ export interface IText {
   tag?: TextTypes;
   isBold?: boolean;
   textAlign?: 'left' | 'center' | 'right' | 'end' | 'start' | 'justify';
-  // FIXME: Ойойой. Пофіксить. без any
-  // eslint-disable-next-line
-  fontWeight?: any;
-  // eslint-disable-next-line
-  lineHeight?: any;
-  // eslint-disable-next-line
-  children: any;
+  fontWeight?: string;
+  lineHeight?: string;
   href?: string;
-  // eslint-disable-next-line
-  style?: any;
+  style?: React.CSSProperties;
 }
 
 export const TextB1 = styled.p<IText>`
@@ -59,7 +54,6 @@ export const TextB4 = styled.p<IText>`
   line-height: 1;
   color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
-  white-space: wrap;
 `;
 
 export const TextB5 = styled.p<IText>`

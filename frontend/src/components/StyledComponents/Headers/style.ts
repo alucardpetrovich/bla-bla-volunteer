@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 type HeaderTypes = 'h2' | 'h3' | 'h4' | 'h5';
@@ -7,15 +8,9 @@ export interface IHeader {
   tag?: HeaderTypes;
   isBold?: boolean;
   textAlign?: 'left' | 'center' | 'right';
-  // FIXME: Ойойой. Пофіксить. без any
-  // eslint-disable-next-line
-  fontWeight?: any;
-  // eslint-disable-next-line
-  lineHeight?: any;
-  // eslint-disable-next-line
-  children: any;
-  // eslint-disable-next-line
-  style?: any;
+  fontWeight?: string;
+  lineHeight?: string;
+  style?: React.CSSProperties;
   onClick?: () => void;
 }
 

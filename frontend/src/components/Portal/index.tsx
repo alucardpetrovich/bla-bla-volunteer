@@ -1,10 +1,8 @@
-import { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 interface IPortal {
-  // FIXME: Пофіксить. без any будь ласка
-  // eslint-disable-next-line
-  children?: any;
+  children?: React.ReactNode;
 }
 
 const Portal: FC<IPortal> = ({ children }) => {
