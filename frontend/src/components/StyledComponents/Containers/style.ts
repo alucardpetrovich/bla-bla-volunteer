@@ -46,7 +46,7 @@ export const HeaderContainer = styled(Container)<IContainer>`
 
 export const HeaderAuthContainer = styled.div`
   display: flex;
-  background-color: yellow;
+  background-color: ${p => p.theme.palette.info.main};
 `;
 
 export const MainContainer = styled(Container)<IContainer>`

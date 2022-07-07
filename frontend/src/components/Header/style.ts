@@ -49,3 +49,21 @@ export const UserInfoWrapper = styled.div`
   width: calc(100% - 250px);
   padding: 0px 32px;
 `;
+
+export const SearchWrapper = styled.div`
+  width: 360px;
+`;
+
+export const NavWrapper = styled.div`
+  width: 166px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const VertDevider = styled.div`
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${p => p.theme.palette.common.black};
+  height: 24px;
+`;

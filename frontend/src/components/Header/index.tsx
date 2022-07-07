@@ -21,14 +21,18 @@ import {
   HeaderWrapper,
   LogoBackground,
   LogoWrapper,
+  NavWrapper,
+  SearchWrapper,
   SignUpButton,
   UserInfoWrapper,
+  VertDevider,
 } from './style';
 
 const Header = () => {
   const { formatMessage } = useIntl();
   const isAuth = useAppSelector(getIsAuth);
   const user = useAppSelector(getUser);
+  const nickname = user?.nickname;
   const involvements = user?.involvements;
   const userRole = involvements?.length && roles.map(role => (role.id === involvements[0] ? `${role.title}` : null));
   const [refreshToken] = useLocalStorage<IAuthAccessRefresh>(StorageKeys.refreshToken);
@@ -56,18 +60,18 @@ const Header = () => {
         <HeaderBg isAuth={isAuth} isShowHeading={isShowHeading}>
           <Container tag="header" isAuth={isAuth} isShowHeading={isShowHeading}>
             <HeaderWrapper>
-              {!isAuth && <Logo height="70px" onClick={goToHome} style={{ cursor: 'pointer' }} />}
+              {!isAuth && <Logo height="70px" onClick={goToHome} />}
 
-              <div style={{ width: '166px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <NavWrapper>
                 <TextButton onClick={handleLogOut}>
                   {formatMessage({
                     defaultMessage: 'вхід',
                     description: 'Logout: title',
                   })}
                 </TextButton>
-                <div style={{ borderRight: '1px solid grey', height: '24px' }}></div>
+                <VertDevider />
                 <Text tag="b1">ua</Text>
-              </div>
+              </NavWrapper>
             </HeaderWrapper>
             {!isAuth && !isShowHeading && (
               <HeaderTitleWrapper>
@@ -106,13 +110,13 @@ const Header = () => {
             <Logo
               height="35px"
               onClick={goToHome}
-              style={{ cursor: 'pointer', position: 'absolute', top: '48px', left: '32px' }}
+              style={{ position: 'absolute', top: '48px', left: '32px', cursor: 'pointer' }}
             />
           </LogoWrapper>
 
           <UserInfoWrapper>
             <Text tag="b1">{userRole}</Text>
-            <div style={{ width: '360px' }}>
+            <SearchWrapper>
               <Autocomplete
                 freeSolo
                 id="free-solo-2-demo"
@@ -134,19 +138,18 @@ const Header = () => {
                   />
                 )}
               />
-            </div>
-            <Notifications width={24} isNew={true} style={{ cursor: 'pointer' }} />
+            </SearchWrapper>
+            <Notifications width={24} isNew={true} />
 
-            <div style={{ width: '166px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <NavWrapper>
+              <Text tag="b1">{nickname || 'NickName'}</Text>
               <TextButton onClick={handleLogOut}>
                 {formatMessage({
                   defaultMessage: 'вихід',
                   description: 'Logout: title',
                 })}
               </TextButton>
-              <div style={{ borderRight: '1px solid grey', height: '24px' }}></div>
-              <Text tag="b1">ua</Text>
-            </div>
+            </NavWrapper>
           </UserInfoWrapper>
         </Container>
       )}

@@ -9,11 +9,17 @@ export interface IBg {
 }
 
 export const Bg = styled.div<IBg>`
-  background-image: url(${({ isAuth, isShowHeading }) =>
-    !isAuth && !isShowHeading ? bgImg : !isAuth ? bgImgAuth : ''});
+  ${({ isAuth, isShowHeading }) =>
+    !isAuth && !isShowHeading
+      ? `background-image: url(${bgImg});`
+      : !isAuth
+      ? `background-image: url(${bgImgAuth});`
+      : 'null'};
   width: 100%;
-  height: ${({ isAuth, isShowHeading }) => (isAuth || isShowHeading ? '120px' : '100vh')};
+  ${({ isAuth, isShowHeading }) => (isAuth || isShowHeading ? 'height: 120px;' : 'min-height: 100vh;')};
   background-repeat: no-repeat;
-  background-position: top;
+  background-position: right center;
+  ${({ isAuth, isShowHeading }) =>
+    (!isAuth && !isShowHeading) || isShowHeading ? 'background-position: top;' : 'background-position: right;'};
   background-size: cover;
 `;
