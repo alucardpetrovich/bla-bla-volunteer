@@ -14,7 +14,7 @@ const signIn = async (credentials: IAuthCredentials): Promise<AxiosResponse<IAut
   return response;
 };
 
-const signOut = async (refreshToken: string): Promise<void> => {
+const signOut = async (refreshToken: { refreshToken: string }): Promise<void> => {
   await axios.delete('/auth/sign-out', {
     data: refreshToken,
   });
