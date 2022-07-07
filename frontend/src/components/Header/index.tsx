@@ -1,9 +1,9 @@
 import { Autocomplete, TextField } from '@mui/material';
+import { LoginLogoutButton } from '@ui-kit';
 import { useIntl } from 'react-intl';
 import { useLocalStorage, useLocation } from 'react-use';
 import { roles } from 'src/constants/roles';
 import useNavigation from 'src/hooks/useNavigation';
-import { LoginLogoutButton } from 'src/libs/ui-kit/src/components/LoginLogoutButton/LoginLogoutButton';
 import { getUser } from 'src/store/user/userSelectors';
 
 import bgImgS from '../../assets/images/header-bg-s.png';
