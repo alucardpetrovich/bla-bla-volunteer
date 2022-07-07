@@ -1,3 +1,4 @@
+import axios, { AxiosError } from 'axios';
 import { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -27,10 +28,11 @@ const WithRefreshTokenCheck = (WrappedComponent: FC) =>
     const axiosInterceptorRequest = axiosPrivate.interceptors.request.use(
       config => {
         const authToken = JSON.parse(localStorage.getItem('authToken') as string);
+        if (!config.headers) {
+          config.headers = {};
+        }
 
-        // @ts-ignore
         if (!config.headers['Authorization'] && authToken) {
-          // @ts-ignore
           config.headers['Authorization'] = `Bearer ${authToken.token}`;
         }
         return config;
@@ -51,11 +53,13 @@ const WithRefreshTokenCheck = (WrappedComponent: FC) =>
 
             return axiosPrivate.request(prevRequest);
           } catch (error) {
-            // @ts-ignore
-            if (error?.response?.data?.statusCode === 403 || !expireAt) {
-              dispatch(authActions.logoutSuccess());
-              localStorage.removeItem('authToken');
-              localStorage.removeItem('refreshToken');
+            if (axios.isAxiosError(error)) {
+              const err = error as AxiosError;
+              if (err?.response?.status === 403 || !expireAt) {
+                dispatch(authActions.logoutSuccess());
+                localStorage.removeItem('authToken');
+                localStorage.removeItem('refreshToken');
+              }
             }
           }
         }

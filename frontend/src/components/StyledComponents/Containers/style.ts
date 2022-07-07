@@ -2,13 +2,11 @@ import styled from 'styled-components';
 
 // import bgImgS from '../../../assets/images/header-bg-s.png';
 
-type ContainerTypes = 'content' | 'header' | 'headerAuth' | 'main' | 'footer';
+export type ContainerTypes = 'content' | 'header' | 'headerAuth' | 'main' | 'footer';
 
 export interface IContainer {
-  tag?: ContainerTypes;
-  // FIXME: без any
-  // eslint-disable-next-line
-  children: any;
+  tag: ContainerTypes;
+  children: React.ReactNode;
   isAuth?: boolean;
   isShowHeading?: boolean;
 }

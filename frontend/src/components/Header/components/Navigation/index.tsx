@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { generatePath, NavLink } from 'react-router-dom';
 import { getIsAuth } from 'src/store';
@@ -5,11 +6,11 @@ import { getIsAuth } from 'src/store';
 import { FlexDiv } from '../../../StyledComponents/Flex/style';
 import { linksNav } from './constants/listNav';
 
-// FIXME: Поправить типи. => FC<{ style: blablabla }>
-// eslint-disable-next-line
-// @ts-ignore
-// eslint-disable-next-line react/prop-types
-const Navigation = ({ style }) => {
+interface INavigation {
+  style?: React.CSSProperties;
+}
+
+const Navigation: FC<INavigation> = ({ style }) => {
   const isAuth = useSelector(getIsAuth);
   const lang = useSelector(() => 'ua');
 

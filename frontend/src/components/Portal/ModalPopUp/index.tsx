@@ -2,12 +2,10 @@ import { FC } from 'react';
 
 import * as S from './style';
 
-// FIXME: Пофіксить. без any будь ласка
-/* eslint-disable */
 interface IModalPopUp {
-  isClose?: any;
-  children?: any;
-  height?: any;
+  isClose?: (nextValue?: unknown) => void;
+  children?: React.ReactNode;
+  height?: string;
   padding?: string;
   width?: string;
   position?: string;

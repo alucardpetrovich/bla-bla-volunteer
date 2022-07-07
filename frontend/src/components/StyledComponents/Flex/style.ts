@@ -1,11 +1,10 @@
+import React from 'react';
 import styled from 'styled-components';
 
 type FlexTypes = 'div' | 'button';
 
 export interface IFlex {
-  // FIXME: Пофіксить. без any
-  // eslint-disable-next-line
-  children?: any;
+  children?: React.ReactNode;
   tag?: FlexTypes;
   className?: string;
   container?: boolean;

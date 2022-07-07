@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+  ContainerTypes,
   ContentContainer,
   FooterContainer,
   HeaderAuthContainer,
@@ -9,18 +10,20 @@ import {
   MainContainer,
 } from './style';
 
-const Container: React.FC<IContainer> = ({ tag, children, ...props }) => {
-  const StyledContainer = {
+type StyledContainersDict = {
+  [key in ContainerTypes]: JSX.Element;
+};
+
+const Container: React.FC<IContainer> = ({ children, ...props }) => {
+  const StyledContainer: StyledContainersDict = {
     content: <ContentContainer {...props}>{children}</ContentContainer>,
     header: <HeaderContainer {...props}>{children}</HeaderContainer>,
     headerAuth: <HeaderAuthContainer {...props}>{children}</HeaderAuthContainer>,
     main: <MainContainer {...props}>{children}</MainContainer>,
     footer: <FooterContainer {...props}>{children}</FooterContainer>,
   };
-  // FIXME: Пофіксить. tag опціональний. Коли буде undefined тоді впаде апка?
-  // eslint-disable-next-line
-  // @ts-ignore
-  return StyledContainer[tag];
+
+  return StyledContainer[props.tag];
 };
 
 export default Container;
