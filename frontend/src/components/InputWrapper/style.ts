@@ -18,7 +18,7 @@ export const InputWrapperContainer = styled.div<InputWrapperContainerProps>`
 
 export const InputWrapperLabel = styled.label<InputWrapperLabelProps>`
   display: flex;
-  color: #93a9d2;
+  color: ${p => p.theme.palette.primary.main};
   font-weight: 400;
   font-size: 14px;
   line-height: 120%;

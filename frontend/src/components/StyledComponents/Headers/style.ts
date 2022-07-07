@@ -15,7 +15,7 @@ export interface IHeader {
 }
 
 export const HeaderH2 = styled.h2<IHeader>`
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   font-family: 'Inter';
   font-size: 48px;
   line-height: 1.2;
@@ -24,7 +24,7 @@ export const HeaderH2 = styled.h2<IHeader>`
 `;
 
 export const HeaderH3 = styled.h3<IHeader>`
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   font-family: 'Inter';
   font-size: 24px;
   line-height: 1.2;
@@ -33,7 +33,7 @@ export const HeaderH3 = styled.h3<IHeader>`
 `;
 
 export const HeaderH4 = styled.h4<IHeader>`
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   font-family: 'Inter';
   font-size: 20px;
   line-height: 1.2;
@@ -42,7 +42,7 @@ export const HeaderH4 = styled.h4<IHeader>`
 `;
 
 export const HeaderH5 = styled.h5<IHeader>`
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   font-family: 'Inter';
   font-size: 14px;
   line-height: 1.5;

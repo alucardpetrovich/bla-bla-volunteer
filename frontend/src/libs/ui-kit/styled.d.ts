@@ -1,14 +1,21 @@
 import 'styled-components';
 import '@mui/material/styles';
 
-import { Breakpoints, SimplePaletteColorOptions, TypeText } from '@mui/material/styles';
+import { Breakpoints } from '@mui/material/styles';
+import {
+  ColorPartial,
+  CommonColors,
+  SimplePaletteColorOptions,
+  TypeBackground,
+} from '@mui/material/styles/createPalette';
 
-type FontEntry = 'h2' | 'h3';
-interface ThemePalette {
+type FontEntry = 'h1' | 'h2' | 'h3' | 'h4' | 'body1' | 'body2' | 'body3' | 'body4' | 'body5' | 'body6' | 'body7';
+export interface ThemePalette {
+  common: Partial<CommonColors>;
+  background: Partial<TypeBackground>;
+  grey: ColorPartial;
+  info: SimplePaletteColorOptions;
   primary: SimplePaletteColorOptions;
-  secondary: SimplePaletteColorOptions;
-  text: TypeText;
-  background: SimplePaletteColorOptions;
 }
 
 interface FontProps {
@@ -18,10 +25,10 @@ interface FontProps {
   fontFamily?: string;
 }
 type TSpacing = number | 'auto';
+export type Types = Record<FontEntry, FontProps>;
 interface CustomThemeOptions {
   palette: ThemePalette;
   spacing(...values: TSpacing[]): string;
-  f: Record<FontEntry, FontProps>;
   font(type: FontEntry): string;
 }
 
