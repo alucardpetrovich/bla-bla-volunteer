@@ -19,7 +19,7 @@ export const TextB1 = styled.p<IText>`
   font-size: 20px;
   font-weight: 500;
   line-height: 1.4;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
   // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
   //white-space: wrap;
@@ -30,7 +30,7 @@ export const TextB2 = styled.p<IText>`
   font-size: 16px;
   font-weight: 400;
   line-height: 1.3;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
   // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
   //white-space: wrap;
@@ -41,7 +41,7 @@ export const TextB3 = styled.p<IText>`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
   // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
   //white-space: wrap;
@@ -52,7 +52,7 @@ export const TextB4 = styled.p<IText>`
   font-size: 12px;
   font-weight: 400;
   line-height: 1;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
 `;
 
@@ -61,7 +61,7 @@ export const TextB5 = styled.p<IText>`
   font-size: 12px;
   font-weight: 400;
   line-height: 1.2;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
   // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
   //white-space: wrap;
@@ -72,7 +72,7 @@ export const TextB6 = styled.p<IText>`
   font-size: 10px;
   font-weight: 400;
   line-height: 1;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
   // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
   //white-space: wrap;
@@ -83,7 +83,7 @@ export const TextB7 = styled.p<IText>`
   font-size: 10px;
   font-weight: 500;
   line-height: 1.2;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
   // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
   //white-space: wrap;
