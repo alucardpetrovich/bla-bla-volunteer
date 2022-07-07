@@ -10,7 +10,7 @@ export class EntityLocksConfig {
   maxNewDonationRequests: number;
 
   @IsInt()
-  maxHubsSearchDistanceKilometers: number;
+  maxHubsSearchEntitiesToReturn: number;
 }
 
 const configKey = 'entity-locks';
@@ -20,7 +20,7 @@ export const entityLocksConfig = registerAs(configKey, () => {
     maxUnfinishedRides: parseInt(process.env.MAX_UNFINISHED_RIDES) || 10,
     maxNewDonationRequests:
       parseInt(process.env.MAX_NEW_DONATION_REQUESTS) || 10,
-    maxHubsSearchDistanceKilometers:
-      parseInt(process.env.MAX_HUBS_SEARCH_DISTANCE_KILOMETERS) || 50,
+    maxHubsSearchEntitiesToReturn:
+      parseInt(process.env.MAX_HUBS_SEARCH_ENTITIES_TO_RETURN) || 200,
   });
 });

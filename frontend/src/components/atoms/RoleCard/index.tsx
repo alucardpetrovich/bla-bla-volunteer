@@ -11,12 +11,13 @@ import { CardStyled, IRoleCard, Separator } from './style';
 const RoleCard: React.FC<IRoleCard> = ({ id, title, children, textAlign }) => {
   const user = useSelector(getUser);
   const isAuth = useSelector(getIsAuth);
-  const { involvements } = user;
+  const involvements = user?.involvements;
 
   const dispatch = useDispatch();
   const theme = useTheme();
-  const mainColor = involvements[0].type === id ? theme.palette.text.primary : theme.palette.primary.main;
-  const hover = theme.palette.text.primary;
+  const mainColor =
+    involvements?.length && involvements[0].type === id ? theme.palette.common.black : theme.palette.primary.main;
+  const hover = theme.palette.common.black;
 
   const setUserRole = (role: string) => {
     if (!isAuth) return;

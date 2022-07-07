@@ -40,7 +40,6 @@ const Text: React.FC<IText> = ({ color, tag, textAlign, children, ...props }) =>
       </TextB7>
     ),
   };
-
   return StyledText[tag];
 };
 

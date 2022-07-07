@@ -3,7 +3,6 @@ import { useToggle } from 'react-use';
 import Portal from '../../components/Portal';
 import { ModalPopUp } from '../../components/Portal/ModalPopUp';
 
-// FIXME: isClose це ж буль правильно?? може onClose??
 const Donar = () => {
   const [isModalOpen, handleModal] = useToggle(false);
 
@@ -14,7 +13,7 @@ const Donar = () => {
       </button>
       {isModalOpen && (
         <Portal>
-          <ModalPopUp width="900px" height="400px" isClose={handleModal} position="center">
+          <ModalPopUp width="900px" height="400px" onClose={handleModal} position="center">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita possimus earum cumque sunt, reiciendis
               quaerat fuga, impedit quibusdam dolorum recusandae consequatur tempore aspernatur ipsum consectetur

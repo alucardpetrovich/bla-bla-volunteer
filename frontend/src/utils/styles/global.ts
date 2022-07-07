@@ -1,8 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 
-// FIXME: Мені здається це погано. Може я зійшов з розуму але я бачу всі штуки з кольорами і фонтами в
-//  ThemeProvider. Залишаю собі подумать як це все добро з ціє папки поправить. Сподіваюсь воно не розрослось сильно
-
 const GlobalStyle = createGlobalStyle`
   body, html {
     margin: 0;

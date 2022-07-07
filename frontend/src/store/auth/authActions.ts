@@ -1,21 +1,17 @@
+import { IUser } from '../../models/userModel/userModel';
+import { isErrorResponse } from '../../utils/typeguard/error';
 import authActionTypes from './authActionTypes';
 
 const registrationRequest = () => ({
   type: authActionTypes.REGISTER_REQUEST,
 });
 
-// FIXME: пофіксить тайпінги
-// eslint-disable-next-line
-// @ts-ignore
-const registrationSuccess = user => ({
+const registrationSuccess = (user: IUser) => ({
   type: authActionTypes.REGISTER_SUCCESS,
   payload: user,
 });
 
-// FIXME: пофіксить тайпінги
-// eslint-disable-next-line
-// @ts-ignore
-const registrationError = error => ({
+const registrationError = (error: unknown) => ({
   type: authActionTypes.REGISTER_ERROR,
   payload: error,
 });
@@ -24,21 +20,19 @@ const loginRequest = () => ({
   type: authActionTypes.LOGIN_REQUEST,
 });
 
-// FIXME: пофіксить тайпінги
-// eslint-disable-next-line
-// @ts-ignore
-const loginSuccess = user => ({
+const loginSuccess = (user: IUser | undefined) => ({
   type: authActionTypes.LOGIN_SUCCESS,
   payload: { user },
 });
 
-// FIXME: пофіксить тайпінги
-// eslint-disable-next-line
-// @ts-ignore
-const loginError = error => ({
-  type: authActionTypes.LOGIN_ERROR,
-  payload: error.response.data.message,
-});
+const loginError = (error: unknown) => {
+  const errorMessage = isErrorResponse(error) ? error.response.data.message : 'Login error';
+
+  return {
+    type: authActionTypes.LOGIN_ERROR,
+    payload: errorMessage,
+  };
+};
 
 const logoutRequest = () => ({
   type: authActionTypes.LOGOUT_REQUEST,

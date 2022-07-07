@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 import { CardStyled } from './../../atoms/RoleCard/style';
@@ -21,7 +22,7 @@ export const TextB1 = styled.p<IText>`
   font-size: 20px;
   font-weight: 500;
   line-height: 1.4;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
   // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
   //white-space: wrap;
@@ -32,7 +33,7 @@ export const TextB2 = styled.p<IText>`
   font-size: 16px;
   font-weight: 400;
   line-height: 1.3;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
   // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
   //white-space: wrap;
@@ -43,7 +44,7 @@ export const TextB3 = styled.p<IText>`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
   // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
   //white-space: wrap;
@@ -54,9 +55,8 @@ export const TextB4 = styled.p<IText>`
   font-size: 12px;
   font-weight: 400;
   line-height: 1;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
-  white-space: wrap;
 `;
 
 export const TextB5 = styled.p<IText>`
@@ -64,13 +64,13 @@ export const TextB5 = styled.p<IText>`
   font-size: 12px;
   font-weight: 400;
   line-height: 1.2;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
   // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
   //white-space: wrap;
 
   ${CardStyled}:hover & {
-    color: ${({ theme }) => theme.palette.text.primary};
+    color: ${({ theme }) => theme.palette.common.black};
   }
 `;
 
@@ -79,7 +79,7 @@ export const TextB6 = styled.p<IText>`
   font-size: 10px;
   font-weight: 400;
   line-height: 1;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
   // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
   //white-space: wrap;
@@ -90,7 +90,7 @@ export const TextB7 = styled.p<IText>`
   font-size: 10px;
   font-weight: 500;
   line-height: 1.2;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  color: ${({ theme, color }) => (color ? color : theme.palette.common.black)};
   text-align: ${({ textAlign }) => (textAlign ? textAlign : 'justify')};
   // FIXME: Шо це? Нема такого. Поки коментую. Не знаю що тут мало бути хто робив треба поправить https://developer.mozilla.org/ru/docs/Web/CSS/white-space
   //white-space: wrap;

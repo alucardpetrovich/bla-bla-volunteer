@@ -1,15 +1,22 @@
+import { Reducer } from 'redux';
+
+import { IUser } from '../../models/userModel/userModel';
 import userConstants from '../user/userConstants';
 import authActionTypes from './authActionTypes';
 
-const initialState = {
-  user: {},
+interface AuthState {
+  isAuthenticated: boolean;
+  user: IUser | null;
+}
+
+const initialState: AuthState = {
   isAuthenticated: false,
+  user: null,
 };
 
-// FIXME: пофіксить тайпінги
-// eslint-disable-next-line
-// @ts-ignore
-const auth = (state = { ...initialState }, { type, payload }) => {
+type AuthReducer = Reducer<AuthState>;
+
+const auth: AuthReducer = (state = { ...initialState }, { type, payload }) => {
   switch (type) {
     case authActionTypes.REGISTER_SUCCESS:
       return { ...initialState, ...payload };

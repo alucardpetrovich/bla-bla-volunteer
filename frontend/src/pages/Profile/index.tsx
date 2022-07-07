@@ -9,11 +9,11 @@ import { RoleListWrapper, RoleWrapper } from './style';
 
 const Profile: React.FC = () => {
   const user = useSelector(getUser);
-  const { involvements } = user;
+  const involvements = user?.involvements;
 
   const theme = useTheme();
   const mainColor = theme.palette.primary.main;
-  const hoverColor = theme.palette.text.primary;
+  const hoverColor = theme.palette.common.black;
 
   return (
     <>

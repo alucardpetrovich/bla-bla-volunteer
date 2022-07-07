@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export interface IRoleWrapper {
-  hover: string;
+  hover: string | undefined;
 }
 
 export const RoleWrapper = styled.li<IRoleWrapper>`

@@ -9,7 +9,7 @@ import {
   MainContainer,
 } from './style';
 
-const Container: React.FC<IContainer> = ({ tag, children, ...props }) => {
+const Container: React.FC<IContainer & { children: React.ReactNode }> = ({ tag, children, ...props }) => {
   const StyledContainer = {
     content: (
       <ContentContainer tag={tag} {...props}>
@@ -38,7 +38,7 @@ const Container: React.FC<IContainer> = ({ tag, children, ...props }) => {
     ),
   };
 
-  return StyledContainer[tag];
+  return tag && tag in StyledContainer ? StyledContainer[tag] : StyledContainer['content'];
 };
 
 export default Container;

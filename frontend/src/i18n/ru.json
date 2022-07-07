@@ -1,6 +1,94 @@
 {
+  "01x3vS": {
+    "defaultMessage": "[uk]: Номер телефону доступний за запитом",
+    "description": "Registration: isByRequest"
+  },
+  "08V8ko": {
+    "defaultMessage": "Ел. Почта",
+    "description": "Registration: emailInput"
+  },
+  "2hMXLf": {
+    "defaultMessage": "Поле не должно быть пустым",
+    "description": "inputsValidation: isEmpty"
+  },
+  "4AmZz1": {
+    "defaultMessage": "Регистрация",
+    "description": "Registration: title"
+  },
+  "HGUy54": {
+    "defaultMessage": "Для обеспечения вашей безопасности мы не рекомендуем вводить собственное имя и фамилию",
+    "description": "Registration: nickNamePrivacyInfo"
+  },
+  "Hlpx0p": {
+    "defaultMessage": "Войти",
+    "description": "Login: signInButton"
+  },
+  "HsHMbh": {
+    "defaultMessage": "Вход",
+    "description": "Login: title"
+  },
+  "LD4WwV": {
+    "defaultMessage": "[uk]: Телефон повинен починатися з символу \"+\"",
+    "description": "inputsValidation: phoneStartsWithPlusError"
+  },
+  "Ryi2be": {
+    "defaultMessage": "вход / регистрация",
+    "description": "Login: title"
+  },
+  "SsPKIt": {
+    "defaultMessage": "Минимальная длина не должна быть меньше {minValue} символов",
+    "description": "inputsValidation: minLengthError"
+  },
+  "Ufx13f": {
+    "defaultMessage": "Ел. Почта",
+    "description": "Login: emailInput"
+  },
+  "ViEqGj": {
+    "defaultMessage": "Регистрируясь вы соглашаетесь с условиями",
+    "description": "Registration: licenseInfo"
+  },
+  "YvR5rJ": {
+    "defaultMessage": "вход / регистрация",
+    "description": "Registration: title"
+  },
   "ZEvWYL": {
     "defaultMessage": "Тратата",
     "description": "Header: title"
+  },
+  "bU5skY": {
+    "defaultMessage": "Номер телефона",
+    "description": "Registration: phoneNumberInput"
+  },
+  "etXyqK": {
+    "defaultMessage": "Забыл пароль",
+    "description": "Login: forgotPassword"
+  },
+  "fhIJT1": {
+    "defaultMessage": "Пароль",
+    "description": "Login: passwordInput"
+  },
+  "mV2Wi+": {
+    "defaultMessage": "[uk]: Номер телефону доступний всім",
+    "description": "Registration: isPublicCheckbox"
+  },
+  "oNnYlE": {
+    "defaultMessage": "Поле должно быть email",
+    "description": "inputsValidation: emailError"
+  },
+  "qEclD0": {
+    "defaultMessage": "положения про обработку и защиту персональных данных и пользовательского соглашениея",
+    "description": "Registration: licenseInfo"
+  },
+  "rMynxh": {
+    "defaultMessage": "Я уже заренестрирован",
+    "description": "Registration: alreadyRegisteredButton"
+  },
+  "rRhUrR": {
+    "defaultMessage": "Придумайте никнейм",
+    "description": "Registration: nickNameInput"
+  },
+  "tv0h/6": {
+    "defaultMessage": "Пароль",
+    "description": "Registration: passwordInput"
   }
 }

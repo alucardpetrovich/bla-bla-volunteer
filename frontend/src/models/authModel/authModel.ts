@@ -3,6 +3,10 @@ import { IUser } from '../userModel/userModel';
 export interface IAuthCredentials {
   email: string;
   password: string;
+  showPassword?: boolean;
+  nickName?: string;
+  phoneNumber?: string;
+  phoneNumberAccessMode?: string;
 }
 
 export interface IAuthResponse {

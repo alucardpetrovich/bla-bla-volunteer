@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import {
   ConflictException,
   ForbiddenException,
@@ -20,6 +21,12 @@ import { OrganizationStatuses } from './types/organization-statuses.enum';
 import { ContactEntity } from '../contacts/db/contact.entity';
 import { AccessModes } from '../contacts/types/access-modes.enum';
 import { AccessTypes } from '../contacts/types/access-types.enum';
+import { HubsSearchParams } from './types/hubs-search-params.interface';
+import { SettlementsRepository } from '../settlements/db/settlements.repository';
+import {
+  HubsBySettlementsCount as SettlementWithHubsCount,
+  HubsCountBySettlementId,
+} from './types/hubs-by-settlements-count.class';
 
 @Injectable()
 export class OrganizationsService {
@@ -30,6 +37,8 @@ export class OrganizationsService {
     private organizationTypesRepository: OrganizationTypesRepository,
     @InjectRepository(ContactsRepository)
     private contactsRepository: ContactsRepository,
+    @InjectRepository(SettlementsRepository)
+    private settlementsRepository: SettlementsRepository,
     @Inject(entityLocksConfig.KEY)
     private entityLocksConf: EntityLocksConfig,
   ) {}
@@ -97,25 +106,44 @@ export class OrganizationsService {
   }
 
   async getHubsList(dto: GetHubsListDto, userId: string, language: string) {
-    const organizations = await this.organizationsRepository.findHubsList({
+    const searchParams: HubsSearchParams = {
       search: dto.search,
       point: dto.point,
       language,
-      offset: dto.pagination.getOffset(),
-      limit: dto.pagination.getLimit(),
-      maxDistance: this.entityLocksConf.maxHubsSearchDistanceKilometers * 1000,
+      radius: dto.radiusInKm * 1000,
       userId,
       relations: [
         OrganizationRelations.CONTACTS,
         OrganizationRelations.CONTACT_ACCESS,
         OrganizationRelations.SETTLEMENT,
       ],
-    });
+    };
 
-    return organizations.map((o) => {
-      o.contacts = this.prepareContacts(o.contacts, userId, o.createdBy);
-      return o;
-    });
+    const hubsCountBySettlementId =
+      await this.organizationsRepository.countHubsBySettlements(searchParams);
+    const totalHubsCount = _.sumBy(hubsCountBySettlementId, (h) => h.hubsCount);
+    if (
+      totalHubsCount > this.entityLocksConf.maxHubsSearchEntitiesToReturn ||
+      dto.onlyCountDebugRun
+    ) {
+      const settlementsWithHubsCount =
+        await this.prepareSettlementsWithHubsCount(
+          hubsCountBySettlementId,
+          language,
+        );
+      return { settlementsWithHubsCount };
+    }
+
+    const organizations = await this.organizationsRepository.findHubsList(
+      searchParams,
+    );
+
+    return {
+      organizations: organizations.map((o) => {
+        o.contacts = this.prepareContacts(o.contacts, userId, o.createdBy);
+        return o;
+      }),
+    };
   }
 
   prepareContacts(
@@ -127,16 +155,39 @@ export class OrganizationsService {
       return contacts;
     }
 
-    return contacts.filter((c) => {
+    return contacts.map((c) => {
       if (c.accessMode === AccessModes.PUBLIC) {
-        return true;
-      } else if (c.accessMode === AccessModes.READ_BY_REQUEST) {
-        return c.accesses.some(
-          (a) => a.userId === userId && a.type === AccessTypes.READ,
-        );
+        return c;
       }
 
-      return false;
+      const userHasAccess = c.accesses.some(
+        (a) => a.userId === userId && a.type === AccessTypes.READ,
+      );
+      if (c.accessMode === AccessModes.READ_BY_REQUEST && userHasAccess) {
+        return c;
+      }
+
+      c.value = '*******';
+      return c;
     });
+  }
+
+  private async prepareSettlementsWithHubsCount(
+    hubsCountBySettlementId: HubsCountBySettlementId[],
+    language: string,
+  ): Promise<SettlementWithHubsCount[]> {
+    const settlementsIds = hubsCountBySettlementId.reduce(
+      (ids, e) => ids.concat(e.settlementId),
+      [] as string[],
+    );
+    const settlements = await this.settlementsRepository.getSettlementByIds(
+      settlementsIds,
+      language,
+    );
+    return settlements.map((s) => ({
+      ...s,
+      hubsCount: hubsCountBySettlementId.find((c) => c.settlementId === s.id)
+        ?.hubsCount,
+    }));
   }
 }

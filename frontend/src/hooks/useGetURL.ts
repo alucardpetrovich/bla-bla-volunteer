@@ -1,6 +1,7 @@
-import { useSelector } from 'react-redux';
 import { generatePath } from 'react-router';
 import { PATHS } from 'src/constants/PATH';
+
+import { useAppSelector } from './useStore';
 
 /**
  * Если нужно взять путь как СТРОКУ
@@ -9,7 +10,7 @@ import { PATHS } from 'src/constants/PATH';
  * !!! НЕ подходит при клике, например по кнопке, что бы произошел переход !!!
  */
 export const useGetURL = () => {
-  const lang = useSelector(() => 'ua');
+  const lang = useAppSelector(() => 'ua');
 
   const getHomeURL = () => {
     return `/${generatePath(PATHS.HOME.path, { lang })}`;

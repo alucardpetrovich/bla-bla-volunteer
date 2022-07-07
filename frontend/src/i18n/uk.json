@@ -1,6 +1,94 @@
 {
+  "01x3vS": {
+    "defaultMessage": "Номер телефону доступний за запитом",
+    "description": "Registration: isByRequest"
+  },
+  "08V8ko": {
+    "defaultMessage": "Ел. Пошта",
+    "description": "Registration: emailInput"
+  },
+  "2hMXLf": {
+    "defaultMessage": "Поле не повинно бути пустим",
+    "description": "inputsValidation: isEmpty"
+  },
+  "4AmZz1": {
+    "defaultMessage": "Реєстрація",
+    "description": "Registration: title"
+  },
+  "HGUy54": {
+    "defaultMessage": "Для забезпечення вашої безпеки ми не рекомендуємо вводити власне ім’я та прізвище",
+    "description": "Registration: nickNamePrivacyInfo"
+  },
+  "Hlpx0p": {
+    "defaultMessage": "Увійти",
+    "description": "Login: signInButton"
+  },
+  "HsHMbh": {
+    "defaultMessage": "Вхід",
+    "description": "Login: title"
+  },
+  "LD4WwV": {
+    "defaultMessage": "Телефон повинен починатися з символу \"+\"",
+    "description": "inputsValidation: phoneStartsWithPlusError"
+  },
+  "Ryi2be": {
+    "defaultMessage": "вхід / реєстрація",
+    "description": "Login: title"
+  },
+  "SsPKIt": {
+    "defaultMessage": "Мінімільна довжина має бути не менше {minValue} символів",
+    "description": "inputsValidation: minLengthError"
+  },
+  "Ufx13f": {
+    "defaultMessage": "Ел. Пошта",
+    "description": "Login: emailInput"
+  },
+  "ViEqGj": {
+    "defaultMessage": "Реєструючись, ви погоджуєтеся з умовами",
+    "description": "Registration: licenseInfo"
+  },
+  "YvR5rJ": {
+    "defaultMessage": "вхід / реєстрація",
+    "description": "Registration: title"
+  },
   "ZEvWYL": {
     "defaultMessage": "Безпечна платформа координації передачі гуманітарної допомоги",
     "description": "Header: title"
+  },
+  "bU5skY": {
+    "defaultMessage": "Номер телефону",
+    "description": "Registration: phoneNumberInput"
+  },
+  "etXyqK": {
+    "defaultMessage": "Забув пароль",
+    "description": "Login: forgotPassword"
+  },
+  "fhIJT1": {
+    "defaultMessage": "Пароль",
+    "description": "Login: passwordInput"
+  },
+  "mV2Wi+": {
+    "defaultMessage": "Номер телефону доступний всім",
+    "description": "Registration: isPublicCheckbox"
+  },
+  "oNnYlE": {
+    "defaultMessage": "Поле повинно бути email",
+    "description": "inputsValidation: emailError"
+  },
+  "qEclD0": {
+    "defaultMessage": "положення про обробку і захист персональних даних та угодою користувача",
+    "description": "Registration: licenseInfo"
+  },
+  "rMynxh": {
+    "defaultMessage": "Я вже зареєстрований",
+    "description": "Registration: alreadyRegisteredButton"
+  },
+  "rRhUrR": {
+    "defaultMessage": "Придумайте нікнейм",
+    "description": "Registration: nickNameInput"
+  },
+  "tv0h/6": {
+    "defaultMessage": "Пароль",
+    "description": "Registration: passwordInput"
   }
 }

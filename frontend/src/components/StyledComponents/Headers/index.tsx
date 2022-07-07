@@ -2,7 +2,13 @@ import React from 'react';
 
 import { HeaderH2, HeaderH3, HeaderH4, HeaderH5, IHeader } from './style';
 
-const Header: React.FC<IHeader> = ({ color, tag, textAlign, children, ...props }) => {
+const Header: React.FC<IHeader & { children: React.ReactNode }> = ({
+  color,
+  tag = 'h2',
+  textAlign,
+  children,
+  ...props
+}) => {
   const StyledHeader = {
     h2: (
       <HeaderH2 tag={tag} textAlign={textAlign} color={color} {...props}>

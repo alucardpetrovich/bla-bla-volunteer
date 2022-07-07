@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { useRoutes } from 'react-router';
 import RedirectToHome from 'src/components/Redirects/RedirectToHome';
 import { PATHS } from 'src/constants/PATH';
@@ -15,8 +14,10 @@ import RolesPage from 'src/pages/Roles';
 import VerificationPage from 'src/pages/Verification';
 import { getIsAuth } from 'src/store';
 
+import { useAppSelector } from './useStore';
+
 const useRoutesConstants = () => {
-  const isAuth = useSelector(getIsAuth);
+  const isAuth = useAppSelector(getIsAuth);
 
   const routes = useRoutes([
     {
