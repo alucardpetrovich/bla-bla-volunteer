@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import bgImgS from '../../assets/images/header-bg-s.png';
+
 export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -27,13 +29,23 @@ export const SignUpButton = styled.button`
   padding: 10px 20px;
 `;
 
-export const ExitEnterButton = styled.button`
-  background: transparent;
-  border: none;
-  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
-  font-family: 'Inter';
-  font-size: 20px;
-  line-height: 1.2;
-  font-weight: 900;
-  letter-spacing: normal;
+export const LogoWrapper = styled.div`
+  display: flex;
+`;
+
+export const LogoBackground = styled.div`
+  width: 250px;
+  height: 128px;
+  background-image: url(${bgImgS});
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+`;
+
+export const UserInfoWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 250px);
+  padding: 0px 32px;
 `;

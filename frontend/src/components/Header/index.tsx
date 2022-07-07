@@ -1,12 +1,11 @@
 import { Autocomplete, TextField } from '@mui/material';
-import { LoginLogoutButton } from '@ui-kit';
+import { TextButton } from '@ui-kit';
 import { useIntl } from 'react-intl';
 import { useLocalStorage, useLocation } from 'react-use';
 import { roles } from 'src/constants/roles';
 import useNavigation from 'src/hooks/useNavigation';
 import { getUser } from 'src/store/user/userSelectors';
 
-import bgImgS from '../../assets/images/header-bg-s.png';
 import { StorageKeys } from '../../constants/storageKeys';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { IAuthAccessRefresh } from '../../models/authModel/authModel';
@@ -16,7 +15,15 @@ import ArrowRight from '../atoms/ArrowRight';
 import Notifications from '../atoms/Notifications';
 import { Container, Heading, Text } from '../StyledComponents';
 import HeaderBg from './components/HeaderBg';
-import { ExitEnterButton, HeaderSubtitleWrapper, HeaderTitleWrapper, HeaderWrapper, SignUpButton } from './style';
+import {
+  HeaderSubtitleWrapper,
+  HeaderTitleWrapper,
+  HeaderWrapper,
+  LogoBackground,
+  LogoWrapper,
+  SignUpButton,
+  UserInfoWrapper,
+} from './style';
 
 const Header = () => {
   const { formatMessage } = useIntl();
@@ -52,70 +59,58 @@ const Header = () => {
               {!isAuth && <Logo height="70px" onClick={goToHome} style={{ cursor: 'pointer' }} />}
 
               <div style={{ width: '166px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <ExitEnterButton onClick={handleLogOut}>
+                <TextButton onClick={handleLogOut}>
                   {formatMessage({
                     defaultMessage: 'вхід',
-                    description: 'Login: title',
+                    description: 'Logout: title',
                   })}
-                </ExitEnterButton>
+                </TextButton>
                 <div style={{ borderRight: '1px solid grey', height: '24px' }}></div>
                 <Text tag="b1">ua</Text>
               </div>
             </HeaderWrapper>
             {!isAuth && !isShowHeading && (
-              <>
-                <HeaderTitleWrapper>
-                  <Heading tag="h2" style={{ marginBottom: '200px' }}>
+              <HeaderTitleWrapper>
+                <Heading tag="h2" style={{ marginBottom: '200px' }}>
+                  {formatMessage({
+                    defaultMessage: 'Безпечна платформа координації передачі гуманітарної допомоги',
+                    description: 'Header: title',
+                  })}
+                </Heading>
+                <HeaderSubtitleWrapper>
+                  <Text tag="b1" style={{ width: '345px' }}>
                     {formatMessage({
-                      defaultMessage: 'Безпечна платформа координації передачі гуманітарної допомоги',
-                      description: 'Header: title',
+                      defaultMessage: 'Зареєструйся та стань частиною українського волонтерського руху',
+                      description: 'Header: registrationComment',
                     })}
-                  </Heading>
-                  <HeaderSubtitleWrapper>
-                    <Text tag="b1" style={{ width: '345px' }}>
-                      Зареєструйся та стань частиною українського волонтерського руху
+                  </Text>
+                  <SignUpButton onClick={goToRegistration}>
+                    <Text tag="b1">
+                      {formatMessage({
+                        defaultMessage: 'реєстрація',
+                        description: 'Header: registrationButton',
+                      })}
                     </Text>
-                    <SignUpButton onClick={goToRegistration}>
-                      <Text tag="b1">реєстрація</Text>
-                      <ArrowRight width={30} />
-                    </SignUpButton>
-                  </HeaderSubtitleWrapper>
-                </HeaderTitleWrapper>
-              </>
+                    <ArrowRight width={30} />
+                  </SignUpButton>
+                </HeaderSubtitleWrapper>
+              </HeaderTitleWrapper>
             )}
           </Container>
         </HeaderBg>
       )}
       {isAuth && (
         <Container tag="headerAuth">
-          <div style={{ display: 'flex' }}>
-            {/*FIXME: Ніяких інлайн стилів плз. Дропнуть*/}
-            <div
-              style={{
-                width: '250px',
-                height: '128px',
-                backgroundImage: `url(${bgImgS})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'top',
-                backgroundSize: 'cover',
-              }}
-            />
+          <LogoWrapper>
+            <LogoBackground />
             <Logo
               height="35px"
               onClick={goToHome}
               style={{ cursor: 'pointer', position: 'absolute', top: '48px', left: '32px' }}
             />
-          </div>
+          </LogoWrapper>
 
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              width: 'calc(100% - 250px)',
-              padding: '0px 32px',
-            }}
-          >
+          <UserInfoWrapper>
             <Text tag="b1">{userRole}</Text>
             <div style={{ width: '360px' }}>
               <Autocomplete
@@ -128,7 +123,10 @@ const Header = () => {
                     {...params}
                     sx={{ m: 1, width: '36ch', bgcolor: '#fff' }}
                     size="small"
-                    label="Пошук"
+                    label={formatMessage({
+                      defaultMessage: 'Пошук',
+                      description: 'Header: searchField',
+                    })}
                     InputProps={{
                       ...params.InputProps,
                       type: 'search',
@@ -140,17 +138,16 @@ const Header = () => {
             <Notifications width={24} isNew={true} style={{ cursor: 'pointer' }} />
 
             <div style={{ width: '166px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <ExitEnterButton onClick={handleLogOut}>
+              <TextButton onClick={handleLogOut}>
                 {formatMessage({
                   defaultMessage: 'вихід',
                   description: 'Logout: title',
                 })}
-              </ExitEnterButton>
-              <LoginLogoutButton>testexit</LoginLogoutButton>
+              </TextButton>
               <div style={{ borderRight: '1px solid grey', height: '24px' }}></div>
               <Text tag="b1">ua</Text>
             </div>
-          </div>
+          </UserInfoWrapper>
         </Container>
       )}
     </header>
