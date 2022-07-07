@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl';
 import { useLocalStorage, useLocation } from 'react-use';
 import { roles } from 'src/constants/roles';
 import useNavigation from 'src/hooks/useNavigation';
+import { LoginLogoutButton } from 'src/libs/ui-kit/src/components/LoginLogoutButton/LoginLogoutButton';
 import { getUser } from 'src/store/user/userSelectors';
 
 import bgImgS from '../../assets/images/header-bg-s.png';
@@ -15,7 +16,7 @@ import ArrowRight from '../atoms/ArrowRight';
 import Notifications from '../atoms/Notifications';
 import { Container, Heading, Text } from '../StyledComponents';
 import HeaderBg from './components/HeaderBg';
-import { HeaderSubtitleWrapper, HeaderTitleWrapper, HeaderWrapper, SignUpButton } from './style';
+import { ExitEnterButton, HeaderSubtitleWrapper, HeaderTitleWrapper, HeaderWrapper, SignUpButton } from './style';
 
 const Header = () => {
   const { formatMessage } = useIntl();
@@ -51,9 +52,12 @@ const Header = () => {
               {!isAuth && <Logo height="70px" onClick={goToHome} style={{ cursor: 'pointer' }} />}
 
               <div style={{ width: '166px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Heading tag="h4" onClick={handleLogOut} style={{ cursor: 'pointer' }}>
-                  {isAuth ? 'вихід' : 'вхід'}
-                </Heading>
+                <ExitEnterButton onClick={handleLogOut}>
+                  {formatMessage({
+                    defaultMessage: 'вхід',
+                    description: 'Login: title',
+                  })}
+                </ExitEnterButton>
                 <div style={{ borderRight: '1px solid grey', height: '24px' }}></div>
                 <Text tag="b1">ua</Text>
               </div>
@@ -136,9 +140,13 @@ const Header = () => {
             <Notifications width={24} isNew={true} style={{ cursor: 'pointer' }} />
 
             <div style={{ width: '166px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Heading tag="h4" onClick={handleLogOut}>
-                {isAuth ? 'вихід' : 'вхід'}
-              </Heading>
+              <ExitEnterButton onClick={handleLogOut}>
+                {formatMessage({
+                  defaultMessage: 'вихід',
+                  description: 'Logout: title',
+                })}
+              </ExitEnterButton>
+              <LoginLogoutButton>testexit</LoginLogoutButton>
               <div style={{ borderRight: '1px solid grey', height: '24px' }}></div>
               <Text tag="b1">ua</Text>
             </div>

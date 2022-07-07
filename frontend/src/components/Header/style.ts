@@ -26,3 +26,14 @@ export const SignUpButton = styled.button`
   justify-content: space-between;
   padding: 10px 20px;
 `;
+
+export const ExitEnterButton = styled.button`
+  background: transparent;
+  border: none;
+  color: ${({ theme, color }) => (color ? color : theme.palette.text.primary)};
+  font-family: 'Inter';
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 900;
+  letter-spacing: normal;
+`;
