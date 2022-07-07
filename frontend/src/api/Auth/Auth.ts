@@ -5,23 +5,25 @@ import { IUser } from '../../models/userModel/userModel';
 import axios, { axiosPrivate } from '../axios';
 
 const signUp = async (credentials: IAuthCredentials): Promise<AxiosResponse<IUser>> => {
-  const response = await axios.post('/api/v1/auth/sign-up', credentials);
+  const response = await axios.post('/auth/sign-up', credentials);
   return response;
 };
 
 const signIn = async (credentials: IAuthCredentials): Promise<AxiosResponse<IAuthResponse>> => {
-  const response = await axios.post('/api/v1/auth/sign-in', credentials);
+  const response = await axios.post('/auth/sign-in', credentials);
   return response;
 };
 
 const signOut = async (refreshToken: string): Promise<void> => {
-  await axios.delete('/api/v1/auth/sign-out', {
+  await axios.delete('/auth/sign-out', {
     data: refreshToken,
   });
 };
 
-const refreshAuthToken = async (refreshToken: string) => {
-  const response = axios.post('/api/v1/auth/refresh', {
+const refreshAuthToken = async (
+  refreshToken: string | undefined,
+): Promise<AxiosResponse<Pick<IAuthResponse, 'tokens'>>> => {
+  const response = axios.post('/auth/refresh', {
     refreshToken: refreshToken,
   });
   return response;
@@ -29,7 +31,7 @@ const refreshAuthToken = async (refreshToken: string) => {
 
 //! remove, just for test auth & headers with token
 const exampleRequest = async () => {
-  const response = await axiosPrivate.get('/api/v1/involvements/types');
+  const response = await axiosPrivate.get('/involvements/types');
   return response;
 };
 

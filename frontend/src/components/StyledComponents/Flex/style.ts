@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
+// FIXME: дропнуть це і ніде не використовувать більше. Компонентний підход. Треба шось таке в папочці з компонентом
+//  робимо
+
 type FlexTypes = 'div' | 'button';
 
 export interface IFlex {
-  // FIXME: Пофіксить. без any
-  // eslint-disable-next-line
-  children?: any;
   tag?: FlexTypes;
   className?: string;
   container?: boolean;

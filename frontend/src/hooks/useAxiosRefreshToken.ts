@@ -1,20 +1,23 @@
-import { AxiosResponse } from 'axios';
+import { useLocalStorage } from 'react-use';
 
 import authorizationAPI from '../api/Auth/Auth';
-import { IAuthResponse } from '../models/authModel/authModel';
+import { StorageKeys } from '../constants/storageKeys';
+import { IAuthAccessRefresh } from '../models/authModel/authModel';
 
 const useAxiosRefreshToken = () => {
-  const refresh = async (): Promise<AxiosResponse<IAuthResponse>> => {
-    const refreshToken = JSON.parse(localStorage.getItem('refreshToken') as string);
-    const response = await authorizationAPI.refreshAuthToken(refreshToken.token);
+  const [refreshToken, setRefreshToken] = useLocalStorage<IAuthAccessRefresh>(StorageKeys.refreshToken);
+  const [, setAuthToken] = useLocalStorage<IAuthAccessRefresh>(StorageKeys.authToken);
 
-    localStorage.setItem('authToken', JSON.stringify(response.data.tokens.access));
-    localStorage.setItem('refreshToken', JSON.stringify(response.data.tokens.refresh));
+  return async () => {
+    const response = await authorizationAPI.refreshAuthToken(refreshToken?.token);
+
+    localStorage.setItem(StorageKeys.authToken, JSON.stringify(response.data.tokens.access));
+
+    setAuthToken(response.data.tokens.access);
+    setRefreshToken(response.data.tokens.refresh);
 
     return response.data.tokens.access.token;
   };
-
-  return refresh;
 };
 
 export default useAxiosRefreshToken;

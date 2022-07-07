@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { useDispatch } from 'react-redux';
 import Button from 'src/components/Buttons/Button';
 import Checkbox from 'src/components/Checkbox/CheckBox';
 import TextBox from 'src/components/TextBox/TextBox';
 import { PATHS } from 'src/constants/PATH';
 
+import { useAppDispatch } from '../../hooks';
 import { IAuthCredentials } from '../../models/authModel/authModel';
 import { userRegistration } from '../../store';
 import {
@@ -75,7 +75,7 @@ const Registration = () => {
 
   const { nickName, email, password, phoneNumber, showPassword, phoneNumberAccessMode } = credentials;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleEmailOnChange = (value: string) => {
     setCredentials({ ...credentials, email: value });
@@ -109,9 +109,7 @@ const Registration = () => {
       phoneNumberAccessMode: phoneNumberAccessMode || 'read_only_me',
       password,
     };
-    // FIXME: пофіксить і більше так не робить
-    // eslint-disable-next-line
-    dispatch(userRegistration(payload) as any);
+    dispatch(userRegistration(payload));
   };
 
   const handlePublicPhoneCheckbox = () => {

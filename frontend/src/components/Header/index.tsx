@@ -1,12 +1,14 @@
 import { Autocomplete, TextField } from '@mui/material';
 import { useIntl } from 'react-intl';
-import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-use';
+import { useLocalStorage, useLocation } from 'react-use';
 import { roles } from 'src/constants/roles';
 import useNavigation from 'src/hooks/useNavigation';
 import { getUser } from 'src/store/user/userSelectors';
 
 import bgImgS from '../../assets/images/header-bg-s.png';
+import { StorageKeys } from '../../constants/storageKeys';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { IAuthAccessRefresh } from '../../models/authModel/authModel';
 import { getIsAuth, userLogOut } from '../../store';
 import { Logo } from '../atoms';
 import ArrowRight from '../atoms/ArrowRight';
@@ -17,14 +19,14 @@ import { HeaderSubtitleWrapper, HeaderTitleWrapper, HeaderWrapper, SignUpButton 
 
 const Header = () => {
   const { formatMessage } = useIntl();
-  const isAuth: boolean = useSelector(getIsAuth);
-  const user = useSelector(getUser);
+  const isAuth = useAppSelector(getIsAuth);
+  const user = useAppSelector(getUser);
   const involvements = user?.involvements;
-  const userRole =
-    involvements?.length && roles.map(role => (role.id === involvements[0].type ? `${role.title}` : null));
+  const userRole = involvements?.length && roles.map(role => (role.id === involvements[0] ? `${role.title}` : null));
+  const [refreshToken] = useLocalStorage<IAuthAccessRefresh>(StorageKeys.refreshToken);
 
   const { pathname } = useLocation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { goToHome, goToLogin, goToRegistration } = useNavigation();
 
   const isShowHeading = !!(pathname?.includes('registration') || pathname?.includes('login'));
@@ -35,13 +37,8 @@ const Header = () => {
       return;
     }
 
-    const refreshToken = JSON.parse(localStorage.getItem('refreshToken') || '');
-
     if (refreshToken) {
-      // do not find the way how to fix
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-ignore
-      dispatch(userLogOut({ refreshToken: refreshToken.token }));
+      dispatch(userLogOut(refreshToken?.token));
     }
   };
 
@@ -60,11 +57,6 @@ const Header = () => {
                 <div style={{ borderRight: '1px solid grey', height: '24px' }}></div>
                 <Text tag="b1">ua</Text>
               </div>
-
-              {/* <div style={{ display: 'flex' }}>
-              <Navigation style={{ marginRight: '30px' }} />
-              <p>lang</p>
-            </div> */}
             </HeaderWrapper>
             {!isAuth && !isShowHeading && (
               <>
@@ -91,17 +83,9 @@ const Header = () => {
         </HeaderBg>
       )}
       {isAuth && (
-        // <div
-        //   style={{
-        //     width: '250px',
-        //     backgroundImage: `url(${bgImgS})`,
-        //     backgroundRepeat: 'no-repeat',
-        //     backgroundPosition: 'top',
-        //     backgroundSize: 'cover',
-        //   }}
-        // >
         <Container tag="headerAuth">
           <div style={{ display: 'flex' }}>
+            {/*FIXME: Ніяких інлайн стилів плз. Дропнуть*/}
             <div
               style={{
                 width: '250px',
@@ -111,7 +95,7 @@ const Header = () => {
                 backgroundPosition: 'top',
                 backgroundSize: 'cover',
               }}
-            ></div>
+            />
             <Logo
               height="35px"
               onClick={goToHome}
@@ -143,12 +127,6 @@ const Header = () => {
                     label="Пошук"
                     InputProps={{
                       ...params.InputProps,
-                      // startAdornment: (
-                      //   <InputAdornment position="start">
-                      //     <SearchIcon width={16} />
-                      //   </InputAdornment>
-                      // ),
-                      // placeholder: 'Пошук',
                       type: 'search',
                     }}
                   />
@@ -158,7 +136,7 @@ const Header = () => {
             <Notifications width={24} isNew={true} style={{ cursor: 'pointer' }} />
 
             <div style={{ width: '166px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Heading tag="h4" onClick={handleLogOut} style={{ cursor: 'pointer' }}>
+              <Heading tag="h4" onClick={handleLogOut}>
                 {isAuth ? 'вихід' : 'вхід'}
               </Heading>
               <div style={{ borderRight: '1px solid grey', height: '24px' }}></div>
@@ -166,7 +144,6 @@ const Header = () => {
             </div>
           </div>
         </Container>
-        // </div>
       )}
     </header>
   );

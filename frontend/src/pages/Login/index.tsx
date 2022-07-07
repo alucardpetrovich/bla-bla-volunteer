@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
-import { useDispatch } from 'react-redux';
 import Button from 'src/components/Buttons/Button';
 import TextBox from 'src/components/TextBox/TextBox';
 import { PATHS } from 'src/constants/PATH';
 
+import { useAppDispatch } from '../../hooks';
 import { userLogin } from '../../store';
 import { ForgotPasswordLink, LoginFormContainerDiv, LoginFormWrapperDiv, LoginTitle, StyledTitleDiv } from './style';
 
@@ -24,7 +24,7 @@ const Login = (): JSX.Element => {
 
   const { email, password, showPassword } = loginFormValues;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [isEmailFieldDisabled, setIsEmailFieldDisabled] = useState<boolean>(true);
   const [isPasswordFieldDisabled, setIsPasswordFieldDisabled] = useState<boolean>(true);
@@ -43,7 +43,7 @@ const Login = (): JSX.Element => {
     };
 
     try {
-      dispatch(userLogin(credentials) as never);
+      dispatch(userLogin(credentials));
     } catch (error) {
       console.log('error', error);
     }

@@ -1,18 +1,15 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 import * as S from './style';
 
-// FIXME: Пофіксить. без any будь ласка
-/* eslint-disable */
 interface IModalPopUp {
-  isClose?: any;
-  children?: any;
-  height?: any;
+  onClose?: () => void;
+  children?: React.ReactNode;
+  height?: string;
   padding?: string;
   width?: string;
   position?: string;
 }
-/* eslint-enable  */
 
 /**
  *
@@ -34,7 +31,7 @@ interface IModalPopUp {
  * @returns
  */
 
-export const ModalPopUp: FC<IModalPopUp> = ({ isClose, children, height, padding, width, position }) => {
+export const ModalPopUp: FC<IModalPopUp> = ({ onClose, children, height, padding, width, position }) => {
   return (
     <>
       <S.ModalPopUpWrapper className="popUp" position={position}>
@@ -42,7 +39,7 @@ export const ModalPopUp: FC<IModalPopUp> = ({ isClose, children, height, padding
           <S.PositionButton>
             <S.StickyEffect height={height}>
               <S.HeaderButton>
-                <S.CloseButton onClick={isClose} />
+                <S.CloseButton onClick={onClose} />
               </S.HeaderButton>
             </S.StickyEffect>
           </S.PositionButton>
