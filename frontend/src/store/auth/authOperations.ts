@@ -30,12 +30,8 @@ export const userLogin = (credentials: IAuthCredentials) => async (dispatch: App
   }
 };
 
-export const userLogOut = (refreshToken: string | undefined) => async (dispatch: AppDispatch) => {
+export const userLogOut = (refreshToken: { refreshToken: string }) => async (dispatch: AppDispatch) => {
   dispatch(authActions.logoutRequest());
-
-  if (!refreshToken) {
-    throw new Error('Does not get refreshToken from storage');
-  }
 
   try {
     await authorizationAPI.signOut(refreshToken);

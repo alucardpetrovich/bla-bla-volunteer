@@ -38,7 +38,7 @@ const Header = () => {
     }
 
     if (refreshToken) {
-      dispatch(userLogOut(refreshToken?.token));
+      dispatch(userLogOut({ refreshToken: refreshToken.token }));
     }
   };
 
