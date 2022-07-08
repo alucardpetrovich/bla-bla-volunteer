@@ -14,7 +14,7 @@ interface ITextBoxProps extends InputWrapperProps {
   size?: 'small' | 'medium' | undefined;
   type?: 'text' | 'password' | 'email';
   showPasswordIcon?: boolean;
-  onChange: (value: string) => void;
+  onChange: (value: string, name: string) => void;
   id?: string;
   fullWidth?: boolean;
   autoComplete?: 'off' | 'on';
@@ -51,7 +51,7 @@ const TextBox: FC<ITextBoxProps> = ({
 
   const handleOnChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      onChange(e.target.value);
+      onChange(e.target.value, e.target.name);
     },
     [onChange],
   );
@@ -72,6 +72,7 @@ const TextBox: FC<ITextBoxProps> = ({
         size={size}
         fullWidth={fullWidth}
         value={value}
+        name={name}
         autoComplete={autoComplete}
         placeholder={placeholder}
         InputProps={{

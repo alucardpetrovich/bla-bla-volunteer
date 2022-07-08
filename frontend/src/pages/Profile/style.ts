@@ -20,3 +20,5 @@ export const RoleListWrapper = styled.ul`
     max-width: 356px;
   }
 `;
+
+export const InfoWrapper = styled.div``;
