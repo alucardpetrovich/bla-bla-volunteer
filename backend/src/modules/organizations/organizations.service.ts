@@ -168,6 +168,7 @@ export class OrganizationsService {
       }
 
       c.value = '*******';
+      delete c.accessMode;
       return c;
     });
   }
