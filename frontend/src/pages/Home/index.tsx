@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Teaser } from 'src/components/Teaser';
 
-import { homeData } from './assets/data';
+import { HomeData } from './assets/data';
 import * as S from './style';
 
 const HomePage = () => {
-  const data = homeData;
+  const data = HomeData();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (

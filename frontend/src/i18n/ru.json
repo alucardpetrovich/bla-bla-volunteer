@@ -3,6 +3,10 @@
     "defaultMessage": "[uk]: Сервіси",
     "description": "Footer: footer_navLink_2"
   },
+  "+lk6zG": {
+    "defaultMessage": "[uk]: Платформа робить процес координації передачі гуманітарної допомоги простішим. Ми намагаємось допомогти організаціям отримати максимальну користь від своєї волонтерської програми, усуваючи обмеження.",
+    "description": "Home: secondTeaser_description_1"
+  },
   "01x3vS": {
     "defaultMessage": "[uk]: Номер телефону доступний за запитом",
     "description": "Registration: isByRequest"
@@ -14,6 +18,10 @@
   "2hMXLf": {
     "defaultMessage": "Поле не должно быть пустым",
     "description": "inputsValidation: isEmpty"
+  },
+  "3VVorE": {
+    "defaultMessage": "[uk]: Хаби - Мобільні волонтери",
+    "description": "Home: firstTeaser_title_2"
   },
   "4AmZz1": {
     "defaultMessage": "Регистрация",
@@ -27,6 +35,10 @@
     "defaultMessage": "[uk]: Безпека",
     "description": "Footer: footer_navLink_3"
   },
+  "9IGHyr": {
+    "defaultMessage": "[uk]: що важливо",
+    "description": "Home page: title_2"
+  },
   "HGUy54": {
     "defaultMessage": "Для обеспечения вашей безопасности мы не рекомендуем вводить собственное имя и фамилию",
     "description": "Registration: nickNamePrivacyInfo"
@@ -39,9 +51,21 @@
     "defaultMessage": "Вход",
     "description": "Login: title"
   },
+  "I/ypP7": {
+    "defaultMessage": "[uk]: Організація транспортування гуманітарної допомоги мобільним волонтером",
+    "description": "Home: firstTeaser_description_2"
+  },
+  "JfxCnQ": {
+    "defaultMessage": "[uk]: Сьогодні волонтерам важливо максимально використовувати час і зусилля для підтримки тих, хто потребує допомоги. Платформа полегшує координацію волонтерських груп та волонтерів, що дозволяє їм робити ще більше.",
+    "description": "Home: description"
+  },
   "LD4WwV": {
     "defaultMessage": "[uk]: Телефон повинен починатися з символу \"+\"",
     "description": "inputsValidation: phoneStartsWithPlusError"
+  },
+  "MzAOnD": {
+    "defaultMessage": "[uk]: Мобільні волонтери - Отримувачі",
+    "description": "Home: firstTeaser_title_3"
   },
   "Ryi2be": {
     "defaultMessage": "вход / регистрация",
@@ -51,13 +75,25 @@
     "defaultMessage": "Минимальная длина не должна быть меньше {minValue} символов",
     "description": "inputsValidation: minLengthError"
   },
+  "TieNMn": {
+    "defaultMessage": "[uk]: Ми максимально бережно працюємо з персональною інформацією користувачів і не вимагаємо інформацію, яка не потрібна безпосередньо для комунікації сторін. Навіть контактні дані ми надаємо лише за згоди її власника",
+    "description": "Home: secondTeaser_description_2"
+  },
   "Ufx13f": {
     "defaultMessage": "Ел. Почта",
     "description": "Login: emailInput"
   },
+  "VJZ+lD": {
+    "defaultMessage": "[uk]: Координація доставки гуманітарної допомоги від місця їх тимчасового зберігання до отримувача",
+    "description": "Home: firstTeaser_description_3"
+  },
   "ViEqGj": {
     "defaultMessage": "Регистрируясь вы соглашаетесь с условиями",
     "description": "Registration: licenseInfo"
+  },
+  "XwKFAg": {
+    "defaultMessage": "[uk]: Простота",
+    "description": "Home: secondTeaser_title_1"
   },
   "YvR5rJ": {
     "defaultMessage": "вход / регистрация",
@@ -66,6 +102,10 @@
   "ZEvWYL": {
     "defaultMessage": "Тратата",
     "description": "Header: title"
+  },
+  "ZOs9YC": {
+    "defaultMessage": "[uk]: що ми робимо",
+    "description": "Home page: title_1"
   },
   "bU5skY": {
     "defaultMessage": "Номер телефона",
@@ -78,6 +118,10 @@
   "fhIJT1": {
     "defaultMessage": "Пароль",
     "description": "Login: passwordInput"
+  },
+  "ii/P/s": {
+    "defaultMessage": "[uk]: Координація передачі гуманітарної допомоги між донорами та волонтерськими хабами / хабами",
+    "description": "Home: firstTeaser_description_1"
   },
   "mV2Wi+": {
     "defaultMessage": "[uk]: Номер телефону доступний всім",
@@ -106,5 +150,13 @@
   "tv0h/6": {
     "defaultMessage": "Пароль",
     "description": "Registration: passwordInput"
+  },
+  "wqpq5k": {
+    "defaultMessage": "[uk]: Донори - Хаби",
+    "description": "Home: firstTeaser_title_1"
+  },
+  "zQjznj": {
+    "defaultMessage": "[uk]: Безпека",
+    "description": "Home: secondTeaser_title_2"
   }
 }
