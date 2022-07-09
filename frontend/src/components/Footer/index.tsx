@@ -13,10 +13,10 @@ const Footer: React.FC = () => {
   return (
     <S.FooterWrapper>
       <div>
-        <img src={LogoName} className="logo" />
+        <S.FooterLogo src={LogoName} alt="logo" />
         <NavigationFooter data={navFooter.footerNavigation} />
       </div>
-      <Divider margin="40px 0px" color="#93A9D2" />
+      <Divider />
       <div>
         <p>{navFooter.subscription}</p>
         <Networks />

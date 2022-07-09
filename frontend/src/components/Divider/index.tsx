@@ -1,19 +1,24 @@
+import { theme } from '@ui-kit';
 import React from 'react';
 
 import * as S from './style';
 
 interface IDivider {
-  color?: string;
-  margin?: string;
+  type?: number | 1;
 }
 
 /**
- * @param color  default var(--text-dark) / like as black
- * @param padding  without default value
- * IDivider color={'red'}/>
+ * @param type has default type
+ * Example: <Divider type={1}/>
  * @returns
  */
 
-export const Divider: React.FC<IDivider> = ({ color, margin }) => {
-  return <S.StyledDivider color={color} margin={margin} />;
+export const Divider: React.FC<IDivider> = ({ type }) => {
+  switch (type) {
+    case 1:
+      return <S.StyledDivider margin="20px 0px" />;
+
+    default:
+      return <S.StyledDivider margin="40px 0px" color={theme.palette.common.accentBlue} />;
+  }
 };

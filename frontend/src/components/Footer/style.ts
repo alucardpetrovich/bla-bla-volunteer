@@ -9,11 +9,6 @@ export const FooterWrapper = styled.footer`
     justify-content: space-between;
   }
 
-  .logo {
-    width: 60px;
-    height: 20px;
-  }
-
   p {
     width: 100%;
     height: 18px;
@@ -23,4 +18,9 @@ export const FooterWrapper = styled.footer`
     line-height: 150%;
     color: #93a9d2;
   }
+`;
+
+export const FooterLogo = styled.img`
+  width: 60px;
+  height: 20px;
 `;
