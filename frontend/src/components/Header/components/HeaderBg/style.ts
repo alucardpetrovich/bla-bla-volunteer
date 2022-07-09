@@ -8,13 +8,13 @@ export interface IBg {
   isShowHeading: boolean;
 }
 
+const bgImageFunc = (isAuth: boolean, isShowHeading: boolean) => {
+  if (!isAuth && !isShowHeading) return `url(${bgImg})`;
+  if (!isAuth) return `url(${bgImgAuth})`;
+};
+
 export const Bg = styled.div<IBg>`
-  ${({ isAuth, isShowHeading }) =>
-    !isAuth && !isShowHeading
-      ? `background-image: url(${bgImg});`
-      : !isAuth
-      ? `background-image: url(${bgImgAuth});`
-      : 'null'};
+  background-image: ${({ isAuth, isShowHeading }) => bgImageFunc(isAuth, isShowHeading)};
   width: 100%;
   ${({ isAuth, isShowHeading }) => (isAuth || isShowHeading ? 'height: 120px;' : 'min-height: 100vh;')};
   background-repeat: no-repeat;
