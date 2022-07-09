@@ -30,15 +30,18 @@ const Header = () => {
   const { goToHome, goToLogin, goToRegistration } = useNavigation();
 
   const isShowHeading = (!!(pathname?.includes('registration') || pathname?.includes('login')) ||
-    pathname?.includes('forgot-password')) as boolean;
+    pathname?.includes('forgot-password') ||
+    pathname?.includes('reset-password') ||
+    pathname?.includes('verification')) as boolean;
+
   const handleLogOut = () => {
     if (!isAuth) {
       goToLogin();
       return;
-    }
-
-    if (refreshToken) {
-      dispatch(userLogOut({ refreshToken: refreshToken.token }));
+    } else {
+      if (refreshToken) {
+        dispatch(userLogOut({ refreshToken: refreshToken.token }));
+      }
     }
   };
 

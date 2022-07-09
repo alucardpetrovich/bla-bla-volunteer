@@ -1,9 +1,4 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-export const StyledTitleDiv = styled.div`
-  margin-bottom: 55px;
-`;
 
 export const RegisterFormContainerDiv = styled.div`
   display: flex;
@@ -19,15 +14,6 @@ export const RegisterFormWrapperDiv = styled.div`
 
 export const RegisterTitle = styled.h3`
   margin-bottom: 65px;
-`;
-
-export const AlreadyRegisteredLink = styled(Link)`
-  color: #8c8e91;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 130%;
 `;
 
 export const StyledText = styled.p`

@@ -1,6 +1,11 @@
 import { AxiosResponse } from 'axios';
 
-import { IAuthCredentials, IAuthResponse } from '../../models/authModel/authModel';
+import {
+  IAuthCredentials,
+  IAuthResetPassword,
+  IAuthResetPasswordLink,
+  IAuthResponse,
+} from '../../models/authModel/authModel';
 import { IUser } from '../../models/userModel/userModel';
 import axios, { axiosPrivate } from '../axios';
 
@@ -18,6 +23,14 @@ const signOut = async (refreshToken: { refreshToken: string }): Promise<void> =>
   await axios.delete('/auth/sign-out', {
     data: refreshToken,
   });
+};
+
+const sendResetPasswordLink = async (payload: IAuthResetPasswordLink): Promise<void> => {
+  await axios.patch('/auth/send-reset-password-link', payload);
+};
+
+const resetPassword = async (payload: IAuthResetPassword): Promise<void> => {
+  await axios.patch('/auth/reset-password', payload);
 };
 
 const refreshAuthToken = async (
@@ -40,7 +53,9 @@ const authorizationAPI = {
   signIn,
   signOut,
   refreshAuthToken,
+  sendResetPasswordLink,
   exampleRequest,
+  resetPassword,
 };
 
 export default authorizationAPI;

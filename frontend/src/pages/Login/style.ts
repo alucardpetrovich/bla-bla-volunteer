@@ -11,10 +11,6 @@ export const ForgotPasswordLink = styled(Link)`
   margin-bottom: 21px;
 `;
 
-export const StyledTitleDiv = styled.div`
-  margin-bottom: 55px;
-`;
-
 export const ForgotPasswordButton = styled.button`
   font-family: 'Inter';
   font-style: normal;

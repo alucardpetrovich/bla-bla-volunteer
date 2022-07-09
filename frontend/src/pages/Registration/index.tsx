@@ -1,22 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
+import AuthContainer from 'src/components/AuthContainer/AuthContainer';
 import Button from 'src/components/Buttons/Button';
 import Checkbox from 'src/components/Checkbox/CheckBox';
 import TextBox from 'src/components/TextBox/TextBox';
-import { PATHS } from 'src/constants/PATH';
+import useNavigation from 'src/hooks/useNavigation';
 
 import { useAppDispatch } from '../../hooks';
 import { IAuthCredentials } from '../../models/authModel/authModel';
 import { userRegistration } from '../../store';
-import {
-  AlreadyRegisteredLink,
-  RegisterFormContainerDiv,
-  RegisterFormWrapperDiv,
-  RegisterTitle,
-  StyledInnerText,
-  StyledText,
-  StyledTitleDiv,
-} from './style';
+import { RegisterFormContainerDiv, RegisterFormWrapperDiv, RegisterTitle, StyledInnerText, StyledText } from './style';
 
 const Registration = () => {
   const initialCredentialsState = {
@@ -28,6 +21,7 @@ const Registration = () => {
     phoneNumberAccessMode: 'read_only_me',
   };
   const { formatMessage } = useIntl();
+  const { goToLogin, goToVerificationPage } = useNavigation();
 
   const [credentials, setCredentials] = useState<IAuthCredentials>(initialCredentialsState as IAuthCredentials);
   const [isEmailFieldDisabled, setIsEmailFieldDisabled] = useState<boolean>(true);
@@ -110,6 +104,7 @@ const Registration = () => {
       password,
     };
     dispatch(userRegistration(payload));
+    goToVerificationPage();
   };
 
   const handlePublicPhoneCheckbox = () => {
@@ -126,15 +121,7 @@ const Registration = () => {
     isEmailFieldDisabled || isPasswordFieldDisabled || isNickNameFieldDisabled || isPhoneNumberFieldDisabled;
 
   return (
-    <>
-      <StyledTitleDiv>
-        <p>
-          {formatMessage({
-            defaultMessage: 'вхід / реєстрація',
-            description: 'Registration: title',
-          })}
-        </p>
-      </StyledTitleDiv>
+    <AuthContainer>
       <RegisterFormContainerDiv>
         <RegisterFormWrapperDiv>
           <RegisterTitle>
@@ -236,17 +223,15 @@ const Registration = () => {
             </StyledInnerText>
           </StyledText>
           <Button isDisabled={isDisabled} text="Зареєструватися" marginBottom={21} onClick={handleSubmitSignUp} />
-          <Button buttonType="tertiary">
-            <AlreadyRegisteredLink to={`../${PATHS.LOGIN.path}`}>
-              {formatMessage({
-                defaultMessage: 'Я вже зареєстрований',
-                description: 'Registration: alreadyRegisteredButton',
-              })}
-            </AlreadyRegisteredLink>
+          <Button buttonType="tertiary" onClick={goToLogin}>
+            {formatMessage({
+              defaultMessage: 'Я вже зареєстрований',
+              description: 'Registration: alreadyRegisteredButton',
+            })}
           </Button>
         </RegisterFormWrapperDiv>
       </RegisterFormContainerDiv>
-    </>
+    </AuthContainer>
   );
 };
 

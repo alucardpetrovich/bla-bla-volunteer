@@ -1,4 +1,12 @@
 {
+  "+Cjxb8": {
+    "defaultMessage": "Перейти",
+    "description": "ResetPassword: goToLoginButton"
+  },
+  "+W1/FX": {
+    "defaultMessage": "Придумйте новий пароль",
+    "description": "ResetPassword: passwordFirstInput"
+  },
   "01x3vS": {
     "defaultMessage": "Номер телефону доступний за запитом",
     "description": "Registration: isByRequest"
@@ -7,6 +15,10 @@
     "defaultMessage": "Ел. Пошта",
     "description": "Registration: emailInput"
   },
+  "2+RcKw": {
+    "defaultMessage": "Якщо вказаний користувач існує, то на email {email} було надіслано посилання для відновлення пароля.",
+    "description": "forgotPassword: sendToEmail"
+  },
   "2hMXLf": {
     "defaultMessage": "Поле не повинно бути пустим",
     "description": "inputsValidation: isEmpty"
@@ -14,6 +26,18 @@
   "4AmZz1": {
     "defaultMessage": "Реєстрація",
     "description": "Registration: title"
+  },
+  "Ceftdt": {
+    "defaultMessage": "Наприклад, example@email.com",
+    "description": "forgotPassword: title"
+  },
+  "EIHGfC": {
+    "defaultMessage": "Повторіть пароль",
+    "description": "ResetPassword: passwordSecondInput"
+  },
+  "EjEdrb": {
+    "defaultMessage": "Пароль успішно змінено, перейдіть на сторінку авторизації щоб зайти в додаток",
+    "description": "ResetPassword: changePasswordSuccess"
   },
   "HGUy54": {
     "defaultMessage": "Для забезпечення вашої безпеки ми не рекомендуємо вводити власне ім’я та прізвище",
@@ -31,10 +55,6 @@
     "defaultMessage": "Телефон повинен починатися з символу \"+\"",
     "description": "inputsValidation: phoneStartsWithPlusError"
   },
-  "Ryi2be": {
-    "defaultMessage": "вхід / реєстрація",
-    "description": "Login: title"
-  },
   "SsPKIt": {
     "defaultMessage": "Мінімільна довжина має бути не менше {minValue} символів",
     "description": "inputsValidation: minLengthError"
@@ -47,13 +67,17 @@
     "defaultMessage": "Реєструючись, ви погоджуєтеся з умовами",
     "description": "Registration: licenseInfo"
   },
-  "YvR5rJ": {
-    "defaultMessage": "вхід / реєстрація",
-    "description": "Registration: title"
+  "X8WhoU": {
+    "defaultMessage": "Продовжити",
+    "description": "forgotPassword: submitButton"
   },
   "ZEvWYL": {
     "defaultMessage": "Безпечна платформа координації передачі гуманітарної допомоги",
     "description": "Header: title"
+  },
+  "aIUfgZ": {
+    "defaultMessage": "Відновлення паролю",
+    "description": "forgotPassword: title"
   },
   "bU5skY": {
     "defaultMessage": "Номер телефону",
@@ -66,6 +90,10 @@
   "fhIJT1": {
     "defaultMessage": "Пароль",
     "description": "Login: passwordInput"
+  },
+  "lFD2Hw": {
+    "defaultMessage": "На цей email ми надішлемо посилання для відновлення пароля",
+    "description": "forgotPassword: text"
   },
   "mV2Wi+": {
     "defaultMessage": "Номер телефону доступний всім",
@@ -90,5 +118,25 @@
   "tv0h/6": {
     "defaultMessage": "Пароль",
     "description": "Registration: passwordInput"
+  },
+  "wdx07I": {
+    "defaultMessage": "Змінити пароль",
+    "description": "ResetPassword: changePasswordButton"
+  },
+  "WTfVNJ": {
+    "defaultMessage": "вхід",
+    "description": "AuthContainer: titleSignIn"
+  },
+  "ajlqYg": {
+    "defaultMessage": "Будь-ласка, верифікуйте ваш акаунт",
+    "description": "Verification: title"
+  },
+  "eV+sCD": {
+    "defaultMessage": "реєстрація",
+    "description": "AuthContainer: titleSignUp"
+  },
+  "odPtpC": {
+    "defaultMessage": "Відкрийте лист на вашій електронній пошті та пройдіть за посиланням",
+    "description": "Verification: text"
   }
 }

@@ -10,6 +10,7 @@ import LoginPage from 'src/pages/Login';
 import NotFoundPage from 'src/pages/NotFound404';
 import ProfilePage from 'src/pages/Profile';
 import RegistrationPage from 'src/pages/Registration';
+import ResetPassword from 'src/pages/ResetPassword';
 import RolesPage from 'src/pages/Roles';
 import VerificationPage from 'src/pages/Verification';
 import { getIsAuth } from 'src/store';
@@ -51,6 +52,12 @@ const useRoutesConstants = () => {
     {
       path: PATHS.VERIFICATION.path,
       element: <VerificationPage />,
+    },
+
+    /* УЗНАТЬ ПРИВАТНЫЙ ОН ИЛИ ПУБЛИЧНЫЙ ??? */
+    {
+      path: PATHS.RESET_PASSWORD.path,
+      element: <ResetPassword />,
     },
 
     /* FORGOT_PASSWORD ONLY_PUBLIC */

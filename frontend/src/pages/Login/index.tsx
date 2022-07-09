@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
+import AuthContainer from 'src/components/AuthContainer/AuthContainer';
 import Button from 'src/components/Buttons/Button';
 import TextBox from 'src/components/TextBox/TextBox';
 import useNavigation from 'src/hooks/useNavigation';
 
 import { useAppDispatch } from '../../hooks';
 import { userLogin } from '../../store';
-import { ForgotPasswordButton, LoginFormContainerDiv, LoginFormWrapperDiv, LoginTitle, StyledTitleDiv } from './style';
+import { ForgotPasswordButton, LoginFormContainerDiv, LoginFormWrapperDiv, LoginTitle } from './style';
 
 interface LoginProps {
   email: string;
@@ -68,15 +69,7 @@ const Login = (): JSX.Element => {
   const isDisabled = isEmailFieldDisabled || isPasswordFieldDisabled;
 
   return (
-    <>
-      <StyledTitleDiv>
-        <p>
-          {formatMessage({
-            defaultMessage: 'вхід / реєстрація',
-            description: 'Login: title',
-          })}
-        </p>
-      </StyledTitleDiv>
+    <AuthContainer>
       <LoginFormContainerDiv>
         <LoginFormWrapperDiv>
           <LoginTitle>
@@ -131,7 +124,7 @@ const Login = (): JSX.Element => {
           />
         </LoginFormWrapperDiv>
       </LoginFormContainerDiv>
-    </>
+    </AuthContainer>
   );
 };
 
