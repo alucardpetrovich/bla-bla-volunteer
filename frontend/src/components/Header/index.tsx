@@ -1,6 +1,8 @@
 import { Autocomplete, TextField } from '@mui/material';
 import { useIntl } from 'react-intl';
-import { useLocalStorage, useLocation } from 'react-use';
+import { useMatch } from 'react-router';
+import { useLocalStorage } from 'react-use';
+import { PATHS } from 'src/constants/PATH';
 import { roles } from 'src/constants/roles';
 import useNavigation from 'src/hooks/useNavigation';
 import { getUser } from 'src/store/user/userSelectors';
@@ -15,21 +17,23 @@ import ArrowRight from '../atoms/ArrowRight';
 import Notifications from '../atoms/Notifications';
 import { Container, Heading, Text } from '../StyledComponents';
 import HeaderBg from './components/HeaderBg';
+import UserInfo from './components/UserInfo';
 import { HeaderSubtitleWrapper, HeaderTitleWrapper, HeaderWrapper, SignUpButton } from './style';
 
 const Header = () => {
   const { formatMessage } = useIntl();
   const isAuth = useAppSelector(getIsAuth);
-  const user = useAppSelector(getUser);
-  const involvements = user?.involvements;
-  const userRole = involvements?.length && roles.map(role => (role.id === involvements[0] ? `${role.title}` : null));
+
+  const { involvements } = useAppSelector(getUser) || {};
+  const role = involvements && roles.find(role => role.id === involvements[0]);
   const [refreshToken] = useLocalStorage<IAuthAccessRefresh>(StorageKeys.refreshToken);
 
-  const { pathname } = useLocation();
   const dispatch = useAppDispatch();
   const { goToHome, goToLogin, goToRegistration } = useNavigation();
 
-  const isShowHeading = !!(pathname?.includes('registration') || pathname?.includes('login'));
+  const isLogin = !!useMatch(PATHS.LOGIN.path);
+  const isRegistration = !!useMatch(PATHS.REGISTRATION.path);
+  const isShowHeading = isLogin || isRegistration;
 
   const handleLogOut = () => {
     if (!isAuth) {
@@ -82,6 +86,7 @@ const Header = () => {
           </Container>
         </HeaderBg>
       )}
+
       {isAuth && (
         <Container tag="headerAuth">
           <div style={{ display: 'flex' }}>
@@ -112,7 +117,7 @@ const Header = () => {
               padding: '0px 32px',
             }}
           >
-            <Text tag="b1">{userRole}</Text>
+            {role && <Text tag="b1">{role.title}</Text>}
             <div style={{ width: '360px' }}>
               <Autocomplete
                 freeSolo
@@ -135,11 +140,13 @@ const Header = () => {
             </div>
             <Notifications width={24} isNew={true} style={{ cursor: 'pointer' }} />
 
+            <UserInfo />
+
             <div style={{ width: '166px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Heading tag="h4" onClick={handleLogOut}>
                 {isAuth ? 'вихід' : 'вхід'}
               </Heading>
-              <div style={{ borderRight: '1px solid grey', height: '24px' }}></div>
+              <div style={{ borderRight: '1px solid grey', height: '24px' }} />
               <Text tag="b1">ua</Text>
             </div>
           </div>

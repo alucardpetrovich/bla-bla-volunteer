@@ -1,4 +1,4 @@
-import React from 'react';
+import { CSSProperties } from 'react';
 import styled from 'styled-components';
 
 type TextTypes = 'b1' | 'b2' | 'b3' | 'b4' | 'b5' | 'b6' | 'b7';
@@ -11,7 +11,7 @@ export interface IText {
   fontWeight?: string;
   lineHeight?: string;
   href?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 }
 
 export const TextB1 = styled.p<IText>`

@@ -1,6 +1,5 @@
 import { FC } from 'react';
-
-import useRoutesConstants from '../../hooks/useRoutes';
+import useRoutesConstants from 'src/hooks/useRoutes';
 
 const Roots: FC = () => {
   const routes = useRoutesConstants();
