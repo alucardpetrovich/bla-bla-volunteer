@@ -1,4 +1,3 @@
-import { theme } from '@ui-kit';
 import React from 'react';
 
 import * as S from './style';
@@ -19,6 +18,6 @@ export const Divider: React.FC<IDivider> = ({ type }) => {
       return <S.StyledDivider margin="20px 0px" />;
 
     default:
-      return <S.StyledDivider margin="40px 0px" color={theme.palette.common.accentBlue} />;
+      return <S.StyledDivider margin="40px 0px" color={'#A29BC7'} />;
   }
 };
