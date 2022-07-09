@@ -3,12 +3,12 @@ import React from 'react';
 import { LogoName } from '../../assets/logo';
 import { Divider } from '../Divider';
 import { Networks } from '../Networks';
-import { footerNavigation } from './assets/data';
+import { FooterNavigation } from './assets/data';
 import { NavigationFooter } from './components/NavigationFooter/index';
 import * as S from './style';
 
 const Footer: React.FC = () => {
-  const navFooter = footerNavigation;
+  const navFooter = FooterNavigation();
 
   return (
     <S.FooterWrapper>

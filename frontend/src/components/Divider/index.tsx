@@ -8,7 +8,7 @@ interface IDivider {
 }
 
 /**
- * @param type has default type
+ * @param type has type - "default"
  * Example: <Divider type={1}/>
  * @returns
  */
