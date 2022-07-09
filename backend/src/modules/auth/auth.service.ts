@@ -149,7 +149,14 @@ export class AuthService {
   }
 
   async sendResetPasswordLink({ email, baseUrl }: SendResetPasswordLinkDto) {
-    if (!this.generalConf.allowedOrigins.includes(baseUrl)) {
+    const isLinkValid = this.generalConf.allowedOrigins.some((origin) => {
+      return (
+        baseUrl.startsWith(origin) &&
+        origin.length + 3 === baseUrl.length &&
+        /\/\w{2}$/.test(baseUrl)
+      );
+    });
+    if (!isLinkValid) {
       throw new ForbiddenException('Wrong base URL');
     }
 
