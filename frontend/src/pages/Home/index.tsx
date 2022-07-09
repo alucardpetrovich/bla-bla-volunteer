@@ -11,7 +11,12 @@ const HomePage = () => {
   return (
     <>
       <S.SectionTitle>{data.title_1}</S.SectionTitle>
-      <Teaser data={data.firstTeaser} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
+      <Teaser
+        data={data.firstTeaser}
+        currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
+        isBlockBubbling={true}
+      />
 
       <S.ImageWrapper>
         <img src={data.firstTeaser[currentIndex].image_1} />
@@ -21,7 +26,7 @@ const HomePage = () => {
       <S.SectionTitle>{data.title_2}</S.SectionTitle>
       <S.DescriptionWrapper>
         <h3>{data.description} </h3>
-        <Teaser data={data.secondTeaser} direction="column" padding="0" isBlockBubbling={true} />
+        <Teaser data={data.secondTeaser} direction="column" padding="0" isBlockBubbling={false} />
       </S.DescriptionWrapper>
     </>
   );

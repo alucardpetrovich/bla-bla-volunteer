@@ -22,8 +22,7 @@ export const TeaserItem = styled.div<{ isActive?: boolean }>`
     font-weight: 900;
     font-size: 20px;
     line-height: 120%;
-    border-bottom: ${({ isActive, theme }) =>
-      isActive ? `5px solid ${theme.palette.common.black}` : '1px solid #8C8E91'};
+    border-bottom: ${({ isActive }) => (isActive ? '1.5px solid black' : '1px solid #8C8E91')};
     padding-bottom: 40px;
     margin-bottom: 40px;
   }
@@ -35,7 +34,7 @@ export const TeaserItem = styled.div<{ isActive?: boolean }>`
 
   h2,
   p {
-    color: ${({ isActive, theme }) => (isActive ? `1px solid ${theme.palette.common.black}` : '1px solid #8C8E91')};
+    color: ${({ isActive, theme }) => (isActive ? `${theme.palette.common.black}` : '#8C8E91')};
 
     transition: color 0.7s ease-out;
   }

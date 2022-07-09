@@ -33,21 +33,11 @@ export const Teaser: React.FC<ITeaser> = ({
   currentIndex,
   isBlockBubbling,
 }) => {
-  // const handleClick = useCallback(
-  //   (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     const selectType = e.target.closest('.teaser_item')?.getAttribute('data-index');
-  //     console.log(selectType, 'selectType');
-  //     if (selectType) {
-  //       setCurrentIndex?.(Number(selectType));
-  //     }
-  //   },
-
-  //   [setCurrentIndex],
-  // );
-
-  const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // FIXME: треба пофіксить  add type
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const handleClick = e => {
     const selectType = e.target.closest('.teaser_item')?.getAttribute('data-index');
-    // console.log(selectType, 'selectType');
     if (selectType) {
       setCurrentIndex?.(Number(selectType));
     }
@@ -61,7 +51,7 @@ export const Teaser: React.FC<ITeaser> = ({
           className="teaser_item"
           key={item.title + '' + key}
           onClick={handleClick}
-          isActive={currentIndex === key && !isBlockBubbling ? true : false}
+          isActive={currentIndex === key && isBlockBubbling ? true : false}
         >
           <h2>{item.title}</h2>
           <p>{item.description}</p>
