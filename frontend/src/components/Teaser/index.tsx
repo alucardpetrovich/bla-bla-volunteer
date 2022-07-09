@@ -11,7 +11,7 @@ interface ITeaser {
   data: DataWithImg[];
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
   padding?: string;
-  setCurrentIndex?: ((value: string) => void) | undefined;
+  setCurrentIndex?: ((value: number | null) => void) | undefined;
   currentIndex?: number;
   isBlockBubbling?: boolean;
 }
@@ -41,8 +41,9 @@ export const Teaser: React.FC<ITeaser> = ({
   // };
   const handleClick = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const selectType: string | null = e.target.closest('.teaser_item').getAttribute('data-index');
-      setCurrentIndex(selectType);
+      const selectType = e.target.closest('.teaser_item').getAttribute('data-index');
+
+      setCurrentIndex(Number(selectType));
     },
     [setCurrentIndex],
   );
