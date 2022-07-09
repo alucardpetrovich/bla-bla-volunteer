@@ -12,15 +12,15 @@ const Footer: React.FC = () => {
 
   return (
     <S.FooterWrapper>
-      <div>
+      <S.FooterSection>
         <S.FooterLogo src={LogoName} alt="logo" />
         <NavigationFooter data={navFooter.footerNavigation} />
-      </div>
+      </S.FooterSection>
       <Divider />
-      <div>
-        <p>{navFooter.subscription}</p>
+      <S.FooterSection>
+        <S.FooterSubscription>{navFooter.subscription}</S.FooterSubscription>
         <Networks />
-      </div>
+      </S.FooterSection>
     </S.FooterWrapper>
   );
 };
