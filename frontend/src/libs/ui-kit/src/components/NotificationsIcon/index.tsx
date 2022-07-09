@@ -4,7 +4,12 @@ interface INotifications {
   isNew?: boolean;
 }
 
-const Notifications = ({ height, width, isNew, ...props }: React.SVGProps<SVGSVGElement> & INotifications) => (
+export const NotificationsIcon = ({
+  height,
+  width,
+  isNew,
+  ...props
+}: React.SVGProps<SVGSVGElement> & INotifications) => (
   <svg
     height={height}
     width={width}
@@ -26,4 +31,3 @@ const Notifications = ({ height, width, isNew, ...props }: React.SVGProps<SVGSVG
     {isNew ? <circle cx="16" cy="4" r="3.5" fill="#93A9D2" stroke="#323434" /> : null}
   </svg>
 );
-export default Notifications;

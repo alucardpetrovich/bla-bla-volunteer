@@ -1,5 +1,5 @@
 import { Autocomplete, TextField } from '@mui/material';
-import { TextButton } from '@ui-kit';
+import { ArrowRightIcon, Logo, NotificationsIcon, Text, TextButton } from '@ui-kit';
 import { useIntl } from 'react-intl';
 import { useLocalStorage, useLocation } from 'react-use';
 import { roles } from 'src/constants/roles';
@@ -10,12 +10,12 @@ import { StorageKeys } from '../../constants/storageKeys';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { IAuthAccessRefresh } from '../../models/authModel/authModel';
 import { getIsAuth, userLogOut } from '../../store';
-import { Logo } from '../atoms';
-import ArrowRight from '../atoms/ArrowRight';
-import Notifications from '../atoms/Notifications';
-import { Container, Heading, Text } from '../StyledComponents';
+import { Container } from '../StyledComponents';
 import HeaderBg from './components/HeaderBg';
 import {
+  CustomHeading,
+  CustomText,
+  HeaderLogo,
   HeaderSubtitleWrapper,
   HeaderTitleWrapper,
   HeaderWrapper,
@@ -75,19 +75,19 @@ const Header = () => {
             </HeaderWrapper>
             {!isAuth && !isShowHeading && (
               <HeaderTitleWrapper>
-                <Heading tag="h2" style={{ marginBottom: '200px' }}>
+                <CustomHeading tag="h2">
                   {formatMessage({
                     defaultMessage: 'Безпечна платформа координації передачі гуманітарної допомоги',
                     description: 'Header: title',
                   })}
-                </Heading>
+                </CustomHeading>
                 <HeaderSubtitleWrapper>
-                  <Text tag="b1" style={{ width: '345px' }}>
+                  <CustomText tag="b1">
                     {formatMessage({
                       defaultMessage: 'Зареєструйся та стань частиною українського волонтерського руху',
                       description: 'Header: registrationComment',
                     })}
-                  </Text>
+                  </CustomText>
                   <SignUpButton onClick={goToRegistration}>
                     <Text tag="b1">
                       {formatMessage({
@@ -95,7 +95,7 @@ const Header = () => {
                         description: 'Header: registrationButton',
                       })}
                     </Text>
-                    <ArrowRight width={30} />
+                    <ArrowRightIcon width={30} />
                   </SignUpButton>
                 </HeaderSubtitleWrapper>
               </HeaderTitleWrapper>
@@ -107,11 +107,7 @@ const Header = () => {
         <Container tag="headerAuth">
           <LogoWrapper>
             <LogoBackground />
-            <Logo
-              height="35px"
-              onClick={goToHome}
-              style={{ position: 'absolute', top: '48px', left: '32px', cursor: 'pointer' }}
-            />
+            <HeaderLogo height="35px" onClick={goToHome} />
           </LogoWrapper>
 
           <UserInfoWrapper>
@@ -139,7 +135,7 @@ const Header = () => {
                 )}
               />
             </SearchWrapper>
-            <Notifications width={24} isNew={true} />
+            <NotificationsIcon width={24} isNew={true} />
 
             <NavWrapper>
               <Text tag="b1">{nickname || 'NickName'}</Text>

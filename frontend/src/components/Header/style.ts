@@ -1,3 +1,4 @@
+import { Heading, Logo, Text } from '@ui-kit';
 import styled from 'styled-components';
 
 import bgImgS from '../../assets/images/header-bg-s.png';
@@ -11,6 +12,14 @@ export const HeaderWrapper = styled.div`
 export const HeaderTitleWrapper = styled.div`
   width: 700px;
   margin-left: auto;
+`;
+
+export const CustomHeading = styled(Heading)`
+  margin-bottom: 200px;
+`;
+
+export const CustomText = styled(Text)`
+  width: 345px;
 `;
 
 export const HeaderSubtitleWrapper = styled.div`
@@ -40,6 +49,13 @@ export const LogoBackground = styled.div`
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
+`;
+
+export const HeaderLogo = styled(Logo)`
+  position: absolute;
+  top: 48px;
+  left: 32px;
+  cursor: pointer;
 `;
 
 export const UserInfoWrapper = styled.div`
