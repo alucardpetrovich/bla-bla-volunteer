@@ -3,24 +3,24 @@ import React from 'react';
 import { LogoName } from '../../assets/logo';
 import { Divider } from '../Divider';
 import { Networks } from '../Networks';
-import { footerNavigation } from './assets/data';
+import { FooterNavigation } from './assets/data';
 import { NavigationFooter } from './components/NavigationFooter/index';
 import * as S from './style';
 
 const Footer: React.FC = () => {
-  const navFooter = footerNavigation;
+  const navFooter = FooterNavigation();
 
   return (
     <S.FooterWrapper>
-      <div>
-        <img src={LogoName} className="logo" />
+      <S.FooterSection>
+        <S.FooterLogo src={LogoName} alt="logo" />
         <NavigationFooter data={navFooter.footerNavigation} />
-      </div>
-      <Divider margin="40px 0px" color="#93A9D2" />
-      <div>
-        <p>{navFooter.subscription}</p>
+      </S.FooterSection>
+      <Divider />
+      <S.FooterSection>
+        <S.FooterSubscription>{navFooter.subscription}</S.FooterSubscription>
         <Networks />
-      </div>
+      </S.FooterSection>
     </S.FooterWrapper>
   );
 };

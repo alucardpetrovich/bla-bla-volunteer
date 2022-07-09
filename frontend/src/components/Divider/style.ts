@@ -8,6 +8,6 @@ interface StyledDividerProps {
 export const StyledDivider = styled.div<StyledDividerProps>`
   min-height: 1px;
   width: 100%;
-  background-color: ${({ color }) => (color ? color : 'var(--text-dark)')};
+  background-color: ${({ color, theme }) => (color ? color : theme.palette.common.black)};
   margin: ${({ margin }) => margin ?? margin};
 `;

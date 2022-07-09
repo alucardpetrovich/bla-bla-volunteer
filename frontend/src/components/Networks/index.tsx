@@ -19,7 +19,7 @@ export const Networks: React.FC<INetworks> = ({ data = dataNetwork }) => {
       {data.map((item, key) => (
         <li key={key}>
           <a href={item.href}>
-            <img src={item.img} alt={item.alt} />
+            <S.NetworksImg src={item.img} alt={item.alt} />
           </a>
         </li>
       ))}

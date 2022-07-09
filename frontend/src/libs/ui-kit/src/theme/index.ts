@@ -14,7 +14,6 @@ const palette: ThemePalette = {
   common: {
     black: '#323434',
     white: '#FBFCFD',
-    light_gray: '#8C8E91',
   },
   background: {
     default: '#FBFCFD',

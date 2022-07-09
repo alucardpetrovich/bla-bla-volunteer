@@ -10,12 +10,12 @@ interface INavigationFooter {
 
 export const NavigationFooter: React.FC<INavigationFooter> = ({ data }) => {
   return (
-    <S.NavigationFooterWrapper>
+    <S.NavigationFooterList>
       {data?.map((item, key) => (
-        <li key={key}>
+        <S.NavigationFooterListItem key={key}>
           <a href={item.path}>{item.link}</a>
-        </li>
+        </S.NavigationFooterListItem>
       ))}
-    </S.NavigationFooterWrapper>
+    </S.NavigationFooterList>
   );
 };
