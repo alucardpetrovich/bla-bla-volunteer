@@ -11,13 +11,16 @@ export const NavigationFooterWrapper = styled.ul`
       line-height: 21px;
       letter-spacing: 0em;
       text-align: center;
-      border-right: solid 1px black;
       padding: 5px 20px;
 
       :hover {
         color: var(--accent-blue);
-        /* color: red; */
       }
+    }
+    border-right: solid 1px black;
+
+    :last-child {
+      border-right: solid 1px transparent;
     }
   }
 `;

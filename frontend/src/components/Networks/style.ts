@@ -8,5 +8,10 @@ export const NetworksWrapper = styled.ul`
     height: 24px;
     margin-right: 24px;
     cursor: pointer;
+
+    :hover {
+      transform: scale(1.2);
+      transition: 0.5 ease-in-out;
+    }
   }
 `;
