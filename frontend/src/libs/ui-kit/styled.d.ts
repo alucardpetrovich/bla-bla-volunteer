@@ -10,6 +10,7 @@ import {
 } from '@mui/material/styles/createPalette';
 
 type FontEntry = 'h1' | 'h2' | 'h3' | 'h4' | 'body1' | 'body2' | 'body3' | 'body4' | 'body5' | 'body6' | 'body7';
+
 export interface ThemePalette {
   common: Partial<CommonColors>;
   background: Partial<TypeBackground>;

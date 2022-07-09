@@ -16,17 +16,18 @@ export const TeaserWrapper = styled.div<{ direction?: string; padding?: string }
 `;
 
 export const TeaserItem = styled.div<{ isActive?: boolean }>`
-  margin-top: 50px;
   cursor: pointer;
 
   h2 {
     font-weight: 900;
     font-size: 20px;
     line-height: 120%;
-    border-bottom: ${({ isActive }) => (isActive ? '1px solid var(--text-dark)' : '1px solid var(--light-gray)')};
+    border-bottom: ${({ isActive, theme }) =>
+      isActive ? `5px solid ${theme.palette.common.black}` : `1px solid ${theme.palette.common.light_gray}`};
     padding-bottom: 40px;
     margin-bottom: 40px;
   }
+
   p {
     font-weight: 400;
     font-size: 14px;
@@ -34,7 +35,9 @@ export const TeaserItem = styled.div<{ isActive?: boolean }>`
 
   h2,
   p {
-    color: ${({ isActive }) => (isActive ? 'black' : 'var(--light-gray)')};
+    color: ${({ isActive, theme }) =>
+      isActive ? `1px solid ${theme.palette.common.black}` : `1px solid ${theme.palette.common.light_gray}`};
+
     transition: color 0.7s ease-out;
   }
 

@@ -6,7 +6,7 @@ import * as S from './style';
 
 const HomePage = () => {
   const data = homeData;
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
     <>

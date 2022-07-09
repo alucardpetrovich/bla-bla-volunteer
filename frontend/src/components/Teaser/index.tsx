@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import * as S from './style';
 
@@ -11,9 +11,10 @@ interface ITeaser {
   data: DataWithImg[];
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
   padding?: string;
-  setCurrentIndex?: ((value: number | null) => void) | undefined;
+  setCurrentIndex?: (currentIndex: number) => void;
   currentIndex?: number;
   isBlockBubbling?: boolean;
+  onClick?: () => void;
 }
 
 /**
@@ -32,32 +33,35 @@ export const Teaser: React.FC<ITeaser> = ({
   currentIndex,
   isBlockBubbling,
 }) => {
-  // const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   // const target = e.target as HTMLTextAreaElement;
-  //   const selectType = e.target?.closest('.teaser_item').getAttribute('data-index');
-  //   console.log(typeof selectType, 'selectType');
+  // const handleClick = useCallback(
+  //   (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     const selectType = e.target.closest('.teaser_item')?.getAttribute('data-index');
+  //     console.log(selectType, 'selectType');
+  //     if (selectType) {
+  //       setCurrentIndex?.(Number(selectType));
+  //     }
+  //   },
 
-  //   setCurrentIndex(selectType);
-  // };
-  const handleClick = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const selectType = e.target.closest('.teaser_item').getAttribute('data-index');
+  //   [setCurrentIndex],
+  // );
 
-      setCurrentIndex(Number(selectType));
-    },
-    [setCurrentIndex],
-  );
-  const runHandleClick = !isBlockBubbling && handleClick;
+  const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectType = e.target.closest('.teaser_item')?.getAttribute('data-index');
+    // console.log(selectType, 'selectType');
+    if (selectType) {
+      setCurrentIndex?.(Number(selectType));
+    }
+  };
 
   return (
-    <S.TeaserWrapper direction={direction} padding={padding} onClick={runHandleClick}>
+    <S.TeaserWrapper direction={direction} padding={padding} onClick={handleClick}>
       {data.map((item, key) => (
         <S.TeaserItem
-          onClick={runHandleClick}
-          className="teaser_item active"
-          key={item.title + '' + key}
           data-index={key}
-          isActive={Number(currentIndex) === key ? true : isBlockBubbling ? true : false}
+          className="teaser_item"
+          key={item.title + '' + key}
+          onClick={handleClick}
+          isActive={currentIndex === key && !isBlockBubbling ? true : false}
         >
           <h2>{item.title}</h2>
           <p>{item.description}</p>
