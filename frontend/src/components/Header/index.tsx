@@ -29,8 +29,8 @@ const Header = () => {
   const dispatch = useAppDispatch();
   const { goToHome, goToLogin, goToRegistration } = useNavigation();
 
-  const isShowHeading = !!(pathname?.includes('registration') || pathname?.includes('login'));
-
+  const isShowHeading = (!!(pathname?.includes('registration') || pathname?.includes('login')) ||
+    pathname?.includes('forgot-password')) as boolean;
   const handleLogOut = () => {
     if (!isAuth) {
       goToLogin();

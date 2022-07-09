@@ -15,6 +15,19 @@ export const StyledTitleDiv = styled.div`
   margin-bottom: 55px;
 `;
 
+export const ForgotPasswordButton = styled.button`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  color: #93a9d2;
+  background-color: #fff;
+  border: none;
+  margin-bottom: 21px;
+  padding: 0;
+`;
+
 export const LoginFormContainerDiv = styled.div`
   display: flex;
   align-items: center;
