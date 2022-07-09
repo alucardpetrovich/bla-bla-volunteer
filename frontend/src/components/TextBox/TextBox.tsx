@@ -35,6 +35,7 @@ const TextBox: FC<ITextBoxProps> = ({
   onChange,
   id,
   fullWidth = false,
+  width,
   autoComplete = 'off',
   horizontal = false,
   required,
@@ -61,7 +62,7 @@ const TextBox: FC<ITextBoxProps> = ({
   }, [setIsDirty]);
 
   return (
-    <InputWrapper name={name} label={label} required={required} horizontal={horizontal}>
+    <InputWrapper name={name} label={label} required={required} horizontal={horizontal} width={width}>
       <TextField
         error={error?.state ? error?.state : false}
         helperText={error?.state ? error.message : null}

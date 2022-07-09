@@ -57,7 +57,7 @@ const Header = () => {
                   {isAuth ? 'вихід' : 'вхід'}
                 </Heading>
                 <div style={{ borderRight: '1px solid grey', height: '24px' }}></div>
-                <Text tag="b1">ua</Text>
+                <LangDrawer />
               </div>
             </HeaderWrapper>
             {!isAuth && !isShowHeading && (

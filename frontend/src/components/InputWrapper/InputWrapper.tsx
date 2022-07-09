@@ -9,6 +9,7 @@ export interface InputWrapperProps {
   required?: string | boolean;
   error?: string;
   horizontal?: boolean;
+  width?: number;
 }
 
 const InputWrapper = ({
@@ -18,9 +19,10 @@ const InputWrapper = ({
   error,
   children,
   horizontal,
+  width,
 }: React.PropsWithChildren<InputWrapperProps>): JSX.Element => {
   return (
-    <InputWrapperContainer horizontal={horizontal}>
+    <InputWrapperContainer horizontal={horizontal} width={width}>
       {label && (
         <InputWrapperLabel htmlFor={name}>
           {label}

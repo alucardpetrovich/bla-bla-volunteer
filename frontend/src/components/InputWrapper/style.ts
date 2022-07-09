@@ -12,7 +12,7 @@ export interface InputWrapperLabelProps {
 export const InputWrapperContainer = styled.div<InputWrapperContainerProps>`
   display: flex;
   flex-direction: ${({ horizontal }) => (horizontal ? 'row' : 'column')};
-  width: ${({ width }) => (width ? `${width}px` : '320px')};
+  width: ${({ width }) => (width ? `${width}px` : '100%')};
   margin-bottom: 21px;
 `;
 
