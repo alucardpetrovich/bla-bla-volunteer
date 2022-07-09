@@ -16,7 +16,7 @@ export const NavigationFooterListItem = styled.li`
     padding: 5px 20px;
 
     :hover {
-      color: ${({ theme }) => theme.palette.common.accentBlue};
+      color: #a29bc7;
     }
   }
 `;
