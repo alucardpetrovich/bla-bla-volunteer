@@ -144,6 +144,27 @@ export const theme: Theme = createTheme({
         },
       },
     },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          borderRadius: '0px',
+        },
+      },
+    },
+    MuiList: {
+      styleOverrides: {
+        root: {
+          backgroundColor: palette.info.main,
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          backgroundColor: palette.info.main,
+        },
+      },
+    },
   },
   palette,
   spacing(...values) {

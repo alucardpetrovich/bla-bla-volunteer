@@ -90,7 +90,7 @@ const Profile: React.FC = () => {
           <Heading tag="h3" style={{ marginBottom: '40px' }}>
             Ваша роль
           </Heading>
-          {involvements.length === 0 && (
+          {involvements.length !== 0 && (
             <RoleListWrapper>
               {roles.map(role => (
                 <RoleWrapper key={role.title} color={mainColor} hover={hoverColor}>

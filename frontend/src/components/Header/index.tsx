@@ -13,6 +13,7 @@ import { getIsAuth, userLogOut } from '../../store';
 import { Logo } from '../atoms';
 import ArrowRight from '../atoms/ArrowRight';
 import Notifications from '../atoms/Notifications';
+import LangDrawer from '../LangDrawer';
 import { Container, Heading, Text } from '../StyledComponents';
 import HeaderBg from './components/HeaderBg';
 import { HeaderSubtitleWrapper, HeaderTitleWrapper, HeaderWrapper, SignUpButton } from './style';
@@ -141,7 +142,7 @@ const Header = () => {
                 {isAuth ? 'вихід' : 'вхід'}
               </Heading>
               <div style={{ borderRight: '1px solid grey', height: '24px' }}></div>
-              <Text tag="b1">ua</Text>
+              <LangDrawer />
             </div>
           </div>
         </Container>

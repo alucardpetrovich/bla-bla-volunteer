@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Logo = ({ height, width, ...props }: React.SVGProps<SVGSVGElement>) => (
+export const Logo = ({ height, width, ...props }: React.SVGProps<SVGSVGElement>) => (
   <svg
     version="1.1"
     id="Layer_1"
@@ -56,5 +56,3 @@ const Logo = ({ height, width, ...props }: React.SVGProps<SVGSVGElement>) => (
     <g></g>
   </svg>
 );
-
-export default Logo;
