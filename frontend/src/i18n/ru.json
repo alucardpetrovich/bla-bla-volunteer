@@ -3,6 +3,10 @@
     "defaultMessage": "Перейти",
     "description": "ResetPassword: goToLoginButton"
   },
+  "+PvZGw": {
+    "defaultMessage": "[uk]: Сервіси",
+    "description": "Footer: footer_navLink_2"
+  },
   "+W1/FX": {
     "defaultMessage": "Придумайте новый пароль",
     "description": "ResetPassword: passwordFirstInput"
@@ -26,6 +30,14 @@
   "4AmZz1": {
     "defaultMessage": "Регистрация",
     "description": "Registration: title"
+  },
+  "5IlW5d": {
+    "defaultMessage": "[uk]: Про проект",
+    "description": "Footer: footer_navLink_1"
+  },
+  "87kJUB": {
+    "defaultMessage": "[uk]: Безпека",
+    "description": "Footer: footer_navLink_3"
   },
   "Ceftdt": {
     "defaultMessage": "[uk]: Наприклад, example@email.com",
@@ -55,6 +67,10 @@
     "defaultMessage": "[uk]: Телефон повинен починатися з символу \"+\"",
     "description": "inputsValidation: phoneStartsWithPlusError"
   },
+  "Sjfvcj": {
+    "defaultMessage": "[uk]: вихід",
+    "description": "Logout: title"
+  },
   "SsPKIt": {
     "defaultMessage": "Минимальная длина не должна быть меньше {minValue} символов",
     "description": "inputsValidation: minLengthError"
@@ -74,6 +90,10 @@
   "X8WhoU": {
     "defaultMessage": "[uk]: Продовжити",
     "description": "forgotPassword: submitButton"
+  },
+  "YfLmTV": {
+    "defaultMessage": "[uk]: Пошук",
+    "description": "Header: searchField"
   },
   "ZEvWYL": {
     "defaultMessage": "Тратата",
@@ -95,6 +115,10 @@
     "defaultMessage": "[uk]: реєстрація",
     "description": "AuthContainer: titleSignUp"
   },
+  "eiJ8g1": {
+    "defaultMessage": "[uk]: Зареєструйся та стань частиною українського волонтерського руху",
+    "description": "Header: registrationComment"
+  },
   "etXyqK": {
     "defaultMessage": "Забыл пароль",
     "description": "Login: forgotPassword"
@@ -102,6 +126,10 @@
   "fhIJT1": {
     "defaultMessage": "Пароль",
     "description": "Login: passwordInput"
+  },
+  "l/UVCk": {
+    "defaultMessage": "[uk]: реєстрація",
+    "description": "Header: registrationButton"
   },
   "lFD2Hw": {
     "defaultMessage": "[uk]: На цей email ми надішлемо посилання для відновлення пароля",
@@ -123,6 +151,10 @@
     "defaultMessage": "положения про обработку и защиту персональных данных и пользовательского соглашениея",
     "description": "Registration: licenseInfo"
   },
+  "r9/KMU": {
+    "defaultMessage": "[uk]: Company, 2022. All rights reserved",
+    "description": "Footer: footer_subscription"
+  },
   "rMynxh": {
     "defaultMessage": "Я уже зарегистрирован",
     "description": "Registration: alreadyRegisteredButton"
@@ -138,5 +170,9 @@
   "wdx07I": {
     "defaultMessage": "[uk]: Змінити пароль",
     "description": "ResetPassword: changePasswordButton"
+  },
+  "zKD6CI": {
+    "defaultMessage": "[uk]: вхід",
+    "description": "Logout: title"
   }
 }

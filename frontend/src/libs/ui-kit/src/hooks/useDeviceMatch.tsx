@@ -1,5 +1,5 @@
 import { DeviceSizes } from '@ui-kit';
-import React, { FC, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, FC, useContext, useEffect, useMemo, useState } from 'react';
 
 type TDeviceType = keyof typeof DeviceSizes;
 
@@ -20,7 +20,7 @@ const DEFAULT_DEVICE_MATCH: TDeviceMatch = {
   largeDesktop: false,
 };
 
-const DeviceMatchContext = React.createContext(DEFAULT_DEVICE_MATCH);
+const DeviceMatchContext = createContext(DEFAULT_DEVICE_MATCH);
 
 const getDeviceMatch = (deviceType: TDeviceType): TDeviceMatch => {
   const mobile = deviceType === 'xs' || deviceType === 'sm';

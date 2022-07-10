@@ -47,4 +47,5 @@ export const StyledButton = styled.button<StyledButtonProps>`
       if (buttonType === 'secondary') return theme.palette.primary.hover;
       if (buttonType === 'tertiary') return theme.palette.grey[100];
     }};
+  }
 `;
