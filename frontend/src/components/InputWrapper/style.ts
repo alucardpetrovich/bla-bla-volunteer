@@ -20,12 +20,12 @@ export const InputWrapperLabel = styled.label<InputWrapperLabelProps>`
   display: flex;
   color: ${p => p.theme.palette.primary.main};
   font-weight: 400;
-  font-size: 14px;
+  font-size: ${p => p.theme.spacing(1.75)};
   line-height: 120%;
-  margin-bottom: 8px;
+  margin-bottom: ${p => p.theme.spacing(1)};
 `;
 
 export const RequiredLabelElement = styled.label`
   color: red;
-  margin-left: 5px;
+  margin-left: ${p => p.theme.spacing(0.7)};
 `;

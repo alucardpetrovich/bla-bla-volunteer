@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledAuthContainer = styled.div`
-  margin-bottom: 21px;
+  margin-bottom: ${p => p.theme.spacing(2.5)};
 `;
 
 export const StyledAuthText = styled.p`
-  margin-bottom: 55px;
+  margin-bottom: ${p => p.theme.spacing(7)};
 `;
 
 export const StyledAuthSpanText = styled.span`

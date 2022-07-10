@@ -4,12 +4,12 @@ export const ForgotPasswordButton = styled.button`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: ${p => p.theme.spacing(1.75)};
   line-height: 100%;
   color: ${p => p.theme.palette.primary.main};
   background-color: ${p => p.theme.palette.common.white};
   border: none;
-  margin-bottom: 21px;
+  margin-bottom: ${p => p.theme.spacing(2.5)};
   padding: 0;
 `;
 
@@ -26,5 +26,5 @@ export const LoginFormWrapperDiv = styled.div`
 `;
 
 export const LoginTitle = styled.h3`
-  margin-bottom: 65px;
+  margin-bottom: ${p => p.theme.spacing(7)};
 `;

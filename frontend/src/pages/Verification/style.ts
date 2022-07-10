@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const VerificationTitle = styled.h3`
-  margin-bottom: 21px;
+  margin-bottom: ${p => p.theme.spacing(2.5)};
 `;
 
 export const VerificationContainer = styled.div`

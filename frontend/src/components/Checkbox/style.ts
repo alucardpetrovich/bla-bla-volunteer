@@ -13,12 +13,12 @@ export const StyledOption = styled.label`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  font-size: ${p => p.theme.spacing(1.5)};
   line-height: 100%;
   color: ${p => p.theme.palette.primary.main}
   width: 320px;
   height: fit-content;
-  margin-bottom: 21px;
+  margin-bottom: ${p => p.theme.spacing(2.5)};
   cursor: pointer;
 `;
 

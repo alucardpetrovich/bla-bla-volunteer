@@ -33,11 +33,11 @@ export const StyledButton = styled.button<StyledButtonProps>`
     if (!buttonType || buttonType === 'primary' || buttonType === 'secondary') return theme.palette.common.black;
     if (buttonType === 'tertiary') return theme.palette.grey[500];
   }};
-  height: 45px;
+  height: ${p => p.theme.spacing(5.5)};
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: ${p => p.theme.spacing(2)};
   line-height: 130%;
   &:hover {
     background-color: ${({ buttonType, disabled, theme }) => {
