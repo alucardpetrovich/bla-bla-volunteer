@@ -8,7 +8,7 @@ interface LangState {
 type LangReducer = Reducer<LangState>;
 
 const initialState: LangState = {
-  currentLang: 'ua',
+  currentLang: 'uk',
 };
 
 const lang: LangReducer = (state = { ...initialState }, { type, payload }) => {

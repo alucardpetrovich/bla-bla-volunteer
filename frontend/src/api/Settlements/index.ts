@@ -1,10 +1,10 @@
 import { axiosPrivate } from '../axios';
 
-const settlementsSearch = async (search: string, page = 1) => {
+const settlementsSearch = async (search: string, page = 1, lang: string) => {
   try {
     const response = await axiosPrivate.get(`/settlements?search=${search}&page=${page}`, {
       headers: {
-        'Accept-Language': 'uk',
+        'Accept-Language': lang,
       },
     });
     return response;

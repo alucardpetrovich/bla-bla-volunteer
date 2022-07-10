@@ -2,7 +2,8 @@ import { Autocomplete, TextField } from '@mui/material';
 import { SyntheticEvent, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { settlementsAPI } from 'src/api';
-import { useAppDispatch } from 'src/hooks';
+import { useAppDispatch, useAppSelector } from 'src/hooks';
+import { getLang } from 'src/store/lang/langSelectors';
 import { createUserOrganization } from 'src/store/user/userOperations';
 
 import Button from '../Buttons/Button';
@@ -26,6 +27,7 @@ interface OrganizationProps {
 const RoleForm = () => {
   const { formatMessage } = useIntl();
   const dispatch = useAppDispatch();
+  const lang = useAppSelector(getLang);
 
   //   const [cities, setCities] = useState([]);
 
@@ -44,11 +46,13 @@ const RoleForm = () => {
   });
 
   const { name, city, street, contacts, telegram } = organizationFormValues;
+
+  // const [citiesList, setCitiesList] = useState([]);
   const testCities = [{ title: 'Lviv' }, { title: 'Odessa' }];
 
   const onHandleSearch = (event: SyntheticEvent, value: string) => {
-    console.log('event', value);
-    const result = settlementsAPI.settlementsSearch(value, 1);
+    const result = settlementsAPI.settlementsSearch(value, 1, lang);
+    console.log('event', value, result);
     console.log('result', result);
   };
 

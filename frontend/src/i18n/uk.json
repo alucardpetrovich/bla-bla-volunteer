@@ -63,6 +63,10 @@
     "defaultMessage": "вхід / реєстрація",
     "description": "Login: title"
   },
+  "Sjfvcj": {
+    "defaultMessage": "вихід",
+    "description": "Logout: title"
+  },
   "SsPKIt": {
     "defaultMessage": "Мінімільна довжина має бути не менше {minValue} символів",
     "description": "inputsValidation: minLengthError"
@@ -74,6 +78,10 @@
   "ViEqGj": {
     "defaultMessage": "Реєструючись, ви погоджуєтеся з умовами",
     "description": "Registration: licenseInfo"
+  },
+  "YfLmTV": {
+    "defaultMessage": "Пошук",
+    "description": "Header: searchField"
   },
   "YvR5rJ": {
     "defaultMessage": "вхід / реєстрація",
@@ -103,6 +111,10 @@
     "defaultMessage": "Назва хабу",
     "description": "ProfileForm: hubName"
   },
+  "eiJ8g1": {
+    "defaultMessage": "Зареєструйся та стань частиною українського волонтерського руху",
+    "description": "Header: registrationComment"
+  },
   "etXyqK": {
     "defaultMessage": "Забув пароль",
     "description": "Login: forgotPassword"
@@ -118,6 +130,10 @@
   "ktfdBb": {
     "defaultMessage": "Адреса",
     "description": "ProfileForm: address"
+  },
+  "l/UVCk": {
+    "defaultMessage": "реєстрація",
+    "description": "Header: registrationButton"
   },
   "mV2Wi+": {
     "defaultMessage": "Номер телефону доступний всім",
@@ -170,22 +186,6 @@
   "wr0oXa": {
     "defaultMessage": "Контакти хабу",
     "description": "ProfileForm: hubContacts"
-  },
-  "Sjfvcj": {
-    "defaultMessage": "вихід",
-    "description": "Logout: title"
-  },
-  "YfLmTV": {
-    "defaultMessage": "Пошук",
-    "description": "Header: searchField"
-  },
-  "eiJ8g1": {
-    "defaultMessage": "Зареєструйся та стань частиною українського волонтерського руху",
-    "description": "Header: registrationComment"
-  },
-  "l/UVCk": {
-    "defaultMessage": "реєстрація",
-    "description": "Header: registrationButton"
   },
   "zKD6CI": {
     "defaultMessage": "вхід",
