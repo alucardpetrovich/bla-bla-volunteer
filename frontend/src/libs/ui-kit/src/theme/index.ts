@@ -153,6 +153,13 @@ export const theme: Theme = createTheme({
         },
       },
     },
+    MuiAutocomplete: {
+      styleOverrides: {
+        input: {
+          ...inputStyles,
+        },
+      },
+    },
     MuiTextField: {
       styleOverrides: {
         root: {

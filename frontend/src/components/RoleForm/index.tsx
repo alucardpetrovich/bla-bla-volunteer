@@ -1,14 +1,11 @@
-import { Autocomplete, TextField } from '@mui/material';
-import { debounce } from 'lodash';
-import { SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useIntl } from 'react-intl';
-import { settlementsAPI } from 'src/api';
-import { useAppDispatch, useAppSelector } from 'src/hooks';
-import { getLang } from 'src/store/lang/langSelectors';
+import { useAppDispatch } from 'src/hooks';
 import { createUserOrganization } from 'src/store/user/userOperations';
 
 import Button from '../Buttons/Button';
 import TextBox from '../TextBox/TextBox';
+import Autocomplete from './components/Autocomplete';
 import { CustomHeading, InfoWrapper } from './style';
 
 interface IContact {
@@ -25,25 +22,9 @@ interface OrganizationProps {
   telegram: string;
 }
 
-interface ILocation {
-  lon: number;
-  lat: number;
-}
-
-interface ICity {
-  centerLocation: ILocation;
-  countryCode: string;
-  district: string;
-  id: string;
-  name: string;
-  region: string;
-  type: string;
-}
-
 const RoleForm = () => {
   const { formatMessage } = useIntl();
   const dispatch = useAppDispatch();
-  const lang = useAppSelector(getLang);
 
   const [organizationFormValues, setOrganizationFormValues] = useState<OrganizationProps>({
     name: '',
@@ -60,31 +41,6 @@ const RoleForm = () => {
   });
 
   const { name, city, street, contacts, telegram } = organizationFormValues;
-
-  const [citiesList, setCitiesList] = useState<ICity[]>([]);
-
-  const onHandleSearch = async (event: SyntheticEvent, value: string) => {
-    const result = await settlementsAPI.settlementsSearch(value, 1, lang);
-    setCitiesList(result);
-  };
-
-  const onInputChange = useRef(
-    debounce(async (event: SyntheticEvent, value: string) => {
-      if (!value) return;
-
-      if (value.length > 1) {
-        const result = await settlementsAPI.settlementsSearch(value, 1, lang);
-        setCitiesList(result);
-      }
-    }, 500),
-  ).current;
-
-  useEffect(() => {
-    return () => {
-      onInputChange.cancel();
-      setCitiesList([]);
-    };
-  }, [onInputChange]);
 
   const handleOrganizationValuesOnChange = (value: string, name: string): void => {
     if (name === 'contacts') {
@@ -144,27 +100,7 @@ const RoleForm = () => {
         value={city}
         onChange={handleOrganizationValuesOnChange}
       /> */}
-
-      <Autocomplete
-        freeSolo
-        id="cityList"
-        disableClearable
-        options={citiesList.map(city => {
-          return `${city.name} (${city.region}, ${city.district})`;
-        })}
-        renderOption={(props, option) => {
-          return (
-            <li {...props} key={props.id}>
-              {option}
-            </li>
-          );
-        }}
-        onChange={onHandleSearch}
-        onInputChange={onInputChange}
-        renderInput={params => {
-          return <TextField {...params} label="Місто" />;
-        }}
-      />
+      <Autocomplete />
       <TextBox
         label={formatMessage({
           defaultMessage: 'Адреса',
