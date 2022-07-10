@@ -46,6 +46,10 @@ export const PATHS = {
   },
 
   NOT_FOUND_404: {
+    path: ':lang/404',
+  },
+
+  NOT_FOUND: {
     path: '*',
   },
 };

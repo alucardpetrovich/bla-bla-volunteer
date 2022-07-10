@@ -1,7 +1,9 @@
 import { Autocomplete, TextField } from '@mui/material';
 import { ArrowRightIcon, Logo, NotificationsIcon, Text, TextButton } from '@ui-kit';
 import { useIntl } from 'react-intl';
-import { useLocalStorage, useLocation } from 'react-use';
+import { useMatch } from 'react-router';
+import { useLocalStorage } from 'react-use';
+import { PATHS } from 'src/constants/PATH';
 import { roles } from 'src/constants/roles';
 import useNavigation from 'src/hooks/useNavigation';
 import { getUser } from 'src/store/user/userSelectors';
@@ -13,6 +15,7 @@ import { getIsAuth, userLogOut } from '../../store';
 import LangDrawer from '../LangDrawer';
 import { Container } from '../StyledComponents';
 import HeaderBg from './components/HeaderBg';
+import UserInfo from './components/UserInfo';
 import {
   CustomHeading,
   CustomText,
@@ -32,17 +35,18 @@ import {
 const Header = () => {
   const { formatMessage } = useIntl();
   const isAuth = useAppSelector(getIsAuth);
-  const user = useAppSelector(getUser);
-  const involvements = user?.involvements;
-  const userRole =
-    involvements?.length && roles.map(role => (role.id === involvements[0].type ? `${role.title}` : null));
+
+  const { involvements } = useAppSelector(getUser) || {};
+  const role = involvements && roles.find(role => role.id === involvements[0].type);
+
   const [refreshToken] = useLocalStorage<IAuthAccessRefresh>(StorageKeys.refreshToken);
 
-  const { pathname } = useLocation();
   const dispatch = useAppDispatch();
   const { goToHome, goToLogin, goToRegistration } = useNavigation();
 
-  const isShowHeading = !!(pathname?.includes('registration') || pathname?.includes('login'));
+  const isLogin = !!useMatch(PATHS.LOGIN.path);
+  const isRegistration = !!useMatch(PATHS.REGISTRATION.path);
+  const isShowHeading = isLogin || isRegistration;
 
   const handleLogOut = () => {
     if (!isAuth) {
@@ -104,6 +108,7 @@ const Header = () => {
           </Container>
         </HeaderBg>
       )}
+
       {isAuth && (
         <Container tag="headerAuth">
           <LogoWrapper>
@@ -112,7 +117,7 @@ const Header = () => {
           </LogoWrapper>
 
           <UserInfoWrapper>
-            <Text tag="b1">{userRole}</Text>
+            {role && <Text tag="b1">{role.title}</Text>}
             <SearchWrapper>
               <Autocomplete
                 freeSolo
@@ -137,6 +142,8 @@ const Header = () => {
               />
             </SearchWrapper>
             <NotificationsIcon width={24} isNew={true} />
+
+            <UserInfo />
 
             <NavWrapper>
               <TextButton onClick={handleLogOut}>

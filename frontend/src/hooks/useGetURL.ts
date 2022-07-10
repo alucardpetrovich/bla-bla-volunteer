@@ -5,7 +5,9 @@ import { useAppSelector } from './useStore';
 
 /**
  * Если нужно взять путь как СТРОКУ
- * ===> ПОДХОДИТ ДЛЯ Link, NavLink и Navigate в to <===
+ *    ===> ПОДХОДИТ ДЛЯ компонентов Link, NavLink и Navigate в to   <===
+ *    ===> ПОДХОДИТ ДЛЯ параментра navigate с useNavigate           <===
+ *
  * !!! НЕ подходит для Route в path
  * !!! НЕ подходит при клике, например по кнопке, что бы произошел переход !!!
  */
@@ -56,6 +58,10 @@ export const useGetURL = () => {
     return `/${generatePath(PATHS.PROFILE.path, { lang })}`;
   };
 
+  const getNotFound404URL = () => {
+    return `/${generatePath(PATHS.NOT_FOUND_404.path, { lang })}`;
+  };
+
   return {
     getHomeURL,
 
@@ -72,5 +78,7 @@ export const useGetURL = () => {
 
     getRolesURL,
     getProfileURL,
+
+    getNotFound404URL,
   };
 };

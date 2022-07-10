@@ -6,7 +6,7 @@ export enum Roles {
   recepient = 'recepient',
 }
 
-export const roles: { title: string; desc: string; id: Roles }[] = [
+export const roles: { title: string; desc: string; id: string }[] = [
   {
     title: 'Донор',
     desc: 'Особа або група осіб, організації, рухи тощо, які здійснюють передачу матеріальних засобів на безоплатній основі',

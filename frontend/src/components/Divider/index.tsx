@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 import * as S from './style';
 
@@ -12,7 +12,7 @@ interface IDivider {
  * @returns
  */
 
-export const Divider: React.FC<IDivider> = ({ type }) => {
+export const Divider: FC<IDivider> = ({ type }) => {
   switch (type) {
     case 1:
       return <S.StyledDivider margin="20px 0px" />;

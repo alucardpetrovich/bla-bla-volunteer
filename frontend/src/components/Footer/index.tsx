@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 import { LogoName } from '../../assets/logo';
 import { Divider } from '../Divider';
@@ -7,7 +7,7 @@ import { FooterNavigation } from './assets/data';
 import { NavigationFooter } from './components/NavigationFooter/index';
 import * as S from './style';
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
   const navFooter = FooterNavigation();
 
   return (

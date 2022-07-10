@@ -29,6 +29,7 @@ const palette: ThemePalette = {
     main: '#93A9D2',
   },
 };
+
 const types: Types = {
   h1: {
     fontSize: 32,
@@ -50,6 +51,7 @@ const types: Types = {
     lineHeight: 1.5,
     fontWeight: 700,
   },
+
   body1: {
     fontSize: 20,
     lineHeight: 1.5,
@@ -85,6 +87,19 @@ const types: Types = {
     lineHeight: 1,
     fontWeight: 400,
   },
+
+  body8: {
+    fontSize: 20,
+    lineHeight: 1.4,
+    fontWeight: 500,
+    fontFamily: 'Roboto',
+  },
+  body9: {
+    fontSize: 16,
+    lineHeight: 1.3,
+    fontWeight: 400,
+    fontFamily: 'Roboto',
+  },
 };
 
 const inputStyles = {
@@ -103,6 +118,7 @@ export const theme: Theme = createTheme({
       xl: DeviceSizes.xl,
     },
   },
+
   components: {
     MuiFilledInput: {
       styleOverrides: {
@@ -166,11 +182,14 @@ export const theme: Theme = createTheme({
       },
     },
   },
+
   palette,
+
   spacing(...values) {
     const FACTOR = 8;
     return values.map(value => (value === 'auto' ? value : `${value * FACTOR}px`)).join(' ');
   },
+
   font(type) {
     const { fontSize, lineHeight, fontWeight, fontFamily } = types[type];
     return `
