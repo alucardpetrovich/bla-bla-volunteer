@@ -1,6 +1,5 @@
+import { Heading } from '@ui-kit';
 import styled from 'styled-components';
-
-import { Heading } from '../StyledComponents';
 
 export const InfoWrapper = styled.div`
   width: 505px;

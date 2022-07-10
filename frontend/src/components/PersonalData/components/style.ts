@@ -1,6 +1,5 @@
+import { Text } from '@ui-kit';
 import styled from 'styled-components';
-
-import { Text } from '../../StyledComponents';
 
 export const DataSubTitle = styled(Text)`
   margin-bottom: 20px;

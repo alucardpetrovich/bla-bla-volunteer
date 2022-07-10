@@ -1,22 +1,33 @@
 import { Autocomplete, TextField } from '@mui/material';
+import { ArrowRightIcon, Logo, NotificationsIcon, Text, TextButton } from '@ui-kit';
 import { useIntl } from 'react-intl';
 import { useLocalStorage, useLocation } from 'react-use';
 import { roles } from 'src/constants/roles';
 import useNavigation from 'src/hooks/useNavigation';
 import { getUser } from 'src/store/user/userSelectors';
 
-import bgImgS from '../../assets/images/header-bg-s.png';
 import { StorageKeys } from '../../constants/storageKeys';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { IAuthAccessRefresh } from '../../models/authModel/authModel';
 import { getIsAuth, userLogOut } from '../../store';
-import { Logo } from '../atoms';
-import ArrowRight from '../atoms/ArrowRight';
-import Notifications from '../atoms/Notifications';
 import LangDrawer from '../LangDrawer';
-import { Container, Heading, Text } from '../StyledComponents';
+import { Container } from '../StyledComponents';
 import HeaderBg from './components/HeaderBg';
-import { HeaderSubtitleWrapper, HeaderTitleWrapper, HeaderWrapper, SignUpButton } from './style';
+import {
+  CustomHeading,
+  CustomText,
+  HeaderLogo,
+  HeaderSubtitleWrapper,
+  HeaderTitleWrapper,
+  HeaderWrapper,
+  LogoBackground,
+  LogoWrapper,
+  NavWrapper,
+  SearchWrapper,
+  SignUpButton,
+  UserInfoWrapper,
+  VertDevider,
+} from './style';
 
 const Header = () => {
   const { formatMessage } = useIntl();
@@ -50,72 +61,59 @@ const Header = () => {
         <HeaderBg isAuth={isAuth} isShowHeading={isShowHeading}>
           <Container tag="header" isAuth={isAuth} isShowHeading={isShowHeading}>
             <HeaderWrapper>
-              {!isAuth && <Logo height="70px" onClick={goToHome} style={{ cursor: 'pointer' }} />}
+              {!isAuth && <Logo height="70px" onClick={goToHome} />}
 
-              <div style={{ width: '166px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Heading tag="h4" onClick={handleLogOut} style={{ cursor: 'pointer' }}>
-                  {isAuth ? 'вихід' : 'вхід'}
-                </Heading>
-                <div style={{ borderRight: '1px solid grey', height: '24px' }}></div>
-                <LangDrawer />
-              </div>
+              <NavWrapper>
+                <TextButton onClick={handleLogOut}>
+                  {formatMessage({
+                    defaultMessage: 'вхід',
+                    description: 'Logout: title',
+                  })}
+                </TextButton>
+                <VertDevider />
+                <Text tag="b1">ua</Text>
+              </NavWrapper>
             </HeaderWrapper>
             {!isAuth && !isShowHeading && (
-              <>
-                <HeaderTitleWrapper>
-                  <Heading tag="h2" style={{ marginBottom: '200px' }}>
+              <HeaderTitleWrapper>
+                <CustomHeading tag="h2">
+                  {formatMessage({
+                    defaultMessage: 'Безпечна платформа координації передачі гуманітарної допомоги',
+                    description: 'Header: title',
+                  })}
+                </CustomHeading>
+                <HeaderSubtitleWrapper>
+                  <CustomText tag="b1">
                     {formatMessage({
-                      defaultMessage: 'Безпечна платформа координації передачі гуманітарної допомоги',
-                      description: 'Header: title',
+                      defaultMessage: 'Зареєструйся та стань частиною українського волонтерського руху',
+                      description: 'Header: registrationComment',
                     })}
-                  </Heading>
-                  <HeaderSubtitleWrapper>
-                    <Text tag="b1" style={{ width: '345px' }}>
-                      Зареєструйся та стань частиною українського волонтерського руху
+                  </CustomText>
+                  <SignUpButton onClick={goToRegistration}>
+                    <Text tag="b1">
+                      {formatMessage({
+                        defaultMessage: 'реєстрація',
+                        description: 'Header: registrationButton',
+                      })}
                     </Text>
-                    <SignUpButton onClick={goToRegistration}>
-                      <Text tag="b1">реєстрація</Text>
-                      <ArrowRight width={30} />
-                    </SignUpButton>
-                  </HeaderSubtitleWrapper>
-                </HeaderTitleWrapper>
-              </>
+                    <ArrowRightIcon width={30} />
+                  </SignUpButton>
+                </HeaderSubtitleWrapper>
+              </HeaderTitleWrapper>
             )}
           </Container>
         </HeaderBg>
       )}
       {isAuth && (
         <Container tag="headerAuth">
-          <div style={{ display: 'flex' }}>
-            {/*FIXME: Ніяких інлайн стилів плз. Дропнуть*/}
-            <div
-              style={{
-                width: '250px',
-                height: '128px',
-                backgroundImage: `url(${bgImgS})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'top',
-                backgroundSize: 'cover',
-              }}
-            />
-            <Logo
-              height="35px"
-              onClick={goToHome}
-              style={{ cursor: 'pointer', position: 'absolute', top: '48px', left: '32px' }}
-            />
-          </div>
+          <LogoWrapper>
+            <LogoBackground />
+            <HeaderLogo height="35px" onClick={goToHome} />
+          </LogoWrapper>
 
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              width: 'calc(100% - 250px)',
-              padding: '0px 32px',
-            }}
-          >
+          <UserInfoWrapper>
             <Text tag="b1">{userRole}</Text>
-            <div style={{ width: '360px' }}>
+            <SearchWrapper>
               <Autocomplete
                 freeSolo
                 id="searchField"
@@ -126,7 +124,10 @@ const Header = () => {
                     {...params}
                     sx={{ m: 1, width: '36ch', bgcolor: '#fff' }}
                     size="small"
-                    label="Пошук"
+                    label={formatMessage({
+                      defaultMessage: 'Пошук',
+                      description: 'Header: searchField',
+                    })}
                     InputProps={{
                       ...params.InputProps,
                       type: 'search',
@@ -134,17 +135,19 @@ const Header = () => {
                   />
                 )}
               />
-            </div>
-            <Notifications width={24} isNew={true} style={{ cursor: 'pointer' }} />
+            </SearchWrapper>
+            <NotificationsIcon width={24} isNew={true} />
 
-            <div style={{ width: '166px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Heading tag="h4" onClick={handleLogOut}>
-                {isAuth ? 'вихід' : 'вхід'}
-              </Heading>
-              <div style={{ borderRight: '1px solid grey', height: '24px' }}></div>
+            <NavWrapper>
+              <TextButton onClick={handleLogOut}>
+                {formatMessage({
+                  defaultMessage: 'вихід',
+                  description: 'Logout: title',
+                })}
+              </TextButton>
               <LangDrawer />
-            </div>
-          </div>
+            </NavWrapper>
+          </UserInfoWrapper>
         </Container>
       )}
     </header>

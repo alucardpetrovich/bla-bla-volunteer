@@ -170,5 +170,25 @@
   "wr0oXa": {
     "defaultMessage": "Контакти хабу",
     "description": "ProfileForm: hubContacts"
+  },
+  "Sjfvcj": {
+    "defaultMessage": "вихід",
+    "description": "Logout: title"
+  },
+  "YfLmTV": {
+    "defaultMessage": "Пошук",
+    "description": "Header: searchField"
+  },
+  "eiJ8g1": {
+    "defaultMessage": "Зареєструйся та стань частиною українського волонтерського руху",
+    "description": "Header: registrationComment"
+  },
+  "l/UVCk": {
+    "defaultMessage": "реєстрація",
+    "description": "Header: registrationButton"
+  },
+  "zKD6CI": {
+    "defaultMessage": "вхід",
+    "description": "Logout: title"
   }
 }

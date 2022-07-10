@@ -1,10 +1,10 @@
+import { Heading, Text } from '@ui-kit';
 import { useAppDispatch, useAppSelector } from 'src/hooks';
 import { getIsAuth } from 'src/store';
+import { userUpdate } from 'src/store/user/userOperations';
+import { getUser } from 'src/store/user/userSelectors';
 import { useTheme } from 'styled-components';
 
-import { userUpdate } from '../../../store/user/userOperations';
-import { getUser } from '../../../store/user/userSelectors';
-import { Heading, Text } from '../../StyledComponents';
 import { CardStyled, CardWrapper, Separator } from './style';
 
 interface IRoleCard {
@@ -31,8 +31,6 @@ const RoleCard: React.FC<IRoleCard> = ({ id, title, children, textAlign }) => {
 
     dispatch(userUpdate(cred));
   };
-
-  //!!! make condition to make roleCard active if user already has this role
 
   return (
     <CardWrapper color={mainColor} hover={hover}>

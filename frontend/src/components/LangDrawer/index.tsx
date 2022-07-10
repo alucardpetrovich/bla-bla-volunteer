@@ -1,14 +1,13 @@
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { Text } from '@ui-kit';
 import { MouseEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'src/hooks';
 import messages from 'src/locale/list.json';
 import { changeLang } from 'src/store/lang/langOperations';
 import { getLang } from 'src/store/lang/langSelectors';
-
-import { Text } from '../StyledComponents';
 
 const locales = Object.keys(messages);
 

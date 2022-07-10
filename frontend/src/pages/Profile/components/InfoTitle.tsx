@@ -1,7 +1,6 @@
-import { ChapterArrow } from '@ui-kit';
+import { ChapterArrow, Heading } from '@ui-kit';
 import { useState } from 'react';
 import { Divider } from 'src/components/Divider';
-import { Heading } from 'src/components/StyledComponents';
 
 import { InfoTitleWrapper } from './style';
 

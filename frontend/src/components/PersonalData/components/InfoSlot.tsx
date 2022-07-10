@@ -1,6 +1,6 @@
 import { TextField, useTheme } from '@mui/material';
+import { Text } from '@ui-kit';
 import { useEffect, useState } from 'react';
-import { Text } from 'src/components/StyledComponents';
 import { usePrevious } from 'src/libs/ui-kit/src/hooks/usePrevious';
 
 import { DataSubTitle, InfoSlotWrapper } from './style';
