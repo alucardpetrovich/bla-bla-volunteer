@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Logo = ({ height, width, ...props }: React.SVGProps<SVGSVGElement>) => (
+export const Logo = ({ height, width, ...props }: React.SVGProps<SVGSVGElement>) => (
   <svg
     version="1.1"
     id="Layer_1"
@@ -9,7 +9,7 @@ const Logo = ({ height, width, ...props }: React.SVGProps<SVGSVGElement>) => (
     x="0px"
     y="0px"
     viewBox="0 0 512 512"
-    style={{ background: ' 0 0 512 512' }}
+    style={{ background: ' 0 0 512 512', cursor: 'pointer' }}
     xmlSpace="preserve"
     height={height}
     width={width}
@@ -56,5 +56,3 @@ const Logo = ({ height, width, ...props }: React.SVGProps<SVGSVGElement>) => (
     <g></g>
   </svg>
 );
-
-export default Logo;

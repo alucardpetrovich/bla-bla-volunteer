@@ -12,7 +12,7 @@ const StyledText = {
   b7: TextB7,
 };
 
-const Text: FC<IText & { children: ReactNode }> = ({ color, tag = 'b1', children, ...props }) => {
+export const Text: FC<IText & { children: ReactNode }> = ({ color, tag = 'b1', children, ...props }) => {
   const TargetText = StyledText[tag];
 
   return (
@@ -21,5 +21,3 @@ const Text: FC<IText & { children: ReactNode }> = ({ color, tag = 'b1', children
     </TargetText>
   );
 };
-
-export default Text;

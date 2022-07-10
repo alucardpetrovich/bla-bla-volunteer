@@ -3,7 +3,6 @@ import { generatePath, NavLink } from 'react-router-dom';
 import { getIsAuth } from 'src/store';
 
 import { useAppSelector } from '../../../../hooks';
-import { FlexDiv } from '../../../StyledComponents/Flex/style';
 import { linksNav } from './constants/listNav';
 
 interface NavigationProps {
@@ -17,23 +16,21 @@ const Navigation: FC<NavigationProps> = ({ style }) => {
   return (
     <nav style={style}>
       <ul>
-        <FlexDiv container justifyContent="flex-end">
-          {linksNav.map(({ path, text, privateRoute, restricted }) => {
-            if ((privateRoute && !isAuth) || (restricted && isAuth)) return null;
+        {linksNav.map(({ path, text, privateRoute, restricted }) => {
+          if ((privateRoute && !isAuth) || (restricted && isAuth)) return null;
 
-            return (
-              <li key={text}>
-                <NavLink
-                  to={`/${generatePath(path, { lang })}`}
-                  style={({ isActive }) => (isActive ? { color: 'orange' } : {})}
-                  end
-                >
-                  {text}
-                </NavLink>
-              </li>
-            );
-          })}
-        </FlexDiv>
+          return (
+            <li key={text}>
+              <NavLink
+                to={`/${generatePath(path, { lang })}`}
+                style={({ isActive }) => (isActive ? { color: 'orange' } : {})}
+                end
+              >
+                {text}
+              </NavLink>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

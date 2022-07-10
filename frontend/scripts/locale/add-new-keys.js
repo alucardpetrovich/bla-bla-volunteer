@@ -10,7 +10,7 @@ const localeDir = path.join(process.cwd(), 'src/i18n');
 const defaultMessages = require(path.join(localeDir, 'messages.json'));
 const messages = Object.entries(defaultMessages);
 
-glob(path.join(localeDir, '*.json'))
+glob(path.join(localeDir, '*.json').replace(/\\/g, '/'))
   .filter(filename => !filename.endsWith('messages.json'))
   .forEach(filename => {
     const translations = pick(require(filename), Object.keys(defaultMessages));

@@ -6,7 +6,7 @@ const localeDir = path.join(process.cwd(), 'src/locale');
 
 const t = {};
 
-glob(path.join(localeDir, '*.json'))
+glob(path.join(localeDir, '*.json').replace(/\\/g, '/'))
   .filter(filename => !filename.endsWith('messages.json'))
   .forEach(filename => {
     const fileNameArr = filename.split('/');

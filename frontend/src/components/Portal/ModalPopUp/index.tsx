@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 import * as S from './style';
 
 interface IModalPopUp {
   onClose?: () => void;
-  children?: React.ReactNode;
+  children?: ReactNode;
   height?: string;
   padding?: string;
   width?: string;

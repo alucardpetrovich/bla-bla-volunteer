@@ -19,6 +19,7 @@ const StyledContainer = {
 
 const Container: FC<IContainer & { children: ReactNode }> = ({ tag = 'content', children, ...props }) => {
   const TargetContainer = StyledContainer[tag];
+
   return <TargetContainer {...props}>{children}</TargetContainer>;
 };
 
