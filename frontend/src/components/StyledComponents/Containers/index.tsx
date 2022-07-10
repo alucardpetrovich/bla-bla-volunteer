@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC, ReactNode } from 'react';
 
 import {
   ContentContainer,
@@ -9,16 +9,17 @@ import {
   MainContainer,
 } from './style';
 
-const Container: React.FC<IContainer & { children: React.ReactNode }> = ({ tag, children, ...props }) => {
-  const StyledContainer = {
-    content: <ContentContainer {...props}>{children}</ContentContainer>,
-    header: <HeaderContainer {...props}>{children}</HeaderContainer>,
-    headerAuth: <HeaderAuthContainer {...props}>{children}</HeaderAuthContainer>,
-    main: <MainContainer {...props}>{children}</MainContainer>,
-    footer: <FooterContainer {...props}>{children}</FooterContainer>,
-  };
+const StyledContainer = {
+  content: ContentContainer,
+  header: HeaderContainer,
+  headerAuth: HeaderAuthContainer,
+  main: MainContainer,
+  footer: FooterContainer,
+};
 
-  return tag && tag in StyledContainer ? StyledContainer[tag] : StyledContainer['content'];
+const Container: FC<IContainer & { children: ReactNode }> = ({ tag = 'content', children, ...props }) => {
+  const TargetContainer = StyledContainer[tag];
+  return <TargetContainer {...props}>{children}</TargetContainer>;
 };
 
 export default Container;
