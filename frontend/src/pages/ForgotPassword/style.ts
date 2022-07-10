@@ -20,7 +20,7 @@ export const ForgotPasswordTitle = styled.h3`
 export const ForgotPasswordText = styled.p`
   font-family: 'Inter';
   font-size: 14px;
-  color: #93a9d2;
+  color: ${p => p.theme.palette.primary.main};
   width: 450px;
 `;
 

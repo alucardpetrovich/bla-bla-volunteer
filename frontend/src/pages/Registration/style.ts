@@ -22,10 +22,10 @@ export const StyledText = styled.p`
   font-weight: 400;
   font-size: 10px;
   line-height: 100%;
-  color: #8c8e91;
+  color: ${p => p.theme.palette.grey[500]};
   margin-bottom: 21px;
   width: 320px;
 `;
 export const StyledInnerText = styled.span`
-  color: #1546f5;
+  color: ${p => p.theme.palette.info.blue};
 `;

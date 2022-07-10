@@ -26,6 +26,7 @@ const palette: ThemePalette = {
   info: {
     main: '#F5DF4D', //F5DF4D
     hover: '#f6d605',
+    blue: '#1546f5',
   },
   primary: {
     main: '#93A9D2',

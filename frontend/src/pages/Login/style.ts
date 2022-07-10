@@ -1,15 +1,4 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-export const ForgotPasswordLink = styled(Link)`
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 100%;
-  color: #93a9d2;
-  margin-bottom: 21px;
-`;
 
 export const ForgotPasswordButton = styled.button`
   font-family: 'Inter';
@@ -17,8 +6,8 @@ export const ForgotPasswordButton = styled.button`
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
-  color: #93a9d2;
-  background-color: #fff;
+  color: ${p => p.theme.palette.primary.main};
+  background-color: ${p => p.theme.palette.common.white};
   border: none;
   margin-bottom: 21px;
   padding: 0;

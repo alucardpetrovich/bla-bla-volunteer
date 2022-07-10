@@ -18,5 +18,5 @@ export const VerificationWrapper = styled.div`
 `;
 
 export const VerificationText = styled.p`
-  color: #93a9d2;
+  color: ${p => p.theme.palette.primary.main};
 `;
