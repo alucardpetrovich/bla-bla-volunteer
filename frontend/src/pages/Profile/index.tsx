@@ -1,6 +1,7 @@
 import { useIntl } from 'react-intl';
-import Role from 'src/components/Role';
+import PersonalData from 'src/components/PersonalData';
 import RoleForm from 'src/components/RoleForm';
+import RoleSelection from 'src/components/RoleSelection';
 import { useAppSelector } from 'src/hooks';
 
 import { getUser } from '../../store/user/userSelectors';
@@ -20,7 +21,7 @@ const Profile: React.FC = () => {
         })}
         showInfo
       >
-        {involvements && involvements.length === 0 && <Role involvements={involvements} />}
+        {involvements && involvements.length !== 0 && <RoleSelection involvements={involvements} />}
         {involvements?.length !== 0 && <RoleForm />}
       </InfoTitle>
       <InfoTitle
@@ -30,7 +31,7 @@ const Profile: React.FC = () => {
         })}
         showInfo={false}
       >
-        <div>Особисті дані</div>
+        <PersonalData />
       </InfoTitle>
       <InfoTitle
         title={formatMessage({

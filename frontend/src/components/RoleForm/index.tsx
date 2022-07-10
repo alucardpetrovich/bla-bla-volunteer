@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { Autocomplete, TextField } from '@mui/material';
+import { SyntheticEvent, useState } from 'react';
 import { useIntl } from 'react-intl';
+import { settlementsAPI } from 'src/api';
 import { useAppDispatch } from 'src/hooks';
 import { createUserOrganization } from 'src/store/user/userOperations';
 
@@ -25,6 +27,8 @@ const RoleForm = () => {
   const { formatMessage } = useIntl();
   const dispatch = useAppDispatch();
 
+  //   const [cities, setCities] = useState([]);
+
   const [organizationFormValues, setOrganizationFormValues] = useState<OrganizationProps>({
     name: '',
     city: '',
@@ -40,6 +44,13 @@ const RoleForm = () => {
   });
 
   const { name, city, street, contacts, telegram } = organizationFormValues;
+  const testCities = [{ title: 'Lviv' }, { title: 'Odessa' }];
+
+  const onHandleSearch = (event: SyntheticEvent, value: string) => {
+    console.log('event', value);
+    const result = settlementsAPI.settlementsSearch(value, 1);
+    console.log('result', result);
+  };
 
   const handleOrganizationValuesOnChange = (value: string, name: string): void => {
     if (name === 'contacts') {
@@ -89,14 +100,34 @@ const RoleForm = () => {
         value={name}
         onChange={handleOrganizationValuesOnChange}
       />
-      <TextBox
+      {/* <TextBox
         label={formatMessage({
           defaultMessage: 'Назва населеного пункту',
           description: 'ProfileForm: city',
         })}
+        autoComplete="on"
         name="city"
         value={city}
         onChange={handleOrganizationValuesOnChange}
+      /> */}
+      <Autocomplete
+        freeSolo
+        id="cityList"
+        disableClearable
+        options={testCities.map(city => city.title)}
+        onChange={onHandleSearch}
+        renderInput={params => (
+          <TextField
+            {...params}
+            sx={{ m: 1, width: '36ch', bgcolor: '#fff' }}
+            size="small"
+            label="Місто"
+            InputProps={{
+              ...params.InputProps,
+              type: 'search',
+            }}
+          />
+        )}
       />
       <TextBox
         label={formatMessage({

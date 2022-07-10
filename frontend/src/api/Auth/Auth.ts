@@ -5,17 +5,17 @@ import { IUser } from '../../models/userModel/userModel';
 import axios, { axiosPrivate } from '../axios';
 
 const signUp = async (credentials: IAuthCredentials): Promise<AxiosResponse<IUser>> => {
-  const response = await axios.post('/auth/sign-up', credentials);
+  const response = await axios.post('/v1/auth/sign-up', credentials);
   return response;
 };
 
 const signIn = async (credentials: IAuthCredentials): Promise<AxiosResponse<IAuthResponse>> => {
-  const response = await axios.post('/auth/sign-in', credentials);
+  const response = await axios.post('/v1/auth/sign-in', credentials);
   return response;
 };
 
 const signOut = async (refreshToken: { refreshToken: string }): Promise<void> => {
-  await axios.delete('/auth/sign-out', {
+  await axios.delete('/v1/auth/sign-out', {
     data: refreshToken,
   });
 };
@@ -23,7 +23,7 @@ const signOut = async (refreshToken: { refreshToken: string }): Promise<void> =>
 const refreshAuthToken = async (
   refreshToken: string | undefined,
 ): Promise<AxiosResponse<Pick<IAuthResponse, 'tokens'>>> => {
-  const response = axios.post('/auth/refresh', {
+  const response = axios.post('/v1/auth/refresh', {
     refreshToken: refreshToken,
   });
   return response;
@@ -31,7 +31,7 @@ const refreshAuthToken = async (
 
 //! remove, just for test auth & headers with token
 const exampleRequest = async () => {
-  const response = await axiosPrivate.get('/involvements/types');
+  const response = await axiosPrivate.get('/v1/involvements/types');
   return response;
 };
 

@@ -15,6 +15,7 @@ export interface IText {
   children: React.ReactNode;
   href?: string;
   style?: object;
+  onClick?: () => void;
 }
 
 export const TextB1 = styled.p<IText>`

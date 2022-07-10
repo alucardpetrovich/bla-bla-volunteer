@@ -118,7 +118,7 @@ const Header = () => {
             <div style={{ width: '360px' }}>
               <Autocomplete
                 freeSolo
-                id="free-solo-2-demo"
+                id="searchField"
                 disableClearable
                 options={roles.map(role => role.title)}
                 renderInput={params => (

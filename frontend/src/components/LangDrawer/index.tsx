@@ -4,10 +4,13 @@ import MenuItem from '@mui/material/MenuItem';
 import { MouseEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'src/hooks';
+import messages from 'src/locale/list.json';
 import { changeLang } from 'src/store/lang/langOperations';
 import { getLang } from 'src/store/lang/langSelectors';
 
 import { Text } from '../StyledComponents';
+
+const locales = Object.keys(messages);
 
 const LangDrawer = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -58,19 +61,13 @@ const LangDrawer = () => {
           horizontal: 'left',
         }}
       >
-        <MenuItem onClick={handleClose} data-lang="ua">
-          <Text color="#fff" tag="b1" data-lang="ua">
-            ua
-          </Text>
-        </MenuItem>
-        <MenuItem onClick={handleClose} data-lang="ru">
-          <Text color="#fff" tag="b1" data-lang="ru">
-            ru
-          </Text>
-        </MenuItem>
-        {/* <MenuItem onClick={handleClose}>
-          <Text tag="b1">en</Text>
-        </MenuItem> */}
+        {locales.map(locale => (
+          <MenuItem key={locale} onClick={handleClose} data-lang={locale}>
+            <Text color="#fff" tag="b1" data-lang={locale}>
+              {locale}
+            </Text>
+          </MenuItem>
+        ))}
       </Menu>
     </div>
   );

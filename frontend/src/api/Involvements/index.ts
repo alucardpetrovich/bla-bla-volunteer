@@ -2,7 +2,7 @@ import { axiosPrivate } from '../../api/axios';
 
 const getInvolvements = async () => {
   try {
-    const response = await axiosPrivate.get('/involvements/types');
+    const response = await axiosPrivate.get('/v1/involvements/types');
     return response;
   } catch (error) {
     console.log('getInvolvementErr', error);
@@ -11,7 +11,7 @@ const getInvolvements = async () => {
 
 const updateInvolvements = async (involvement: unknown) => {
   try {
-    const response = await axiosPrivate.put('/involvements', involvement);
+    const response = await axiosPrivate.put('/v1/involvements', involvement);
     return response;
   } catch (error) {
     console.log('updateInvolvementsErr', error);

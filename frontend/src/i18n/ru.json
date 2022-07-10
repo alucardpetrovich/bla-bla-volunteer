@@ -27,6 +27,22 @@
     "defaultMessage": "[uk]: Безпека",
     "description": "Footer: footer_navLink_3"
   },
+  "C6ilEq": {
+    "defaultMessage": "[uk]: Зберегти",
+    "description": "PersonalData: saveInfoButton"
+  },
+  "DWdGIk": {
+    "defaultMessage": "[uk]: Додати інформацію",
+    "description": "ProfileForm: addInfo"
+  },
+  "FCE5J3": {
+    "defaultMessage": "[uk]: Листування",
+    "description": "Profile: messages"
+  },
+  "GUzYRC": {
+    "defaultMessage": "[uk]: Додати інформацію про Хаб",
+    "description": "ProfileForm: addInfo"
+  },
   "HGUy54": {
     "defaultMessage": "Для обеспечения вашей безопасности мы не рекомендуем вводить собственное имя и фамилию",
     "description": "Registration: nickNamePrivacyInfo"
@@ -63,13 +79,29 @@
     "defaultMessage": "вход / регистрация",
     "description": "Registration: title"
   },
+  "Z4gKO4": {
+    "defaultMessage": "[uk]: Оцінка активності",
+    "description": "Profile: activity"
+  },
   "ZEvWYL": {
     "defaultMessage": "Тратата",
     "description": "Header: title"
   },
+  "ZJFhHq": {
+    "defaultMessage": "[uk]: Скасувати",
+    "description": "ProfileForm: cancel"
+  },
+  "aUT13b": {
+    "defaultMessage": "[uk]: Електронна пошта",
+    "description": "PersonalData: email"
+  },
   "bU5skY": {
     "defaultMessage": "Номер телефона",
     "description": "Registration: phoneNumberInput"
+  },
+  "c+UzEc": {
+    "defaultMessage": "[uk]: Назва хабу",
+    "description": "ProfileForm: hubName"
   },
   "etXyqK": {
     "defaultMessage": "Забыл пароль",
@@ -78,6 +110,14 @@
   "fhIJT1": {
     "defaultMessage": "Пароль",
     "description": "Login: passwordInput"
+  },
+  "iwu/mt": {
+    "defaultMessage": "[uk]: Номер телефону",
+    "description": "PersonalData: phoneNumber"
+  },
+  "ktfdBb": {
+    "defaultMessage": "[uk]: Адреса",
+    "description": "ProfileForm: address"
   },
   "mV2Wi+": {
     "defaultMessage": "[uk]: Номер телефону доступний всім",
@@ -103,8 +143,32 @@
     "defaultMessage": "Придумайте никнейм",
     "description": "Registration: nickNameInput"
   },
+  "sPQDfP": {
+    "defaultMessage": "[uk]: Скасувати",
+    "description": "PersonalData: cancelInfoButton"
+  },
+  "sQUt+3": {
+    "defaultMessage": "[uk]: Особисті дані",
+    "description": "Profile: personalData"
+  },
+  "tViDKf": {
+    "defaultMessage": "[uk]: Ваша роль",
+    "description": "Profile: role"
+  },
+  "to7hkt": {
+    "defaultMessage": "[uk]: Редагувати",
+    "description": "PersonalData: editInfoButton"
+  },
   "tv0h/6": {
     "defaultMessage": "Пароль",
     "description": "Registration: passwordInput"
+  },
+  "vyjGKQ": {
+    "defaultMessage": "[uk]: Нікнейм",
+    "description": "PersonalData: nickName"
+  },
+  "wr0oXa": {
+    "defaultMessage": "[uk]: Контакти хабу",
+    "description": "ProfileForm: hubContacts"
   }
 }

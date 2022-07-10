@@ -5,11 +5,11 @@ import { useTheme } from 'styled-components';
 import RoleCard from '../atoms/RoleCard';
 import { RoleListWrapper, RoleWrapper } from './style';
 
-interface IRole {
+interface IRoleSelection {
   involvements: IInvolvement[];
 }
 
-const Role: React.FC<IRole> = ({ involvements }) => {
+const RoleSelection: React.FC<IRoleSelection> = ({ involvements }) => {
   const theme = useTheme();
   const mainColor = theme.palette.primary.main;
   const hoverColor = theme.palette.common.black;
@@ -31,4 +31,4 @@ const Role: React.FC<IRole> = ({ involvements }) => {
   );
 };
 
-export default Role;
+export default RoleSelection;
