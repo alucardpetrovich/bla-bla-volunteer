@@ -1,17 +1,14 @@
 import styled from 'styled-components';
 
-export interface IRoleCard {
-  id: string;
-  title: string;
-  textAlign?: 'left' | 'center' | 'right' | 'end' | 'start' | 'justify';
-  children?: string | React.ReactElement;
-}
-
 export interface ICardStyled {
   color?: string;
   hover?: string;
   onClick?(role: string): void;
   isActive?: boolean;
+}
+
+export interface ICardWrapper {
+  hover: string | undefined;
 }
 
 export interface ISeparator {
@@ -25,10 +22,23 @@ export const CardStyled = styled.div<ICardStyled>`
   color: ${({ color }) => color};
   border: ${({ color }) => `1px solid ${color}`};
   cursor: pointer;
+
   :hover,
   :focus {
     border-color: ${({ hover }) => hover};
     color: ${({ hover }) => hover};
+  }
+`;
+
+export const CardWrapper = styled.li<ICardWrapper>`
+  margin-bottom: 30px;
+  max-width: 356px;
+  display: flex;
+
+  :hover,
+  :focus {
+    color: ${({ hover }) => hover};
+    border-color: ${({ hover }) => hover};
   }
 `;
 

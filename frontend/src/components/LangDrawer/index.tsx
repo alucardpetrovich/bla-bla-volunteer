@@ -61,13 +61,19 @@ const LangDrawer = () => {
           horizontal: 'left',
         }}
       >
-        {locales.map(locale => (
-          <MenuItem key={locale} onClick={handleClose} data-lang={locale}>
-            <Text color="#fff" tag="b1" data-lang={locale}>
-              {locale}
-            </Text>
-          </MenuItem>
-        ))}
+        {locales.map(locale => {
+          let lang;
+          if (locale === 'uk') {
+            lang = 'ua';
+          } else lang = locale;
+          return (
+            <MenuItem key={lang} onClick={handleClose} data-lang={lang}>
+              <Text color="#fff" tag="b1" data-lang={lang}>
+                {lang}
+              </Text>
+            </MenuItem>
+          );
+        })}
       </Menu>
     </div>
   );
