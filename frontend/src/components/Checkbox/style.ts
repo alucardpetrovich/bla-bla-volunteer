@@ -15,7 +15,7 @@ export const StyledOption = styled.label`
   font-weight: 400;
   font-size: 12px;
   line-height: 100%;
-  color: #93a9d2;
+  color: ${p => p.theme.palette.primary.main}
   width: 320px;
   height: fit-content;
   margin-bottom: 21px;
@@ -34,8 +34,8 @@ export const StyledCheckboxBoxChecked = styled.span<ICheckBoxProps>`
   margin-left: -1.4em;
   width: 1em;
   height: 1em;
-  background-color: ${({ checked }) => (checked ? '#93A9D2' : '#fff')};
-  border: 1px solid ${({ checked }) => (checked ? '#93A9D2' : '#8c8e91')};
+  background-color: ${({ checked, theme }) => (checked ? theme.palette.primary.main : theme.palette.common.white)};
+  border: 1px solid ${({ checked, theme }) => (checked ? theme.palette.primary.main : theme.palette.grey[500])};
   display: flex;
   justify-content: center;
   align-items: center;

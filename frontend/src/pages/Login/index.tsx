@@ -31,6 +31,8 @@ const Login = (): JSX.Element => {
   const [isEmailFieldDisabled, setIsEmailFieldDisabled] = useState<boolean>(true);
   const [isPasswordFieldDisabled, setIsPasswordFieldDisabled] = useState<boolean>(true);
 
+  const formValidate = isEmailFieldDisabled || isPasswordFieldDisabled;
+
   const isDisabledEmail = (value: boolean) => {
     setIsEmailFieldDisabled(value);
   };
@@ -39,6 +41,8 @@ const Login = (): JSX.Element => {
   };
 
   const handleSubmit = (): void => {
+    if (formValidate) return;
+
     const credentials = {
       email: loginFormValues.email,
       password: loginFormValues.password,
@@ -65,8 +69,6 @@ const Login = (): JSX.Element => {
       showPassword: !showPassword,
     });
   };
-
-  const isDisabled = isEmailFieldDisabled || isPasswordFieldDisabled;
 
   return (
     <AuthContainer>
@@ -115,7 +117,6 @@ const Login = (): JSX.Element => {
             })}
           </ForgotPasswordButton>
           <Button
-            isDisabled={isDisabled}
             text={formatMessage({
               defaultMessage: 'Увійти',
               description: 'Login: signInButton',

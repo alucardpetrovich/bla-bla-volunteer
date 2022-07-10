@@ -35,6 +35,8 @@ const ForgotPassword = (): JSX.Element => {
   };
 
   const handleSubmit = () => {
+    if (isEmailFieldDisabled) return;
+
     setIsSended(true);
     //! коли буде PROCESS_ENV то для продакшена має бути 'https'
     const payload = { email, baseUrl: `http://${host}/${lang}` };
@@ -72,7 +74,6 @@ const ForgotPassword = (): JSX.Element => {
               />
               <ActionButtonWrapper>
                 <Button
-                  isDisabled={isEmailFieldDisabled}
                   text={formatMessage({
                     defaultMessage: 'Продовжити',
                     description: 'forgotPassword: submitButton',

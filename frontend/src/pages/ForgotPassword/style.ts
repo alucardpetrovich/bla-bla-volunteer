@@ -14,7 +14,7 @@ export const ForgotPasswordContainer = styled.div`
 
 export const ForgotPasswordTitle = styled.h3`
   font-family: 'Inter';
-  margin-bottom: 21px;
+  margin-bottom: 55px;
 `;
 
 export const ForgotPasswordText = styled.p`

@@ -67,6 +67,10 @@
     "defaultMessage": "Реєструючись, ви погоджуєтеся з умовами",
     "description": "Registration: licenseInfo"
   },
+  "WTfVNJ": {
+    "defaultMessage": "вхід",
+    "description": "AuthContainer: titleSignIn"
+  },
   "X8WhoU": {
     "defaultMessage": "Продовжити",
     "description": "forgotPassword: submitButton"
@@ -79,9 +83,17 @@
     "defaultMessage": "Відновлення паролю",
     "description": "forgotPassword: title"
   },
+  "ajlqYg": {
+    "defaultMessage": "Будь-ласка, верифікуйте ваш акаунт",
+    "description": "Verification: title"
+  },
   "bU5skY": {
     "defaultMessage": "Номер телефону",
     "description": "Registration: phoneNumberInput"
+  },
+  "eV+sCD": {
+    "defaultMessage": "реєстрація",
+    "description": "AuthContainer: titleSignUp"
   },
   "etXyqK": {
     "defaultMessage": "Забув пароль",
@@ -103,6 +115,10 @@
     "defaultMessage": "Поле повинно бути email",
     "description": "inputsValidation: emailError"
   },
+  "odPtpC": {
+    "defaultMessage": "Відкрийте лист на вашій електронній пошті та пройдіть за посиланням",
+    "description": "Verification: text"
+  },
   "qEclD0": {
     "defaultMessage": "положення про обробку і захист персональних даних та угодою користувача",
     "description": "Registration: licenseInfo"
@@ -122,21 +138,5 @@
   "wdx07I": {
     "defaultMessage": "Змінити пароль",
     "description": "ResetPassword: changePasswordButton"
-  },
-  "WTfVNJ": {
-    "defaultMessage": "вхід",
-    "description": "AuthContainer: titleSignIn"
-  },
-  "ajlqYg": {
-    "defaultMessage": "Будь-ласка, верифікуйте ваш акаунт",
-    "description": "Verification: title"
-  },
-  "eV+sCD": {
-    "defaultMessage": "реєстрація",
-    "description": "AuthContainer: titleSignUp"
-  },
-  "odPtpC": {
-    "defaultMessage": "Відкрийте лист на вашій електронній пошті та пройдіть за посиланням",
-    "description": "Verification: text"
   }
 }

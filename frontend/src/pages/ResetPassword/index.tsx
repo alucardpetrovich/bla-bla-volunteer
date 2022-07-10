@@ -35,6 +35,7 @@ const ResetPassword = (): JSX.Element => {
   const [isPasswordChanged, setIsPasswordChanged] = useState<boolean>(false);
 
   const { passwordFirst, passwordSecond, showFirstPassword, showSecondPassword } = password;
+  const formValidate = isFirstPasswordDisabled || isSecondPasswordDisabled || passwordFirst !== passwordSecond;
 
   const isDisabledFirstPassword = (value: boolean) => {
     setIsFirstPasswordDisabled(value);
@@ -67,6 +68,8 @@ const ResetPassword = (): JSX.Element => {
   };
 
   const handleSubmit = (): void => {
+    if (formValidate) return;
+
     setIsPasswordChanged(true);
     const payload = {
       newPassword: passwordFirst,
@@ -74,8 +77,6 @@ const ResetPassword = (): JSX.Element => {
     };
     dispatch(resetPassword(payload));
   };
-
-  const isButtonDisabled = isFirstPasswordDisabled || isSecondPasswordDisabled || passwordFirst !== passwordSecond;
 
   return (
     <AuthContainer>
@@ -119,7 +120,6 @@ const ResetPassword = (): JSX.Element => {
                 fullWidth
               />
               <Button
-                isDisabled={isButtonDisabled}
                 text={formatMessage({
                   defaultMessage: 'Змінити пароль',
                   description: 'ResetPassword: changePasswordButton',

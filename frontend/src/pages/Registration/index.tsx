@@ -31,6 +31,9 @@ const Registration = () => {
   const [isPhonePublic, setIsPhonePublic] = useState<boolean>(false);
   const [isPhoneByRequest, setIsPhoneByRequest] = useState<boolean>(false);
 
+  const formValidate =
+    isEmailFieldDisabled || isPasswordFieldDisabled || isNickNameFieldDisabled || isPhoneNumberFieldDisabled;
+
   useEffect(() => {
     if (isPhonePublic && !isPhoneByRequest) {
       setCredentials({
@@ -96,6 +99,8 @@ const Registration = () => {
   };
 
   const handleSubmitSignUp = () => {
+    if (formValidate) return;
+
     const payload = {
       nickname: nickName || '',
       email,
@@ -116,9 +121,6 @@ const Registration = () => {
     setIsPhonePublic(false);
     setIsPhoneByRequest(!isPhoneByRequest);
   };
-
-  const isDisabled =
-    isEmailFieldDisabled || isPasswordFieldDisabled || isNickNameFieldDisabled || isPhoneNumberFieldDisabled;
 
   return (
     <AuthContainer>
@@ -222,7 +224,7 @@ const Registration = () => {
               })}
             </StyledInnerText>
           </StyledText>
-          <Button isDisabled={isDisabled} text="Зареєструватися" marginBottom={21} onClick={handleSubmitSignUp} />
+          <Button text="Зареєструватися" marginBottom={21} onClick={handleSubmitSignUp} />
           <Button buttonType="tertiary" onClick={goToLogin}>
             {formatMessage({
               defaultMessage: 'Я вже зареєстрований',

@@ -1,10 +1,10 @@
 {
   "+Cjxb8": {
-    "defaultMessage": "[uk]: Перейти",
+    "defaultMessage": "Перейти",
     "description": "ResetPassword: goToLoginButton"
   },
   "+W1/FX": {
-    "defaultMessage": "[uk]: Придумйте новий пароль",
+    "defaultMessage": "Придумайте новый пароль",
     "description": "ResetPassword: passwordFirstInput"
   },
   "01x3vS": {
@@ -67,6 +67,10 @@
     "defaultMessage": "Регистрируясь вы соглашаетесь с условиями",
     "description": "Registration: licenseInfo"
   },
+  "WTfVNJ": {
+    "defaultMessage": "[uk]: вхід",
+    "description": "AuthContainer: titleSignIn"
+  },
   "X8WhoU": {
     "defaultMessage": "[uk]: Продовжити",
     "description": "forgotPassword: submitButton"
@@ -79,9 +83,17 @@
     "defaultMessage": "[uk]: Відновлення паролю",
     "description": "forgotPassword: title"
   },
+  "ajlqYg": {
+    "defaultMessage": "[uk]: Будь-ласка, верифікуйте ваш акаунт",
+    "description": "Verification: title"
+  },
   "bU5skY": {
     "defaultMessage": "Номер телефона",
     "description": "Registration: phoneNumberInput"
+  },
+  "eV+sCD": {
+    "defaultMessage": "[uk]: реєстрація",
+    "description": "AuthContainer: titleSignUp"
   },
   "etXyqK": {
     "defaultMessage": "Забыл пароль",
@@ -103,12 +115,16 @@
     "defaultMessage": "Поле должно быть email",
     "description": "inputsValidation: emailError"
   },
+  "odPtpC": {
+    "defaultMessage": "[uk]: Відкрийте лист на вашій електронній пошті та пройдіть за посиланням",
+    "description": "Verification: text"
+  },
   "qEclD0": {
     "defaultMessage": "положения про обработку и защиту персональных данных и пользовательского соглашениея",
     "description": "Registration: licenseInfo"
   },
   "rMynxh": {
-    "defaultMessage": "Я уже заренестрирован",
+    "defaultMessage": "Я уже зарегистрирован",
     "description": "Registration: alreadyRegisteredButton"
   },
   "rRhUrR": {
@@ -122,21 +138,5 @@
   "wdx07I": {
     "defaultMessage": "[uk]: Змінити пароль",
     "description": "ResetPassword: changePasswordButton"
-  },
-  "WTfVNJ": {
-    "defaultMessage": "[uk]: вхід",
-    "description": "AuthContainer: titleSignIn"
-  },
-  "ajlqYg": {
-    "defaultMessage": "[uk]: Будь-ласка, верифікуйте ваш акаунт",
-    "description": "Verification: title"
-  },
-  "eV+sCD": {
-    "defaultMessage": "[uk]: реєстрація",
-    "description": "AuthContainer: titleSignUp"
-  },
-  "odPtpC": {
-    "defaultMessage": "[uk]: Відкрийте лист на вашій електронній пошті та пройдіть за посиланням",
-    "description": "Verification: text"
   }
 }
