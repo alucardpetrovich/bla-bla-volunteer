@@ -1,3 +1,10 @@
+export { ArrowRightIcon } from './components/ArrowRightIcon';
+export { Heading } from './components/Headings';
+export { Logo } from './components/Logo';
+export { NotificationsIcon } from './components/NotificationsIcon';
+export { SearchIcon } from './components/SearchIcon';
 export { TestButton } from './components/TestButton/Button';
+export { Text } from './components/Text';
+export { TextButton } from './components/TextButton';
 export { DeviceMatchProvider, useDeviceMatch } from './hooks/useDeviceMatch';
 export { DeviceSizes, theme } from './theme';

@@ -46,4 +46,5 @@ export const StyledButton = styled.button<StyledButtonProps>`
       if (buttonType === 'secondary') return '#5880cb';
       if (buttonType === 'tertiary') return '#e2e2e2';
     }};
+  }
 `;
