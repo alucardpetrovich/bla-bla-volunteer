@@ -31,8 +31,6 @@ const Header = () => {
 
   const isShowHeading = !!(pathname?.includes('registration') || pathname?.includes('login'));
 
-  //
-
   const handleLogOut = () => {
     if (!isAuth) {
       goToLogin();
