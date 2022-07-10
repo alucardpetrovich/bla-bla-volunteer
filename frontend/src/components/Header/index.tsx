@@ -145,6 +145,7 @@ const Header = () => {
                   description: 'Logout: title',
                 })}
               </TextButton>
+              <VertDevider />
               <LangDrawer />
             </NavWrapper>
           </UserInfoWrapper>

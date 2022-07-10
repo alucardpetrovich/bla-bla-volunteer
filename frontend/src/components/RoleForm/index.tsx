@@ -24,12 +24,25 @@ interface OrganizationProps {
   telegram: string;
 }
 
+interface ILocation {
+  lon: number;
+  lat: number;
+}
+
+interface ICity {
+  centerLocation: ILocation;
+  countryCode: string;
+  district: string;
+  id: string;
+  name: string;
+  region: string;
+  type: string;
+}
+
 const RoleForm = () => {
   const { formatMessage } = useIntl();
   const dispatch = useAppDispatch();
   const lang = useAppSelector(getLang);
-
-  //   const [cities, setCities] = useState([]);
 
   const [organizationFormValues, setOrganizationFormValues] = useState<OrganizationProps>({
     name: '',
@@ -47,13 +60,25 @@ const RoleForm = () => {
 
   const { name, city, street, contacts, telegram } = organizationFormValues;
 
-  // const [citiesList, setCitiesList] = useState([]);
-  const testCities = [{ title: 'Lviv' }, { title: 'Odessa' }];
+  const [citiesList, setCitiesList] = useState<ICity[]>([]);
+  const [citySearch, setCitySearch] = useState('');
 
-  const onHandleSearch = (event: SyntheticEvent, value: string) => {
-    const result = settlementsAPI.settlementsSearch(value, 1, lang);
-    console.log('event', value, result);
-    console.log('result', result);
+  const onHandleSearch = async (event: SyntheticEvent, value: string) => {
+    const result = await settlementsAPI.settlementsSearch(value, 1, lang);
+    setCitiesList(result);
+  };
+
+  const onInputChange = (event: SyntheticEvent, value: string) => {
+    setCitySearch(value);
+    if (citySearch.length <= 2) return;
+
+    setTimeout(async () => {
+      if (citySearch.length >= 3) {
+        const result = await settlementsAPI.settlementsSearch(citySearch, 1, lang);
+        console.log('result', result);
+        setCitiesList(result);
+      }
+    }, 1000);
   };
 
   const handleOrganizationValuesOnChange = (value: string, name: string): void => {
@@ -118,20 +143,28 @@ const RoleForm = () => {
         freeSolo
         id="cityList"
         disableClearable
-        options={testCities.map(city => city.title)}
+        options={citiesList.map(city => city.name)}
+        // FIXME: пофіксить тайпінги
+        // eslint-disable-next-line
+        // @ts-ignore
         onChange={onHandleSearch}
-        renderInput={params => (
-          <TextField
-            {...params}
-            sx={{ m: 1, width: '36ch', bgcolor: '#fff' }}
-            size="small"
-            label="Місто"
-            InputProps={{
-              ...params.InputProps,
-              type: 'search',
-            }}
-          />
-        )}
+        onInputChange={onInputChange}
+        // renderInput={params => (
+        //   <TextField
+        //     {...params}
+        //     sx={{ m: 1, width: '36ch', bgcolor: '#fff' }}
+        //     size="small"
+        //     label="Місто"
+        //     InputProps={{
+        //       ...params.InputProps,
+        //       type: 'search',
+        //     }}
+        //   />
+        // )}
+        renderInput={params => {
+          console.log('params', params);
+          return <TextField {...params} label="Місто" />;
+        }}
       />
       <TextBox
         label={formatMessage({
