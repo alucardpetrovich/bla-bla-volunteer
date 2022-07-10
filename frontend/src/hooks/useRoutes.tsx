@@ -1,5 +1,6 @@
 import { useRoutes } from 'react-router';
 import RedirectToHome from 'src/components/Redirects/RedirectToHome';
+import RedirectToNotFound404 from 'src/components/Redirects/RedirectToNotFound404';
 import { PATHS } from 'src/constants/PATH';
 import DonarPage from 'src/pages/Donar';
 import DriverPage from 'src/pages/Driver';
@@ -92,6 +93,11 @@ const useRoutesConstants = () => {
     {
       path: PATHS.NOT_FOUND_404.path,
       element: <NotFoundPage />,
+    },
+
+    {
+      path: PATHS.NOT_FOUND.path,
+      element: <RedirectToNotFound404 />,
     },
   ]);
 
