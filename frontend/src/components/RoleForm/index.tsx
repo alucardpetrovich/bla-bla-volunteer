@@ -1,5 +1,6 @@
 import { Autocomplete, TextField } from '@mui/material';
-import { SyntheticEvent, useState } from 'react';
+import { debounce } from 'lodash';
+import { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { settlementsAPI } from 'src/api';
 import { useAppDispatch, useAppSelector } from 'src/hooks';
@@ -61,25 +62,29 @@ const RoleForm = () => {
   const { name, city, street, contacts, telegram } = organizationFormValues;
 
   const [citiesList, setCitiesList] = useState<ICity[]>([]);
-  const [citySearch, setCitySearch] = useState('');
 
   const onHandleSearch = async (event: SyntheticEvent, value: string) => {
     const result = await settlementsAPI.settlementsSearch(value, 1, lang);
     setCitiesList(result);
   };
 
-  const onInputChange = (event: SyntheticEvent, value: string) => {
-    setCitySearch(value);
-    if (citySearch.length <= 2) return;
+  const onInputChange = useRef(
+    debounce(async (event: SyntheticEvent, value: string) => {
+      if (!value) return;
 
-    setTimeout(async () => {
-      if (citySearch.length >= 3) {
-        const result = await settlementsAPI.settlementsSearch(citySearch, 1, lang);
-        console.log('result', result);
+      if (value.length > 1) {
+        const result = await settlementsAPI.settlementsSearch(value, 1, lang);
         setCitiesList(result);
       }
-    }, 1000);
-  };
+    }, 500),
+  ).current;
+
+  useEffect(() => {
+    return () => {
+      onInputChange.cancel();
+      setCitiesList([]);
+    };
+  }, [onInputChange]);
 
   const handleOrganizationValuesOnChange = (value: string, name: string): void => {
     if (name === 'contacts') {
@@ -140,32 +145,23 @@ const RoleForm = () => {
         onChange={handleOrganizationValuesOnChange}
       /> */}
 
-      {/* !!!  Autocomplete in progress */}
-
       <Autocomplete
         freeSolo
         id="cityList"
         disableClearable
-        options={citiesList.map(city => city.name)}
-        // FIXME: пофіксить тайпінги
-        // eslint-disable-next-line
-        // @ts-ignore
+        options={citiesList.map(city => {
+          return `${city.name} (${city.region}, ${city.district})`;
+        })}
+        renderOption={(props, option) => {
+          return (
+            <li {...props} key={props.id}>
+              {option}
+            </li>
+          );
+        }}
         onChange={onHandleSearch}
         onInputChange={onInputChange}
-        // renderInput={params => (
-        //   <TextField
-        //     {...params}
-        //     sx={{ m: 1, width: '36ch', bgcolor: '#fff' }}
-        //     size="small"
-        //     label="Місто"
-        //     InputProps={{
-        //       ...params.InputProps,
-        //       type: 'search',
-        //     }}
-        //   />
-        // )}
         renderInput={params => {
-          console.log('params', params);
           return <TextField {...params} label="Місто" />;
         }}
       />
