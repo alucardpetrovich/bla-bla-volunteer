@@ -20,20 +20,14 @@ const HomePage = () => {
       />
 
       <S.ImageWrapper>
-        <img src={data.firstTeaser[currentIndex].image_1} />
-        <img src={data.firstTeaser[currentIndex].image_2} />
+        <S.Image src={data.firstTeaser[currentIndex].image_1} />
+        <S.Image src={data.firstTeaser[currentIndex].image_2} />
       </S.ImageWrapper>
 
       <S.SectionTitle>{data.title_2}</S.SectionTitle>
       <S.DescriptionWrapper>
-        <h3>{data.description} </h3>
-        <Teaser
-          data={data.secondTeaser}
-          direction="column"
-          padding="0"
-          // padding={theme.spacing(0, 0, 6.6, 0)}
-          isBlockBubbling={false}
-        />
+        <S.HomeHeading>{data.description} </S.HomeHeading>
+        <Teaser data={data.secondTeaser} direction="column" padding="0" isBlockBubbling={false} />
       </S.DescriptionWrapper>
     </>
   );

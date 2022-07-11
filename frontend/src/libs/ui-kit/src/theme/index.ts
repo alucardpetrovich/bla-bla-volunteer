@@ -68,7 +68,7 @@ const types: Types = {
   h5_900: {
     fontSize: 14,
     lineHeight: 1.5,
-    fontWeight: 700,
+    fontWeight: 900,
   },
 
   body1: {
