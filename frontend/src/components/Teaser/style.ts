@@ -3,61 +3,52 @@ import styled from 'styled-components';
 export const TeaserWrapper = styled.div<{ direction?: string; padding?: string }>`
   display: flex;
   width: 100%;
-  padding: ${({ padding }) => padding ?? '100px 0px'};
-  flex-direction: ${({ direction }) => direction ?? 'row'};
+  padding: ${p => p.padding ?? p.theme.spacing(12.5, 0)};
+  flex-direction: ${p => p.direction ?? 'row'};
 
-  @media (min-width: 1024px) and (max-width: 1439px) {
-    padding: ${({ padding }) => padding ?? '80px 0px'};
+  ${p => p.theme.breakpoints.down('lg')} {
+    padding: ${p => p.padding ?? p.theme.spacing(5, 0)};
   }
-
-  @media (max-width: 767px) {
+  ${p => p.theme.breakpoints.down('md')} {
     flex-direction: column;
   }
 `;
 
 export const TeaserItem = styled.div<{ isActive?: boolean }>`
   cursor: pointer;
-
-  h2 {
-    font-weight: 900;
-    font-size: 20px;
-    line-height: 120%;
-    border-bottom: ${({ isActive }) => (isActive ? '1.5px solid black' : '1px solid #8C8E91')};
-    padding-bottom: 40px;
-    margin-bottom: 40px;
-  }
-
-  p {
-    font-weight: 400;
-    font-size: 14px;
-  }
+  padding: ${p => p.theme.spacing(0, 0, 4.5, 0)};
 
   h2,
   p {
-    color: ${({ isActive, theme }) => (isActive ? `${theme.palette.common.black}` : '#8C8E91')};
-
+    color: ${p => (p.isActive ? `${p.theme.palette.common.black}` : `${p.theme.palette.grey[500]}`)};
     transition: color 0.7s ease-out;
   }
+`;
 
-  @media (min-width: 1024px) and (max-width: 1439px) {
-    h2 {
-      font-size: 16px;
-      padding-bottom: 20px;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 12px;
-    }
+export const TeaserItemHeading = styled.h2<{ isActive?: boolean }>`
+  ${p => p.theme.font('h3_900')};
+  border-bottom: ${p =>
+    p.isActive ? `1.5px solid ${p.theme.palette.common.black}` : `1px solid ${p.theme.palette.grey[500]}`};
+  padding-bottom: ${p => p.theme.spacing(5)};
+  margin-bottom: ${p => p.theme.spacing(5)};
+
+  ${p => p.theme.breakpoints.down('lg')} {
+    ${p => p.theme.font('h4_900')};
+    padding-bottom: ${p => p.theme.spacing(2.5)};
+    margin-bottom: ${p => p.theme.spacing(2.5)};
   }
+  ${p => p.theme.breakpoints.down('md')} {
+    ${p => p.theme.font('h5_900')};
+  }
+`;
 
-  @media (min-width: 768px) and (max-width: 1023px) {
-    h2 {
-      font-size: 14px;
-      padding-bottom: 20px;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 11px;
-    }
+export const TeaserItemParagraph = styled.p`
+  ${({ theme }) => theme.font('body3')};
+
+  ${p => p.theme.breakpoints.down('lg')} {
+    ${p => p.theme.font('body4')};
+  }
+  ${p => p.theme.breakpoints.down('md')} {
+    ${p => p.theme.font('body6')};
   }
 `;

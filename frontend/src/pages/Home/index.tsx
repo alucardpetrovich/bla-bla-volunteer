@@ -1,3 +1,4 @@
+// import { theme } from '@ui-kit';
 import React, { useState } from 'react';
 import { Teaser } from 'src/components/Teaser';
 
@@ -26,7 +27,13 @@ const HomePage = () => {
       <S.SectionTitle>{data.title_2}</S.SectionTitle>
       <S.DescriptionWrapper>
         <h3>{data.description} </h3>
-        <Teaser data={data.secondTeaser} direction="column" padding="0" isBlockBubbling={false} />
+        <Teaser
+          data={data.secondTeaser}
+          direction="column"
+          padding="0"
+          // padding={theme.spacing(0, 0, 6.6, 0)}
+          isBlockBubbling={false}
+        />
       </S.DescriptionWrapper>
     </>
   );

@@ -44,19 +44,22 @@ export const Teaser: React.FC<ITeaser> = ({
   };
 
   return (
-    <S.TeaserWrapper direction={direction} padding={padding} onClick={handleClick}>
-      {data.map((item, key) => (
-        <S.TeaserItem
-          data-index={key}
-          className="teaser_item"
-          key={item.title + '' + key}
-          onClick={handleClick}
-          isActive={currentIndex === key || !isBlockBubbling}
-        >
-          <h2>{item.title}</h2>
-          <p>{item.description}</p>
-        </S.TeaserItem>
-      ))}
+    <S.TeaserWrapper direction={direction} onClick={handleClick} padding={padding}>
+      {data?.map((item, key) => {
+        const active = currentIndex === key || !isBlockBubbling;
+        return (
+          <S.TeaserItem
+            data-index={key}
+            className="teaser_item"
+            key={item.title + '' + key}
+            onClick={handleClick}
+            isActive={active}
+          >
+            <S.TeaserItemHeading isActive={active}>{item.title}</S.TeaserItemHeading>
+            <S.TeaserItemParagraph>{item.description}</S.TeaserItemParagraph>
+          </S.TeaserItem>
+        );
+      })}
     </S.TeaserWrapper>
   );
 };

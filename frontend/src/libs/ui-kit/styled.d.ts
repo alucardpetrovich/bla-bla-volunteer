@@ -9,7 +9,22 @@ import {
   TypeBackground,
 } from '@mui/material/styles/createPalette';
 
-type FontEntry = 'h1' | 'h2' | 'h3' | 'h4' | 'body1' | 'body2' | 'body3' | 'body4' | 'body5' | 'body6' | 'body7';
+type FontEntry =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h3_900'
+  | 'h4'
+  | 'h4_900'
+  | 'h5'
+  | 'h5_900'
+  | 'body1'
+  | 'body2'
+  | 'body3'
+  | 'body4'
+  | 'body5'
+  | 'body6'
+  | 'body7';
 
 export interface ThemePalette {
   common: Partial<CommonColors>;
