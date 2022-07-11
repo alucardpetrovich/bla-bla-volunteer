@@ -1,3 +1,4 @@
+export { default as default_user } from './default-user.jpeg';
 export { default as bgImgS } from './header-bg.png';
 export { default as bgImgAuth } from './header-bg-auth.png';
 export { default as bgImg } from './header-bg-s.png';

@@ -24,7 +24,9 @@ type FontEntry =
   | 'body4'
   | 'body5'
   | 'body6'
-  | 'body7';
+  | 'body7'
+  | 'body8'
+  | 'body9';
 
 export interface ThemePalette {
   common: Partial<CommonColors>;

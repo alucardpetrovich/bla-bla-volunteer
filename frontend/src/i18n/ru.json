@@ -71,6 +71,10 @@
     "defaultMessage": "вход / регистрация",
     "description": "Login: title"
   },
+  "Sjfvcj": {
+    "defaultMessage": "[uk]: вихід",
+    "description": "Logout: title"
+  },
   "SsPKIt": {
     "defaultMessage": "Минимальная длина не должна быть меньше {minValue} символов",
     "description": "inputsValidation: minLengthError"
@@ -95,6 +99,10 @@
     "defaultMessage": "[uk]: Простота",
     "description": "Home: secondTeaser_title_1"
   },
+  "YfLmTV": {
+    "defaultMessage": "[uk]: Пошук",
+    "description": "Header: searchField"
+  },
   "YvR5rJ": {
     "defaultMessage": "вход / регистрация",
     "description": "Registration: title"
@@ -111,6 +119,10 @@
     "defaultMessage": "Номер телефона",
     "description": "Registration: phoneNumberInput"
   },
+  "eiJ8g1": {
+    "defaultMessage": "[uk]: Зареєструйся та стань частиною українського волонтерського руху",
+    "description": "Header: registrationComment"
+  },
   "etXyqK": {
     "defaultMessage": "Забыл пароль",
     "description": "Login: forgotPassword"
@@ -122,6 +134,10 @@
   "ii/P/s": {
     "defaultMessage": "[uk]: Координація передачі гуманітарної допомоги між донорами та волонтерськими хабами / хабами",
     "description": "Home: firstTeaser_description_1"
+  },
+  "l/UVCk": {
+    "defaultMessage": "[uk]: реєстрація",
+    "description": "Header: registrationButton"
   },
   "mV2Wi+": {
     "defaultMessage": "[uk]: Номер телефону доступний всім",
@@ -154,6 +170,10 @@
   "wqpq5k": {
     "defaultMessage": "[uk]: Донори - Хаби",
     "description": "Home: firstTeaser_title_1"
+  },
+  "zKD6CI": {
+    "defaultMessage": "[uk]: вхід",
+    "description": "Logout: title"
   },
   "zQjznj": {
     "defaultMessage": "[uk]: Безпека",

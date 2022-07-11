@@ -1,4 +1,7 @@
+import { Heading, Logo, Text } from '@ui-kit';
 import styled from 'styled-components';
+
+import bgImgS from '../../assets/images/header-bg-s.png';
 
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -9,6 +12,14 @@ export const HeaderWrapper = styled.div`
 export const HeaderTitleWrapper = styled.div`
   width: 700px;
   margin-left: auto;
+`;
+
+export const CustomHeading = styled(Heading)`
+  margin-bottom: 200px;
+`;
+
+export const CustomText = styled(Text)`
+  width: 345px;
 `;
 
 export const HeaderSubtitleWrapper = styled.div`
@@ -25,4 +36,50 @@ export const SignUpButton = styled.button`
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
+`;
+
+export const LogoWrapper = styled.div`
+  display: flex;
+`;
+
+export const LogoBackground = styled.div`
+  width: 250px;
+  height: 128px;
+  background-image: url(${bgImgS});
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+`;
+
+export const HeaderLogo = styled(Logo)`
+  position: absolute;
+  top: 48px;
+  left: 32px;
+  cursor: pointer;
+`;
+
+export const UserInfoWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 250px);
+  padding: 0px 32px;
+`;
+
+export const SearchWrapper = styled.div`
+  width: 360px;
+`;
+
+export const NavWrapper = styled.div`
+  width: 166px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const VertDevider = styled.div`
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${p => p.theme.palette.common.black};
+  height: 24px;
 `;

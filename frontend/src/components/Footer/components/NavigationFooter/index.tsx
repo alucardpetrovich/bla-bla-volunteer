@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 import * as S from './style';
 
@@ -8,7 +8,7 @@ interface INavigationFooter {
   data: Data[];
 }
 
-export const NavigationFooter: React.FC<INavigationFooter> = ({ data }) => {
+export const NavigationFooter: FC<INavigationFooter> = ({ data }) => {
   return (
     <S.NavigationFooterList>
       {data?.map((item, key) => (

@@ -1,6 +1,6 @@
-import React from 'react';
+import { SVGProps } from 'react';
 
-const Logo = ({ height, width, ...props }: React.SVGProps<SVGSVGElement>) => (
+const Logo = ({ height, width, ...props }: SVGProps<SVGSVGElement>) => (
   <svg
     version="1.1"
     id="Layer_1"
