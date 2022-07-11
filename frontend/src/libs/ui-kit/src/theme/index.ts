@@ -26,7 +26,7 @@ const palette: ThemePalette = {
     main: '#F5DF4D', //F5DF4D
   },
   primary: {
-    main: '#93A9D2',
+    main: '#8C8E91',
   },
 };
 
@@ -87,7 +87,6 @@ const types: Types = {
     lineHeight: 1,
     fontWeight: 400,
   },
-
   body8: {
     fontSize: 20,
     lineHeight: 1.4,
