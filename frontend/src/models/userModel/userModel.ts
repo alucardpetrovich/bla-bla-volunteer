@@ -3,7 +3,7 @@ export interface IInvolvement {
   verified: boolean;
 }
 export interface IUser {
-  involvements?: IInvolvement[];
+  involvements: IInvolvement[];
   id: string;
   status: string;
   nickname: string;

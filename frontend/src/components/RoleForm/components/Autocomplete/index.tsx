@@ -7,6 +7,10 @@ import { getLang } from 'src/store/lang/langSelectors';
 
 import InputWrapper from '../../../InputWrapper/InputWrapper';
 
+type AutocompleteCusProps = {
+  setData?: (data: string) => void;
+};
+
 interface ILocation {
   lon: number;
   lat: number;
@@ -22,7 +26,7 @@ interface ICity {
   type: string;
 }
 
-const AutocompleteCus = () => {
+const AutocompleteCus = ({ setData }: AutocompleteCusProps) => {
   const lang = useAppSelector(getLang);
   const [citiesList, setCitiesList] = useState<ICity[]>([]);
 
@@ -44,13 +48,25 @@ const AutocompleteCus = () => {
     };
   }, [onInputChange]);
 
+  const onSelectCity = (string: string) => {
+    if (string) {
+      const uuid = string.slice(-37, -1);
+      // FIXME: пофіксить тайпінги
+      // eslint-disable-next-line
+      // @ts-ignore
+      setData(uuid);
+    }
+  };
+
   return (
     <InputWrapper name="name" label="Назва населеного пункту">
       <Autocomplete
         freeSolo
+        autoSelect
         id="cityList"
+        defaultValue="Оберіть місто"
         options={citiesList.map(city => {
-          return `${city.name} (${city.region}, ${city.district})`;
+          return `${city.name} (${city.region}, ${city.district} ${city.id})`;
         })}
         renderOption={(props, option) => {
           return (
@@ -63,6 +79,10 @@ const AutocompleteCus = () => {
         renderInput={params => {
           return <TextField {...params} type="text" />;
         }}
+        // FIXME: пофіксить тайпінги
+        // eslint-disable-next-line
+        // @ts-ignore
+        onChange={(e, value) => onSelectCity(value)}
       />
     </InputWrapper>
   );

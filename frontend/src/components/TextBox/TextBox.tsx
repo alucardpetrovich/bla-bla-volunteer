@@ -12,7 +12,7 @@ interface ITextBoxProps extends InputWrapperProps {
   handleClickShowPassword?: () => void;
   value: string;
   size?: 'small' | 'medium' | undefined;
-  type?: 'text' | 'password' | 'email';
+  type?: 'text' | 'password' | 'email' | 'phone' | 'telegram' | 'viber' | 'instagram' | 'facebook';
   showPasswordIcon?: boolean;
   onChange: (value: string, name: string) => void;
   id?: string;

@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { useAppDispatch } from 'src/hooks';
+import { contactsAPI } from 'src/api';
+import { useAppDispatch, useAppSelector } from 'src/hooks';
+import { getLang } from 'src/store/lang/langSelectors';
 import { createUserOrganization } from 'src/store/user/userOperations';
+import { getUserInvolvement } from 'src/store/user/userSelectors';
 
 import Button from '../Buttons/Button';
 import TextBox from '../TextBox/TextBox';
@@ -22,10 +25,26 @@ interface OrganizationProps {
   telegram: string;
 }
 
+interface OrganizationReqProps {
+  name: string;
+  type: string | undefined;
+  address: string;
+  settlementId: string;
+  contacts: IContact[];
+}
+
+interface IContactType {
+  type: string;
+  name: string;
+}
+
 const RoleForm = () => {
   const { formatMessage } = useIntl();
   const dispatch = useAppDispatch();
 
+  const [loading, setLoading] = useState(false);
+  const [settlementId, setSettlementId] = useState('');
+  const [contactsTypes, setContactsTypes] = useState<IContactType[]>([]);
   const [organizationFormValues, setOrganizationFormValues] = useState<OrganizationProps>({
     name: '',
     city: '',
@@ -40,13 +59,25 @@ const RoleForm = () => {
     telegram: '',
   });
 
-  const { name, city, street, contacts, telegram } = organizationFormValues;
+  const { name, street, contacts, telegram } = organizationFormValues;
+  const userType = useAppSelector(getUserInvolvement);
+  const lang = useAppSelector(getLang);
+
+  useEffect(() => {
+    (async () => {
+      const result = await contactsAPI.getContactTypes(lang);
+      setContactsTypes(result);
+      console.log('contactsTypes', contactsTypes);
+      setLoading(true);
+      return result;
+    })();
+  }, [loading]);
 
   const handleOrganizationValuesOnChange = (value: string, name: string): void => {
-    if (name === 'contacts') {
+    if (name === ('phone' || 'telegram')) {
       const newContact = {
-        accessMode: '',
-        type: '',
+        accessMode: 'public',
+        type: name,
         value: value,
       };
       //!!! check adding second contact
@@ -57,12 +88,12 @@ const RoleForm = () => {
   };
 
   const handleSubmit = (): void => {
-    const credentials: OrganizationProps = {
+    const credentials: OrganizationReqProps = {
       name,
-      city,
-      street,
+      type: userType,
+      address: street,
       contacts,
-      telegram,
+      settlementId,
     };
 
     try {
@@ -100,7 +131,8 @@ const RoleForm = () => {
         value={city}
         onChange={handleOrganizationValuesOnChange}
       /> */}
-      <Autocomplete />
+
+      <Autocomplete setData={setSettlementId} />
       <TextBox
         label={formatMessage({
           defaultMessage: 'Адреса',
@@ -115,7 +147,7 @@ const RoleForm = () => {
           defaultMessage: 'Контакти хабу',
           description: 'ProfileForm: hubContacts',
         })}
-        name="contacts"
+        name="phone"
         value={contacts[0].value}
         onChange={handleOrganizationValuesOnChange}
       />
