@@ -4,8 +4,8 @@ import RoleForm from 'src/components/RoleForm';
 import RoleSelection from 'src/components/RoleSelection';
 import { useAppSelector } from 'src/hooks';
 
+import InfoTitle from '../../components/InfoTitle';
 import { getUser } from '../../store/user/userSelectors';
-import InfoTitle from './components/InfoTitle';
 
 const Profile: React.FC = () => {
   const { formatMessage } = useIntl();
@@ -21,7 +21,7 @@ const Profile: React.FC = () => {
         })}
         showInfo
       >
-        {involvements && involvements.length !== 0 && <RoleSelection involvements={involvements} />}
+        {involvements && involvements.length === 0 && <RoleSelection involvements={involvements} />}
         {involvements?.length !== 0 && <RoleForm />}
       </InfoTitle>
       <InfoTitle
