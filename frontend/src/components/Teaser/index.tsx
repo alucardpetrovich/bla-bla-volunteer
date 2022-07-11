@@ -51,7 +51,7 @@ export const Teaser: React.FC<ITeaser> = ({
           className="teaser_item"
           key={item.title + '' + key}
           onClick={handleClick}
-          isActive={currentIndex === key ? true : !isBlockBubbling ? true : false}
+          isActive={currentIndex === key || !isBlockBubbling}
         >
           <h2>{item.title}</h2>
           <p>{item.description}</p>
