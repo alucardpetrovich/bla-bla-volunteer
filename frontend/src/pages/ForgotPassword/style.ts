@@ -14,12 +14,13 @@ export const ForgotPasswordContainer = styled.div`
 
 export const ForgotPasswordTitle = styled.h3`
   font-family: 'Inter';
+  ${p => p.theme.font('h3')};
   margin-bottom: ${p => p.theme.spacing(7)};
 `;
 
 export const ForgotPasswordText = styled.p`
   font-family: 'Inter';
-  font-size: ${p => p.theme.spacing(1.75)};
+  ${p => p.theme.font('body3')};
   color: ${p => p.theme.palette.primary.main};
   width: 450px;
 `;

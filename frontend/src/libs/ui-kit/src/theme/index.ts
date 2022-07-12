@@ -50,10 +50,30 @@ const types: Types = {
     lineHeight: 1.2,
     fontWeight: 700,
   },
+  h3_900: {
+    fontSize: 20,
+    lineHeight: 1.2,
+    fontWeight: 700,
+  },
   h4: {
+    fontSize: 16,
+    lineHeight: 1.5,
+    fontWeight: 700,
+  },
+  h4_900: {
+    fontSize: 16,
+    lineHeight: 1.5,
+    fontWeight: 700,
+  },
+  h5: {
     fontSize: 14,
     lineHeight: 1.5,
     fontWeight: 700,
+  },
+  h5_900: {
+    fontSize: 14,
+    lineHeight: 1.5,
+    fontWeight: 900,
   },
 
   body1: {

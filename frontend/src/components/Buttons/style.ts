@@ -36,9 +36,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   height: ${p => p.theme.spacing(5.5)};
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 400;
-  font-size: ${p => p.theme.spacing(2)};
-  line-height: 130%;
+  ${p => p.theme.font('body9')}
   &:hover {
     background-color: ${({ buttonType, disabled, theme }) => {
       if (disabled) return theme.palette.grey[800];

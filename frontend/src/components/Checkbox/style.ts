@@ -11,9 +11,7 @@ export const StyledOption = styled.label`
   border-bottom: 1px solid $themeMono6;
   padding-left: 1.2em;
   font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: ${p => p.theme.spacing(1.5)};
+  ${p => p.theme.font('body5')}
   line-height: 100%;
   color: ${p => p.theme.palette.primary.main}
   width: 320px;

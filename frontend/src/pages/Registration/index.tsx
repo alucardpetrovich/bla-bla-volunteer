@@ -11,15 +11,16 @@ import { IAuthCredentials } from '../../models/authModel/authModel';
 import { userRegistration } from '../../store';
 import { RegisterFormContainerDiv, RegisterFormWrapperDiv, RegisterTitle, StyledInnerText, StyledText } from './style';
 
+const initialCredentialsState = {
+  nickName: '',
+  email: '',
+  password: '',
+  phoneNumber: '',
+  showPassword: false,
+  phoneNumberAccessMode: 'read_only_me',
+};
+
 const Registration = () => {
-  const initialCredentialsState = {
-    nickName: '',
-    email: '',
-    password: '',
-    phoneNumber: '',
-    showPassword: false,
-    phoneNumberAccessMode: 'read_only_me',
-  };
   const { formatMessage } = useIntl();
   const { goToLogin, goToVerificationPage } = useNavigation();
 

@@ -2,10 +2,7 @@ import styled from 'styled-components';
 
 export const ForgotPasswordButton = styled.button`
   font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: ${p => p.theme.spacing(1.75)};
-  line-height: 100%;
+  ${p => p.theme.font('body3')};
   color: ${p => p.theme.palette.primary.main};
   background-color: ${p => p.theme.palette.common.white};
   border: none;
@@ -27,4 +24,5 @@ export const LoginFormWrapperDiv = styled.div`
 
 export const LoginTitle = styled.h3`
   margin-bottom: ${p => p.theme.spacing(7)};
+  ${p => p.theme.font('h3')};
 `;
