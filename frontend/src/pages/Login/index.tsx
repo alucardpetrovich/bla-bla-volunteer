@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
+import AuthContainer from 'src/components/AuthContainer/AuthContainer';
 import Button from 'src/components/Buttons/Button';
 import TextBox from 'src/components/TextBox/TextBox';
-import { PATHS } from 'src/constants/PATH';
+import useNavigation from 'src/hooks/useNavigation';
 
 import { useAppDispatch } from '../../hooks';
 import { userLogin } from '../../store';
-import { ForgotPasswordLink, LoginFormContainerDiv, LoginFormWrapperDiv, LoginTitle, StyledTitleDiv } from './style';
+import { ForgotPasswordButton, LoginFormContainerDiv, LoginFormWrapperDiv, LoginTitle } from './style';
 
 interface LoginProps {
   email: string;
@@ -16,6 +17,7 @@ interface LoginProps {
 
 const Login = (): JSX.Element => {
   const { formatMessage } = useIntl();
+  const { goToForgotPassword } = useNavigation();
   const [loginFormValues, setLoginFormValues] = useState<LoginProps>({
     email: '',
     password: '',
@@ -29,6 +31,8 @@ const Login = (): JSX.Element => {
   const [isEmailFieldDisabled, setIsEmailFieldDisabled] = useState<boolean>(true);
   const [isPasswordFieldDisabled, setIsPasswordFieldDisabled] = useState<boolean>(true);
 
+  const formValidate = isEmailFieldDisabled || isPasswordFieldDisabled;
+
   const isDisabledEmail = (value: boolean) => {
     setIsEmailFieldDisabled(value);
   };
@@ -37,6 +41,8 @@ const Login = (): JSX.Element => {
   };
 
   const handleSubmit = (): void => {
+    if (formValidate) return;
+
     const credentials = {
       email: loginFormValues.email,
       password: loginFormValues.password,
@@ -64,18 +70,8 @@ const Login = (): JSX.Element => {
     });
   };
 
-  const isDisabled = isEmailFieldDisabled || isPasswordFieldDisabled;
-
   return (
-    <>
-      <StyledTitleDiv>
-        <p>
-          {formatMessage({
-            defaultMessage: 'вхід / реєстрація',
-            description: 'Login: title',
-          })}
-        </p>
-      </StyledTitleDiv>
+    <AuthContainer>
       <LoginFormContainerDiv>
         <LoginFormWrapperDiv>
           <LoginTitle>
@@ -114,15 +110,13 @@ const Login = (): JSX.Element => {
             id="login-password"
             fullWidth
           />
-          {/* TODO: змінити пас коли буде сторінка на яку має переводити при натисканні лінки */}
-          <ForgotPasswordLink to={`../${PATHS.NOT_FOUND_404.path}`}>
+          <ForgotPasswordButton onClick={goToForgotPassword}>
             {formatMessage({
               defaultMessage: 'Забув пароль',
               description: 'Login: forgotPassword',
             })}
-          </ForgotPasswordLink>
+          </ForgotPasswordButton>
           <Button
-            isDisabled={isDisabled}
             text={formatMessage({
               defaultMessage: 'Увійти',
               description: 'Login: signInButton',
@@ -131,7 +125,7 @@ const Login = (): JSX.Element => {
           />
         </LoginFormWrapperDiv>
       </LoginFormContainerDiv>
-    </>
+    </AuthContainer>
   );
 };
 

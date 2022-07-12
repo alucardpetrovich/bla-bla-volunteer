@@ -11,10 +11,14 @@ const registrationSuccess = (user: IUser) => ({
   payload: user,
 });
 
-const registrationError = (error: unknown) => ({
-  type: authActionTypes.REGISTER_ERROR,
-  payload: error,
-});
+const registrationError = (error: unknown) => {
+  const errorMessage = isErrorResponse(error) ? error.response.data.message : 'registration error';
+
+  return {
+    type: authActionTypes.REGISTER_ERROR,
+    payload: errorMessage,
+  };
+};
 
 const loginRequest = () => ({
   type: authActionTypes.LOGIN_REQUEST,
@@ -42,9 +46,13 @@ const logoutSuccess = () => ({
   type: authActionTypes.LOGOUT_SUCCESS,
 });
 
-const logoutError = () => ({
-  type: authActionTypes.LOGOUT_ERROR,
-});
+const logoutError = (error: unknown) => {
+  const errorMessage = isErrorResponse(error) ? error.response.data.message : 'logout error';
+  return {
+    type: authActionTypes.LOGOUT_ERROR,
+    payload: errorMessage,
+  };
+};
 
 const refreshRequest = () => ({
   type: authActionTypes.REFRESH_REQUEST,
@@ -57,6 +65,40 @@ const refreshSuccess = () => ({
 const refreshError = () => ({
   type: authActionTypes.REFRESH_ERROR,
 });
+
+const sendResetPasswordLinkRequest = () => ({
+  type: authActionTypes.SEND_RESET_PASSWORD_LINK_REQUEST,
+});
+
+const sendResetPasswordLinkSuccess = () => ({
+  type: authActionTypes.SEND_RESET_PASSWORD_LINK_SUCCESS,
+});
+
+const sendResetPasswordLinkError = (error: unknown) => {
+  const errorMessage = isErrorResponse(error) ? error.response.data.message : 'send reset password link error';
+
+  return {
+    type: authActionTypes.SEND_RESET_PASSWORD_LINK_ERROR,
+    payload: errorMessage,
+  };
+};
+
+const resetPasswordRequest = () => ({
+  type: authActionTypes.RESET_PASSWORD_REQUEST,
+});
+
+const resetPasswordSuccess = () => ({
+  type: authActionTypes.RESET_PASSWORD_SUCCESS,
+});
+
+const resetPasswordError = (error: unknown) => {
+  const errorMessage = isErrorResponse(error) ? error.response.data.message : 'reset password error';
+
+  return {
+    type: authActionTypes.RESET_PASSWORD_ERROR,
+    payload: errorMessage,
+  };
+};
 
 const authActions = {
   registrationRequest,
@@ -71,6 +113,12 @@ const authActions = {
   refreshRequest,
   refreshSuccess,
   refreshError,
+  sendResetPasswordLinkError,
+  sendResetPasswordLinkRequest,
+  sendResetPasswordLinkSuccess,
+  resetPasswordRequest,
+  resetPasswordSuccess,
+  resetPasswordError,
 };
 
 export default authActions;

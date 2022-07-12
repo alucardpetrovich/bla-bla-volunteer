@@ -1,7 +1,15 @@
 {
+  "+Cjxb8": {
+    "defaultMessage": "Перейти",
+    "description": "ResetPassword: goToLoginButton"
+  },
   "+PvZGw": {
     "defaultMessage": "[uk]: Сервіси",
     "description": "Footer: footer_navLink_2"
+  },
+  "+W1/FX": {
+    "defaultMessage": "Придумайте новый пароль",
+    "description": "ResetPassword: passwordFirstInput"
   },
   "+lk6zG": {
     "defaultMessage": "[uk]: Платформа робить процес координації передачі гуманітарної допомоги простішим. Ми намагаємось допомогти організаціям отримати максимальну користь від своєї волонтерської програми, усуваючи обмеження.",
@@ -14,6 +22,10 @@
   "08V8ko": {
     "defaultMessage": "Ел. Почта",
     "description": "Registration: emailInput"
+  },
+  "2+RcKw": {
+    "defaultMessage": "[uk]: Якщо вказаний користувач існує, то на email {email} було надіслано посилання для відновлення пароля.",
+    "description": "forgotPassword: sendToEmail"
   },
   "2hMXLf": {
     "defaultMessage": "Поле не должно быть пустым",
@@ -38,6 +50,18 @@
   "9IGHyr": {
     "defaultMessage": "[uk]: що важливо",
     "description": "Home page: title_2"
+  },
+  "Ceftdt": {
+    "defaultMessage": "[uk]: Наприклад, example@email.com",
+    "description": "forgotPassword: title"
+  },
+  "EIHGfC": {
+    "defaultMessage": "[uk]: Повторіть пароль",
+    "description": "ResetPassword: passwordSecondInput"
+  },
+  "EjEdrb": {
+    "defaultMessage": "[uk]: Пароль успішно змінено, перейдіть на сторінку авторизації щоб зайти в додаток",
+    "description": "ResetPassword: changePasswordSuccess"
   },
   "HGUy54": {
     "defaultMessage": "Для обеспечения вашей безопасности мы не рекомендуем вводить собственное имя и фамилию",
@@ -67,10 +91,6 @@
     "defaultMessage": "[uk]: Мобільні волонтери - Отримувачі",
     "description": "Home: firstTeaser_title_3"
   },
-  "Ryi2be": {
-    "defaultMessage": "вход / регистрация",
-    "description": "Login: title"
-  },
   "Sjfvcj": {
     "defaultMessage": "[uk]: вихід",
     "description": "Logout: title"
@@ -95,6 +115,14 @@
     "defaultMessage": "Регистрируясь вы соглашаетесь с условиями",
     "description": "Registration: licenseInfo"
   },
+  "WTfVNJ": {
+    "defaultMessage": "[uk]: вхід",
+    "description": "AuthContainer: titleSignIn"
+  },
+  "X8WhoU": {
+    "defaultMessage": "[uk]: Продовжити",
+    "description": "forgotPassword: submitButton"
+  },
   "XwKFAg": {
     "defaultMessage": "[uk]: Простота",
     "description": "Home: secondTeaser_title_1"
@@ -102,10 +130,6 @@
   "YfLmTV": {
     "defaultMessage": "[uk]: Пошук",
     "description": "Header: searchField"
-  },
-  "YvR5rJ": {
-    "defaultMessage": "вход / регистрация",
-    "description": "Registration: title"
   },
   "ZEvWYL": {
     "defaultMessage": "Тратата",
@@ -115,9 +139,21 @@
     "defaultMessage": "[uk]: що ми робимо",
     "description": "Home page: title_1"
   },
+  "aIUfgZ": {
+    "defaultMessage": "[uk]: Відновлення паролю",
+    "description": "forgotPassword: title"
+  },
+  "ajlqYg": {
+    "defaultMessage": "[uk]: Будь-ласка, верифікуйте ваш акаунт",
+    "description": "Verification: title"
+  },
   "bU5skY": {
     "defaultMessage": "Номер телефона",
     "description": "Registration: phoneNumberInput"
+  },
+  "eV+sCD": {
+    "defaultMessage": "[uk]: реєстрація",
+    "description": "AuthContainer: titleSignUp"
   },
   "eiJ8g1": {
     "defaultMessage": "[uk]: Зареєструйся та стань частиною українського волонтерського руху",
@@ -139,13 +175,21 @@
     "defaultMessage": "[uk]: реєстрація",
     "description": "Header: registrationButton"
   },
+  "lFD2Hw": {
+    "defaultMessage": "[uk]: На цей email ми надішлемо посилання для відновлення пароля",
+    "description": "forgotPassword: text"
+  },
   "mV2Wi+": {
-    "defaultMessage": "[uk]: Номер телефону доступний всім",
+    "defaultMessage": "Номер телефона доступный всем",
     "description": "Registration: isPublicCheckbox"
   },
   "oNnYlE": {
     "defaultMessage": "Поле должно быть email",
     "description": "inputsValidation: emailError"
+  },
+  "odPtpC": {
+    "defaultMessage": "[uk]: Відкрийте лист на вашій електронній пошті та пройдіть за посиланням",
+    "description": "Verification: text"
   },
   "qEclD0": {
     "defaultMessage": "положения про обработку и защиту персональных данных и пользовательского соглашениея",
@@ -156,7 +200,7 @@
     "description": "Footer: footer_subscription"
   },
   "rMynxh": {
-    "defaultMessage": "Я уже заренестрирован",
+    "defaultMessage": "Я уже зарегистрирован",
     "description": "Registration: alreadyRegisteredButton"
   },
   "rRhUrR": {
@@ -166,6 +210,10 @@
   "tv0h/6": {
     "defaultMessage": "Пароль",
     "description": "Registration: passwordInput"
+  },
+  "wdx07I": {
+    "defaultMessage": "[uk]: Змінити пароль",
+    "description": "ResetPassword: changePasswordButton"
   },
   "wqpq5k": {
     "defaultMessage": "[uk]: Донори - Хаби",

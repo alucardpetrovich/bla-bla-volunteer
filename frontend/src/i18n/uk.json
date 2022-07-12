@@ -1,7 +1,15 @@
 {
+  "+Cjxb8": {
+    "defaultMessage": "Перейти",
+    "description": "ResetPassword: goToLoginButton"
+  },
   "+PvZGw": {
     "defaultMessage": "Сервіси",
     "description": "Footer: footer_navLink_2"
+  },
+  "+W1/FX": {
+    "defaultMessage": "Придумйте новий пароль",
+    "description": "ResetPassword: passwordFirstInput"
   },
   "+lk6zG": {
     "defaultMessage": "Платформа робить процес координації передачі гуманітарної допомоги простішим. Ми намагаємось допомогти організаціям отримати максимальну користь від своєї волонтерської програми, усуваючи обмеження.",
@@ -14,6 +22,10 @@
   "08V8ko": {
     "defaultMessage": "Ел. Пошта",
     "description": "Registration: emailInput"
+  },
+  "2+RcKw": {
+    "defaultMessage": "Якщо вказаний користувач існує, то на email {email} було надіслано посилання для відновлення пароля.",
+    "description": "forgotPassword: sendToEmail"
   },
   "2hMXLf": {
     "defaultMessage": "Поле не повинно бути пустим",
@@ -38,6 +50,18 @@
   "9IGHyr": {
     "defaultMessage": "що важливо",
     "description": "Home page: title_2"
+  },
+  "Ceftdt": {
+    "defaultMessage": "Наприклад, example@email.com",
+    "description": "forgotPassword: title"
+  },
+  "EIHGfC": {
+    "defaultMessage": "Повторіть пароль",
+    "description": "ResetPassword: passwordSecondInput"
+  },
+  "EjEdrb": {
+    "defaultMessage": "Пароль успішно змінено, перейдіть на сторінку авторизації щоб зайти в додаток",
+    "description": "ResetPassword: changePasswordSuccess"
   },
   "HGUy54": {
     "defaultMessage": "Для забезпечення вашої безпеки ми не рекомендуємо вводити власне ім’я та прізвище",
@@ -67,10 +91,6 @@
     "defaultMessage": "Мобільні волонтери - Отримувачі",
     "description": "Home: firstTeaser_title_3"
   },
-  "Ryi2be": {
-    "defaultMessage": "вхід / реєстрація",
-    "description": "Login: title"
-  },
   "Sjfvcj": {
     "defaultMessage": "вихід",
     "description": "Logout: title"
@@ -95,6 +115,14 @@
     "defaultMessage": "Реєструючись, ви погоджуєтеся з умовами",
     "description": "Registration: licenseInfo"
   },
+  "WTfVNJ": {
+    "defaultMessage": "вхід",
+    "description": "AuthContainer: titleSignIn"
+  },
+  "X8WhoU": {
+    "defaultMessage": "Продовжити",
+    "description": "forgotPassword: submitButton"
+  },
   "XwKFAg": {
     "defaultMessage": "Простота",
     "description": "Home: secondTeaser_title_1"
@@ -102,10 +130,6 @@
   "YfLmTV": {
     "defaultMessage": "Пошук",
     "description": "Header: searchField"
-  },
-  "YvR5rJ": {
-    "defaultMessage": "вхід / реєстрація",
-    "description": "Registration: title"
   },
   "ZEvWYL": {
     "defaultMessage": "Безпечна платформа координації передачі гуманітарної допомоги",
@@ -115,9 +139,21 @@
     "defaultMessage": "що ми робимо",
     "description": "Home page: title_1"
   },
+  "aIUfgZ": {
+    "defaultMessage": "Відновлення паролю",
+    "description": "forgotPassword: title"
+  },
+  "ajlqYg": {
+    "defaultMessage": "Будь-ласка, верифікуйте ваш акаунт",
+    "description": "Verification: title"
+  },
   "bU5skY": {
     "defaultMessage": "Номер телефону",
     "description": "Registration: phoneNumberInput"
+  },
+  "eV+sCD": {
+    "defaultMessage": "реєстрація",
+    "description": "AuthContainer: titleSignUp"
   },
   "eiJ8g1": {
     "defaultMessage": "Зареєструйся та стань частиною українського волонтерського руху",
@@ -139,6 +175,10 @@
     "defaultMessage": "реєстрація",
     "description": "Header: registrationButton"
   },
+  "lFD2Hw": {
+    "defaultMessage": "На цей email ми надішлемо посилання для відновлення пароля",
+    "description": "forgotPassword: text"
+  },
   "mV2Wi+": {
     "defaultMessage": "Номер телефону доступний всім",
     "description": "Registration: isPublicCheckbox"
@@ -146,6 +186,10 @@
   "oNnYlE": {
     "defaultMessage": "Поле повинно бути email",
     "description": "inputsValidation: emailError"
+  },
+  "odPtpC": {
+    "defaultMessage": "Відкрийте лист на вашій електронній пошті та пройдіть за посиланням",
+    "description": "Verification: text"
   },
   "qEclD0": {
     "defaultMessage": "положення про обробку і захист персональних даних та угодою користувача",
@@ -166,6 +210,10 @@
   "tv0h/6": {
     "defaultMessage": "Пароль",
     "description": "Registration: passwordInput"
+  },
+  "wdx07I": {
+    "defaultMessage": "Змінити пароль",
+    "description": "ResetPassword: changePasswordButton"
   },
   "wqpq5k": {
     "defaultMessage": "Донори - Хаби",
