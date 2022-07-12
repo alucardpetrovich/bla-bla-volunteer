@@ -18,7 +18,6 @@ export const RegisterTitle = styled.h3`
 `;
 
 export const StyledText = styled.p`
-  font-family: 'Inter';
   ${p => p.theme.font('body6')};
   color: ${p => p.theme.palette.grey[500]};
   margin-bottom: ${p => p.theme.spacing(2.5)};

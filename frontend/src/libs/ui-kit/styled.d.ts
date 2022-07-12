@@ -28,12 +28,17 @@ type FontEntry =
   | 'body8'
   | 'body9';
 
+interface ThemeSimplePaletteColorOptions extends SimplePaletteColorOptions {
+  hover?: string;
+  blue?: string;
+}
+
 export interface ThemePalette {
   common: Partial<CommonColors>;
   background: Partial<TypeBackground>;
   grey: ColorPartial;
-  info: SimplePaletteColorOptions;
-  primary: SimplePaletteColorOptions;
+  info: ThemeSimplePaletteColorOptions;
+  primary: ThemeSimplePaletteColorOptions;
 }
 
 interface FontProps {
