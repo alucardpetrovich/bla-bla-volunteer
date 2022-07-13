@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
-import { contactsAPI } from 'src/api';
+// import { contactsAPI } from 'src/api';
 import { useAppDispatch, useAppSelector } from 'src/hooks';
 import { getLang } from 'src/store/lang/langSelectors';
 import { createUserOrganization } from 'src/store/user/userOperations';
+// import { getLang } from 'src/store/lang/langSelectors';
 import { getUserInvolvement } from 'src/store/user/userSelectors';
 
 import Button from '../Buttons/Button';
@@ -22,7 +23,7 @@ interface OrganizationProps {
   city: string;
   street: string;
   contacts: IContact[];
-  telegram: string;
+  // telegram: string;
 }
 
 interface OrganizationReqProps {
@@ -33,45 +34,45 @@ interface OrganizationReqProps {
   contacts: IContact[];
 }
 
-interface IContactType {
-  type: string;
-  name: string;
-}
+// interface IContactType {
+//   type: string;
+//   name: string;
+// }
 
 const RoleForm = () => {
-  const { formatMessage } = useIntl();
-  const dispatch = useAppDispatch();
-
-  const [loading, setLoading] = useState(false);
-  const [settlementId, setSettlementId] = useState('');
-  const [contactsTypes, setContactsTypes] = useState<IContactType[]>([]);
-  const [organizationFormValues, setOrganizationFormValues] = useState<OrganizationProps>({
+  const initialOrganizationState = {
     name: '',
     city: '',
     street: '',
-    contacts: [
-      {
-        accessMode: '',
-        type: '',
-        value: '',
-      },
-    ],
-    telegram: '',
-  });
+    contacts: [],
+  };
+  const { formatMessage } = useIntl();
+  const dispatch = useAppDispatch();
 
-  const { name, street, contacts, telegram } = organizationFormValues;
+  const [organizationFormValues, setOrganizationFormValues] = useState<OrganizationProps>(initialOrganizationState);
+  const [settlementId, setSettlementId] = useState('');
+  const [isFormFilled, setIsFormFilled] = useState(false);
+  // const [contactsTypes, setContactsTypes] = useState<IContactType[]>([]);
+  // const [loading, setLoading] = useState(false);
+
+  const { name, street, contacts, city } = organizationFormValues;
   const userType = useAppSelector(getUserInvolvement);
   const lang = useAppSelector(getLang);
 
+  // useEffect(() => {
+  //   (async () => {
+  //     const result = await contactsAPI.getContactTypes(lang);
+  //     setContactsTypes(result);
+  //     setLoading(true);
+  //     return result;
+  //   })();
+  // }, [loading]);
+
   useEffect(() => {
-    (async () => {
-      const result = await contactsAPI.getContactTypes(lang);
-      setContactsTypes(result);
-      console.log('contactsTypes', contactsTypes);
-      setLoading(true);
-      return result;
-    })();
-  }, [loading]);
+    if (name.length > 0 && street.length > 0 && contacts.length > 0) {
+      setIsFormFilled(true);
+    }
+  }, [name, street, contacts, city, isFormFilled]);
 
   const handleOrganizationValuesOnChange = (value: string, name: string): void => {
     if (name === ('phone' || 'telegram')) {
@@ -80,7 +81,6 @@ const RoleForm = () => {
         type: name,
         value: value,
       };
-      //!!! check adding second contact
       setOrganizationFormValues({ ...organizationFormValues, contacts: [newContact] });
     } else {
       setOrganizationFormValues({ ...organizationFormValues, [name]: value });
@@ -96,12 +96,11 @@ const RoleForm = () => {
       settlementId,
     };
 
-    try {
-      console.log('credentials', credentials);
-      dispatch(createUserOrganization(credentials));
-    } catch (error) {
-      console.log('error', error);
-    }
+    dispatch(createUserOrganization(credentials, lang));
+  };
+
+  const handleCancel = (): void => {
+    setOrganizationFormValues(initialOrganizationState);
   };
 
   return (
@@ -113,6 +112,7 @@ const RoleForm = () => {
         })}
       </CustomHeading>
       <TextBox
+        required
         label={formatMessage({
           defaultMessage: 'Назва хабу',
           description: 'ProfileForm: hubName',
@@ -134,6 +134,7 @@ const RoleForm = () => {
 
       <Autocomplete setData={setSettlementId} />
       <TextBox
+        required
         label={formatMessage({
           defaultMessage: 'Адреса',
           description: 'ProfileForm: address',
@@ -143,23 +144,27 @@ const RoleForm = () => {
         onChange={handleOrganizationValuesOnChange}
       />
       <TextBox
+        required
+        placeholder="+38(099)999-99-99"
         label={formatMessage({
           defaultMessage: 'Контакти хабу',
           description: 'ProfileForm: hubContacts',
         })}
         name="phone"
-        value={contacts[0].value}
+        value={(contacts && contacts[0]?.value) || ''}
         onChange={handleOrganizationValuesOnChange}
       />
-      <TextBox label="Telegram" name="telegram" value={telegram} onChange={handleOrganizationValuesOnChange} />
+      {/* !!! add another contact !!!*/}
+
+      {/* <TextBox label="Telegram" name="telegram" value="test telegram" onChange={handleOrganizationValuesOnChange} /> */}
       <Button
         text={formatMessage({ defaultMessage: 'Додати інформацію', description: 'ProfileForm: addInfo' })}
         onClick={handleSubmit}
       />
       <Button
-        isDisabled={true}
+        isDisabled={!isFormFilled}
         text={formatMessage({ defaultMessage: 'Скасувати', description: 'ProfileForm: cancel' })}
-        onClick={handleSubmit}
+        onClick={handleCancel}
       />
     </InfoWrapper>
   );

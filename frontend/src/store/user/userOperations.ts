@@ -37,10 +37,10 @@ export const userUpdate = (credentials: ICredentials) => async (dispatch: Dispat
   }
 };
 
-export const createUserOrganization = (organization: IOrganization) => async () => {
+export const createUserOrganization = (organization: IOrganization, lang: string) => async () => {
   console.log('organization', organization);
   try {
-    const response = await organizationsAPI.createOrganization(organization);
+    const response = await organizationsAPI.createOrganization(organization, lang);
     console.log('responseOperation', response);
   } catch (error) {
     if (error instanceof Error) {
