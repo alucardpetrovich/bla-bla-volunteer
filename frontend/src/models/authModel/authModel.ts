@@ -23,3 +23,13 @@ export interface IAuthAccessRefresh {
   token: string;
   expiresAt: number;
 }
+
+export interface IAuthResetPasswordLink {
+  email: string;
+  baseUrl: string;
+}
+
+export interface IAuthResetPassword {
+  code: string | null;
+  newPassword: string;
+}

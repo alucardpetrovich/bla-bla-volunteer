@@ -1,7 +1,19 @@
 {
+  "+Cjxb8": {
+    "defaultMessage": "Перейти",
+    "description": "ResetPassword: goToLoginButton"
+  },
   "+PvZGw": {
     "defaultMessage": "[uk]: Сервіси",
     "description": "Footer: footer_navLink_2"
+  },
+  "+W1/FX": {
+    "defaultMessage": "Придумайте новый пароль",
+    "description": "ResetPassword: passwordFirstInput"
+  },
+  "+lk6zG": {
+    "defaultMessage": "[uk]: Платформа робить процес координації передачі гуманітарної допомоги простішим. Ми намагаємось допомогти організаціям отримати максимальну користь від своєї волонтерської програми, усуваючи обмеження.",
+    "description": "Home: secondTeaser_description_1"
   },
   "01x3vS": {
     "defaultMessage": "[uk]: Номер телефону доступний за запитом",
@@ -11,9 +23,17 @@
     "defaultMessage": "Ел. Почта",
     "description": "Registration: emailInput"
   },
+  "2+RcKw": {
+    "defaultMessage": "[uk]: Якщо вказаний користувач існує, то на email {email} було надіслано посилання для відновлення пароля.",
+    "description": "forgotPassword: sendToEmail"
+  },
   "2hMXLf": {
     "defaultMessage": "Поле не должно быть пустым",
     "description": "inputsValidation: isEmpty"
+  },
+  "3VVorE": {
+    "defaultMessage": "[uk]: Хаби - Мобільні волонтери",
+    "description": "Home: firstTeaser_title_2"
   },
   "4AmZz1": {
     "defaultMessage": "Регистрация",
@@ -27,13 +47,29 @@
     "defaultMessage": "[uk]: Безпека",
     "description": "Footer: footer_navLink_3"
   },
+  "9IGHyr": {
+    "defaultMessage": "[uk]: що важливо",
+    "description": "Home page: title_2"
+  },
   "C6ilEq": {
     "defaultMessage": "[uk]: Зберегти",
     "description": "PersonalData: saveInfoButton"
   },
+  "Ceftdt": {
+    "defaultMessage": "[uk]: Наприклад, example@email.com",
+    "description": "forgotPassword: title"
+  },
   "DWdGIk": {
     "defaultMessage": "[uk]: Додати інформацію",
     "description": "ProfileForm: addInfo"
+  },
+  "EIHGfC": {
+    "defaultMessage": "[uk]: Повторіть пароль",
+    "description": "ResetPassword: passwordSecondInput"
+  },
+  "EjEdrb": {
+    "defaultMessage": "[uk]: Пароль успішно змінено, перейдіть на сторінку авторизації щоб зайти в додаток",
+    "description": "ResetPassword: changePasswordSuccess"
   },
   "FCE5J3": {
     "defaultMessage": "[uk]: Листування",
@@ -55,13 +91,21 @@
     "defaultMessage": "Вход",
     "description": "Login: title"
   },
+  "I/ypP7": {
+    "defaultMessage": "[uk]: Організація транспортування гуманітарної допомоги мобільним волонтером",
+    "description": "Home: firstTeaser_description_2"
+  },
+  "JfxCnQ": {
+    "defaultMessage": "[uk]: Сьогодні волонтерам важливо максимально використовувати час і зусилля для підтримки тих, хто потребує допомоги. Платформа полегшує координацію волонтерських груп та волонтерів, що дозволяє їм робити ще більше.",
+    "description": "Home: description"
+  },
   "LD4WwV": {
     "defaultMessage": "[uk]: Телефон повинен починатися з символу \"+\"",
     "description": "inputsValidation: phoneStartsWithPlusError"
   },
-  "Ryi2be": {
-    "defaultMessage": "вход / регистрация",
-    "description": "Login: title"
+  "MzAOnD": {
+    "defaultMessage": "[uk]: Мобільні волонтери - Отримувачі",
+    "description": "Home: firstTeaser_title_3"
   },
   "Sjfvcj": {
     "defaultMessage": "[uk]: вихід",
@@ -71,21 +115,37 @@
     "defaultMessage": "Минимальная длина не должна быть меньше {minValue} символов",
     "description": "inputsValidation: minLengthError"
   },
+  "TieNMn": {
+    "defaultMessage": "[uk]: Ми максимально бережно працюємо з персональною інформацією користувачів і не вимагаємо інформацію, яка не потрібна безпосередньо для комунікації сторін. Навіть контактні дані ми надаємо лише за згоди її власника",
+    "description": "Home: secondTeaser_description_2"
+  },
   "Ufx13f": {
     "defaultMessage": "Ел. Почта",
     "description": "Login: emailInput"
+  },
+  "VJZ+lD": {
+    "defaultMessage": "[uk]: Координація доставки гуманітарної допомоги від місця їх тимчасового зберігання до отримувача",
+    "description": "Home: firstTeaser_description_3"
   },
   "ViEqGj": {
     "defaultMessage": "Регистрируясь вы соглашаетесь с условиями",
     "description": "Registration: licenseInfo"
   },
+  "WTfVNJ": {
+    "defaultMessage": "[uk]: вхід",
+    "description": "AuthContainer: titleSignIn"
+  },
+  "X8WhoU": {
+    "defaultMessage": "[uk]: Продовжити",
+    "description": "forgotPassword: submitButton"
+  },
+  "XwKFAg": {
+    "defaultMessage": "[uk]: Простота",
+    "description": "Home: secondTeaser_title_1"
+  },
   "YfLmTV": {
     "defaultMessage": "[uk]: Пошук",
     "description": "Header: searchField"
-  },
-  "YvR5rJ": {
-    "defaultMessage": "вход / регистрация",
-    "description": "Registration: title"
   },
   "Z4gKO4": {
     "defaultMessage": "[uk]: Оцінка активності",
@@ -99,9 +159,21 @@
     "defaultMessage": "[uk]: Скасувати",
     "description": "ProfileForm: cancel"
   },
+  "ZOs9YC": {
+    "defaultMessage": "[uk]: що ми робимо",
+    "description": "Home page: title_1"
+  },
+  "aIUfgZ": {
+    "defaultMessage": "[uk]: Відновлення паролю",
+    "description": "forgotPassword: title"
+  },
   "aUT13b": {
     "defaultMessage": "[uk]: Електронна пошта",
     "description": "PersonalData: email"
+  },
+  "ajlqYg": {
+    "defaultMessage": "[uk]: Будь-ласка, верифікуйте ваш акаунт",
+    "description": "Verification: title"
   },
   "bU5skY": {
     "defaultMessage": "Номер телефона",
@@ -110,6 +182,10 @@
   "c+UzEc": {
     "defaultMessage": "[uk]: Назва хабу",
     "description": "ProfileForm: hubName"
+  },
+  "eV+sCD": {
+    "defaultMessage": "[uk]: реєстрація",
+    "description": "AuthContainer: titleSignUp"
   },
   "eiJ8g1": {
     "defaultMessage": "[uk]: Зареєструйся та стань частиною українського волонтерського руху",
@@ -123,6 +199,10 @@
     "defaultMessage": "Пароль",
     "description": "Login: passwordInput"
   },
+  "ii/P/s": {
+    "defaultMessage": "[uk]: Координація передачі гуманітарної допомоги між донорами та волонтерськими хабами / хабами",
+    "description": "Home: firstTeaser_description_1"
+  },
   "iwu/mt": {
     "defaultMessage": "[uk]: Номер телефону",
     "description": "PersonalData: phoneNumber"
@@ -135,13 +215,21 @@
     "defaultMessage": "[uk]: реєстрація",
     "description": "Header: registrationButton"
   },
+  "lFD2Hw": {
+    "defaultMessage": "[uk]: На цей email ми надішлемо посилання для відновлення пароля",
+    "description": "forgotPassword: text"
+  },
   "mV2Wi+": {
-    "defaultMessage": "[uk]: Номер телефону доступний всім",
+    "defaultMessage": "Номер телефона доступный всем",
     "description": "Registration: isPublicCheckbox"
   },
   "oNnYlE": {
     "defaultMessage": "Поле должно быть email",
     "description": "inputsValidation: emailError"
+  },
+  "odPtpC": {
+    "defaultMessage": "[uk]: Відкрийте лист на вашій електронній пошті та пройдіть за посиланням",
+    "description": "Verification: text"
   },
   "qEclD0": {
     "defaultMessage": "положения про обработку и защиту персональных данных и пользовательского соглашениея",
@@ -152,7 +240,7 @@
     "description": "Footer: footer_subscription"
   },
   "rMynxh": {
-    "defaultMessage": "Я уже заренестрирован",
+    "defaultMessage": "Я уже зарегистрирован",
     "description": "Registration: alreadyRegisteredButton"
   },
   "rRhUrR": {
@@ -183,6 +271,14 @@
     "defaultMessage": "[uk]: Нікнейм",
     "description": "PersonalData: nickName"
   },
+  "wdx07I": {
+    "defaultMessage": "[uk]: Змінити пароль",
+    "description": "ResetPassword: changePasswordButton"
+  },
+  "wqpq5k": {
+    "defaultMessage": "[uk]: Донори - Хаби",
+    "description": "Home: firstTeaser_title_1"
+  },
   "wr0oXa": {
     "defaultMessage": "[uk]: Контакти хабу",
     "description": "ProfileForm: hubContacts"
@@ -190,5 +286,9 @@
   "zKD6CI": {
     "defaultMessage": "[uk]: вхід",
     "description": "Logout: title"
+  },
+  "zQjznj": {
+    "defaultMessage": "[uk]: Безпека",
+    "description": "Home: secondTeaser_title_2"
   }
 }

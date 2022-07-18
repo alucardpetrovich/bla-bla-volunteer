@@ -9,7 +9,7 @@ export interface InputWrapperProps {
   required?: string | boolean;
   error?: string;
   horizontal?: boolean;
-  width?: number;
+  width?: string | number;
 }
 
 const InputWrapper = ({

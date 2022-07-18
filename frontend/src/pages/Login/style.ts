@@ -1,18 +1,13 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const ForgotPasswordLink = styled(Link)`
+export const ForgotPasswordButton = styled.button`
   font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 100%;
-  color: #93a9d2;
-  margin-bottom: 21px;
-`;
-
-export const StyledTitleDiv = styled.div`
-  margin-bottom: 55px;
+  ${p => p.theme.font('body3')};
+  color: ${p => p.theme.palette.primary.main};
+  background-color: ${p => p.theme.palette.common.white};
+  border: none;
+  margin-bottom: ${p => p.theme.spacing(2.5)};
+  padding: 0;
 `;
 
 export const LoginFormContainerDiv = styled.div`
@@ -28,5 +23,6 @@ export const LoginFormWrapperDiv = styled.div`
 `;
 
 export const LoginTitle = styled.h3`
-  margin-bottom: 65px;
+  margin-bottom: ${p => p.theme.spacing(7)};
+  ${p => p.theme.font('h3')};
 `;

@@ -46,16 +46,19 @@ const Header = () => {
 
   const isLogin = !!useMatch(PATHS.LOGIN.path);
   const isRegistration = !!useMatch(PATHS.REGISTRATION.path);
-  const isShowHeading = isLogin || isRegistration;
+  const isResetPassword = !!useMatch(PATHS.RESET_PASSWORD.path);
+  const isForgotPassword = !!useMatch(PATHS.FORGOT_PASSWORD.path);
+  const isVerification = !!useMatch(PATHS.VERIFICATION.path);
+  const isShowHeading = isLogin || isRegistration || isResetPassword || isForgotPassword || isVerification;
 
   const handleLogOut = () => {
     if (!isAuth) {
       goToLogin();
       return;
-    }
-
-    if (refreshToken) {
-      dispatch(userLogOut({ refreshToken: refreshToken.token }));
+    } else {
+      if (refreshToken) {
+        dispatch(userLogOut({ refreshToken: refreshToken.token }));
+      }
     }
   };
 

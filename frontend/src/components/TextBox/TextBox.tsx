@@ -21,6 +21,7 @@ interface ITextBoxProps extends InputWrapperProps {
   required?: boolean;
   isIncorrectField?: (value: boolean) => void;
   placeholder?: string;
+  width?: string | number;
 }
 
 const TextBox: FC<ITextBoxProps> = ({
@@ -62,7 +63,7 @@ const TextBox: FC<ITextBoxProps> = ({
   }, [setIsDirty]);
 
   return (
-    <InputWrapper name={name} label={label} required={required} horizontal={horizontal} width={width}>
+    <InputWrapper width={width} name={name} label={label} required={required} horizontal={horizontal}>
       <TextField
         error={error?.state ? error?.state : false}
         helperText={error?.state ? error.message : null}

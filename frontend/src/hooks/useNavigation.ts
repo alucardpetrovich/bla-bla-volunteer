@@ -9,10 +9,12 @@ import { useGetURL } from './useGetURL';
  */
 export default function useNavigation() {
   const navigate = useNavigate();
-  const { getHomeURL, getLoginURL, getRegistrationURL } = useGetURL();
+  const { getHomeURL, getLoginURL, getRegistrationURL, getForgotPasswordURL, getVerificationURL } = useGetURL();
 
   const goToHome = () => navigate(getHomeURL());
   const goToLogin = () => navigate(getLoginURL());
+  const goToForgotPassword = () => navigate(getForgotPasswordURL());
+  const goToVerificationPage = () => navigate(getVerificationURL());
 
   const goToRegistration = () => navigate(getRegistrationURL());
 
@@ -20,5 +22,7 @@ export default function useNavigation() {
     goToHome,
     goToLogin,
     goToRegistration,
+    goToForgotPassword,
+    goToVerificationPage,
   };
 }

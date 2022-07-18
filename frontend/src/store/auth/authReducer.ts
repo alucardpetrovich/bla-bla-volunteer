@@ -21,6 +21,9 @@ const auth: AuthReducer = (state = { ...initialState }, { type, payload }) => {
     case authActionTypes.REGISTER_SUCCESS:
       return { ...initialState, ...payload };
 
+    case authActionTypes.REGISTER_ERROR:
+      return { ...initialState, error: payload };
+
     case authActionTypes.LOGIN_SUCCESS:
       return { ...payload, isAuthenticated: true };
 
@@ -35,6 +38,12 @@ const auth: AuthReducer = (state = { ...initialState }, { type, payload }) => {
 
     case authActionTypes.LOGOUT_SUCCESS:
       return { ...initialState };
+
+    case authActionTypes.LOGOUT_ERROR:
+      return { ...initialState, error: payload };
+
+    case authActionTypes.SEND_RESET_PASSWORD_LINK_ERROR:
+      return { ...initialState, error: payload };
 
     default:
       return state;

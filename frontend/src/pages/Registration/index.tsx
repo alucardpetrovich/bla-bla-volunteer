@@ -1,33 +1,28 @@
 import { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
+import AuthContainer from 'src/components/AuthContainer/AuthContainer';
 import Button from 'src/components/Buttons/Button';
 import Checkbox from 'src/components/Checkbox/CheckBox';
 import TextBox from 'src/components/TextBox/TextBox';
-import { PATHS } from 'src/constants/PATH';
+import useNavigation from 'src/hooks/useNavigation';
 
 import { useAppDispatch } from '../../hooks';
 import { IAuthCredentials } from '../../models/authModel/authModel';
 import { userRegistration } from '../../store';
-import {
-  AlreadyRegisteredLink,
-  RegisterFormContainerDiv,
-  RegisterFormWrapperDiv,
-  RegisterTitle,
-  StyledInnerText,
-  StyledText,
-  StyledTitleDiv,
-} from './style';
+import { RegisterFormContainerDiv, RegisterFormWrapperDiv, RegisterTitle, StyledInnerText, StyledText } from './style';
+
+const initialCredentialsState = {
+  nickName: '',
+  email: '',
+  password: '',
+  phoneNumber: '',
+  showPassword: false,
+  phoneNumberAccessMode: 'read_only_me',
+};
 
 const Registration = () => {
-  const initialCredentialsState = {
-    nickName: '',
-    email: '',
-    password: '',
-    phoneNumber: '',
-    showPassword: false,
-    phoneNumberAccessMode: 'read_only_me',
-  };
   const { formatMessage } = useIntl();
+  const { goToLogin, goToVerificationPage } = useNavigation();
 
   const [credentials, setCredentials] = useState<IAuthCredentials>(initialCredentialsState as IAuthCredentials);
   const [isEmailFieldDisabled, setIsEmailFieldDisabled] = useState<boolean>(true);
@@ -36,6 +31,9 @@ const Registration = () => {
   const [isPhoneNumberFieldDisabled, setIsPhoneNumberFieldDisabled] = useState<boolean>(true);
   const [isPhonePublic, setIsPhonePublic] = useState<boolean>(false);
   const [isPhoneByRequest, setIsPhoneByRequest] = useState<boolean>(false);
+
+  const formValidate =
+    isEmailFieldDisabled || isPasswordFieldDisabled || isNickNameFieldDisabled || isPhoneNumberFieldDisabled;
 
   useEffect(() => {
     if (isPhonePublic && !isPhoneByRequest) {
@@ -102,6 +100,8 @@ const Registration = () => {
   };
 
   const handleSubmitSignUp = () => {
+    if (formValidate) return;
+
     const payload = {
       nickname: nickName || '',
       email,
@@ -110,6 +110,7 @@ const Registration = () => {
       password,
     };
     dispatch(userRegistration(payload));
+    goToVerificationPage();
   };
 
   const handlePublicPhoneCheckbox = () => {
@@ -122,19 +123,8 @@ const Registration = () => {
     setIsPhoneByRequest(!isPhoneByRequest);
   };
 
-  const isDisabled =
-    isEmailFieldDisabled || isPasswordFieldDisabled || isNickNameFieldDisabled || isPhoneNumberFieldDisabled;
-
   return (
-    <>
-      <StyledTitleDiv>
-        <p>
-          {formatMessage({
-            defaultMessage: 'вхід / реєстрація',
-            description: 'Registration: title',
-          })}
-        </p>
-      </StyledTitleDiv>
+    <AuthContainer>
       <RegisterFormContainerDiv>
         <RegisterFormWrapperDiv>
           <RegisterTitle>
@@ -235,18 +225,16 @@ const Registration = () => {
               })}
             </StyledInnerText>
           </StyledText>
-          <Button isDisabled={isDisabled} text="Зареєструватися" marginBottom={21} onClick={handleSubmitSignUp} />
-          <Button buttonType="tertiary">
-            <AlreadyRegisteredLink to={`../${PATHS.LOGIN.path}`}>
-              {formatMessage({
-                defaultMessage: 'Я вже зареєстрований',
-                description: 'Registration: alreadyRegisteredButton',
-              })}
-            </AlreadyRegisteredLink>
+          <Button text="Зареєструватися" marginBottom={21} onClick={handleSubmitSignUp} />
+          <Button buttonType="tertiary" onClick={goToLogin}>
+            {formatMessage({
+              defaultMessage: 'Я вже зареєстрований',
+              description: 'Registration: alreadyRegisteredButton',
+            })}
           </Button>
         </RegisterFormWrapperDiv>
       </RegisterFormContainerDiv>
-    </>
+    </AuthContainer>
   );
 };
 

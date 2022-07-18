@@ -19,13 +19,11 @@ export const InputWrapperContainer = styled.div<InputWrapperContainerProps>`
 export const InputWrapperLabel = styled.label<InputWrapperLabelProps>`
   display: flex;
   color: ${p => p.theme.palette.primary.main};
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 120%;
-  margin-bottom: 8px;
+  ${p => p.theme.font('body3')}
+  margin-bottom: ${p => p.theme.spacing(1)};
 `;
 
 export const RequiredLabelElement = styled.label`
   color: red;
-  margin-left: 5px;
+  margin-left: ${p => p.theme.spacing(0.7)};
 `;

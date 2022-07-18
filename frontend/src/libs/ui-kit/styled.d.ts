@@ -13,7 +13,11 @@ type FontEntry =
   | 'h1'
   | 'h2'
   | 'h3'
+  | 'h3_900'
   | 'h4'
+  | 'h4_900'
+  | 'h5'
+  | 'h5_900'
   | 'body1'
   | 'body2'
   | 'body3'
@@ -24,12 +28,17 @@ type FontEntry =
   | 'body8'
   | 'body9';
 
+interface ThemeSimplePaletteColorOptions extends SimplePaletteColorOptions {
+  hover?: string;
+  blue?: string;
+}
+
 export interface ThemePalette {
   common: Partial<CommonColors>;
   background: Partial<TypeBackground>;
   grey: ColorPartial;
-  info: SimplePaletteColorOptions;
-  primary: SimplePaletteColorOptions;
+  info: ThemeSimplePaletteColorOptions;
+  primary: ThemeSimplePaletteColorOptions;
 }
 
 interface FontProps {

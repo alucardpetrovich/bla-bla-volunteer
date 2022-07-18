@@ -37,6 +37,10 @@ export const PATHS = {
     path: ':lang/forgot-password',
   },
 
+  RESET_PASSWORD: {
+    path: ':lang/reset-password',
+  },
+
   ROLES: {
     path: ':lang/roles',
   },

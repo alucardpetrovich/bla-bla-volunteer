@@ -1,5 +1,5 @@
 import authorizationAPI from '../../api/Auth/Auth';
-import { IAuthCredentials } from '../../models/authModel/authModel';
+import { IAuthCredentials, IAuthResetPassword, IAuthResetPasswordLink } from '../../models/authModel/authModel';
 import { AppDispatch } from '../store';
 import authActions from './authActions';
 
@@ -41,7 +41,7 @@ export const userLogOut = (refreshToken: { refreshToken: string }) => async (dis
     localStorage.removeItem('refreshToken');
   } catch (error) {
     console.log(error);
-    dispatch(authActions.logoutError());
+    dispatch(authActions.logoutError(error));
   }
 };
 
@@ -56,5 +56,31 @@ export const refreshAuthToken = (refreshToken: string) => async (dispatch: AppDi
   } catch (error) {
     console.log(error);
     dispatch(authActions.refreshError());
+  }
+};
+
+export const sendResetPasswordLink = (payload: IAuthResetPasswordLink) => async (dispatch: AppDispatch) => {
+  dispatch(authActions.sendResetPasswordLinkRequest());
+  try {
+    await authorizationAPI.sendResetPasswordLink(payload);
+
+    dispatch(authActions.sendResetPasswordLinkSuccess());
+  } catch (error) {
+    console.log(error);
+
+    dispatch(authActions.sendResetPasswordLinkError(error));
+  }
+};
+
+export const resetPassword = (payload: IAuthResetPassword) => async (dispatch: AppDispatch) => {
+  dispatch(authActions.resetPasswordRequest());
+  try {
+    await authorizationAPI.resetPassword(payload);
+
+    dispatch(authActions.resetPasswordSuccess());
+  } catch (error) {
+    console.log(error);
+
+    dispatch(authActions.resetPasswordError(error));
   }
 };
