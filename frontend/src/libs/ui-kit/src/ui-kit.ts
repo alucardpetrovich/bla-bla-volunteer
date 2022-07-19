@@ -1,4 +1,5 @@
 export { ArrowRightIcon } from './components/ArrowRightIcon';
+export { ChapterArrow } from './components/ChapterArrow';
 export { Heading } from './components/Headings';
 export { Logo } from './components/Logo';
 export { NotificationsIcon } from './components/NotificationsIcon';

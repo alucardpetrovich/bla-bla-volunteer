@@ -51,9 +51,17 @@
     "defaultMessage": "що важливо",
     "description": "Home page: title_2"
   },
+  "C6ilEq": {
+    "defaultMessage": "Зберегти",
+    "description": "PersonalData: saveInfoButton"
+  },
   "Ceftdt": {
     "defaultMessage": "Наприклад, example@email.com",
     "description": "forgotPassword: title"
+  },
+  "DWdGIk": {
+    "defaultMessage": "Додати інформацію",
+    "description": "ProfileForm: addInfo"
   },
   "EIHGfC": {
     "defaultMessage": "Повторіть пароль",
@@ -62,6 +70,14 @@
   "EjEdrb": {
     "defaultMessage": "Пароль успішно змінено, перейдіть на сторінку авторизації щоб зайти в додаток",
     "description": "ResetPassword: changePasswordSuccess"
+  },
+  "FCE5J3": {
+    "defaultMessage": "Листування",
+    "description": "Profile: messages"
+  },
+  "GUzYRC": {
+    "defaultMessage": "Додати інформацію про Хаб",
+    "description": "ProfileForm: addInfo"
   },
   "HGUy54": {
     "defaultMessage": "Для забезпечення вашої безпеки ми не рекомендуємо вводити власне ім’я та прізвище",
@@ -131,9 +147,17 @@
     "defaultMessage": "Пошук",
     "description": "Header: searchField"
   },
+  "Z4gKO4": {
+    "defaultMessage": "Оцінка активності",
+    "description": "Profile: activity"
+  },
   "ZEvWYL": {
     "defaultMessage": "Безпечна платформа координації передачі гуманітарної допомоги",
     "description": "Header: title"
+  },
+  "ZJFhHq": {
+    "defaultMessage": "Скасувати",
+    "description": "ProfileForm: cancel"
   },
   "ZOs9YC": {
     "defaultMessage": "що ми робимо",
@@ -143,6 +167,10 @@
     "defaultMessage": "Відновлення паролю",
     "description": "forgotPassword: title"
   },
+  "aUT13b": {
+    "defaultMessage": "Електронна пошта",
+    "description": "PersonalData: email"
+  },
   "ajlqYg": {
     "defaultMessage": "Будь-ласка, верифікуйте ваш акаунт",
     "description": "Verification: title"
@@ -150,6 +178,10 @@
   "bU5skY": {
     "defaultMessage": "Номер телефону",
     "description": "Registration: phoneNumberInput"
+  },
+  "c+UzEc": {
+    "defaultMessage": "Назва хабу",
+    "description": "ProfileForm: hubName"
   },
   "eV+sCD": {
     "defaultMessage": "реєстрація",
@@ -170,6 +202,14 @@
   "ii/P/s": {
     "defaultMessage": "Координація передачі гуманітарної допомоги між донорами та волонтерськими хабами / хабами",
     "description": "Home: firstTeaser_description_1"
+  },
+  "iwu/mt": {
+    "defaultMessage": "Номер телефону",
+    "description": "PersonalData: phoneNumber"
+  },
+  "ktfdBb": {
+    "defaultMessage": "Адреса",
+    "description": "ProfileForm: address"
   },
   "l/UVCk": {
     "defaultMessage": "реєстрація",
@@ -207,9 +247,29 @@
     "defaultMessage": "Придумайте нікнейм",
     "description": "Registration: nickNameInput"
   },
+  "sPQDfP": {
+    "defaultMessage": "Скасувати",
+    "description": "PersonalData: cancelInfoButton"
+  },
+  "sQUt+3": {
+    "defaultMessage": "Особисті дані",
+    "description": "Profile: personalData"
+  },
+  "tViDKf": {
+    "defaultMessage": "Ваша роль",
+    "description": "Profile: role"
+  },
+  "to7hkt": {
+    "defaultMessage": "Редагувати",
+    "description": "PersonalData: editInfoButton"
+  },
   "tv0h/6": {
     "defaultMessage": "Пароль",
     "description": "Registration: passwordInput"
+  },
+  "vyjGKQ": {
+    "defaultMessage": "Нікнейм",
+    "description": "PersonalData: nickName"
   },
   "wdx07I": {
     "defaultMessage": "Змінити пароль",
@@ -218,6 +278,10 @@
   "wqpq5k": {
     "defaultMessage": "Донори - Хаби",
     "description": "Home: firstTeaser_title_1"
+  },
+  "wr0oXa": {
+    "defaultMessage": "Контакти хабу",
+    "description": "ProfileForm: hubContacts"
   },
   "zKD6CI": {
     "defaultMessage": "вхід",

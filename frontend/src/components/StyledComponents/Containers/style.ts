@@ -3,7 +3,8 @@ import styled from 'styled-components';
 type ContainerTypes = 'content' | 'header' | 'headerAuth' | 'main' | 'footer';
 
 export interface IContainer {
-  tag?: ContainerTypes;
+  tag: ContainerTypes;
+  children: React.ReactNode;
   isAuth?: boolean;
   isShowHeading?: boolean;
 }
@@ -44,7 +45,7 @@ export const HeaderContainer = styled(Container)<IContainer>`
   top: ${({ isAuth, isShowHeading }) => (isAuth || isShowHeading) && '20%'};
 `;
 
-export const HeaderAuthContainer = styled.div`
+export const HeaderAuthContainer = styled.div<IContainer>`
   display: flex;
   background-color: ${p => p.theme.palette.info.main};
 `;

@@ -12,6 +12,7 @@ import { StorageKeys } from '../../constants/storageKeys';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { IAuthAccessRefresh } from '../../models/authModel/authModel';
 import { getIsAuth, userLogOut } from '../../store';
+import LangDrawer from '../LangDrawer';
 import { Container } from '../StyledComponents';
 import HeaderBg from './components/HeaderBg';
 import UserInfo from './components/UserInfo';
@@ -35,8 +36,8 @@ const Header = () => {
   const { formatMessage } = useIntl();
   const isAuth = useAppSelector(getIsAuth);
 
-  const { involvements, nickname } = useAppSelector(getUser) || {};
-  const role = involvements && roles.find(role => role.id === involvements[0]);
+  const { involvements } = useAppSelector(getUser) || {};
+  const role = involvements && roles.find(role => role.id === involvements[0].type);
 
   const [refreshToken] = useLocalStorage<IAuthAccessRefresh>(StorageKeys.refreshToken);
 
@@ -123,7 +124,7 @@ const Header = () => {
             <SearchWrapper>
               <Autocomplete
                 freeSolo
-                id="free-solo-2-demo"
+                id="searchField"
                 disableClearable
                 options={roles.map(role => role.title)}
                 renderInput={params => (
@@ -148,13 +149,14 @@ const Header = () => {
             <UserInfo />
 
             <NavWrapper>
-              <Text tag="b1">{nickname || 'NickName'}</Text>
               <TextButton onClick={handleLogOut}>
                 {formatMessage({
                   defaultMessage: 'вихід',
                   description: 'Logout: title',
                 })}
               </TextButton>
+              <VertDevider />
+              <LangDrawer />
             </NavWrapper>
           </UserInfoWrapper>
         </Container>

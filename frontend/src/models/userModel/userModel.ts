@@ -1,5 +1,9 @@
+export interface IInvolvement {
+  type: string;
+  verified: boolean;
+}
 export interface IUser {
-  involvements?: string[];
+  involvements: IInvolvement[];
   id: string;
   status: string;
   nickname: string;
