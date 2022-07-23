@@ -1,19 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersRepository } from '../users/db/users.repository';
 import { InvolvementTypesRepository } from './db/involvement-types.repository';
 import { InvolvementsController } from './involvements.controller';
 import { InvolvementsService } from './involvements.service';
-import { UserInvolvementsRepository } from './db/user-involvements.repository';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([
-      UsersRepository,
-      UserInvolvementsRepository,
-      InvolvementTypesRepository,
-    ]),
-  ],
+  imports: [TypeOrmModule.forFeature([InvolvementTypesRepository])],
   controllers: [InvolvementsController],
   providers: [InvolvementsService],
 })
