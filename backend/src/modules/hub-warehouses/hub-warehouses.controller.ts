@@ -14,7 +14,6 @@ import {
 import {
   ApiBearerAuth,
   ApiCreatedResponse,
-  ApiHeader,
   ApiNoContentResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
@@ -22,6 +21,7 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
+import { LanguageHeader } from 'src/shared/decorators/language-header.decorator';
 import { Language } from 'src/shared/decorators/language.decorator';
 import { UserId } from 'src/shared/decorators/user-id.decorators';
 import { ResponseInterceptor } from 'src/shared/interceptors/response.interceptor';
@@ -42,7 +42,7 @@ export class HubWarehousesController {
   @Post()
   @UseInterceptors(new ResponseInterceptor(HubWarehouseItemSerializer))
   @ApiOperation({ summary: 'Create new hub warehouse item' })
-  @ApiHeader({ name: 'Accept-Language' })
+  @LanguageHeader()
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiNotFoundResponse({ description: 'Hub not found' })
   @ApiCreatedResponse({
@@ -61,7 +61,7 @@ export class HubWarehousesController {
   @Get()
   @UseInterceptors(new ResponseInterceptor(HubWarehouseItemsListSerializer))
   @ApiOperation({ summary: 'Get hub warehouse items list' })
-  @ApiHeader({ name: 'Accept-Language' })
+  @LanguageHeader()
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiNotFoundResponse({ description: 'Hub not found' })
   @ApiOkResponse({

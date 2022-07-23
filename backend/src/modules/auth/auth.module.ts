@@ -9,7 +9,7 @@ import { cacheModule } from 'src/shared/cache/cache.module';
 import { MailingService } from 'src/shared/mailing/mailing.service';
 import { CaptchaMiddleware } from 'src/shared/middlewares/captcha';
 import { ContactsRepository } from '../contacts/db/contacts.repository';
-import { UsersRepository } from '../users/users.repository';
+import { UsersRepository } from '../users/db/users.repository';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { ResetPasswordCodesRepository } from './reset-password-codes.repository';

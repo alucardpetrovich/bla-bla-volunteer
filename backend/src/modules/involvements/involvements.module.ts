@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersRepository } from '../users/users.repository';
+import { UsersRepository } from '../users/db/users.repository';
 import { InvolvementTypesRepository } from './db/involvement-types.repository';
 import { InvolvementsController } from './involvements.controller';
 import { InvolvementsService } from './involvements.service';

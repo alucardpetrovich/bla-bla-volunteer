@@ -6,9 +6,9 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from 'typeorm';
-import { ContactEntity } from '../contacts/db/contact.entity';
-import { UserInvolvementEntity } from '../involvements/db/user-involvement.entity';
-import { UserStatuses } from './types/user-statuses.enum';
+import { ContactEntity } from '../../contacts/db/contact.entity';
+import { UserInvolvementEntity } from '../../involvements/db/user-involvement.entity';
+import { UserStatuses } from '../types/user-statuses.enum';
 
 @Entity('users')
 export class UserEntity {
@@ -45,4 +45,5 @@ export class UserEntity {
 
 export enum UserRelations {
   INVOLVEMENTS = 'involvements',
+  CONTACTS = 'contacts',
 }

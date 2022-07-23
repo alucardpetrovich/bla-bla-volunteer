@@ -16,6 +16,7 @@ import { DonationsModule } from './modules/donations/donations.module';
 import { DeliveryModule } from './modules/delivery/delivery.module';
 import { HubWarehousesModule } from './modules/hub-warehouses/hub-warehouses.module';
 import { NeedsModule } from './modules/needs/needs.module';
+import { UserSettingsModule } from './modules/user-settings/user-settings.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { NeedsModule } from './modules/needs/needs.module';
     DeliveryModule,
     HubWarehousesModule,
     NeedsModule,
+    UserSettingsModule,
   ],
   controllers: [],
   providers: [MailingService],

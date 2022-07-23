@@ -21,12 +21,13 @@ import { OrganizationStatuses } from './types/organization-statuses.enum';
 import { ContactEntity } from '../contacts/db/contact.entity';
 import { AccessModes } from '../contacts/types/access-modes.enum';
 import { AccessTypes } from '../contacts/types/access-types.enum';
-import { HubsSearchParams } from './types/hubs-search-params.interface';
+import { OrganizationsSearchParams } from './types/hubs-search-params.interface';
 import { SettlementsRepository } from '../settlements/db/settlements.repository';
 import {
   HubsBySettlementsCount as SettlementWithHubsCount,
   HubsCountBySettlementId,
 } from './types/hubs-by-settlements-count.class';
+import { OrganizationTypes } from './types/organization-types.enum';
 
 @Injectable()
 export class OrganizationsService {
@@ -106,7 +107,7 @@ export class OrganizationsService {
   }
 
   async getHubsList(dto: GetHubsListDto, userId: string, language: string) {
-    const searchParams: HubsSearchParams = {
+    const searchParams: OrganizationsSearchParams = {
       search: dto.search,
       point: dto.point,
       language,
@@ -117,10 +118,13 @@ export class OrganizationsService {
         OrganizationRelations.CONTACT_ACCESS,
         OrganizationRelations.SETTLEMENT,
       ],
+      types: [OrganizationTypes.HUB, OrganizationTypes.MOBILE_HUB],
     };
 
     const hubsCountBySettlementId =
-      await this.organizationsRepository.countHubsBySettlements(searchParams);
+      await this.organizationsRepository.countOrganizationsBySettlements(
+        searchParams,
+      );
     const totalHubsCount = _.sumBy(hubsCountBySettlementId, (h) => h.hubsCount);
     if (
       totalHubsCount > this.entityLocksConf.maxHubsSearchEntitiesToReturn ||
@@ -134,9 +138,8 @@ export class OrganizationsService {
       return { settlementsWithHubsCount };
     }
 
-    const organizations = await this.organizationsRepository.findHubsList(
-      searchParams,
-    );
+    const organizations =
+      await this.organizationsRepository.findOrganizationsList(searchParams);
 
     return {
       organizations: organizations.map((o) => {
@@ -144,6 +147,18 @@ export class OrganizationsService {
         return o;
       }),
     };
+  }
+
+  async getMyOrganizationsList(userId: string, language: string) {
+    return this.organizationsRepository.findOrganizationsList({
+      language,
+      userId,
+      relations: [
+        OrganizationRelations.CONTACTS,
+        OrganizationRelations.SETTLEMENT,
+      ],
+      isUserOwner: true,
+    });
   }
 
   prepareContacts(

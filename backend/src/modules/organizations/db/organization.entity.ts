@@ -10,7 +10,7 @@ import {
   OneToMany,
 } from 'typeorm';
 import { SettlementEntity } from '../../settlements/db/settlement.entity';
-import { UserEntity } from '../../users/user.entity';
+import { UserEntity } from '../../users/db/user.entity';
 import { OrganizationStatuses } from '../types/organization-statuses.enum';
 import { OrganizationTypes } from '../types/organization-types.enum';
 import { OrganizationTypeEntity } from './organization-type.entity';

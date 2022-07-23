@@ -1,11 +1,7 @@
 import { EntityRepository, Repository, SelectQueryBuilder } from 'typeorm';
-import {
-  HubsBySettlementsCount,
-  HubsCountBySettlementId,
-} from '../types/hubs-by-settlements-count.class';
-import { HubsSearchParams } from '../types/hubs-search-params.interface';
+import { HubsCountBySettlementId } from '../types/hubs-by-settlements-count.class';
+import { OrganizationsSearchParams } from '../types/hubs-search-params.interface';
 import { OrganizationRelations } from '../types/organization-relations.enum';
-import { OrganizationTypes } from '../types/organization-types.enum';
 import { OrganizationEntity } from './organization.entity';
 
 @EntityRepository(OrganizationEntity)
@@ -29,12 +25,11 @@ export class OrganizationsRepository extends Repository<OrganizationEntity> {
       .getOne();
   }
 
-  async findHubsList(params: HubsSearchParams) {
+  async findOrganizationsList(params: OrganizationsSearchParams) {
     const query = this.createQueryBuilder('o');
 
     this.addRelations(query, params.relations);
-    query.andWhere('o.type IN (:...types)');
-    this.setHubSearchWheres(params, query);
+    this.setOrganizationSearchWheres(params, query);
 
     return query
       .setParameter('language', params.language)
@@ -42,14 +37,14 @@ export class OrganizationsRepository extends Repository<OrganizationEntity> {
       .getMany();
   }
 
-  async countHubsBySettlements(
-    params: HubsSearchParams,
+  async countOrganizationsBySettlements(
+    params: OrganizationsSearchParams,
   ): Promise<HubsCountBySettlementId[]> {
     const query = this.createQueryBuilder('o')
       .select([`COUNT(*) AS "hubsCount"`, `os.id AS "settlementId"`])
       .innerJoin('o.settlement', 'os');
 
-    this.setHubSearchWheres(params, query);
+    this.setOrganizationSearchWheres(params, query);
 
     return query
       .setParameter('language', params.language)
@@ -57,12 +52,10 @@ export class OrganizationsRepository extends Repository<OrganizationEntity> {
       .getRawMany();
   }
 
-  private setHubSearchWheres(
-    params: HubsSearchParams,
+  private setOrganizationSearchWheres(
+    params: OrganizationsSearchParams,
     query: SelectQueryBuilder<OrganizationEntity>,
   ) {
-    query.andWhere('o.type IN (:...types)');
-
     if (params.search) {
       query
         .andWhere('o.name ILIKE :query')
@@ -90,10 +83,14 @@ export class OrganizationsRepository extends Repository<OrganizationEntity> {
         .setParameter('radius', params.radius);
     }
 
-    query.setParameter('types', [
-      OrganizationTypes.HUB,
-      OrganizationTypes.MOBILE_HUB,
-    ]);
+    if (params.types) {
+      query.andWhere('o.type IN (:...types)');
+      query.setParameter('types', params.types);
+    }
+
+    if (params.isUserOwner) {
+      query.andWhere('o."createdBy" = :userId');
+    }
   }
 
   private addRelations(

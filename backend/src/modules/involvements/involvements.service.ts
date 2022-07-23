@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserRelations } from '../users/user.entity';
-import { UsersRepository } from '../users/users.repository';
+import { UserRelations } from '../users/db/user.entity';
+import { UsersRepository } from '../users/db/users.repository';
 import { InvolvementsDto } from './dto/involvements.dto';
 import { InvolvementTypesRepository } from './db/involvement-types.repository';
 import { UserInvolvementsRepository } from './db/user-involvements.repository';

@@ -29,13 +29,13 @@ import { SignInDto } from './dto/sign-in.dto';
 import { RefreshTokenDto } from './dto/refresh-tokens.dto';
 import { RefreshTokensSerializer } from './serializers/refresh-tokens.serializer';
 import { SignInSerializer } from './serializers/sign-in.serializer';
-import { SignUpSerializer } from './serializers/sign-up.serializer';
 import { SignUpDto } from './dto/sign-up.dto';
 import { UserSerializer } from '../users/serializers/user.serializer';
 import { UserId } from 'src/shared/decorators/user-id.decorators';
 import { JwtGuard } from './guards/jwt.guard';
 import { SendResetPasswordLinkDto } from './dto/send-reset-password-link.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
+import { UserResponseSerializer } from '../users/serializers/user.response.serializer';
 
 @Controller('/v1/auth')
 @ApiTags('Auth Controller')
@@ -43,14 +43,14 @@ export class AuthController {
   constructor(private service: AuthService) {}
 
   @Post('sign-up')
-  @UseInterceptors(new ResponseInterceptor(SignUpSerializer))
+  @UseInterceptors(new ResponseInterceptor(UserResponseSerializer))
   @ApiOperation({ summary: 'Sign up' })
   @ApiConflictResponse({ description: 'User with such email already exists' })
   @ApiCreatedResponse({
     description: 'Registration succeeded',
-    type: SignUpSerializer,
+    type: UserResponseSerializer,
   })
-  async signUp(@Body() dto: SignUpDto): Promise<SignUpSerializer> {
+  async signUp(@Body() dto: SignUpDto): Promise<UserResponseSerializer> {
     const user = await this.service.signUp(dto);
     return { user };
   }

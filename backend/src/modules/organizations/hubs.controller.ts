@@ -7,12 +7,12 @@ import {
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
-  ApiHeader,
   ApiOkResponse,
   ApiOperation,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
+import { LanguageHeader } from 'src/shared/decorators/language-header.decorator';
 import { Language } from 'src/shared/decorators/language.decorator';
 import { UserId } from 'src/shared/decorators/user-id.decorators';
 import { ResponseInterceptor } from 'src/shared/interceptors/response.interceptor';
@@ -31,7 +31,7 @@ export class HubsController {
   @Get()
   @UseInterceptors(new ResponseInterceptor(OrganizationsListSerializer))
   @ApiOperation({ summary: 'Get list of hubs' })
-  @ApiHeader({ name: 'Accept-Language' })
+  @LanguageHeader()
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiOkResponse({
     description: 'Hubs returned',

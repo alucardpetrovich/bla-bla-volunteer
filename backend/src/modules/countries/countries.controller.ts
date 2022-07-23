@@ -11,7 +11,7 @@ import { JwtGuard } from '../auth/guards/jwt.guard';
 import { CountriesService } from './countries.service';
 import { CountriesListSerializer } from './serializers/countries-list.serializer';
 
-@Controller('countries')
+@Controller('v1/countries')
 @UseGuards(JwtGuard)
 @ApiTags('Countries Controller')
 @ApiBearerAuth()

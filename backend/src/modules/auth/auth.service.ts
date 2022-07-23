@@ -8,8 +8,8 @@ import {
   PreconditionFailedException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserEntity, UserRelations } from '../users/user.entity';
-import { UsersRepository } from '../users/users.repository';
+import { UserEntity, UserRelations } from '../users/db/user.entity';
+import { UsersRepository } from '../users/db/users.repository';
 import { SignInDto } from './dto/sign-in.dto';
 import * as bcrypt from 'bcryptjs';
 import { GeneralConfig, generalConfig } from 'src/config/general.config';
@@ -71,7 +71,9 @@ export class AuthService {
 
     await this.sendVerificationLink(user);
 
-    return user;
+    return this.usersRepository.findOne(user.id, {
+      relations: [UserRelations.CONTACTS, UserRelations.INVOLVEMENTS],
+    });
   }
 
   async signIn(dto: SignInDto): Promise<SignInSerializer> {
@@ -79,7 +81,7 @@ export class AuthService {
 
     const user = await this.usersRepository.findOne(
       { email },
-      { relations: [UserRelations.INVOLVEMENTS] },
+      { relations: [UserRelations.INVOLVEMENTS, UserRelations.CONTACTS] },
     );
     if (!user) {
       throw new NotFoundException(`User with email '${email}' not found`);
@@ -139,7 +141,7 @@ export class AuthService {
   async getCurrentUser(userId: string) {
     const user = await this.usersRepository.findOne(
       { id: userId },
-      { relations: [UserRelations.INVOLVEMENTS] },
+      { relations: [UserRelations.INVOLVEMENTS, UserRelations.CONTACTS] },
     );
     if (!user) {
       throw new NotFoundException(`User not found`);

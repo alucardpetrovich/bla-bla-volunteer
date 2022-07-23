@@ -7,12 +7,12 @@ import {
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
-  ApiHeader,
   ApiOkResponse,
   ApiOperation,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
+import { LanguageHeader } from 'src/shared/decorators/language-header.decorator';
 import { Language } from 'src/shared/decorators/language.decorator';
 import { ResponseInterceptor } from 'src/shared/interceptors/response.interceptor';
 import { JwtGuard } from '../auth/guards/jwt.guard';
@@ -31,7 +31,7 @@ export class ProductsController {
   @Get('categories')
   @UseInterceptors(new ResponseInterceptor(ProductCategoriesListSerializer))
   @ApiOperation({ summary: 'Get product categories list' })
-  @ApiHeader({ name: 'Accept-Language' })
+  @LanguageHeader()
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiOkResponse({
     description: 'Product categories list returned',
@@ -45,7 +45,7 @@ export class ProductsController {
   @Get('search')
   @UseInterceptors(new ResponseInterceptor(ProductsListSerializer))
   @ApiOperation({ summary: 'Search products' })
-  @ApiHeader({ name: 'Accept-Language' })
+  @LanguageHeader()
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiOkResponse({
     description: 'Products returned',

@@ -1,5 +1,5 @@
 import { OrganizationEntity } from 'src/modules/organizations/db/organization.entity';
-import { UserEntity } from 'src/modules/users/user.entity';
+import { UserEntity } from 'src/modules/users/db/user.entity';
 import {
   Column,
   Entity,

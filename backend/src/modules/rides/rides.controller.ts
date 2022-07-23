@@ -32,7 +32,7 @@ import { RidesService } from './rides.service';
 import { RideSerializer } from './serializers/ride.serializer';
 import { RidesListSerializer } from './serializers/rides-list.serializer';
 
-@Controller('rides')
+@Controller('v1/rides')
 @UseGuards(JwtGuard)
 @ApiTags('Rides Controller')
 @ApiBearerAuth()

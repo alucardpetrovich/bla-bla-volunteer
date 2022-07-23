@@ -15,7 +15,6 @@ import {
 import {
   ApiBearerAuth,
   ApiCreatedResponse,
-  ApiHeader,
   ApiNoContentResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
@@ -23,6 +22,7 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
+import { LanguageHeader } from 'src/shared/decorators/language-header.decorator';
 import { Language } from 'src/shared/decorators/language.decorator';
 import { UserId } from 'src/shared/decorators/user-id.decorators';
 import { ResponseInterceptor } from 'src/shared/interceptors/response.interceptor';
@@ -43,7 +43,7 @@ export class NeedsController {
   @Post()
   @UseInterceptors(new ResponseInterceptor(RecipientNeedSerializer))
   @ApiOperation({ summary: 'Create new recipient need' })
-  @ApiHeader({ name: 'Accept-Language' })
+  @LanguageHeader()
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiNotFoundResponse({ description: 'Recipient not found' })
   @ApiCreatedResponse({
@@ -62,7 +62,7 @@ export class NeedsController {
   @Get()
   @UseInterceptors(new ResponseInterceptor(RecipientNeedsListSerializer))
   @ApiOperation({ summary: 'Get recipient needs list' })
-  @ApiHeader({ name: 'Accept-Language' })
+  @LanguageHeader()
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiNotFoundResponse({ description: 'Recipient not found' })
   @ApiOkResponse({
@@ -87,7 +87,7 @@ export class NeedsController {
   @Get(':needId')
   @UseInterceptors(new ResponseInterceptor(RecipientNeedSerializer))
   @ApiOperation({ summary: 'Get recipient need by id' })
-  @ApiHeader({ name: 'Accept-Language' })
+  @LanguageHeader()
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiNotFoundResponse({ description: 'Recipient need not found' })
   @ApiOkResponse({
@@ -106,7 +106,7 @@ export class NeedsController {
   @Put(':needId')
   @UseInterceptors(new ResponseInterceptor(RecipientNeedSerializer))
   @ApiOperation({ summary: 'Update recipient need' })
-  @ApiHeader({ name: 'Accept-Language' })
+  @LanguageHeader()
   @ApiUnauthorizedResponse({ description: 'User is not authorized' })
   @ApiNotFoundResponse({ description: 'Recipient need not found' })
   @ApiOkResponse({

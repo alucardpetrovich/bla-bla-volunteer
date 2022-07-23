@@ -8,7 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { SettlementEntity } from '../../settlements/db/settlement.entity';
-import { UserEntity } from '../../users/user.entity';
+import { UserEntity } from '../../users/db/user.entity';
 import { RideStatuses } from '../types/ride-statuses.enum';
 
 @Entity('rides')

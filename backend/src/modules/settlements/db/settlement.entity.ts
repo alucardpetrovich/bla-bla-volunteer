@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { SettlementTypeEntity } from './settlement-type.entity';
 import { Point } from 'geojson';
-import { UserEntity } from '../../users/user.entity';
+import { UserEntity } from '../../users/db/user.entity';
 import { CountryEntity } from '../../countries/db/country.entity';
 import { DictionaryPhraseEntity } from 'src/modules/dictionary/db/dictionary-phrase.entity';
 import { DistrictEntity } from './district.entity';

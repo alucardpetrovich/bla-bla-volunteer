@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Expose, Type } from 'class-transformer';
 import { SettlementSerializer } from 'src/modules/settlements/serializers/settlement.serializer';
-import { OrganizationContactSerializer } from './contact.serializer';
+import { ContactSerializer } from '../../contacts/serializers/contact.serializer';
 
 export class OrganizationSerializer {
   @ApiProperty()
@@ -29,8 +29,8 @@ export class OrganizationSerializer {
   @Type(() => SettlementSerializer)
   settlement: SettlementSerializer;
 
-  @ApiProperty({ type: OrganizationContactSerializer, isArray: true })
-  @Type(() => OrganizationContactSerializer)
+  @ApiProperty({ type: ContactSerializer, isArray: true })
+  @Type(() => ContactSerializer)
   @Expose()
-  contacts: OrganizationContactSerializer[];
+  contacts: ContactSerializer[];
 }
