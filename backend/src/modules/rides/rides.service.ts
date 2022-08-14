@@ -16,6 +16,7 @@ import { RideRelations } from './db/ride.entity';
 import { RidesRepository } from './db/rides.repository';
 import { RideStatuses } from './types/ride-statuses.enum';
 import { GetRidesListDto } from './dto/get-rides-list.dto';
+import { GetRidesNearbyListDto } from './dto/get-rides-nearby.dto';
 
 @Injectable()
 export class RidesService {
@@ -48,6 +49,7 @@ export class RidesService {
 
     const ride = await this.ridesRepository.save({
       ...dto,
+      routeCurve: { type: 'LineString', coordinates: dto.routeCurve },
       status: RideStatuses.SCHEDULED,
       driverId: userId,
     });
@@ -57,12 +59,25 @@ export class RidesService {
     });
   }
 
-  async getRidesList(dto: GetRidesListDto) {
+  async getRidesList(dto: GetRidesListDto, userId: string) {
     const { pagination } = dto;
     return this.ridesRepository.find({
+      where: { driverId: userId },
       skip: pagination.getOffset(),
       take: pagination.getLimit(),
       relations: this.relationsToFetch,
+    });
+  }
+
+  async getRidesNearbyList(dto: GetRidesNearbyListDto) {
+    return this.ridesRepository.findRidesNearby({
+      lat: dto.lat,
+      lon: dto.lon,
+      searchRadiusInKm: dto.searchRadiusInKm,
+      pagination: {
+        offset: dto.pagination.getOffset(),
+        limit: dto.pagination.getLimit(),
+      },
     });
   }
 
@@ -98,6 +113,7 @@ export class RidesService {
     await this.ridesRepository.save({
       ...ride,
       ...dto,
+      routeCurve: { type: 'LineString', coordinates: dto.routeCurve },
     });
 
     return this.ridesRepository.findOne(ride.id, {

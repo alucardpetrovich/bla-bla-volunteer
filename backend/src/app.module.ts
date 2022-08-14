@@ -18,6 +18,15 @@ import { HubWarehousesModule } from './modules/hub-warehouses/hub-warehouses.mod
 import { NeedsModule } from './modules/needs/needs.module';
 import { UserSettingsModule } from './modules/user-settings/user-settings.module';
 
+// TODO: 1. add functionality for ride curve settling +
+// TODO: 2. add functionality for rides nearby search +
+// TODO: 3. add functionality for searching hubs nearby rides +
+// TODO: 4. add possibility to filter p. 3 by products (later on)
+// TODO: 5. add possibility to add new humanitarian task
+// TODO: 6. tell in ride info, that user already assigned to particular transportation tasks
+// TODO: 7. maybe to add notification hub or smth like this
+// TODO: 8. add verification that volunteer received goods, receiver received goods
+
 @Module({
   imports: [
     configModule,

@@ -1,6 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Expose, Type } from 'class-transformer';
+import { Expose, Transform, Type } from 'class-transformer';
+import { LineString } from 'geojson';
 import { SettlementSerializer } from 'src/modules/settlements/serializers/settlement.serializer';
+import { RideEntity } from '../db/ride.entity';
 
 export class RideSerializer {
   @ApiProperty()
@@ -18,6 +20,17 @@ export class RideSerializer {
   @ApiProperty()
   @Expose()
   arrivalSettlementId: string;
+
+  @ApiProperty({
+    type: 'array',
+    items: {
+      type: 'array',
+      items: { type: 'number', minLength: 2, maxLength: 2 },
+    },
+  })
+  @Transform(({ obj }: { obj: RideEntity }) => obj.routeCurve.coordinates)
+  @Expose()
+  routeCurve: number[][];
 
   @ApiProperty()
   @Expose()

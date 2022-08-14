@@ -7,6 +7,7 @@ import { OrganizationTypesRepository } from './db/organization-types.repository'
 import { OrganizationsRepository } from './db/organizations.repository';
 import { HubsController } from './hubs.controller';
 import { SettlementsRepository } from '../settlements/db/settlements.repository';
+import { RidesRepository } from '../rides/db/rides.repository';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { SettlementsRepository } from '../settlements/db/settlements.repository'
       OrganizationTypesRepository,
       ContactsRepository,
       SettlementsRepository,
+      RidesRepository,
     ]),
   ],
   controllers: [OrganizationsController, HubsController],

@@ -82,6 +82,15 @@ export class OrganizationsRepository extends Repository<OrganizationEntity> {
         )
         .setParameter('radius', params.radius);
     }
+    if (params.ride) {
+      query
+        .andWhere(
+          `ST_Distance(ST_GeomFromGeoJSON(:routeCurve), os."centerLocation") < :radius`,
+        )
+
+        .setParameter('routeCurve', params.ride.routeCurve)
+        .setParameter('radius', params.radius);
+    }
 
     if (params.types) {
       query.andWhere('o.type IN (:...types)');

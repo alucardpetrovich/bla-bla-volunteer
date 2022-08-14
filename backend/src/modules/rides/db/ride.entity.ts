@@ -7,6 +7,7 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
+import { LineString } from 'geojson';
 import { SettlementEntity } from '../../settlements/db/settlement.entity';
 import { UserEntity } from '../../users/db/user.entity';
 import { RideStatuses } from '../types/ride-statuses.enum';
@@ -24,6 +25,9 @@ export class RideEntity {
 
   @Column()
   arrivalSettlementId: string;
+
+  @Column('geography', { spatialFeatureType: 'LineString' })
+  routeCurve: LineString;
 
   @Column()
   status: RideStatuses;

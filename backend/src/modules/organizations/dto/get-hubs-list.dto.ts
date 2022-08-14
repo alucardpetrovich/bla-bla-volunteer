@@ -5,6 +5,7 @@ import {
   IsInt,
   IsOptional,
   IsString,
+  IsUUID,
   ValidateIf,
   ValidateNested,
 } from 'class-validator';
@@ -20,8 +21,13 @@ export class GetHubsListDto {
   @ApiProperty({ required: false })
   @IsInt()
   @Transform(({ value }) => parseInt(value))
-  @ValidateIf((obj: GetHubsListDto) => Boolean(obj.point))
+  @ValidateIf((obj: GetHubsListDto) => Boolean(obj.point) || Boolean())
   radiusInKm?: number;
+
+  @ApiProperty({ required: false })
+  @IsUUID()
+  @IsOptional()
+  rideId?: string;
 
   @ApiProperty({ required: false })
   @IsString()

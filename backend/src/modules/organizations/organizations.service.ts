@@ -28,6 +28,8 @@ import {
   HubsCountBySettlementId,
 } from './types/hubs-by-settlements-count.class';
 import { OrganizationTypes } from './types/organization-types.enum';
+import { RideEntity } from '../rides/db/ride.entity';
+import { RidesRepository } from '../rides/db/rides.repository';
 
 @Injectable()
 export class OrganizationsService {
@@ -40,6 +42,8 @@ export class OrganizationsService {
     private contactsRepository: ContactsRepository,
     @InjectRepository(SettlementsRepository)
     private settlementsRepository: SettlementsRepository,
+    @InjectRepository(RidesRepository)
+    private ridesRepository: RidesRepository,
     @Inject(entityLocksConfig.KEY)
     private entityLocksConf: EntityLocksConfig,
   ) {}
@@ -107,12 +111,18 @@ export class OrganizationsService {
   }
 
   async getHubsList(dto: GetHubsListDto, userId: string, language: string) {
+    let ride: RideEntity;
+    if (dto.rideId) {
+      ride = await this.ridesRepository.findOne(dto.rideId);
+    }
+
     const searchParams: OrganizationsSearchParams = {
       search: dto.search,
       point: dto.point,
       language,
       radius: dto.radiusInKm * 1000,
       userId,
+      ride,
       relations: [
         OrganizationRelations.CONTACTS,
         OrganizationRelations.CONTACT_ACCESS,
