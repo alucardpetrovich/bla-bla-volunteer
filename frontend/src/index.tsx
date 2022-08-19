@@ -1,13 +1,15 @@
 import { ThemeProvider } from '@mui/material/styles';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { DeviceMatchProvider, theme } from '@ui-kit';
-import { StrictMode } from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux';
+import toast, { Toaster } from 'react-hot-toast';
+import { useRoutes } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
-import { PersistGate } from 'redux-persist/integration/react';
 
-import App from './pages/App/index';
-import store, { persistor } from './store/store';
+import { Routes } from './components/common/constants/Routes';
+import { isErrorResponse } from './components/common/utils/typeguard';
+import { GlobalStyle } from './utils/styles';
 
 const rootDiv = document.getElementById('root');
 
@@ -17,18 +19,68 @@ if (!rootDiv) {
 
 const root = ReactDOM.createRoot(rootDiv);
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchOnWindowFocus: false,
+      onError: error => {
+        if (isErrorResponse(error)) {
+          toast.error(error.response.data.message);
+          return;
+        }
+
+        toast.error('Error');
+      },
+    },
+    mutations: {
+      retry: false,
+      onError: error => {
+        if (isErrorResponse(error)) {
+          toast.error(error.response.data.message);
+          return;
+        }
+
+        toast.error('Error');
+      },
+    },
+  },
+});
+const toastOptions = {
+  duration: 3000,
+  style: {
+    padding: '16px',
+    minWidth: '240px',
+    borderRadius: '4px',
+  },
+  success: {
+    iconTheme: {
+      primary: '#388E3C',
+      secondary: '#fff',
+    },
+  },
+  error: {
+    iconTheme: {
+      primary: '#E53935',
+      secondary: '#fff',
+    },
+  },
+};
+
+const App = () => useRoutes(Routes);
+
 root.render(
-  <DeviceMatchProvider>
-    <StrictMode>
-      <BrowserRouter>
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
-            <ThemeProvider theme={theme}>
-              <App />
-            </ThemeProvider>
-          </PersistGate>
-        </Provider>
-      </BrowserRouter>
-    </StrictMode>
-  </DeviceMatchProvider>,
+  <QueryClientProvider client={queryClient}>
+    <DeviceMatchProvider>
+      <StrictMode>
+        <BrowserRouter>
+          <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <Toaster position="top-right" toastOptions={toastOptions} />
+            <App />
+          </ThemeProvider>
+        </BrowserRouter>
+      </StrictMode>
+    </DeviceMatchProvider>
+  </QueryClientProvider>,
 );

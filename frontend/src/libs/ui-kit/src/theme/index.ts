@@ -1,6 +1,8 @@
 import { createTheme, Theme } from '@mui/material/styles';
 
-import { ThemePalette, Types } from '../../styled';
+import { components } from './components';
+import { palette } from './palette';
+import { types } from './types';
 
 export enum DeviceSizes {
   xs = 360,
@@ -9,128 +11,6 @@ export enum DeviceSizes {
   lg = 1366,
   xl = 1920,
 }
-
-const palette: ThemePalette = {
-  common: {
-    black: '#323434',
-    white: '#FBFCFD',
-  },
-  background: {
-    default: '#FBFCFD',
-  },
-  grey: {
-    100: '#F2F2F3',
-    500: '#8C8E91',
-    700: '#808080',
-  },
-  info: {
-    main: '#F5DF4D', //F5DF4D
-    hover: '#f6d605',
-    blue: '#1546f5',
-  },
-  primary: {
-    main: '#8C8E91', //93A9D2
-    hover: '#5880cb',
-  },
-};
-
-const types: Types = {
-  h1: {
-    fontSize: 32,
-    lineHeight: 1.2,
-    fontWeight: 700,
-  },
-  h2: {
-    fontSize: 24,
-    lineHeight: 1.2,
-    fontWeight: 700,
-  },
-  h3: {
-    fontSize: 20,
-    lineHeight: 1.2,
-    fontWeight: 700,
-  },
-  h3_900: {
-    fontSize: 20,
-    lineHeight: 1.2,
-    fontWeight: 700,
-  },
-  h4: {
-    fontSize: 16,
-    lineHeight: 1.5,
-    fontWeight: 700,
-  },
-  h4_900: {
-    fontSize: 16,
-    lineHeight: 1.5,
-    fontWeight: 700,
-  },
-  h5: {
-    fontSize: 14,
-    lineHeight: 1.5,
-    fontWeight: 700,
-  },
-  h5_900: {
-    fontSize: 14,
-    lineHeight: 1.5,
-    fontWeight: 900,
-  },
-
-  body1: {
-    fontSize: 20,
-    lineHeight: 1.5,
-    fontWeight: 500,
-  },
-  body7: {
-    fontSize: 10,
-    lineHeight: 1.2,
-    fontWeight: 500,
-  },
-  body2: {
-    fontSize: 16,
-    lineHeight: 1.3,
-    fontWeight: 400,
-  },
-  body3: {
-    fontSize: 14,
-    lineHeight: 1.2,
-    fontWeight: 400,
-  },
-  body4: {
-    fontSize: 12,
-    lineHeight: 1,
-    fontWeight: 400,
-  },
-  body5: {
-    fontSize: 12,
-    lineHeight: 1.2,
-    fontWeight: 400,
-  },
-  body6: {
-    fontSize: 10,
-    lineHeight: 1,
-    fontWeight: 400,
-  },
-  body8: {
-    fontSize: 20,
-    lineHeight: 1.4,
-    fontWeight: 500,
-    fontFamily: 'Roboto',
-  },
-  body9: {
-    fontSize: 16,
-    lineHeight: 1.3,
-    fontWeight: 400,
-    fontFamily: 'Roboto',
-  },
-};
-
-const inputStyles = {
-  ...types.body2,
-  padding: '12px 16px',
-  color: palette.common.black,
-};
-
 export const theme: Theme = createTheme({
   breakpoints: {
     values: {
@@ -141,80 +21,8 @@ export const theme: Theme = createTheme({
       xl: DeviceSizes.xl,
     },
   },
-
-  components: {
-    MuiFilledInput: {
-      styleOverrides: {
-        input: {
-          ...inputStyles,
-        },
-        root: {
-          borderRadius: 5,
-          color: palette.common.black,
-        },
-      },
-    },
-    MuiOutlinedInput: {
-      styleOverrides: {
-        input: {
-          ...inputStyles,
-        },
-        root: {
-          borderRadius: 5,
-          color: palette.common.black,
-        },
-      },
-    },
-    MuiInputBase: {
-      styleOverrides: {
-        input: {
-          ...inputStyles,
-        },
-        root: {
-          borderRadius: 5,
-          color: palette.common.black,
-        },
-      },
-    },
-    MuiAutocomplete: {
-      styleOverrides: {
-        input: {
-          ...inputStyles,
-        },
-      },
-    },
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          color: palette.common.black,
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          borderRadius: '0px',
-        },
-      },
-    },
-    MuiList: {
-      styleOverrides: {
-        root: {
-          backgroundColor: palette.info.main,
-        },
-      },
-    },
-    MuiMenuItem: {
-      styleOverrides: {
-        root: {
-          backgroundColor: palette.info.main,
-        },
-      },
-    },
-  },
-
+  components,
   palette,
-
   spacing(...values) {
     const FACTOR = 8;
     return values.map(value => (value === 'auto' ? value : `${value * FACTOR}px`)).join(' ');
@@ -222,11 +30,14 @@ export const theme: Theme = createTheme({
 
   font(type) {
     const { fontSize, lineHeight, fontWeight, fontFamily } = types[type];
+    const ff = fontFamily || 'Inter';
+
     return `
       font-size: ${fontSize}px;
       line-height: ${lineHeight};
       font-weight: ${fontWeight};
-      font-family: ${fontFamily ?? '"Inter", sans-serif'};
+      font-family: "${ff}", sans-serif;
     `;
   },
+  hover: '@media (hover: hover)',
 });
