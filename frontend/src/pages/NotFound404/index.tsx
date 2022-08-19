@@ -1,5 +1,7 @@
+import { Wrapper } from './styles';
+
 const NotFoundPage = () => {
-  return <div>NotFound404</div>;
+  return <Wrapper>404</Wrapper>;
 };
 
 export default NotFoundPage;

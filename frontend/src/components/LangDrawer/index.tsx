@@ -1,36 +1,44 @@
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { Text } from '@ui-kit';
+import { makeUrl } from '@ui-kit';
 import { MouseEvent, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'src/hooks';
+import { useLocation, useNavigate } from 'react-router-dom';
 import messages from 'src/locale/list.json';
-import { changeLang } from 'src/store/lang/langOperations';
-import { getLang } from 'src/store/lang/langSelectors';
+
+import { StorageKeys } from '../common/constants/storageKeys';
+import { useLocale } from '../common/hooks/useLocale';
+import { setToStorage } from '../common/utils/storage';
 
 const locales = Object.keys(messages);
 
+// TODO: REFACTOR!!!!
 const LangDrawer = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const { locale } = useLocale();
 
   const [currentLang, setCurrentLang] = useState<string>('');
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const dispatch = useAppDispatch();
-
-  const lang = useSelector(getLang);
   useEffect(() => {
-    setCurrentLang(lang);
-  }, [lang]);
+    setCurrentLang(locale);
+  }, [locale]);
 
   const handleClose = (event: MouseEvent<HTMLElement>) => {
     const newLang: string | null = (event.target as Element).getAttribute('data-lang');
-    localStorage.setItem('lang', JSON.stringify(newLang));
-    dispatch(changeLang(newLang));
+
+    const l = newLang || locale;
+
+    navigate(makeUrl(pathname.replace(locale, '').slice(1), { locale: l }), {
+      replace: true,
+    });
+
+    setToStorage(StorageKeys.locale, l);
     setAnchorEl(null);
   };
 
@@ -43,9 +51,10 @@ const LangDrawer = () => {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <Text tag="b1">{currentLang}</Text>
+        <p>{currentLang}</p>
       </Button>
       <Menu
+        color="lang"
         id="lang-menu"
         aria-labelledby="lang-button"
         anchorEl={anchorEl}
@@ -62,10 +71,8 @@ const LangDrawer = () => {
       >
         {locales.map(locale => {
           return (
-            <MenuItem key={locale} onClick={handleClose} data-lang={locale}>
-              <Text color="#fff" tag="b1" data-lang={locale}>
-                {locale}
-              </Text>
+            <MenuItem color="lang" key={locale} onClick={handleClose} data-lang={locale}>
+              <p data-lang={locale}>{locale}</p>
             </MenuItem>
           );
         })}
