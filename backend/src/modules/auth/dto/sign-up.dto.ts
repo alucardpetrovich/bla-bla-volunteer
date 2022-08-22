@@ -39,4 +39,8 @@ export class SignUpDto {
   @IsString()
   @IsOptional()
   recaptchaResponse: string;
+
+  @ApiProperty()
+  @IsString()
+  baseUrl: string;
 }

@@ -1,8 +1,19 @@
-import { OmitType } from '@nestjs/swagger';
-import { SignUpDto } from './sign-up.dto';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsEmail, IsOptional, IsString, MinLength } from 'class-validator';
 
-export class SignInDto extends OmitType(SignUpDto, [
-  'nickname',
-  'phoneNumber',
-  'phoneNumberAccessMode',
-] as const) {}
+export class SignInDto {
+  @ApiProperty()
+  @IsString()
+  @IsEmail()
+  email: string;
+
+  @ApiProperty()
+  @IsString()
+  @MinLength(6)
+  password: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsOptional()
+  recaptchaResponse: string;
+}

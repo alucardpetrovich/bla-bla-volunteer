@@ -28,6 +28,7 @@ import { SendResetPasswordLinkDto } from './dto/send-reset-password-link.dto';
 import { ResetPasswordCodesRepository } from './reset-password-codes.repository';
 import { ResetPasswordDto } from './dto/reset-password.dto';
 import { ContactsRepository } from '../contacts/db/contacts.repository';
+import { ResendVerificationLinkDto } from './dto/resend-verification-link.dto';
 
 @Injectable()
 export class AuthService {
@@ -46,7 +47,11 @@ export class AuthService {
   ) {}
 
   async signUp(dto: SignUpDto): Promise<UserEntity> {
-    const { nickname, email, password } = dto;
+    const { nickname, email, password, baseUrl } = dto;
+    const isLinkValid = this.isBaseURLValid(baseUrl);
+    if (!isLinkValid) {
+      throw new ForbiddenException('Wrong base URL');
+    }
 
     const existingUser = await this.usersRepository.findOne({ email });
     if (existingUser) {
@@ -69,7 +74,7 @@ export class AuthService {
       });
     }
 
-    await this.sendVerificationLink(user);
+    await this.sendVerificationLink(user, baseUrl);
 
     return this.usersRepository.findOne(user.id, {
       relations: [UserRelations.CONTACTS, UserRelations.INVOLVEMENTS],
@@ -151,13 +156,7 @@ export class AuthService {
   }
 
   async sendResetPasswordLink({ email, baseUrl }: SendResetPasswordLinkDto) {
-    const isLinkValid = this.generalConf.allowedOrigins.some((origin) => {
-      return (
-        baseUrl.startsWith(origin) &&
-        origin.length + 3 === baseUrl.length &&
-        /\/\w{2}$/.test(baseUrl)
-      );
-    });
+    const isLinkValid = this.isBaseURLValid(baseUrl);
     if (!isLinkValid) {
       throw new ForbiddenException('Wrong base URL');
     }
@@ -174,7 +173,7 @@ export class AuthService {
       this.generalConf.resetPasswordCodeExpiresInMinutes * 60,
     );
 
-    const resetPasswordLink = `${baseUrl}/reset-password?code=${code}`;
+    const resetPasswordLink = `${baseUrl}/account/reset-password?code=${code}`;
     await this.mailingService.sendResetPasswordEmail(email, resetPasswordLink);
   }
 
@@ -194,8 +193,25 @@ export class AuthService {
     await this.resetPasswordCodesRepository.deleteCodes(user.id);
   }
 
-  private async sendVerificationLink(user: UserEntity): Promise<void> {
-    const verificationLink = `${this.generalConf.serverUrl}/api/v1/auth/verify/${user.verificationToken}`;
+  async resendVerificationLink({ email, baseUrl }: ResendVerificationLinkDto) {
+    const isLinkValid = this.isBaseURLValid(baseUrl);
+    if (!isLinkValid) {
+      throw new ForbiddenException('Wrong base URL');
+    }
+
+    const user = await this.usersRepository.findOne({ email });
+    if (!user) {
+      throw new NotFoundException('User with such email was not found');
+    }
+
+    await this.sendVerificationLink(user, baseUrl);
+  }
+
+  private async sendVerificationLink(
+    user: UserEntity,
+    baseUrl: string,
+  ): Promise<void> {
+    const verificationLink = `${baseUrl}/account/verification/${user.verificationToken}`;
     return this.mailingService.sendVerificationEmail(
       user.email,
       verificationLink,
@@ -256,5 +272,15 @@ export class AuthService {
 
   private getPasswordHash(password: string) {
     return bcrypt.hash(password, this.generalConf.bcryptSaltRounds);
+  }
+
+  private isBaseURLValid(baseUrl: string) {
+    return this.generalConf.allowedOrigins.some((origin) => {
+      return (
+        baseUrl.startsWith(origin) &&
+        origin.length + 3 === baseUrl.length &&
+        /\/\w{2}$/.test(baseUrl)
+      );
+    });
   }
 }

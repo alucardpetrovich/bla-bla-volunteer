@@ -36,6 +36,7 @@ import { JwtGuard } from './guards/jwt.guard';
 import { SendResetPasswordLinkDto } from './dto/send-reset-password-link.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
 import { UserResponseSerializer } from '../users/serializers/user.response.serializer';
+import { ResendVerificationLinkDto } from './dto/resend-verification-link.dto';
 
 @Controller('/v1/auth')
 @ApiTags('Auth Controller')
@@ -55,7 +56,7 @@ export class AuthController {
     return { user };
   }
 
-  @Get('/verify/:verificationToken')
+  @Patch('/verify/:verificationToken')
   @HttpCode(204)
   @ApiOperation({ summary: 'Sign up' })
   @ApiNotFoundResponse({ description: 'verification info not found' })
@@ -145,5 +146,16 @@ export class AuthController {
   @ApiNoContentResponse({ description: 'Password changed successfully' })
   async resetPassword(@Body() dto: ResetPasswordDto) {
     return this.service.resetPassword(dto);
+  }
+
+  @Patch('resend-verification-link')
+  @HttpCode(204)
+  @ApiOperation({
+    summary: 'Resend verification code for finishing sign-up process',
+  })
+  @ApiNotFoundResponse({ description: 'User with email not found' })
+  @ApiNoContentResponse({ description: 'Code was resend successfully' })
+  async resendVerificationLink(@Body() dto: ResendVerificationLinkDto) {
+    return this.service.resendVerificationLink(dto);
   }
 }
