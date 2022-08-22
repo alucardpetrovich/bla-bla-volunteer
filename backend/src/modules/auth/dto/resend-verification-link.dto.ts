@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsString } from 'class-validator';
+import { IsEmail, IsOptional, IsString } from 'class-validator';
 
 export class ResendVerificationLinkDto {
   @ApiProperty()
@@ -9,4 +9,9 @@ export class ResendVerificationLinkDto {
   @ApiProperty()
   @IsString()
   baseUrl: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsOptional()
+  recaptchaResponse: string;
 }
