@@ -1,4 +1,3 @@
-// import { theme } from '@ui-kit';
 import React, { useState } from 'react';
 import { Teaser } from 'src/components/Teaser';
 

@@ -43,6 +43,7 @@ export const ImageWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: ${p => p.theme.spacing(16.5)};
+  gap: ${p => p.theme.spacing(10)};
 
   ${p => p.theme.breakpoints.down('lg')} {
     padding-bottom: ${p => p.theme.spacing(8.75)};
@@ -55,7 +56,6 @@ export const ImageWrapper = styled.div`
 
 export const Image = styled.img`
   object-fit: cover;
-  background-size: 50%;
   transition: all 200ms 275ms ease-in-out;
   background-repeat: no-repeat;
   background-size: 160%;
@@ -78,7 +78,6 @@ export const Image = styled.img`
     :first-child {
       width: 47%;
       height: 300px;
-      margin-right: ${p => p.theme.spacing(3.75)};
     }
     :last-child {
       background-size: 50%;

@@ -1,35 +1,39 @@
 {
+  "+2ogFA": {
+    "defaultMessage": "[uk]: Безпечна платформа координації передачі гуманітарної допомоги",
+    "description": "Main/Header: title"
+  },
   "+Cjxb8": {
     "defaultMessage": "Перейти",
     "description": "ResetPassword: goToLoginButton"
-  },
-  "+PvZGw": {
-    "defaultMessage": "[uk]: Сервіси",
-    "description": "Footer: footer_navLink_2"
-  },
-  "+W1/FX": {
-    "defaultMessage": "Придумайте новый пароль",
-    "description": "ResetPassword: passwordFirstInput"
   },
   "+lk6zG": {
     "defaultMessage": "[uk]: Платформа робить процес координації передачі гуманітарної допомоги простішим. Ми намагаємось допомогти організаціям отримати максимальну користь від своєї волонтерської програми, усуваючи обмеження.",
     "description": "Home: secondTeaser_description_1"
   },
-  "01x3vS": {
-    "defaultMessage": "[uk]: Номер телефону доступний за запитом",
-    "description": "Registration: isByRequest"
-  },
   "08V8ko": {
     "defaultMessage": "Ел. Почта",
     "description": "Registration: emailInput"
   },
-  "2+RcKw": {
-    "defaultMessage": "[uk]: Якщо вказаний користувач існує, то на email {email} було надіслано посилання для відновлення пароля.",
+  "1O78xP": {
+    "defaultMessage": "[uk]: Якщо вказаний користувач існує, то на email було надіслано посилання для відновлення пароля.",
     "description": "forgotPassword: sendToEmail"
   },
-  "2hMXLf": {
-    "defaultMessage": "Поле не должно быть пустым",
-    "description": "inputsValidation: isEmpty"
+  "1ySyb1": {
+    "defaultMessage": "[uk]: Сервіси",
+    "description": "Footer navigation"
+  },
+  "3BshuG": {
+    "defaultMessage": "[uk]: Готово",
+    "description": "Roles: send role button"
+  },
+  "3M5gzf": {
+    "defaultMessage": "[uk]: Оновити інформацію",
+    "description": "Profile/Roles: update info button"
+  },
+  "3MqqrJ": {
+    "defaultMessage": "[uk]: Вибір мови",
+    "description": "Header language switcher"
   },
   "3VVorE": {
     "defaultMessage": "[uk]: Хаби - Мобільні волонтери",
@@ -39,29 +43,57 @@
     "defaultMessage": "Регистрация",
     "description": "Registration: title"
   },
-  "5IlW5d": {
-    "defaultMessage": "[uk]: Про проект",
-    "description": "Footer: footer_navLink_1"
+  "4DlDJA": {
+    "defaultMessage": "[uk]: Мобільний волонтер",
+    "description": "Role: title"
   },
-  "87kJUB": {
-    "defaultMessage": "[uk]: Безпека",
-    "description": "Footer: footer_navLink_3"
+  "6Hvtqu": {
+    "defaultMessage": "[uk]: Додати інформацію про Хаб",
+    "description": "Profile/Roles: title"
+  },
+  "6Z/ioI": {
+    "defaultMessage": "[uk]: Помилка при оновленні організації",
+    "description": "Update organization error toast"
+  },
+  "6n3Ray": {
+    "defaultMessage": "[uk]: Нікнейм",
+    "description": "Profile/UserInfo: nickname"
+  },
+  "892piw": {
+    "defaultMessage": "[uk]: Введіть місто",
+    "description": "Profile/Roles: Hub city placeholder"
   },
   "9IGHyr": {
     "defaultMessage": "[uk]: що важливо",
     "description": "Home page: title_2"
   },
-  "C6ilEq": {
-    "defaultMessage": "[uk]: Зберегти",
-    "description": "PersonalData: saveInfoButton"
+  "9s7skt": {
+    "defaultMessage": "[uk]: Company, 2022. All rights reserved",
+    "description": "Footer: copyright"
+  },
+  "AUXVh/": {
+    "defaultMessage": "[uk]: Ваша роль",
+    "description": "Roles: your role"
+  },
+  "AkOnRZ": {
+    "defaultMessage": "[uk]: Поле не повинно бути пустим",
+    "description": "Validation error text"
+  },
+  "BFMWYL": {
+    "defaultMessage": "[uk]: Ел. Пошта",
+    "description": "forgotPassword: emailInput"
+  },
+  "BIeX84": {
+    "defaultMessage": "[uk]: Невалідний email",
+    "description": "Validation error text"
   },
   "Ceftdt": {
     "defaultMessage": "[uk]: Наприклад, example@email.com",
     "description": "forgotPassword: title"
   },
-  "DWdGIk": {
-    "defaultMessage": "[uk]: Додати інформацію",
-    "description": "ProfileForm: addInfo"
+  "DtsV/x": {
+    "defaultMessage": "[uk]: Помилка при створенні організації",
+    "description": "Create organization error toast"
   },
   "EIHGfC": {
     "defaultMessage": "[uk]: Повторіть пароль",
@@ -75,9 +107,13 @@
     "defaultMessage": "[uk]: Листування",
     "description": "Profile: messages"
   },
-  "GUzYRC": {
-    "defaultMessage": "[uk]: Додати інформацію про Хаб",
-    "description": "ProfileForm: addInfo"
+  "GjSVQS": {
+    "defaultMessage": "[uk]: Невалідний телефон",
+    "description": "Validation error text"
+  },
+  "GudXxF": {
+    "defaultMessage": "[uk]: Територіальна громада, організація та установа, що потребує гуманітраної допомоги для забезпечення осіб, постраждалих внаслідок військових дій.",
+    "description": "Role: description"
   },
   "HGUy54": {
     "defaultMessage": "Для обеспечения вашей безопасности мы не рекомендуем вводить собственное имя и фамилию",
@@ -95,25 +131,37 @@
     "defaultMessage": "[uk]: Організація транспортування гуманітарної допомоги мобільним волонтером",
     "description": "Home: firstTeaser_description_2"
   },
+  "JdRRrp": {
+    "defaultMessage": "[uk]: Паролі не співпадають",
+    "description": "Validation error text"
+  },
   "JfxCnQ": {
     "defaultMessage": "[uk]: Сьогодні волонтерам важливо максимально використовувати час і зусилля для підтримки тих, хто потребує допомоги. Платформа полегшує координацію волонтерських груп та волонтерів, що дозволяє їм робити ще більше.",
     "description": "Home: description"
-  },
-  "LD4WwV": {
-    "defaultMessage": "[uk]: Телефон повинен починатися з символу \"+\"",
-    "description": "inputsValidation: phoneStartsWithPlusError"
   },
   "MzAOnD": {
     "defaultMessage": "[uk]: Мобільні волонтери - Отримувачі",
     "description": "Home: firstTeaser_title_3"
   },
-  "Sjfvcj": {
-    "defaultMessage": "[uk]: вихід",
-    "description": "Logout: title"
+  "QE84SO": {
+    "defaultMessage": "[uk]: Адреса",
+    "description": "Profile/Roles: Hub adress"
   },
-  "SsPKIt": {
-    "defaultMessage": "Минимальная длина не должна быть меньше {minValue} символов",
-    "description": "inputsValidation: minLengthError"
+  "QJJjul": {
+    "defaultMessage": "[uk]: Донор",
+    "description": "Role: title"
+  },
+  "R7v+1o": {
+    "defaultMessage": "[uk]: Організацію успішно створено",
+    "description": "Create organization success toast"
+  },
+  "STb5bZ": {
+    "defaultMessage": "[uk]: Контакти хабу",
+    "description": "Profile/Roles: Hub contacts"
+  },
+  "StFVYs": {
+    "defaultMessage": "[uk]: Редагувати",
+    "description": "Profile/UserInfo: update info button"
   },
   "TieNMn": {
     "defaultMessage": "[uk]: Ми максимально бережно працюємо з персональною інформацією користувачів і не вимагаємо інформацію, яка не потрібна безпосередньо для комунікації сторін. Навіть контактні дані ми надаємо лише за згоди її власника",
@@ -135,121 +183,169 @@
     "defaultMessage": "[uk]: вхід",
     "description": "AuthContainer: titleSignIn"
   },
+  "WVprZe": {
+    "defaultMessage": "[uk]: Мінімільна довжина має бути не менше {min} символів",
+    "description": "Validation error text"
+  },
   "X8WhoU": {
     "defaultMessage": "[uk]: Продовжити",
     "description": "forgotPassword: submitButton"
+  },
+  "XHTLua": {
+    "defaultMessage": "[uk]: Доступний всім",
+    "description": "Contact: accessMode label"
+  },
+  "Xae+T8": {
+    "defaultMessage": "[uk]: Про проект",
+    "description": "Footer navigation"
   },
   "XwKFAg": {
     "defaultMessage": "[uk]: Простота",
     "description": "Home: secondTeaser_title_1"
   },
-  "YfLmTV": {
-    "defaultMessage": "[uk]: Пошук",
-    "description": "Header: searchField"
-  },
   "Z4gKO4": {
     "defaultMessage": "[uk]: Оцінка активності",
     "description": "Profile: activity"
   },
-  "ZEvWYL": {
-    "defaultMessage": "Тратата",
-    "description": "Header: title"
-  },
-  "ZJFhHq": {
-    "defaultMessage": "[uk]: Скасувати",
-    "description": "ProfileForm: cancel"
+  "ZAIwPK": {
+    "defaultMessage": "[uk]: реєстрація",
+    "description": "Main/Header: Registration link"
   },
   "ZOs9YC": {
     "defaultMessage": "[uk]: що ми робимо",
     "description": "Home page: title_1"
   },
+  "aA95lf": {
+    "defaultMessage": "[uk]: Особа або група осіб, організації, рухи тощо, які здійснюють передачу матеріальних засобів на безоплатній основі",
+    "description": "Role: description"
+  },
   "aIUfgZ": {
     "defaultMessage": "[uk]: Відновлення паролю",
     "description": "forgotPassword: title"
-  },
-  "aUT13b": {
-    "defaultMessage": "[uk]: Електронна пошта",
-    "description": "PersonalData: email"
   },
   "ajlqYg": {
     "defaultMessage": "[uk]: Будь-ласка, верифікуйте ваш акаунт",
     "description": "Verification: title"
   },
+  "avE1eg": {
+    "defaultMessage": "[uk]: Помилка",
+    "description": "Forgot Password: error msg"
+  },
+  "ayYTHy": {
+    "defaultMessage": "[uk]: Неурядова установа, яка реєструється з метою накопичення матеріальних засобів, їх обліку та подальшої передачі. Має на меті створення місця зосередження допомоги.",
+    "description": "Role: description"
+  },
+  "b4EOzO": {
+    "defaultMessage": "[uk]: Зареєструватися",
+    "description": "Registration: signUpButton"
+  },
+  "bFFIqy": {
+    "defaultMessage": "[uk]: Я вже зареєстрований",
+    "description": "Registration: login redirect"
+  },
   "bU5skY": {
     "defaultMessage": "Номер телефона",
     "description": "Registration: phoneNumberInput"
   },
-  "c+UzEc": {
-    "defaultMessage": "[uk]: Назва хабу",
-    "description": "ProfileForm: hubName"
+  "cvwBB5": {
+    "defaultMessage": "[uk]: вихід",
+    "description": "Header logout button text"
+  },
+  "eK+6et": {
+    "defaultMessage": "[uk]: Тимчасове місце зберігання гуманітарної допомоги. Зосередження допомоги у волонтерських хабах ситуативне та тимчасове.",
+    "description": "Role: description"
+  },
+  "eQiA4S": {
+    "defaultMessage": "[uk]: Придумйте новий пароль",
+    "description": "ResetPassword: passwordInput"
   },
   "eV+sCD": {
     "defaultMessage": "[uk]: реєстрація",
     "description": "AuthContainer: titleSignUp"
   },
-  "eiJ8g1": {
-    "defaultMessage": "[uk]: Зареєструйся та стань частиною українського волонтерського руху",
-    "description": "Header: registrationComment"
+  "eW3XNU": {
+    "defaultMessage": "[uk]: Успішно оновлено особисті дані",
+    "description": "UserIfo: update user settings"
+  },
+  "emev9m": {
+    "defaultMessage": "[uk]: Назва населеного пункту",
+    "description": "Profile/Roles: Hub city name"
   },
   "etXyqK": {
     "defaultMessage": "Забыл пароль",
     "description": "Login: forgotPassword"
   },
+  "f8hVVa": {
+    "defaultMessage": "[uk]: Організацію успішно оновлено",
+    "description": "Update organization success toast"
+  },
   "fhIJT1": {
     "defaultMessage": "Пароль",
     "description": "Login: passwordInput"
+  },
+  "gA12O8": {
+    "defaultMessage": "[uk]: Скасувати",
+    "description": "Profile/UserInfo: reset button"
+  },
+  "geyg7w": {
+    "defaultMessage": "[uk]: Назва хабу",
+    "description": "Profile/Roles: Hub name"
   },
   "ii/P/s": {
     "defaultMessage": "[uk]: Координація передачі гуманітарної допомоги між донорами та волонтерськими хабами / хабами",
     "description": "Home: firstTeaser_description_1"
   },
-  "iwu/mt": {
-    "defaultMessage": "[uk]: Номер телефону",
-    "description": "PersonalData: phoneNumber"
+  "lng755": {
+    "defaultMessage": "[uk]: Отримувач",
+    "description": "Role: title"
   },
-  "ktfdBb": {
-    "defaultMessage": "[uk]: Адреса",
-    "description": "ProfileForm: address"
+  "lvvQeA": {
+    "defaultMessage": "[uk]: Скасувати",
+    "description": "Profile/Roles: reset button"
   },
-  "l/UVCk": {
-    "defaultMessage": "[uk]: реєстрація",
-    "description": "Header: registrationButton"
+  "msywQw": {
+    "defaultMessage": "[uk]: вихід",
+    "description": "Header logout button"
   },
-  "lFD2Hw": {
-    "defaultMessage": "[uk]: На цей email ми надішлемо посилання для відновлення пароля",
-    "description": "forgotPassword: text"
-  },
-  "mV2Wi+": {
-    "defaultMessage": "Номер телефона доступный всем",
-    "description": "Registration: isPublicCheckbox"
-  },
-  "oNnYlE": {
-    "defaultMessage": "Поле должно быть email",
-    "description": "inputsValidation: emailError"
+  "o/uKu/": {
+    "defaultMessage": "[uk]: Безпека",
+    "description": "Footer navigation"
   },
   "odPtpC": {
     "defaultMessage": "[uk]: Відкрийте лист на вашій електронній пошті та пройдіть за посиланням",
     "description": "Verification: text"
   },
+  "pfUm22": {
+    "defaultMessage": "[uk]: Волонтерський ха",
+    "description": "Role: title"
+  },
   "qEclD0": {
     "defaultMessage": "положения про обработку и защиту персональных данных и пользовательского соглашениея",
     "description": "Registration: licenseInfo"
   },
-  "r9/KMU": {
-    "defaultMessage": "[uk]: Company, 2022. All rights reserved",
-    "description": "Footer: footer_subscription"
+  "qFY46U": {
+    "defaultMessage": "[uk]: Зареєструйся та стань частиною українського волонтерського руху",
+    "description": "Main/Header: Registration label"
   },
-  "rMynxh": {
-    "defaultMessage": "Я уже зарегистрирован",
-    "description": "Registration: alreadyRegisteredButton"
+  "qIvtGw": {
+    "defaultMessage": "[uk]: вхід",
+    "description": "Header navigation"
+  },
+  "qmtelL": {
+    "defaultMessage": "[uk]: Хаб",
+    "description": "Role: title"
+  },
+  "rLyV0n": {
+    "defaultMessage": "[uk]: особистий кабінет",
+    "description": "Roles: title"
   },
   "rRhUrR": {
     "defaultMessage": "Придумайте никнейм",
     "description": "Registration: nickNameInput"
   },
-  "sPQDfP": {
-    "defaultMessage": "[uk]: Скасувати",
-    "description": "PersonalData: cancelInfoButton"
+  "rpdPSz": {
+    "defaultMessage": "[uk]: Додати інформацію",
+    "description": "Profile/Roles: submit button"
   },
   "sQUt+3": {
     "defaultMessage": "[uk]: Особисті дані",
@@ -259,33 +355,37 @@
     "defaultMessage": "[uk]: Ваша роль",
     "description": "Profile: role"
   },
-  "to7hkt": {
-    "defaultMessage": "[uk]: Редагувати",
-    "description": "PersonalData: editInfoButton"
-  },
   "tv0h/6": {
     "defaultMessage": "Пароль",
     "description": "Registration: passwordInput"
   },
-  "vyjGKQ": {
-    "defaultMessage": "[uk]: Нікнейм",
-    "description": "PersonalData: nickName"
+  "uRQKwl": {
+    "defaultMessage": "[uk]: Мінімільна довжина має бути не більше {msx} символів",
+    "description": "Validation error text"
+  },
+  "uogmiO": {
+    "defaultMessage": "[uk]: Особа, яка виявила бажання здійснити доставку матеріальних засобів від місця їх тимчасового складування (хаб/волонтерський хаб) до отримувачів.",
+    "description": "Role: description"
+  },
+  "wCubmG": {
+    "defaultMessage": "[uk]: Помилка",
+    "description": "Reset Password: error msg"
   },
   "wdx07I": {
     "defaultMessage": "[uk]: Змінити пароль",
     "description": "ResetPassword: changePasswordButton"
   },
+  "wfxRKl": {
+    "defaultMessage": "[uk]: Оновити інформацію",
+    "description": "Profile/UserInfo: update info button"
+  },
   "wqpq5k": {
     "defaultMessage": "[uk]: Донори - Хаби",
     "description": "Home: firstTeaser_title_1"
   },
-  "wr0oXa": {
-    "defaultMessage": "[uk]: Контакти хабу",
-    "description": "ProfileForm: hubContacts"
-  },
-  "zKD6CI": {
-    "defaultMessage": "[uk]: вхід",
-    "description": "Logout: title"
+  "xUNZnG": {
+    "defaultMessage": "[uk]: Не знайдено",
+    "description": "Profile/Roles: Empty hub city name"
   },
   "zQjznj": {
     "defaultMessage": "[uk]: Безпека",

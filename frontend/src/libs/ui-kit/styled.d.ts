@@ -26,7 +26,10 @@ type FontEntry =
   | 'body6'
   | 'body7'
   | 'body8'
-  | 'body9';
+  | 'body9'
+  | 'text1'
+  | 'h1_900'
+  | 'title';
 
 interface ThemeSimplePaletteColorOptions extends SimplePaletteColorOptions {
   hover?: string;
@@ -39,6 +42,7 @@ export interface ThemePalette {
   grey: ColorPartial;
   info: ThemeSimplePaletteColorOptions;
   primary: ThemeSimplePaletteColorOptions;
+  secondary: ThemeSimplePaletteColorOptions;
 }
 
 interface FontProps {
@@ -53,6 +57,7 @@ interface CustomThemeOptions {
   palette: ThemePalette;
   spacing(...values: TSpacing[]): string;
   font(type: FontEntry): string;
+  hover: string;
 }
 
 declare module '@mui/material' {
