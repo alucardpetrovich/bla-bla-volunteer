@@ -4,9 +4,11 @@ import { emailSchema, errors, FormatMessage, passwordSchema, phoneSchema, string
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
+import { useLocation } from 'react-use';
 import { boolean, InferType, object } from 'yup';
 
 import { PATHS } from '../../../common/constants/PATH';
+import { useLocale } from '../../../common/hooks/useLocale';
 import { useNavigation } from '../../../common/hooks/useNavigation';
 import { CurrentUserInfo } from '../../../common/services/api/auth';
 import axios from '../../../common/utils/axios';
@@ -19,6 +21,7 @@ interface SignUpData {
   phoneNumberAccessMode: AccessModes;
   password: string;
   recaptchaResponse?: string;
+  baseUrl: string;
 }
 
 interface SignUpResponse {
@@ -43,6 +46,8 @@ export const useSignUp = () => {
   const { formatMessage } = useIntl();
   const toVerification = useNavigation(PATHS.VERIFICATION);
   const toLogin = useNavigation(PATHS.LOGIN);
+  const { origin } = useLocation();
+  const { locale } = useLocale();
 
   const {
     register,
@@ -65,6 +70,7 @@ export const useSignUp = () => {
       const d = {
         ...data,
         phoneNumberAccessMode: data.phoneNumberAccessMode ? AccessModes.PUBLIC : AccessModes.READ_ONLY_ME,
+        baseUrl: origin + '/' + locale,
       };
 
       mutate(d);
