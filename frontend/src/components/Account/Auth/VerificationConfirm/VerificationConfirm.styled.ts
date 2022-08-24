@@ -1,9 +1,9 @@
 import { Link } from 'src/components/common/components/Link/Link';
 import styled from 'styled-components';
 
-export const VerificationStatus = styled.h3`
+export const VerificationStatus = styled.h2`
   ${p => p.theme.font('h2')};
-  margin-bottom: ${p => p.theme.spacing(4.75)};
+  margin-bottom: ${p => p.theme.spacing(4.5)};
 `;
 
 export const StyledLink = styled(Link)`
@@ -14,9 +14,6 @@ export const StyledLink = styled(Link)`
   color: ${p => p.theme.palette.common.white};
   background-color: ${p => p.theme.palette.primary.main};
 
-  padding-left: ${p => p.theme.spacing(5)};
-  padding-right: ${p => p.theme.spacing(5)};
-  padding-top: ${p => p.theme.spacing(1.5)};
-  padding-bottom: ${p => p.theme.spacing(1.5)};
+  padding: ${p => p.theme.spacing(1.5, 5)};
   border-radius: 5px;
 `;
