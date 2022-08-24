@@ -11,6 +11,8 @@ export const PATHS = {
 
   VERIFICATION: `${ACCOUNT_PATH}/verification`,
 
+  VERIFICATION_CONFIRM: `${ACCOUNT_PATH}/verification/:token`,
+
   FORGOT_PASSWORD: `${ACCOUNT_PATH}/forgot-password`,
 
   RESET_PASSWORD: `${ACCOUNT_PATH}/reset-password`,
