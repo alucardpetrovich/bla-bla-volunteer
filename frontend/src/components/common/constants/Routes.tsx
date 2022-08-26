@@ -7,6 +7,7 @@ import { Login } from '../../Account/Auth/Login/Login';
 import { ResetPassword } from '../../Account/Auth/ResetPassword/ResetPassword';
 import { SignUp } from '../../Account/Auth/SignUp/SignUp';
 import { Veirfication } from '../../Account/Auth/Veirfication/Verification';
+import { VerificationConfirm } from '../../Account/Auth/VerificationConfirm/VerificationConfirm';
 import { Profile as ProfilePage } from '../../Account/Profile/Profile';
 import { Layout } from '../../Layout/Layout';
 import { Redirect } from '../components/Redirect/Redirect';
@@ -17,6 +18,7 @@ const accountList = [
   { path: PATHS.LOGIN, element: <Login /> },
   { path: PATHS.REGISTRATION, element: <SignUp /> },
   { path: PATHS.VERIFICATION, element: <Veirfication /> },
+  { path: PATHS.VERIFICATION_CONFIRM, element: <VerificationConfirm /> },
   { path: PATHS.RESET_PASSWORD, element: <ResetPassword /> },
   {
     path: PATHS.FORGOT_PASSWORD,
