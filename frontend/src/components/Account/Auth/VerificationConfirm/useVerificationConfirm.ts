@@ -1,5 +1,6 @@
-import { useMutation } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
+import { useParams } from 'react-router';
 import axios from 'src/components/common/utils/axios';
 
 export const patchVerificationConfirm = async (verificationToken: string | undefined) => {
@@ -8,11 +9,12 @@ export const patchVerificationConfirm = async (verificationToken: string | undef
 };
 
 export const useVerificationConfirm = () => {
-  const { isSuccess, isLoading, isError, mutate } = useMutation(patchVerificationConfirm, {
+  const { token } = useParams();
+  return useQuery([patchVerificationConfirm.name], () => patchVerificationConfirm(token), {
     onError: (error: Error | AxiosError) => {
-      console.log(error.message);
+      console.error(error.message);
     },
+    staleTime: Infinity,
+    retry: false,
   });
-
-  return { isSuccess, isLoading, isError, mutate };
 };
