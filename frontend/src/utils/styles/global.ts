@@ -70,6 +70,10 @@ const GlobalStyle = createGlobalStyle`
     transition: all 0.3s;
   }
 
+  .grecaptcha-badge {
+    visibility: hidden;
+  }
+
 `;
 
 export default GlobalStyle;

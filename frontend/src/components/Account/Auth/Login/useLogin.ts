@@ -10,6 +10,7 @@ import { InferType, object } from 'yup';
 import { PATHS } from '../../../common/constants/PATH';
 import { StorageKeys } from '../../../common/constants/storageKeys';
 import { useNavigation } from '../../../common/hooks/useNavigation';
+import { useRecaptcha } from '../../../common/hooks/useRecaptcha';
 import { CurrentUserInfo, getCurrentUserInfo } from '../../../common/services/api/auth';
 import axios from '../../../common/utils/axios';
 import { setToStorage } from '../../../common/utils/storage';
@@ -50,6 +51,7 @@ export const useLogin = () => {
   const { formatMessage } = useIntl();
   const queryClient = useQueryClient();
   const toProfile = useNavigation(PATHS.PROFILE);
+  const { getCaptchaToken } = useRecaptcha();
 
   const {
     register,
@@ -74,7 +76,14 @@ export const useLogin = () => {
     },
   });
 
-  const handleSignIn = useCallback((data: SignInData) => mutate(data), [mutate]);
+  const handleSignIn = useCallback(
+    async (data: SignInData) => {
+      const token = await getCaptchaToken();
+
+      mutate({ ...data, recaptchaResponse: token });
+    },
+    [getCaptchaToken, mutate],
+  );
 
   return { register, handleSubmit, errors, isLoading, handleSignIn };
 };

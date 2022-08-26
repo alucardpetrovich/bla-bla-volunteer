@@ -9,11 +9,13 @@ import { useLocation } from 'react-use';
 import { InferType, object } from 'yup';
 
 import { useLocale } from '../../../common/hooks/useLocale';
+import { useRecaptcha } from '../../../common/hooks/useRecaptcha';
 import axios from '../../../common/utils/axios';
 
 interface SendResetPasswordLinkData {
   email: string;
   baseUrl: string;
+  recaptchaResponse?: string;
 }
 
 const sendResetPasswordLink = (payload: SendResetPasswordLinkData): Promise<void> => {
@@ -29,6 +31,7 @@ export const useForgotPassword = () => {
   const { formatMessage } = useIntl();
   const { origin } = useLocation();
   const { locale } = useLocale();
+  const { getCaptchaToken } = useRecaptcha();
 
   const {
     register,
@@ -47,10 +50,12 @@ export const useForgotPassword = () => {
   });
 
   const handleForgotPassword = useCallback(
-    (data: InferType<ReturnType<typeof schema>>) => {
-      mutate({ ...data, baseUrl: origin + '/' + locale });
+    async (data: InferType<ReturnType<typeof schema>>) => {
+      const token = await getCaptchaToken();
+
+      mutate({ ...data, baseUrl: origin + '/' + locale, recaptchaResponse: token });
     },
-    [mutate, origin, locale],
+    [getCaptchaToken, mutate, origin, locale],
   );
 
   return { register, handleSubmit, errors, isLoading, handleForgotPassword, isSuccess };

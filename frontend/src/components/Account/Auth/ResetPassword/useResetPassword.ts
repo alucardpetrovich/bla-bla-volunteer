@@ -8,11 +8,13 @@ import { useIntl } from 'react-intl';
 import { useLocation } from 'react-use';
 import { InferType, object, ref, string } from 'yup';
 
+import { useRecaptcha } from '../../../common/hooks/useRecaptcha';
 import axios from '../../../common/utils/axios';
 
 interface ResetPasswordData {
   code: string;
   newPassword: string;
+  recaptchaResponse?: string;
 }
 
 const resetPassword = (payload: ResetPasswordData): Promise<void> => {
@@ -28,6 +30,7 @@ const schema = (t: FormatMessage) =>
 export const useResetPassword = () => {
   const { formatMessage } = useIntl();
   const { search } = useLocation();
+  const { getCaptchaToken } = useRecaptcha();
 
   const {
     register,
@@ -46,11 +49,13 @@ export const useResetPassword = () => {
   });
 
   const handleResetPassword = useCallback(
-    (data: InferType<ReturnType<typeof schema>>) => {
+    async (data: InferType<ReturnType<typeof schema>>) => {
       const code = new URLSearchParams(search).get('code') ?? '';
-      mutate({ newPassword: data.newPassword, code });
+      const token = await getCaptchaToken();
+
+      mutate({ newPassword: data.newPassword, code, recaptchaResponse: token });
     },
-    [mutate, search],
+    [getCaptchaToken, mutate, search],
   );
 
   return { register, handleSubmit, errors, isLoading, handleResetPassword, isSuccess };

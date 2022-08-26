@@ -10,6 +10,7 @@ import { boolean, InferType, object } from 'yup';
 import { PATHS } from '../../../common/constants/PATH';
 import { useLocale } from '../../../common/hooks/useLocale';
 import { useNavigation } from '../../../common/hooks/useNavigation';
+import { useRecaptcha } from '../../../common/hooks/useRecaptcha';
 import { CurrentUserInfo } from '../../../common/services/api/auth';
 import axios from '../../../common/utils/axios';
 import { AccessModes } from '../../Profile/ProfileInfo/api/contacts';
@@ -48,6 +49,7 @@ export const useSignUp = () => {
   const toLogin = useNavigation(PATHS.LOGIN);
   const { origin } = useLocation();
   const { locale } = useLocale();
+  const { getCaptchaToken } = useRecaptcha();
 
   const {
     register,
@@ -66,16 +68,19 @@ export const useSignUp = () => {
   });
 
   const handleSignUp = useCallback(
-    (data: InferType<ReturnType<typeof schema>>) => {
+    async (data: InferType<ReturnType<typeof schema>>) => {
+      const token = await getCaptchaToken();
+
       const d = {
         ...data,
         phoneNumberAccessMode: data.phoneNumberAccessMode ? AccessModes.PUBLIC : AccessModes.READ_ONLY_ME,
         baseUrl: origin + '/' + locale,
+        recaptchaResponse: token,
       };
 
       mutate(d);
     },
-    [mutate],
+    [getCaptchaToken, locale, mutate, origin],
   );
 
   return { register, errors, isLoading, handleSignUp, handleSubmit, toLogin };
