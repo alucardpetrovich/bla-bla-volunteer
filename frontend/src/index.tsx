@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { DeviceMatchProvider, theme } from '@ui-kit';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import toast, { Toaster } from 'react-hot-toast';
 import { useRoutes } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
@@ -69,6 +70,8 @@ const toastOptions = {
 
 const App = () => useRoutes(Routes);
 
+const reCaptchaKey = process.env.REACT_APP_CAPTCHA_SITE_KEY || '';
+
 root.render(
   <QueryClientProvider client={queryClient}>
     <DeviceMatchProvider>
@@ -77,7 +80,9 @@ root.render(
           <ThemeProvider theme={theme}>
             <GlobalStyle />
             <Toaster position="top-right" toastOptions={toastOptions} />
-            <App />
+            <GoogleReCaptchaProvider reCaptchaKey={reCaptchaKey}>
+              <App />
+            </GoogleReCaptchaProvider>
           </ThemeProvider>
         </BrowserRouter>
       </StrictMode>

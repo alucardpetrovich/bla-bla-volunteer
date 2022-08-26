@@ -35,6 +35,10 @@
     "defaultMessage": "[uk]: Вибір мови",
     "description": "Header language switcher"
   },
+  "3NbLtp": {
+    "defaultMessage": "[uk]: Помилка активації акаунта!",
+    "description": "Verification: error"
+  },
   "3VVorE": {
     "defaultMessage": "[uk]: Хаби - Мобільні волонтери",
     "description": "Home: firstTeaser_title_2"
@@ -214,6 +218,10 @@
   "ZOs9YC": {
     "defaultMessage": "[uk]: що ми робимо",
     "description": "Home page: title_1"
+  },
+  "Zw+PYA": {
+    "defaultMessage": "[uk]: Ви успішно верифікували акаунт!",
+    "description": "Verification: success"
   },
   "aA95lf": {
     "defaultMessage": "[uk]: Особа або група осіб, організації, рухи тощо, які здійснюють передачу матеріальних засобів на безоплатній основі",

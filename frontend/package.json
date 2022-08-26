@@ -51,6 +51,7 @@
     "npm": "^8.9.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-google-recaptcha-v3": "^1.10.0",
     "react-hook-form": "^7.34.0",
     "react-hot-toast": "^2.3.0",
     "react-intl": "^5.25.1",
