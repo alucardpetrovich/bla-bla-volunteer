@@ -12,7 +12,7 @@ import { useLocale } from '../../../common/hooks/useLocale';
 import { useRecaptcha } from '../../../common/hooks/useRecaptcha';
 import axios from '../../../common/utils/axios';
 
-const START_TIME = 5;
+const START_TIME = 60;
 const END_TIME = 0;
 const TIMER_DELAY = 1000;
 
