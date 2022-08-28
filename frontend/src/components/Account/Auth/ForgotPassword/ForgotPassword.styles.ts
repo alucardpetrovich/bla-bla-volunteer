@@ -19,4 +19,5 @@ export const ForgotPasswordText = styled.p`
   ${p => p.theme.font('body3')};
   color: ${p => p.theme.palette.primary.main};
   width: 450px;
+  margin-bottom: ${p => p.theme.spacing(4.5)};
 `;

@@ -14,7 +14,17 @@ import { useForgotPassword } from './useForgotPassword';
 
 export const ForgotPassword: FC = () => {
   const { formatMessage } = useIntl();
-  const { register, handleSubmit, handleForgotPassword, isLoading, isSuccess, errors } = useForgotPassword();
+  const {
+    register,
+    handleSubmit,
+    handleForgotPassword,
+    isLoading,
+    isSuccess,
+    errors,
+    handleForgotPasswordResend,
+    timerTime,
+    isDisabledResendBtn,
+  } = useForgotPassword();
 
   return (
     <Auth>
@@ -27,13 +37,27 @@ export const ForgotPassword: FC = () => {
             })}
           </ForgotPasswordTitle>
           {isSuccess ? (
-            <ForgotPasswordText>
-              {formatMessage({
-                defaultMessage:
-                  'Якщо вказаний користувач існує, то на email було надіслано посилання для відновлення пароля.',
-                description: 'forgotPassword: sendToEmail',
-              })}
-            </ForgotPasswordText>
+            <>
+              <ForgotPasswordText>
+                {formatMessage({
+                  defaultMessage:
+                    'Якщо вказаний користувач існує, то на email було надіслано посилання для відновлення пароля.',
+                  description: 'forgotPassword: sendToEmail',
+                })}
+              </ForgotPasswordText>
+              <Button
+                variant="contained"
+                color="primary"
+                disabled={isDisabledResendBtn}
+                onClick={handleForgotPasswordResend}
+              >
+                {!!timerTime && `(${timerTime})`}
+                {formatMessage({
+                  defaultMessage: 'Надіслати повторно',
+                  description: 'forgotPassword: resend',
+                })}
+              </Button>
+            </>
           ) : (
             <form onSubmit={handleSubmit(handleForgotPassword)}>
               <FormField
