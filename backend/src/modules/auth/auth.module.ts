@@ -30,11 +30,18 @@ import { RevokedTokensRepository } from './revoked-tokens.repository';
 })
 export class AuthModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(CaptchaMiddleware)
-      .forRoutes(
-        { path: 'v1/auth/sign-in', method: RequestMethod.POST },
-        { path: 'v1/auth/sign-up', method: RequestMethod.POST },
-      );
+    consumer.apply(CaptchaMiddleware).forRoutes(
+      { path: 'v1/auth/sign-in', method: RequestMethod.POST },
+      { path: 'v1/auth/sign-up', method: RequestMethod.POST },
+      {
+        path: '/v1/auth/resend-verification-link',
+        method: RequestMethod.PATCH,
+      },
+      { path: '/v1/auth/reset-password', method: RequestMethod.PATCH },
+      {
+        path: '/v1/auth/send-reset-password-link',
+        method: RequestMethod.PATCH,
+      },
+    );
   }
 }
