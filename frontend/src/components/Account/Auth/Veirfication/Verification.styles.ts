@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import styled from 'styled-components';
 
 export const VerificationTitle = styled.h3`
@@ -20,4 +21,14 @@ export const VerificationWrapper = styled.div`
 
 export const VerificationText = styled.p`
   color: ${p => p.theme.palette.primary.main};
+
+  margin-bottom: ${p => p.theme.spacing(4.5)};
+`;
+
+export const ResendButton = styled(Button)`
+  margin-bottom: ${p => p.theme.spacing(2)};
+`;
+
+export const NavigateButton = styled(Button)`
+  min-width: ${p => p.theme.spacing(11.5)};
 `;

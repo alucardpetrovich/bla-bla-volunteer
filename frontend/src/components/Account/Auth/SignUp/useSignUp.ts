@@ -45,21 +45,21 @@ const schema = (t: FormatMessage) =>
 
 export const useSignUp = () => {
   const { formatMessage } = useIntl();
-  const toVerification = useNavigation(PATHS.VERIFICATION);
-  const toLogin = useNavigation(PATHS.LOGIN);
-  const { origin } = useLocation();
-  const { locale } = useLocale();
-  const { getCaptchaToken } = useRecaptcha();
-
   const {
     register,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm<InferType<ReturnType<typeof schema>>>({
     reValidateMode: 'onChange',
     shouldUnregister: true,
     resolver: yupResolver(schema(formatMessage)),
   });
+  const toVerification = useNavigation(PATHS.VERIFICATION, undefined, { state: { email: getValues('email') } });
+  const toLogin = useNavigation(PATHS.LOGIN);
+  const { origin } = useLocation();
+  const { locale } = useLocale();
+  const { getCaptchaToken } = useRecaptcha();
 
   const { mutate, isLoading } = useMutation(signUp, {
     onSuccess() {

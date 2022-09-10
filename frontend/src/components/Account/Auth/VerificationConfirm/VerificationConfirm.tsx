@@ -1,15 +1,18 @@
+import { Button } from '@mui/material';
 import { FC } from 'react';
 import { useIntl } from 'react-intl';
 import { PATHS } from 'src/components/common/constants/PATH';
+import { useNavigation } from 'src/components/common/hooks/useNavigation';
 import { Spinner } from 'src/components/Layout/Layout';
 
 import { Auth } from '../Auth';
 import { useVerificationConfirm } from './useVerificationConfirm';
-import { StyledLink, VerificationStatus } from './VerificationConfirm.styled';
+import { VerificationStatus } from './VerificationConfirm.styled';
 
 export const VerificationConfirm: FC = () => {
   const { isSuccess, isLoading } = useVerificationConfirm();
   const { formatMessage } = useIntl();
+  const toLogin = useNavigation(PATHS.LOGIN);
 
   return (
     <Auth>
@@ -29,7 +32,9 @@ export const VerificationConfirm: FC = () => {
                     description: 'Verification: error',
                   })}
             </VerificationStatus>
-            <StyledLink to={PATHS.LOGIN}>OK</StyledLink>
+            <Button variant="contained" color="primary" type="button" onClick={toLogin}>
+              OK
+            </Button>
           </>
         )}
       </>
