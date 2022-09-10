@@ -37,31 +37,12 @@ export class CaptchaMiddleware implements NestMiddleware {
       }),
     );
 
-    if (
-      !data.success ||
-      data.score < this.captchaConf.minScore ||
-      data.action !== this.getAction(req)
-    ) {
+    if (!data.success || data.score < this.captchaConf.minScore) {
       throw new UnprocessableEntityException('Captcha validation failed');
     }
 
     next();
   }
-
-  getAction(req: Request) {
-    const url = req.url;
-    const actionsMapper = {
-      '/api/v1/auth/sign-in': CaptchaActions.SIGN_IN,
-      '/api/v1/auth/sign-up': CaptchaActions.SIGN_UP,
-    };
-
-    return actionsMapper[url];
-  }
-}
-
-export enum CaptchaActions {
-  SIGN_IN = 'signin',
-  SIGN_UP = 'signup',
 }
 
 interface CaptchaResponse {
