@@ -31,4 +31,5 @@ export const ResendButton = styled(Button)`
 
 export const NavigateButton = styled(Button)`
   min-width: ${p => p.theme.spacing(11.5)};
+  border: none;
 `;

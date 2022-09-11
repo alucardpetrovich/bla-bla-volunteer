@@ -1,4 +1,3 @@
-import { Button } from '@mui/material';
 import { FC } from 'react';
 import { useIntl } from 'react-intl';
 import { PATHS } from 'src/components/common/constants/PATH';
@@ -6,6 +5,7 @@ import { useNavigation } from 'src/components/common/hooks/useNavigation';
 import { Spinner } from 'src/components/Layout/Layout';
 
 import { Auth } from '../Auth';
+import { NavigateButton } from '../Veirfication/Verification.styles';
 import { useVerificationConfirm } from './useVerificationConfirm';
 import { VerificationStatus } from './VerificationConfirm.styled';
 
@@ -32,9 +32,9 @@ export const VerificationConfirm: FC = () => {
                     description: 'Verification: error',
                   })}
             </VerificationStatus>
-            <Button variant="contained" color="primary" type="button" onClick={toLogin}>
+            <NavigateButton variant="contained" color="primary" type="button" onClick={toLogin}>
               OK
-            </Button>
+            </NavigateButton>
           </>
         )}
       </>
