@@ -219,6 +219,10 @@
     "defaultMessage": "що ми робимо",
     "description": "Home page: title_1"
   },
+  "ZqMVUO": {
+    "defaultMessage": "Надіслати повторно",
+    "description": "ResendVerificationLink: resend"
+  },
   "Zw+PYA": {
     "defaultMessage": "Ви успішно верифікували акаунт!",
     "description": "Verification: success"
@@ -298,6 +302,10 @@
   "geyg7w": {
     "defaultMessage": "Назва хабу",
     "description": "Profile/Roles: Hub name"
+  },
+  "iIaDEW": {
+    "defaultMessage": "Помилка",
+    "description": "Resend Verification Link: error msg"
   },
   "ii/P/s": {
     "defaultMessage": "Координація передачі гуманітарної допомоги між донорами та волонтерськими хабами / хабами",
