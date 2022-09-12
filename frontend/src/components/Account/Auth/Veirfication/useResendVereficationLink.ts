@@ -10,7 +10,7 @@ import { useRecaptcha } from 'src/components/common/hooks/useRecaptcha';
 import axios from 'src/components/common/utils/axios';
 import { InferType, object } from 'yup';
 
-const START_TIME = 5;
+const START_TIME = 60;
 const END_TIME = 0;
 const TIMER_DELAY = 1000;
 
