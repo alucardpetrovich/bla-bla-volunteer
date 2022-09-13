@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useCurrentUser } from 'src/components/common/hooks/useCurrentUser';
 
-import UserPhoto from '../assets/shrek-with-gun.jpg';
+import UserPhoto from '../assets/userPhoto.jpg';
 import { useUserConfig } from '../useUserConfig';
 import { UserInfoStyled, UserNameStyled, UserPhotoStyled, UserRoleStyled, Wrapper } from './UserInfo.styled';
 
