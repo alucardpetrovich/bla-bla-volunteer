@@ -61,6 +61,7 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export const Box = styled.div`
   min-height: 120px;
+  min-width: 250px;
 
   display: flex;
   align-items: center;
@@ -68,7 +69,9 @@ export const Box = styled.div`
   padding-left: ${p => p.theme.spacing(4)};
   padding-right: ${p => p.theme.spacing(19.5)};
 
-  background-color: ${p => p.theme.palette.info.main};
+  /* background-color: red; */
+  background-color: ${p => p.theme.palette.primary.main};
+  /* background-image: url('${HeaderBcg}'); */
   background: url('${HeaderBcg}') no-repeat center;
 `;
 

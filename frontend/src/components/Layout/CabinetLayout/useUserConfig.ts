@@ -17,6 +17,7 @@ export const useUserConfig = () => {
 
   const data = useCurrentUser();
   const role = data?.involvements[0].type;
+  const nickname = data?.nickname;
 
   const UserConfig = {
     [Involvement.donor]: {
@@ -57,7 +58,7 @@ export const useUserConfig = () => {
   };
 
   if (role) {
-    return UserConfig[role];
+    return { ...UserConfig[role], nickname };
   }
 
   return null;

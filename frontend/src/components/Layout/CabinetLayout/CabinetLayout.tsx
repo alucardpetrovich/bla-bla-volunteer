@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 
-import { ContentStyled, Wrapper } from './CabinetLayout.styled';
+import { ContentContainer, Wrapper } from './CabinetLayout.styled';
 import Header from './Header/Header';
 import UserMenu from './UserMenu/UserMenu';
 
@@ -14,7 +14,7 @@ export const CabinetLayout: FC<CabinetLayoutProps> = ({ children }) => {
       <Header />
       <Wrapper>
         <UserMenu />
-        <ContentStyled>{children}</ContentStyled>
+        <ContentContainer>{children}</ContentContainer>
       </Wrapper>
     </>
   );
