@@ -3,11 +3,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   background-color: ${p => p.theme.palette.primary.main};
-  height: 100%;
-  width: 250px;
-  position: absolute;
-  top: 0;
-  left: 0;
+  min-width: 250px;
   padding-top: ${p => p.theme.spacing(9)};
 `;
 
@@ -30,6 +26,7 @@ export const LinksList = styled.ul`
   flex-direction: column;
   gap: ${p => p.theme.spacing(2)};
   flex: 1 0 auto;
+  margin-bottom: ${p => p.theme.spacing(2)};
 `;
 
 export const Permalinks = styled(LinksList)`

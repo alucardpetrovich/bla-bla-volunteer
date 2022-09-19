@@ -15,7 +15,7 @@ export const UserPhotoStyled = styled.div`
 `;
 
 export const UserInfoStyled = styled.div`
-  padding-right: 200px;
+  margin-right: 200px;
   margin-left: ${p => p.theme.spacing(2)};
 `;
 

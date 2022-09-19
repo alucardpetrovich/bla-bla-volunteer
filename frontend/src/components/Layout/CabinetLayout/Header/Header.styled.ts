@@ -43,11 +43,6 @@ export const SearchIconWrapper = styled.div`
   justify-content: center;
 `;
 
-// export const StyledInputBase = styled(InputBase)`
-//   color: ${p => p.theme.palette.primary.main};
-//   padding-left: calc(1em + ${p => p.theme.spacing(4)});
-// `;
-
 export const StyledNotification = styled(NotificationsNoneOutlinedIcon)``;
 
 export const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -69,9 +64,7 @@ export const Box = styled.div`
   padding-left: ${p => p.theme.spacing(4)};
   padding-right: ${p => p.theme.spacing(19.5)};
 
-  /* background-color: red; */
   background-color: ${p => p.theme.palette.primary.main};
-  /* background-image: url('${HeaderBcg}'); */
   background: url('${HeaderBcg}') no-repeat center;
 `;
 
