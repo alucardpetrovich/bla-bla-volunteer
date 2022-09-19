@@ -37,7 +37,6 @@ export const Veirfication: FC = () => {
             })}
           </VerificationText>
           <ResendButton
-            sx={{ mb: 2 }}
             variant="contained"
             color="primary"
             disabled={isDisabledResendBtn}

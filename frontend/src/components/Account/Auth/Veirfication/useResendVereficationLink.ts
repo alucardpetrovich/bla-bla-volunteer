@@ -57,11 +57,15 @@ export const useResendVereficationLink = () => {
       setIsDisabledResendBtn(true);
     }
 
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (timerTime) {
         setTimerTime(timerTime - 1);
       }
     }, TIMER_DELAY);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [timerTime]);
 
   const handleResendVerificationLink = useCallback(async () => {
