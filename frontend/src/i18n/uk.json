@@ -15,6 +15,10 @@
     "defaultMessage": "активність",
     "description": "UserConfig: activity link"
   },
+  "04uATq": {
+    "defaultMessage": "Вода",
+    "description": "statistic category text"
+  },
   "08V8ko": {
     "defaultMessage": "Ел. Пошта",
     "description": "Registration: emailInput"
@@ -83,6 +87,10 @@
     "defaultMessage": "Введіть місто",
     "description": "Profile/Roles: Hub city placeholder"
   },
+  "8kuRcm": {
+    "defaultMessage": "Статистика",
+    "description": "statistic title"
+  },
   "9IGHyr": {
     "defaultMessage": "що важливо",
     "description": "Home page: title_2"
@@ -111,6 +119,10 @@
     "defaultMessage": "Наприклад, example@email.com",
     "description": "forgotPassword: title"
   },
+  "DBkLbh": {
+    "defaultMessage": "відкриті",
+    "description": "vertical chart open"
+  },
   "DtsV/x": {
     "defaultMessage": "Помилка при створенні організації",
     "description": "Create organization error toast"
@@ -118,6 +130,10 @@
   "EIHGfC": {
     "defaultMessage": "Повторіть пароль",
     "description": "ResetPassword: passwordSecondInput"
+  },
+  "EV9yRk": {
+    "defaultMessage": "Медикаменти",
+    "description": "statistic category text"
   },
   "EcVYKy": {
     "defaultMessage": "Пошук",
@@ -155,6 +171,10 @@
     "defaultMessage": "Організація транспортування гуманітарної допомоги мобільним волонтером",
     "description": "Home: firstTeaser_description_2"
   },
+  "IpYmeD": {
+    "defaultMessage": "2 тиж.",
+    "description": "statistic week"
+  },
   "JdRRrp": {
     "defaultMessage": "Паролі не співпадають",
     "description": "Validation error text"
@@ -162,6 +182,10 @@
   "JfxCnQ": {
     "defaultMessage": "Сьогодні волонтерам важливо максимально використовувати час і зусилля для підтримки тих, хто потребує допомоги. Платформа полегшує координацію волонтерських груп та волонтерів, що дозволяє їм робити ще більше.",
     "description": "Home: description"
+  },
+  "K7PrMH": {
+    "defaultMessage": "1 тиж.",
+    "description": "statistic week"
   },
   "MzAOnD": {
     "defaultMessage": "Мобільні волонтери - Отримувачі",
@@ -194,6 +218,10 @@
   "StFVYs": {
     "defaultMessage": "Редагувати",
     "description": "Profile/UserInfo: update info button"
+  },
+  "TXAMt4": {
+    "defaultMessage": "використано",
+    "description": "horizontal chart used"
   },
   "TieNMn": {
     "defaultMessage": "Ми максимально бережно працюємо з персональною інформацією користувачів і не вимагаємо інформацію, яка не потрібна безпосередньо для комунікації сторін. Навіть контактні дані ми надаємо лише за згоди її власника",
@@ -250,6 +278,10 @@
   "XwKFAg": {
     "defaultMessage": "Простота",
     "description": "Home: secondTeaser_title_1"
+  },
+  "YAY59O": {
+    "defaultMessage": "3 тиж.",
+    "description": "statistic week"
   },
   "Z4gKO4": {
     "defaultMessage": "Оцінка активності",
@@ -323,6 +355,10 @@
     "defaultMessage": "Успішно оновлено особисті дані",
     "description": "UserIfo: update user settings"
   },
+  "eftw2t": {
+    "defaultMessage": "Проекти",
+    "description": "statistic text"
+  },
   "emev9m": {
     "defaultMessage": "Назва населеного пункту",
     "description": "Profile/Roles: Hub city name"
@@ -355,6 +391,14 @@
     "defaultMessage": "Координація передачі гуманітарної допомоги між донорами та волонтерськими хабами / хабами",
     "description": "Home: firstTeaser_description_1"
   },
+  "kbkKHB": {
+    "defaultMessage": "Продукти харчування",
+    "description": "statistic category text"
+  },
+  "lP00dW": {
+    "defaultMessage": "Продукти харчування",
+    "description": "horizontal chart category name"
+  },
   "lng755": {
     "defaultMessage": "Отримувач",
     "description": "Role: title"
@@ -370,6 +414,10 @@
   "o/uKu/": {
     "defaultMessage": "Безпека",
     "description": "Footer navigation"
+  },
+  "o8rp5w": {
+    "defaultMessage": "залишок",
+    "description": "horizontal chart remainder"
   },
   "odPtpC": {
     "defaultMessage": "Відкрийте лист на вашій електронній пошті та пройдіть за посиланням",
@@ -395,6 +443,10 @@
     "defaultMessage": "Хаб",
     "description": "Role: title"
   },
+  "rLMRFV": {
+    "defaultMessage": "відкриті",
+    "description": "vertical chart close"
+  },
   "rLyV0n": {
     "defaultMessage": "особистий кабінет",
     "description": "Roles: title"
@@ -415,6 +467,10 @@
     "defaultMessage": "маршрути",
     "description": "UserConfig: rotes link"
   },
+  "t4H2hK": {
+    "defaultMessage": "Вода",
+    "description": "horizontal chart category name"
+  },
   "tViDKf": {
     "defaultMessage": "Ваша роль",
     "description": "Profile: role"
@@ -430,6 +486,10 @@
   "uogmiO": {
     "defaultMessage": "Особа, яка виявила бажання здійснити доставку матеріальних засобів від місця їх тимчасового складування (хаб/волонтерський хаб) до отримувачів.",
     "description": "Role: description"
+  },
+  "v76fNh": {
+    "defaultMessage": "Популярні категорії",
+    "description": "statistic category title"
   },
   "voGoiA": {
     "defaultMessage": "статистика",
@@ -458,5 +518,9 @@
   "zQjznj": {
     "defaultMessage": "Безпека",
     "description": "Home: secondTeaser_title_2"
+  },
+  "zsbglv": {
+    "defaultMessage": "Медикаменти",
+    "description": "horizontal chart category name"
   }
 }
