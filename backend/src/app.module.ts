@@ -17,6 +17,7 @@ import { DeliveryModule } from './modules/delivery/delivery.module';
 import { HubWarehousesModule } from './modules/hub-warehouses/hub-warehouses.module';
 import { NeedsModule } from './modules/needs/needs.module';
 import { UserSettingsModule } from './modules/user-settings/user-settings.module';
+import { HumDeliveriesModule } from './modules/hum-delivery/hum-delivery.module';
 
 // TODO: 1. add functionality for ride curve settling +
 // TODO: 2. add functionality for rides nearby search +
@@ -46,6 +47,7 @@ import { UserSettingsModule } from './modules/user-settings/user-settings.module
     HubWarehousesModule,
     NeedsModule,
     UserSettingsModule,
+    HumDeliveriesModule,
   ],
   controllers: [],
   providers: [MailingService],

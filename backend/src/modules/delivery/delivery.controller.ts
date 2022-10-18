@@ -29,7 +29,7 @@ export class DeliveryController {
     description: 'Delivery types returned',
     type: DeliveryTypesListSerializer,
   })
-  async getContactTypes(@Language() language: string) {
+  async getDeliveryTypes(@Language() language: string) {
     const types = await this.service.getDeliveryTypes(language);
     return { types };
   }
