@@ -21,7 +21,7 @@ export class CreateHumDeliveryRequestDto {
   @ApiProperty()
   routeCurve: LineString;
 
-  @ApiProperty({ type: HumDeliveryItemDto, isArray: true })
+  @ApiProperty({ type: HumDeliveryPickupDto, isArray: true })
   @Type(() => HumDeliveryPickupDto)
   @ValidateNested({ each: true })
   pickups: HumDeliveryPickupDto[];
